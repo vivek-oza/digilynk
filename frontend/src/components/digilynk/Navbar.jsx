@@ -1,0 +1,189 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import logo from "../../assets/icons/digilynk_dark.png";
+import logoLight from "../../assets/icons/digilynk_light.svg";
+import { motion, AnimatePresence } from "framer-motion";
+import { Squash as Hamburger } from "hamburger-react";
+import { useNavigate } from "react-router-dom";
+import { LucideMoon, LucideSun } from "lucide-react";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && !event.target.closest('.mobile-menu-container') &&
+        !event.target.closest('.hamburger-react')) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  const navLinks = [
+    // { name: "HOME", href: "#home" },
+    // { name: "SERVICES", href: "#services" },
+    // { name: "ABOUT", href: "#about" },
+    // { name: "PACKAGES", href: "" },
+  ];
+
+  const handlePackageClick = () => {
+    navigate("/web-development");
+    setIsOpen(false);
+  };
+  const handleContactClick = () => {
+    navigate("/contact");
+    setIsOpen(false);
+  };
+  const handleAboutClick = () => {
+    navigate("/about");
+    setIsOpen(false);
+  };
+  const handleHomeClick = () => {
+    navigate("/#top");
+    setIsOpen(false);
+  };
+  const handleServicesClick = () => {
+    navigate("/#servies");
+    setIsOpen(false);
+  };
+
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 h-20 flex shadow-xl shadow-black/10 ${'border-gray-500 bg-white/20'} border-b-2 items-center justify-between p-2 px-4 sm:px-12 backdrop-blur-3xl z-50 transition-all duration-1000`}>
+      {/* Logo and Brand */}
+      <a href="/" className="list-none cursor-pointer">
+        <div className="flex items-center gap-x-2">
+          <img src={logo} className="md:size-10 size-8 transition-all duration-1000" alt="LOGO" />
+        </div>
+      </a>
+
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex items-center gap-10">
+        <ul className="flex font-semibold text-sm gap-x-2">
+          {navLinks.map((link) => (
+            <li
+              key={link.name}
+              className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md cursor-pointer transition`}
+              onClick={() => navigate(link.href)}
+            >
+              {link.name}
+            </li>
+          ))}
+          <li
+            className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+            onClick={handleHomeClick}
+          >
+            HOME
+          </li>
+          <a href="#services">
+            <li
+              className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+              onClick={handleServicesClick}
+            >
+              SERVICES
+            </li>
+          </a>
+          <li
+            className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+            onClick={handleAboutClick}
+          >
+            ABOUT
+          </li>
+          <li
+            className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+            onClick={handlePackageClick}
+          >
+            PACKAGES
+          </li>
+          <li
+            className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+            onClick={handleContactClick}
+          >
+            CONTACT
+          </li>
+        </ul>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="lg:hidden flex items-center gap-4">
+        <button
+          className="focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          <Hamburger
+            toggled={isOpen}
+            duration={0.4}
+            toggle={setIsOpen}
+            color={darkMode ? "#ffffff" : "#1f2937"}
+          />
+        </button>
+      </div>
+
+      {/* Original Style Mobile Menu - Not Full Page */}
+      <AnimatePresence className="">
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 350 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 1, x: 350 }}
+            transition={{ type: "tween", duration: 0.5, ease: "easeOut" }}
+            className={`lg:hidden absolute top-[calc(5rem)] right-0 w-72 h-[calc(100vh)] ${darkMode ? 'bg-slate-950' : 'bg-zinc-50'} text-white border-s-2 border-zinc-500 backdrop-blur-3xl flex justify-start mobile-menu-container`}
+          >
+            <ul className="flex flex-col items-start pt-8 px-6 gap-4 font-semibold w-full">
+              {navLinks.map((link) => (
+                <li
+                  key={link.name}
+                  className={`hover:text-blue-500 flex justify-start cursor-pointer transition w-full text-left py-2 ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}
+                  onClick={() => {
+                    navigate(link.href);
+                    setIsOpen(false);
+                  }}
+                >
+                  {link.name}
+                </li>
+              ))}
+
+              <li
+                className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white' px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+                onClick={handleHomeClick}
+              >
+                HOME
+              </li>
+              <a href="#services">
+                <li
+                  className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white' px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+                  onClick={handleServicesClick}
+                >
+                  SERVICES
+                </li>
+              </a>
+              <li
+                className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white' px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+                onClick={handleAboutClick}
+              >
+                ABOUT
+              </li>
+              <li
+                className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white' px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
+                onClick={handlePackageClick}
+              >
+                PACKAGES
+              </li>
+              <li onClick={handleContactClick} className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}>
+                CONTACT
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav >
+  );
+}
