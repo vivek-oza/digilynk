@@ -6,6 +6,7 @@ import ClickSpark from "../components/reactbits/Animations/ClickSpark/ClickSpark
 import HeroSection from "../components/digilynk/HeroSection";
 import ServicesSection from "../components/digilynk/ServicesSection";
 import SeeOurWork from "../components/digilynk/SeeOurWork";
+import WorkWithUs from "../components/digilynk/WorkWithUs";
 // import HeroSection from "@/components/digilynk/HeroSection";
 // import ServicesSection from "@/components/digilynk/Sections/ServicesSection";
 // import { FeaturesMarquee } from "@/components/digilynk/Sections/FeaturesMarquee";
@@ -30,10 +31,10 @@ export default function Home() {
       </div>
 
       {/* See our us secttion*/}
-      <SeeOurWork></SeeOurWork>
+      <SeeOurWork />
 
-      {/* Features scroll section */}
-      {/* <FeaturesMarquee></FeaturesMarquee> */}
+      {/* Work with section */}
+      <WorkWithUs />
 
       {/* Whatsapp chat button */}
       {/* Back to top button */}

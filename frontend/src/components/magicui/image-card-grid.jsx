@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-const BlogCard = ({ image, title, description, buttonText, buttonLink }) => {
+const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
   return (
     <Card className="w-72 pt-0 gap-3 flex flex-col border-none overflow-hidden bg-white rounded-lg shadow-md">
       <div className="h-56 w-full bg-gray-200 overflow-hidden">
@@ -18,7 +18,7 @@ const BlogCard = ({ image, title, description, buttonText, buttonLink }) => {
         <h3 className="text-xl font-bold text-zinc-800">{title}</h3>
       </CardHeader>
       <CardContent className="text-center">
-        <p className="text-gray-600">{description}</p>
+        <p className="text-zinc-600 text-lg">{description}</p>
       </CardContent>
       <CardFooter className="">
         <Button
@@ -33,12 +33,12 @@ const BlogCard = ({ image, title, description, buttonText, buttonLink }) => {
   );
 };
 
-// BlogCardGrid component to handle multiple cards
-const BlogCardGrid = ({ cards }) => {
+// ImageCardGrid component to handle multiple cards
+const ImageCardGrid = ({ cards }) => {
   return (
     <div className="flex flex-wrap gap-14 justify-center">
       {cards.map((card, index) => (
-        <BlogCard
+        <ImageCard
           key={index}
           image={card.image}
           title={card.title}
@@ -51,4 +51,4 @@ const BlogCardGrid = ({ cards }) => {
   );
 };
 
-export default BlogCardGrid;
+export default ImageCardGrid;

@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogCardGrid from '../magicui/blog-card-grid';
+import ImageCardGrid from '../magicui/image-card-grid';
 
 export default function ServicesSection() {
 
@@ -31,7 +31,7 @@ export default function ServicesSection() {
         <>
             <section className='mb-32'>
                 <div className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800">Services</div>
-                <BlogCardGrid cards={cardData} />
+                <ImageCardGrid cards={cardData} />
             </section>
         </>
     )

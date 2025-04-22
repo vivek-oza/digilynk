@@ -1,11 +1,14 @@
 import React from 'react'
+import { Button } from '../ui/button'
 
 export default function WorkWithUs() {
     return (
         <>
-            <section>
-                <div className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800">Work with us</div>
-
+            <section className='my-48 flex flex-col justify-center items-center'>
+                <div className="mb-20 text-5xl mx-auto font-semibold text-zinc-800">Work with us</div>
+                <Button className='text-xl'>
+                    Get a quote
+                </Button>
             </section>
         </>
     )
