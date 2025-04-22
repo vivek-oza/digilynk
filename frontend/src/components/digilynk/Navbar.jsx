@@ -61,7 +61,7 @@ export default function Navbar() {
       <a href="/" className="list-none cursor-pointer">
         <div className="flex items-center gap-x-2">
           <img src={logo} className="md:size-10 size-8 transition-all duration-1000" alt="LOGO" />
-          <span className="text-2xl font-medium text-zinc-800">
+          <span className="text-2xl font-semibold text-zinc-800">
             Digilynk
           </span>
         </div>

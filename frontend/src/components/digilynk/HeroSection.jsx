@@ -12,13 +12,13 @@ export default function HeroSection() {
                     <div className="flex flex-col space-y-8 justify-center">
                         <div className='text-2xl text-zinc-600 tracking-tight font-medium leading-relaxed'>We are a creative studio specializing in website development and software testing. We blend creativity with technology to build scalable, user-focused digital experiences.</div>
                         <div className='flex space-x-5'>
-                            <Button className='font-medium text-xl'>Get Started</Button>
-                            <Button className='font-medium text-xl' variant="secondary">Learn more</Button>
+                            <Button className='font-medium shadow-xl shadow-black/20 text-xl'>Get Started</Button>
+                            <Button className='font-medium shadow-xl shadow-black/20 text-xl' variant="secondary">Learn more</Button>
                         </div>
                     </div>
                 </div>
                 <div className='min-h-[calc(100vh-5rem)] h-full'>
-                    <img src={heroBanner} className='h-full w-full scale-x-[-1]' alt="Logo" />
+                    <img src={heroBanner} className='w-full h-full scale-x-[-1]' alt="Logo" />
                 </div>
             </section>
             <section className='flex flex-col space-y-10 my-60'>

@@ -23,7 +23,7 @@ const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
       <CardFooter className="">
         <Button
           variant="default"
-          className="bg-gray-900 hover:bg-gray-800 text-white mx-auto rounded-md"
+          className="bg-gray-900 hover:bg-gray-800 text-white shadow-xl shadow-black/20 mx-auto rounded-md"
           asChild
         >
           <a href={buttonLink}>{buttonText}</a>

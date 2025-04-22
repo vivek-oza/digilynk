@@ -13,14 +13,17 @@ const ThreeDShadcnCard = ({ src, title, description, link }) => {
 
     return (
         <div
-            className="block h-full p-0 cursor-pointer bg-yellow-500 py-0 gap-0 m-0"
+            className="block h-full"
             onClick={handleCardClick}
             role="link"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}
         >
-            <CardContainer className="inter-var py-0 gap-0 m-0 bg-green-600 h-full">
-                <CardBody className="bg-red-500 py-0 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-6 border flex flex-col">
+            <CardContainer
+
+                className="inter-var  h-full cursor-pointer"
+            >
+                <CardBody className="py-0 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-full rounded-xl p-6 border flex flex-col">
                     <CardItem translateZ="100" className="w-full">
                         <div className="h-72 w-full bg-zinc-200 rounded-2xl overflow-hidden">
                             {src ? (

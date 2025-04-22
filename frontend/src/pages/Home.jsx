@@ -18,7 +18,7 @@ import WorkWithUs from "../components/digilynk/WorkWithUs";
 
 export default function Home() {
   return (
-    <div className="flex flex-col poppins">
+    <div className="flex flex-col font-poppins">
 
       {/* Hero section */}
       <div id="top">
@@ -35,6 +35,8 @@ export default function Home() {
 
       {/* Work with section */}
       <WorkWithUs />
+
+      {/* <ContactForm /> */}
 
       {/* Whatsapp chat button */}
       {/* Back to top button */}
