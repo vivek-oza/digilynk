@@ -8,22 +8,22 @@ export default function ServicesSection() {
             image: "https://framerusercontent.com/images/U5Tc0PdLNj5yoL19oAkc74mkiXA.png",
             title: "Website Development",
             description: "Learn how Framer can optimize your site for search engines.",
-            buttonText: "Read More",
+            buttonText: "View More",
             buttonLink: "/website-development"
         },
         {
             image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",
-            title: "UI Design",
-            description: "Master the principles of effective user interface design.",
-            buttonText: "Read More",
-            buttonLink: "/ui-design"
+            title: "Graphic Design",
+            description: "Master the principles of effective graphic design and UI/UX.",
+            buttonText: "View More",
+            buttonLink: "/graphic-design"
         },
         {
             image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
-            title: "Performance Tips",
+            title: "Software Testing",
             description: "Speed up your website with these optimization techniques.",
-            buttonText: "Read More",
-            buttonLink: "/performance"
+            buttonText: "View More",
+            buttonLink: "/software-testing"
         }
     ];
 

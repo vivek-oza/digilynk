@@ -12,8 +12,8 @@ export default function HeroSection() {
                     <div className="flex flex-col space-y-8 justify-center">
                         <div className='text-2xl text-zinc-600 tracking-tight font-medium leading-relaxed'>We are a creative studio specializing in website development and software testing. We blend creativity with technology to build scalable, user-focused digital experiences.</div>
                         <div className='flex space-x-5'>
-                            <Button className='font-medium shadow-xl shadow-black/20 text-xl'>Get Started</Button>
-                            <Button className='font-medium shadow-xl shadow-black/20 text-xl' variant="secondary">Learn more</Button>
+                            <Button size={"lg"} className='font-medium shadow-xl shadow-black/20 py-5 text-lg'>Get Started</Button>
+                            <Button size={"lg"} className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-lg' variant="secondary">Learn more</Button>
                         </div>
                     </div>
                 </div>

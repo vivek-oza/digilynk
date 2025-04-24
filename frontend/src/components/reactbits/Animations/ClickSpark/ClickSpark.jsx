@@ -152,10 +152,10 @@ const ClickSpark = ({
   };
 
   return (
-    <div className="relative w-full h-full" onClick={handleClick}>
+    <div className="relative  w-full h-full" onClick={handleClick}>
       <canvas
         ref={canvasRef}
-        className="w-full h-full block absolute top-0 left-0 select-none pointer-events-none"
+        className="w-full h-full z-50 block absolute top-0 left-0 select-none pointer-events-none"
       />
       {children}
     </div>

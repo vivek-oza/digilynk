@@ -22,6 +22,7 @@ const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
       </CardContent>
       <CardFooter className="">
         <Button
+          size="md"
           variant="default"
           className="bg-gray-900 hover:bg-gray-800 text-white shadow-xl shadow-black/20 mx-auto rounded-md"
           asChild
