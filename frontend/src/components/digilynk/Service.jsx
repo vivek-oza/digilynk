@@ -5,6 +5,8 @@ import testing from '../../assets/images/testing.png';
 import digital from '../../assets/images/digital.png';
 import webdevelopment from '../../assets/images/webdevelopment.png';
 import graphic from '../../assets/images/graphic.png';
+import WebDevelopment from './WebDevelopment';
+import { useNavigate } from 'react-router-dom';
 
 export default function Service() {
     const fadeInUp = {
@@ -22,6 +24,11 @@ export default function Service() {
         visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
     };
 
+    const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/webdevelopment");
+  };
     return (
         <div>
             <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-16 bg-white gap-16">
@@ -80,7 +87,7 @@ export default function Service() {
             <button className="bg-zinc-900 text-white px-6 py-3 rounded-xl text-lg font-semibold shadow hover:opacity-90 transition">
               Get Started
             </button>
-            <button className="bg-zinc-100 text-zinc-800 px-6 py-3 rounded-xl text-lg font-semibold shadow hover:bg-zinc-200 transition">
+            <button className="bg-zinc-100 text-zinc-800 px-6 py-3 rounded-xl text-lg font-semibold shadow hover:bg-zinc-200 transition" onClick={handleClick}>
               Learn More
             </button>
           </div>
