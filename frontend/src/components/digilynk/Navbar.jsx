@@ -50,7 +50,7 @@ export default function Navbar() {
     setIsOpen(false);
   };
   const handleServicesClick = () => {
-    navigate("/#servies");
+    navigate("/services");
     setIsOpen(false);
   };
 
