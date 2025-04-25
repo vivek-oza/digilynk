@@ -6,7 +6,15 @@
 
 @font-face {
   font-family: 'diodia';
-  src: url('assets/fonts/Diodia.otf') format('otf');
+  src: url('assets/fonts/Diodia.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'grotesk';
+  src: url('assets/fonts/LabGrotesk.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -15,6 +23,14 @@
 @font-face {
   font-family: 'custom-archia';
   src: url('assets/fonts/archia-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'subjectivity';
+  src: url('assets/fonts/Subjectivity-Medium.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

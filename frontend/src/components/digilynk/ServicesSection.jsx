@@ -9,7 +9,7 @@ export default function ServicesSection() {
             title: "Website Development",
             description: "Learn how Framer can optimize your site for search engines.",
             buttonText: "View More",
-            buttonLink: "/website-development"
+            buttonLink: "/web-development"
         },
         {
             image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",

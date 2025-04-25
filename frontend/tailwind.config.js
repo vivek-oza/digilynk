@@ -120,6 +120,8 @@ export default {
         zilla: ["Zilla Slab", "serif"],
         diodia: ["Diodia", "poppins"],
         "custom-archia": ["custom-archia", "serif"],
+        "grotesk": ["grotesk", "serif"],
+        "subjectivity": ["subjectivity", "serif"],
       },
     },
   },

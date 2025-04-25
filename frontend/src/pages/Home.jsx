@@ -8,6 +8,7 @@ import ServicesSection from "../components/digilynk/ServicesSection";
 import SeeOurWork from "../components/digilynk/SeeOurWork";
 import WorkWithUs from "../components/digilynk/WorkWithUs";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
+import TestComponent from "../components/ui/test-component";
 
 
 export default function Home() {
@@ -29,6 +30,8 @@ export default function Home() {
 
       {/* Work with section */}
       <WorkWithUs />
+
+      <TestComponent />
 
       {/* <ContactForm /> */}
 

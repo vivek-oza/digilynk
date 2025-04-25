@@ -97,12 +97,12 @@ export default function Navbar() {
           >
             ABOUT
           </li>
-          <li
+          {/* <li
             className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
             onClick={handlePackageClick}
           >
             PACKAGES
-          </li>
+          </li> */}
           <li
             className={`${'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
             onClick={handleContactClick}
@@ -172,12 +172,12 @@ export default function Navbar() {
               >
                 ABOUT
               </li>
-              <li
+              {/* <li
                 className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white' px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}
                 onClick={handlePackageClick}
               >
                 PACKAGES
-              </li>
+              </li> */}
               <li onClick={handleContactClick} className={`'hover:bg-zinc-800 text-zinc-800 hover:text-white'} px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition`}>
                 CONTACT
               </li>

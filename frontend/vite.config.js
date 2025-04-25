@@ -16,5 +16,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["tailwindcss", "postcss", "autoprefixer"],
   },
-  assetsInclude: ['**/*.lottie','**/*.glb', '**/*.gltf'],
+  assetsInclude: ['**/*.lottie','**/*.glb', '**/*.gltf','**/*.otf', '**/*.woff', '**/*.woff2'],
 });
