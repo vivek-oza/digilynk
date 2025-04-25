@@ -12,18 +12,18 @@ import {
 export default function Footer() {
   return (
     <>
-      <footer className="bg-zinc-900 shadow-inner px-4 sm:px-6 py-12 text-zinc-300  w-full border-t-8 border-zinc-950">
+      <footer className="bg-zinc-900 shadow-inner px-4 sm:px-6 py-12 text-zinc-300  w-full border-t-4 border-zinc-950">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {/* Brand Section */}
             <div className="flex flex-col items-center md:items-start space-y-4">
-              <div className="flex flex-col items-center md:items-start space-y-3">
+              <div className="flex flex-row items-center space-x-3">
                 <img
                   src={digiLynkLight}
-                  className="w-16 h-16 md:w-20 md:h-20"
+                  className="size-12"
                   alt="Digilynk Logo"
                 />
-                <h1 className="text-2xl md:text-3xl font-bold">Digilynk</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-white">Digilynk</h1>
               </div>
               <p className="text-sm md:text-base text-center md:text-left text-zinc-400 max-w-md">
                 Transforming ideas into digital reality. We provide innovative
