@@ -9,8 +9,8 @@ export default function HeroSection() {
     function handleContactClick() {
         navigate('/contact');
     }
-    function handleAboutClick() {
-        navigate('/about');
+    function handleLearnmoreClick() {
+        navigate('/services');
     }
     return (
         <>
@@ -21,7 +21,7 @@ export default function HeroSection() {
                         <div className='text-2xl text-zinc-600 tracking-tight font-medium leading-relaxed'>We are a creative studio specializing in website development and software testing. We blend creativity with technology to build scalable, user-focused digital experiences.</div>
                         <div className='flex space-x-5'>
                             <Button onClick={handleContactClick} size={"lg"} className='font-medium shadow-xl shadow-black/20 py-5 text-lg'>Get Started</Button>
-                            <Button onClick={handleAboutClick} size={"lg"} className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-lg' variant="secondary">Learn more</Button>
+                            <Button onClick={handleLearnmoreClick} size={"lg"} className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-lg' variant="secondary">Learn more</Button>
                         </div>
                     </div>
                 </div>
