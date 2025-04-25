@@ -8,13 +8,6 @@ import ServicesSection from "../components/digilynk/ServicesSection";
 import SeeOurWork from "../components/digilynk/SeeOurWork";
 import WorkWithUs from "../components/digilynk/WorkWithUs";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
-// import HeroSection from "@/components/digilynk/HeroSection";
-// import ServicesSection from "@/components/digilynk/Sections/ServicesSection";
-// import { FeaturesMarquee } from "@/components/digilynk/Sections/FeaturesMarquee";
-// import WhyChooseUs from "@/components/digilynk/Sections/WhyChooseUs";
-// import ClickSpark from "../components/reactbits/Animations/ClickSpark/ClickSpark";
-// import WorkWithUs from "../components/digilynk/Sections/WorkWithUs";
-
 
 
 export default function Home() {

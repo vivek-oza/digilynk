@@ -6,7 +6,7 @@ import RotatingText from '../reactbits/TextAnimations/RotatingText/RotatingText'
 export default function HeroSection() {
     return (
         <>
-            <section className='grid md:grid-cols-2 mb-32 min-h-[calc(100vh-5rem)]'>
+            <section className='grid md:grid-cols-2 place-items-end mb-32 min-h-[calc(100vh-5rem)]'>
                 <div className='min-h-[calc(100vh-5rem)]  px-1 mx-12 flex flex-col space-y-8 justify-center w-auto'>
                     <div className="flex text-5xl font-semibold text-zinc-800">Welcome to Digilynk</div>
                     <div className="flex flex-col space-y-8 justify-center">
@@ -17,8 +17,8 @@ export default function HeroSection() {
                         </div>
                     </div>
                 </div>
-                <div className='min-h-[calc(100vh-5rem)] h-full'>
-                    <img src={heroBanner} className='w-full h-full scale-x-[-1]' alt="Logo" />
+                <div className='max-h-[calc(100vh-5rem)] h-full'>
+                    <img src={heroBanner} className=' h-full scale-x-[-1]' alt="Logo" />
                 </div>
             </section>
             <section className='flex flex-col space-y-10 my-60'>
