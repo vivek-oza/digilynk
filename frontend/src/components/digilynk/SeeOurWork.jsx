@@ -33,7 +33,7 @@ export default function SeeOurWork() {
     return (
         <section ref={ref} className='mb-32'>
             <motion.div
-                className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800"
+                className="flex justify-center md:mb-20 mb-5 mt-20 md:text-5xl text-3xl mx-auto font-semibold text-zinc-800"
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: false, margin: "-100px" }}

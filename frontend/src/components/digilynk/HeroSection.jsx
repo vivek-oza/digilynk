@@ -137,14 +137,14 @@ export default function HeroSection() {
 
             {/* Second Section */}
             <motion.section
-                className='flex flex-col space-y-10 my-36'
+                className='flex flex-col space-y-10 md:my-36 my-10 mb-20'
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
                 variants={container}
             >
                 <motion.div
-                    className='flex space-x-5 items-center justify-center md:text-5xl text-3xl font-semibold text-zinc-800'
+                    className='flex md:space-x-5 space-x-2 items-center justify-center md:text-5xl text-2xl font-semibold text-zinc-800'
                     variants={fadeInUp}
                 >
                     <span>We Build</span>
@@ -152,7 +152,7 @@ export default function HeroSection() {
                         texts={['Smarter', 'Faster', 'Better']}
                         colors={['text-blue-500', 'text-green-500', 'text-purple-500']}
                         bgColors={['bg-blue-100', 'bg-green-100', 'bg-purple-100']}
-                        mainClassName="px-2 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                        mainClassName="px-4 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                         staggerFrom={"last"}
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
@@ -166,7 +166,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 <motion.div
-                    className='flex items-center justify-center text-center text-2xl px-20 text-zinc-600 tracking-tight font-medium leading-relaxed'
+                    className='flex items-center justify-center text-center text-base md:px-20 px-4 text-zinc-600 tracking-tight font-medium leading-relaxed'
                     variants={fadeInUp}
                 >
                     We design and develop websites, apps and digital experiences that help our clients grow, innovate, and transform. We listen, learn and understand before we build. We identify your goals together, then use our expertise to find that sweet spot of realistic and impactful.

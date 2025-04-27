@@ -23,7 +23,7 @@ export default function WorkWithUs() {
             }}
         >
             <motion.div
-                className="mb-20 text-5xl mx-auto font-semibold text-zinc-800"
+                className="mb-20 md:text-5xl text-3xl mx-auto font-semibold text-zinc-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -43,8 +43,8 @@ export default function WorkWithUs() {
             >
                 <Button
                     onClick={handleContactClick}
-                    size={"lg"}
-                    className='text-xl shadow-xl hover:scale-105 shadow-black/40'
+                    size={"md"}
+                    className='text-lg shadow-xl hover:scale-105 shadow-black/40'
                 >
                     Get a quote
                 </Button>
