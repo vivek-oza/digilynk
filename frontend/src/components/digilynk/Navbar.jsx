@@ -56,7 +56,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 h-20 flex shadow-xl shadow-black/10 ${'border-gray-500 bg-white/20'} border-b-2 items-center justify-between p-2 px-4 sm:px-12 backdrop-blur-3xl z-50 transition-all duration-1000`}>
+    <nav className={`fixed top-0 left-0 right-0 h-20 flex shadow-xl shadow-black/10 ${'border-gray-500 bg-white/60'} border-b-2 items-center justify-between p-2 px-4 sm:px-12 backdrop-blur-3xl z-50 transition-all duration-1000`}>
       {/* Logo and Brand */}
       <a href="/" className="list-none cursor-pointer">
         <div className="flex items-center gap-x-2">

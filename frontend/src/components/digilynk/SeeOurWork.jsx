@@ -1,49 +1,103 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import ProjectCardGrid from '../magicui/project-card-grid';
+import project1 from '../../assets/images/projects/project1.png';
+import project2 from '../../assets/images/projects/project2.png';
 
 export default function SeeOurWork() {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
 
-    // Sample usage with 4 cards
+    // Scroll-based animations
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+
     const cardDetails = [
         {
-            // src: "/api/placeholder/400/320",
-            src: "https://img.freepik.com/free-vector/travel-landing-page-with-photo_23-2148362640.jpg?t=st=1744361237~exp=1744364837~hmac=555c560cd6643f7c0063221375162f232c74a8419ad98a5b77dbcb90fae00701&w=1480",
-            title: "Placementor",
-            description: "Install the Figma plugin and you're ready to convert your designs to a responsive site.",
-            link: "/projects/placementor" // or full URL
+            src: project2,
+            title: "Monday Labs",
+            description: "Developed Monday Labs' conversion-focused website with dynamic content management, performance optimization, and seamless contact integration - boosting lead generation by 35%.",
+            link: "/projects/placementor"
         },
         {
-            // src: "/api/placeholder/400/320",
-            src: "https://img.freepik.com/free-vector/general-business-landing-page-template_23-2148994929.jpg?t=st=1744361708~exp=1744365308~hmac=6c0760e988711db668e103c394e25edd09f1333df0c244b55c7eadf9de9d81ac&w=1480",
-            title: "Design System",
-            description: "Create and maintain consistent design patterns for your product ecosystem.",
-            link: "/projects/placementor" // or full URL
+            src: project1,
+            title: "Placementor - Placement cell website",
+            description: "Developed a campus recruitment website with secure student profiles, real-time notifications, and coordinator dashboards - slashing placement process time by 40% and integrated placement process.",
+            link: "/projects/placementor"
         },
-        {
-            // src: "/api/placeholder/400/320",
-            src: "https://img.freepik.com/free-vector/e-learning-concept-flat-landing-page_52683-7378.jpg?t=st=1744361368~exp=1744364968~hmac=610b7e5ce3c436867eeb4fd20562f1f55fae3ead5285f5acbb0c8dd426acefc5&w=1480",
-            title: "Component Library",
-            description: "Reusable UI components that make building your product interface faster and easier.",
-            link: "/projects/placementor" // or full URL
-        },
-        {
-            // src: "/api/placeholder/400/320",
-            src: "https://img.freepik.com/free-vector/travel-landing-page-with-photo_23-2148362640.jpg?t=st=1744361237~exp=1744364837~hmac=555c560cd6643f7c0063221375162f232c74a8419ad98a5b77dbcb90fae00701&w=1480",
-            title: "Responsive Layouts",
-            description: "Ensure your designs work beautifully across all screen sizes and devices.",
-            link: "/projects/placementor" // or full URL
-        }
     ];
 
-
     return (
-        <>
-            <section className=''>
-                <div className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800">See our Work</div>
-                <div>
-                    <ProjectCardGrid cards={cardDetails} />
-                </div>
-            </section>
-        </>
-    )
-};
+        <section ref={ref} className='mb-32'>
+            <motion.div
+                className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                }}
+            >
+                See our Work
+            </motion.div>
+
+            <motion.div
+                style={{ y, opacity }}
+                className="w-full"
+            >
+                <ProjectCardGrid cards={cardDetails} />
+            </motion.div>
+        </section>
+    );
+}
+
+
+
+
+
+
+
+
+
+// import React from 'react'
+// import ProjectCardGrid from '../magicui/project-card-grid';
+// import project1 from '../../assets/images/projects/project1.png';
+// import project2 from '../../assets/images/projects/project2.png';
+
+// export default function SeeOurWork() {
+
+//     // Sample usage with 4 cards
+//     const cardDetails = [
+//         {
+//             // src: "/api/placeholder/400/320",
+//             src: project2,
+//             title: "Monday Labs",
+//             description: "Developed Monday Labs' conversion-focused website with dynamic content management, performance optimization, and seamless contact integration - boosting lead generation by 35%.",
+//             link: "/projects/placementor" // or full URL
+//         },
+//         {
+//             // src: "/api/placeholder/400/320",
+//             src: project1,
+//             title: "Placementor - Placement cell website",
+//             description: "Developed a campus recruitment website with secure student profiles, real-time notifications, and coordinator dashboards - slashing placement process time by 40% and integrated placement process.",
+//             link: "/projects/placementor" // or full URL
+//         },
+//     ];
+
+
+//     return (
+//         <>
+//             <section className=''>
+//                 <div className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800">See our Work</div>
+//                 <div>
+//                     <ProjectCardGrid cards={cardDetails} />
+//                 </div>
+//             </section>
+//         </>
+//     )
+// };

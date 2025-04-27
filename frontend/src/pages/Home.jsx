@@ -13,10 +13,10 @@ import TestComponent from "../components/ui/test-component";
 
 export default function Home() {
   return (
-    <div className="flex flex-col font-poppins">
+    <div className="flex flex-col font-poppins overflow-y-hidden">
 
       {/* Hero section */}
-      <div id="top">
+      <div id="top" className="overflow-y-hidden">
         <HeroSection />
       </div>
 
@@ -31,12 +31,12 @@ export default function Home() {
       {/* Work with section */}
       <WorkWithUs />
 
+      {/* Test component */}
       <TestComponent />
 
       {/* <ContactForm /> */}
 
-      {/* Whatsapp chat button */}
-      {/* Back to top button */}
+      {/* Floating buttons */}
       <FloatingButtons></FloatingButtons>
     </div>
   );

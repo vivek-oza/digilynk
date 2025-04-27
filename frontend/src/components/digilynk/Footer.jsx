@@ -12,7 +12,7 @@ import {
 export default function Footer() {
   return (
     <>
-      <footer className="bg-zinc-900 shadow-inner px-4 sm:px-6 py-12 text-zinc-300  w-full border-t-4 border-zinc-950">
+      <footer className="bg-zinc-900 shadow-inner px-4 sm:px-6 py-12 text-zinc-300  w-full border-zinc-950">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {/* Brand Section */}
