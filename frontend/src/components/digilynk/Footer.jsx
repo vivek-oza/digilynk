@@ -8,10 +8,24 @@ import {
   MessageCircle,
   Mail,
 } from "lucide-react";
+import GradientText from '../reactbits/TextAnimations/GradientText/GradientText'
 
 export default function Footer() {
   return (
     <>
+      <div className='flex items-center justify-center z-10 bg-zinc-800 text-zinc-50 md:min-h-[calc(100vh-6rem)] md:p-0 py-20'>
+        <h1 className='flex flex-col text-4xl md:text-7xl lg:text-9xl'>
+          <GradientText
+            colors={["#6BA9FF", "#4FFF7B", "#D86BFF",]}
+            animationSpeed={3}
+            showBorder={false}
+            className="custom-class font-black font-poppins"
+          >
+            DIGILYNK
+          </GradientText>
+
+        </h1>
+      </div>
       <footer className="bg-zinc-900 shadow-inner px-4 sm:px-6 py-12 text-zinc-300  w-full border-zinc-950">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">

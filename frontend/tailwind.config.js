@@ -21,6 +21,7 @@ export default {
   theme: {
     extend: {
       animation: {
+        gradient: 'gradient 8s linear infinite',
         marquee: "marquee 20s linear infinite",
         "marquee-reverse": "marquee-reverse 20s linear infinite",
         "marquee-vertical": "marquee-vertical 20s linear infinite",
@@ -30,6 +31,11 @@ export default {
         pulse: "pulse var(--duration) ease-out infinite",
       },
       keyframes: {
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
