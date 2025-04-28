@@ -95,7 +95,7 @@ export default function ContactForm() {
         <div className="flex bg-zinc-500 justify-center items-center">
             <Card className="w-full rounded-none border-none bg-zinc-50 py-8 px-4 sm:px-6 lg:px-8">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold font-poppins">
+                    <CardTitle className="md:text-2xl text-base font-bold font-poppins">
                         Let's Build Something Amazing Together!
                     </CardTitle>
                     <CardDescription>We'll get back to you within 24 hours</CardDescription>
@@ -151,7 +151,7 @@ export default function ContactForm() {
                                 name="budget"
                                 render={({ field }) => (
                                     <FormItem className="space-y-3">
-                                        <FormLabel>What's your estimated budget for this project? <span className="text-red-500 font-light text-xl">*</span></FormLabel>
+                                        <FormLabel className='text-sm'>What's your estimated budget for this project? <span className="text-red-500 font-light text-xl">*</span></FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
                                                 <SelectTrigger className="focus-visible:ring-[#82CEFD] bg-slate-100 border-none w-full">
@@ -181,7 +181,7 @@ export default function ContactForm() {
                                 render={() => (
                                     <FormItem>
                                         <div className="mb-3">
-                                            <FormLabel className="text-base">Which services are you interested in? (Select all that apply) <span className="text-red-500 font-light text-xl">*</span></FormLabel>
+                                            <FormLabel className="text-sm flex md:flex-row flex-col text-start items-start md:items-center"> <span>Which services are you interested in? </span><span> (Select all that apply) <span className="text-red-500 font-light text-xl">*</span></span> </FormLabel>
                                         </div>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             {services.map((service) => (
