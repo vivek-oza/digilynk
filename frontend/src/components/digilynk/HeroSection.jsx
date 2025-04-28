@@ -62,10 +62,10 @@ export default function HeroSection() {
                 {/* Grid background - only for hero section */}
                 <div className={cn(
                     "absolute z-0 inset-0 h-[calc(100vh-5rem)] w-full",
-                    "[background-size:100px_40px]",
+                    "[background-size:150px_60px]",
                     "[background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]",
                 )} />
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-blue-100 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] dark:bg-black"></div>
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-blue-100 md:bg-blue-50 [mask-image:radial-gradient(circle_at_top,transparent_6%,black)] md:[mask-image:radial-gradient(circle_at_right,transparent_50%,black)] dark:bg-black"></div>
 
                 <motion.section
                     variants={container}
@@ -122,17 +122,18 @@ export default function HeroSection() {
 
                     {/* Right Column - Image */}
                     <motion.div
-                        className='flex items-center md:min-h-[calc(100vh-5rem)] bg-emerald-500'
+                        className='flex items-center md:min-h-[calc(100vh-5rem)]'
                         variants={{
                             hidden: { opacity: 0, x: 50 },
                             visible: {
                                 opacity: 1,
                                 x: 0,
                                 transition: {
-                                    type: "spring",
+                                    type: "easeOut",
                                     stiffness: 100,
                                     damping: 10,
-                                    delay: 0.4
+                                    delay: 0.4,
+
                                 }
                             }
                         }}
@@ -177,7 +178,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 <motion.div
-                    className='flex items-center justify-center text-center text-base md:px-20 px-4 text-zinc-600 tracking-tight font-medium leading-relaxed'
+                    className='flex items-center justify-center text-center text-base md:text-xl md:px-20 px-4 text-zinc-600 tracking-tight font-medium leading-relaxed'
                     variants={fadeInUp}
                 >
                     We design and develop websites, apps and digital experiences that help our clients grow, innovate, and transform. We listen, learn and understand before we build. We identify your goals together, then use our expertise to find that sweet spot of realistic and impactful.

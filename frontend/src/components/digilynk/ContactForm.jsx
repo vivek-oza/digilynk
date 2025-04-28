@@ -80,6 +80,7 @@ export default function ContactForm() {
             email: "",
             phone: "",
             services: [],
+            // message: "Hello, I want to inquire about ________, I have these specifc requirements ________, Please call back on this time ________",
             message: "",
         },
     });
@@ -91,8 +92,8 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="flex justify-center items-center py-8 px-4 sm:px-6 lg:px-8">
-            <Card className="w-full max-w-2xl shadow-2xl border-none bg-white backdrop-blur-sm">
+        <div className="flex bg-zinc-500 justify-center items-center">
+            <Card className="w-full rounded-none border-none bg-zinc-50 py-8 px-4 sm:px-6 lg:px-8">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl font-bold font-poppins">
                         Let's Build Something Amazing Together!
@@ -257,9 +258,10 @@ export default function ContactForm() {
                                 <Label htmlFor="message">Tell us more about your project <span className="text-red-500 font-light text-xl">*</span></Label>
                                 <Textarea
                                     id="message"
+                                    text="Hello"
                                     {...form.register("message")}
-                                    placeholder="What are you looking to create? Any specific requirements or timelines?"
-                                    className="focus-visible:ring-[#82CEFD] min-h-[100px] bg-slate-100 border-none w-full"
+                                    placeholder="What are you looking to create? Any specific requirements or timelines? Or say Hello."
+                                    className="focus-visible:ring-[#82CEFD] min-h-[150px] max-h-[250px] bg-slate-100 border-none w-full"
                                 />
                                 {form.formState.errors.message && (
                                     <p className="text-xs text-red-500">{form.formState.errors.message.message}</p>
