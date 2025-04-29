@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+axios.defaults.withCredentials = true;
+
+const API_BASE_URL = process.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 // const API_BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
 
