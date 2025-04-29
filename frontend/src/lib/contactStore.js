@@ -8,7 +8,9 @@ axios.defaults.withCredentials = true;
 
 // My implementation
 // const API_BASE_URL = import.meta.env.NODE_ENV  === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
-const API_BASE_URL = "https://digilynk.onrender.com";
+
+// Test
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 export const useContactStore = create((set) => ({
   loading: false,
