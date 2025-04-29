@@ -3,6 +3,8 @@ import Contact from "../models/contactModel.js";
 import { sendInquiryEmail } from "../utils/nodemailer/sendEmails.js";
 
 export async function handleContact(req, res) {
+  console.log('contatct endpoint hit');
+
   try {
     // Data is already validated by middleware at this point
     const contact = new Contact({
@@ -17,6 +19,8 @@ export async function handleContact(req, res) {
     sendInquiryEmail(req.body)
       .catch(error => console.error('Email Error:', error));
 
+      console.log('contatct endpoint hit success');
+
     res.status(201).json({
       success: true,
       message: "Message sent successfully",
@@ -28,6 +32,9 @@ export async function handleContact(req, res) {
     });
 
   } catch (error) {
+
+    console.log('contatct endpoint hit error');
+
     console.error("Contact Submission Error:", {
       message: error.message,
       stack: error.stack
@@ -38,15 +45,16 @@ export async function handleContact(req, res) {
     res.status(statusCode).json({
       success: false,
       error: "Internal server error",
+      ...(process.env.NODE_ENV === "development" && {
+        debug: error.message,
+        type: error.name
+      })
+
+      // DEBUG , REMOVE THIS LATER
       // ...(process.env.NODE_ENV === "development" && {
       //   debug: error.message,
       //   type: error.name
       // })
-      // DEBUG , REMOVE THIS LATER
-      ...(process.env.NODE_ENV === "production" && {
-        debug: error.message,
-        type: error.name
-      })
     });
   }
 }

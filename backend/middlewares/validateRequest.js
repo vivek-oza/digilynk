@@ -2,6 +2,7 @@
 import { contactFormSchema } from "../schemas/contactSchema.js";
 
 export async function validateContact(req, res, next) {
+  console.log('validate contatct hit');
   try {
     // Validate the request body against the schema
     const validatedData = await contactFormSchema.parseAsync(req.body);
@@ -9,6 +10,8 @@ export async function validateContact(req, res, next) {
     // Replace body with validated data (optional but recommended)
     req.body = validatedData;
     
+    console.log('validate contatct success');
+
     // Proceed to controller
     next();
   } catch (error) {
