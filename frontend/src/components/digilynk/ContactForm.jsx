@@ -27,6 +27,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import toast from "react-hot-toast";
 import { useContactStore } from "@/lib/contactStore.js";
 
+import { Leapfrog } from 'ldrs/react'
+import 'ldrs/react/Leapfrog.css'
+
+
 const services = [
     {
         id: "web-development",
@@ -77,7 +81,7 @@ const formSchema = z.object({
 
 
 export default function ContactForm() {
-const { submitContact, loading, success, error } = useContactStore();
+    const { submitContact, loading, success, error } = useContactStore();
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -97,13 +101,18 @@ const { submitContact, loading, success, error } = useContactStore();
     // };
 
     const onSubmit = async (data) => {
+        console.log("onSubmit Hit");
         await submitContact(data);
         if (success) {
             toast.success("Your message has been sent successfully!");
-            form.reset();
+            // DEBUG COMMENT OUT
+            // form.reset();
         }
         if (error) {
             toast.error("Failed to send message.");
+            // DEBUG
+            toast.error(error);
+
         }
     };
 
@@ -284,12 +293,46 @@ const { submitContact, loading, success, error } = useContactStore();
                                 )}
                             </div>
 
-                            <div className="w-full flex justify-center pt-4">
+                            {/* <div className="w-full flex justify-center pt-4">
                                 <Button
                                     type="submit"
                                     className="hover:scale-105 transition-all shadow-xl shadow-black/30 px-8 py-6 text-lg"
+                                    disabled={loading}
                                 >
-                                    Get Started
+                                    {loading ? (
+                                        <div className="flex items-center gap-3">
+                                            <Leapfrog
+                                                size={20}
+                                                speed={1.5}
+                                                color="white"
+                                            />
+                                            ...
+                                        </div>
+                                    ) : (
+                                        "Get Started"
+                                    )}
+                                </Button>
+                            </div> */}
+
+                            <div className="w-full flex justify-center pt-4">
+                                <Button
+                                    type="submit"
+                                    className="hover:scale-110 transition-all shadow-xl shadow-black/30 px-8 py-6 text-lg"
+                                    disabled={loading}
+                                >
+                                    {loading ? (
+                                        <div className="flex items-center gap-3">
+                                        <Leapfrog
+                                           size={40}
+                                           speed={1.5}
+                                           color="white"
+                                           />
+                                        </div>
+                                    ) : (
+                                        "Get Started"
+                                        
+
+                                    )}
                                 </Button>
                             </div>
                         </form>

@@ -1,12 +1,9 @@
 import { create } from "zustand";
 import axios from "axios";
 
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-const API_BASE_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5000"
-    : import.meta.env.VITE_API_BASE_URL;
+// const API_BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
 
 // const API_URL = `${API_BASE_URL}/api/contact`;
 
@@ -17,6 +14,7 @@ export const useContactStore = create((set) => ({
   error: null,
 
   submitContact: async (data) => {
+    console.log("Submit contact Hit");
     set({ loading: true, success: false, error: null });
     try {
       await axios.post(`${API_BASE_URL}/api/contact`, data);
