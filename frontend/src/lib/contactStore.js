@@ -6,12 +6,9 @@ axios.defaults.withCredentials = true;
 // original
 // const API_BASE_URL = process.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-// const API_BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
+// My implementation
+const API_BASE_URL = import.meta.env.NODE_ENV  === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
-  // import.meta.env.MODE === "development"
-  //   ? "http://localhost:5000"
-  //   : import.meta.env.VITE_API_URL;
 
 export const useContactStore = create((set) => ({
   loading: false,

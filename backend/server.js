@@ -19,7 +19,7 @@ app.use(helmet()); // Add security headers
 app.use(
     cors({
         origin:
-            process.env.MODE === "development"
+            process.env.NODE_ENV  === "development"
                 ? "http://localhost:5173"
                 : "https://digilynk.vercel.app",
         credentials: true,
