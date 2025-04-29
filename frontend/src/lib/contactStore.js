@@ -3,12 +3,15 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-const API_BASE_URL = process.env.VITE_API_BASE_URL || "http://localhost:5000";
+// original
+// const API_BASE_URL = process.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 // const API_BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : import.meta.env.VITE_API_BASE_URL;
 
-// const API_URL = `${API_BASE_URL}/api/contact`;
-
+const API_BASE_URL = import.meta.env.VITE_API_URL
+  // import.meta.env.MODE === "development"
+  //   ? "http://localhost:5000"
+  //   : import.meta.env.VITE_API_URL;
 
 export const useContactStore = create((set) => ({
   loading: false,
