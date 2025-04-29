@@ -26,7 +26,7 @@ export const sendInquiryEmail = async (data) => {
         name: "Digilynk",
         address: process.env.MAIL_USER,
       },
-      to: process.env.MAIL_USER, // Or your support email
+      to: [process.env.MAIL_USER, "vivekoza297@gmail.com", "avinashoza0101@gmail.com"], // Or your support email
       subject: `New Inquiry from ${data.name}`,
       html: inquiryTemplate(data),
       // Optional text version for email clients that don't support HTML
