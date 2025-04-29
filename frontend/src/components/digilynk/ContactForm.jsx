@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import toast from "react-hot-toast";
+import { useContactStore } from "@/lib/contactStore.js";
 
 const services = [
     {
@@ -72,7 +73,11 @@ const formSchema = z.object({
     message: z.string().min(5, "Message must be at least 5 characters"),
 });
 
+
+
+
 export default function ContactForm() {
+const { submitContact, loading, success, error } = useContactStore();
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -85,10 +90,21 @@ export default function ContactForm() {
         },
     });
 
-    const onSubmit = (data) => {
-        console.log("Form Submitted:", data);
-        toast.success("Your message has been sent successfully!");
-        form.reset();
+    // const onSubmit = (data) => {
+    //     console.log("Form Submitted:", data);
+    //     toast.success("Your message has been sent successfully!");
+    //     form.reset();
+    // };
+
+    const onSubmit = async (data) => {
+        await submitContact(data);
+        if (success) {
+            toast.success("Your message has been sent successfully!");
+            form.reset();
+        }
+        if (error) {
+            toast.error("Failed to send message.");
+        }
     };
 
     return (

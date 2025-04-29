@@ -1,0 +1,44 @@
+# Node
+node_modules/
+.env
+npm-debug.log
+dist/
+.build/
+.cache/
+.vscode/
+.DS_Store
+
+# Vite
+frontend/.vite/
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build output
+frontend/dist/
+backend/dist/
+
+# Deployment Artifacts
+backend/.vercel/
+backend/.output/
+frontend/.vercel/
+frontend/.output/
+
+# Temporary
+tmp/
+temp/
+
+# Coverage
+coverage/
+
+# Other
+*.local
