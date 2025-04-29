@@ -12,10 +12,19 @@ const app = express();
 
 // Middlewares
 app.use(helmet()); // Add security headers
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL || "http://localhost:5173",
+//     credentials: true,
+// }));
+app.use(
+    cors({
+        origin:
+            process.env.MODE === "development"
+                ? "http://localhost:5173"
+                : "https://digilynk.vercel.app",
+        credentials: true,
+    })
+);
 app.use(express.json());
 
 // Rate limiter to prevent spam
