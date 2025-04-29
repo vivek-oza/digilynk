@@ -38,7 +38,12 @@ export async function handleContact(req, res) {
     res.status(statusCode).json({
       success: false,
       error: "Internal server error",
-      ...(process.env.NODE_ENV === "development" && {
+      // ...(process.env.NODE_ENV === "development" && {
+      //   debug: error.message,
+      //   type: error.name
+      // })
+      // DEBUG , REMOVE THIS LATER
+      ...(process.env.NODE_ENV === "production" && {
         debug: error.message,
         type: error.name
       })
