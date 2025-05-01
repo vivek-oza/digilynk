@@ -33,15 +33,15 @@ import 'ldrs/react/Leapfrog.css'
 
 const services = [
     {
-        id: "web-development",
+        id: "web development",
         label: "Web Development",
     },
     {
-        id: "software-testing",
+        id: "software testing",
         label: "Software Testing",
     },
     {
-        id: "graphic-design",
+        id: "graphic design",
         label: "Graphic design",
     },
 ];

@@ -5,12 +5,12 @@ import { useLocation } from 'react-router-dom';
 
 import Layout from "@/components/digilynk/Layout";
 import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-dom";
-import Home from "../pages/Home";
-import Contact from "../pages/Contact";
-import AboutUs from "../components/digilynk/AboutUs";
-import Service from "../components/digilynk/Service";
-import WebDevelopment from "../components/digilynk/WebDevelopment";
-import SoftwareTesting from "../components/digilynk/SoftwareTesting";
+import HomePage from "../pages/HomePage";
+import ContactPage from "../pages/ContactPage";
+import AboutUsPage from "../pages/AboutUsPage";
+import WebDevelopmentPage from "../components/digilynk/WebDevelopment";
+import SoftwareTestingPage from "../components/digilynk/SoftwareTesting";
+import ServicesPage from '../pages/ServicesPage';
 
 
 function ScrollToTop() {
@@ -28,15 +28,13 @@ export default function DigilynkRoutes() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/services" element={<Service />} />
-          <Route path="/web-development" element={<WebDevelopment />} />
-          <Route path="/software-testing" element={<SoftwareTesting />} />
+          <Route index element={<HomePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/web-development" element={<WebDevelopmentPage />} />
+          <Route path="/services/software-testing" element={<SoftwareTestingPage />} />
           {/* Other routes */}
-          {/* <Route path="/web-development" element={<WebDevelopment />} />
-          <Route path="/about" element={<About />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -55,10 +55,10 @@ const BackToTop = () => {
             {isVisible && (
                 <motion.div
                     className="fixed right-10 bottom-10 z-40"
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 0, y: 0 }}
                     animate={{
                         opacity: 1,
-                        y: -60,
+                        y: -20,
                         transition: { duration: 0.3, ease: "easeOut" }
                     }}
                     exit={{
@@ -89,7 +89,7 @@ const BackToTop = () => {
 export const FloatingButtons = () => {
     return (
         <>
-            <WhatsappButton />
+            {/* <WhatsappButton /> */}
             <BackToTop />
         </>
     );

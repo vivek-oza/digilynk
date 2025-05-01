@@ -11,7 +11,7 @@ import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
 
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="flex flex-col font-poppins overflow-y-hidden">
 

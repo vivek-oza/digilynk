@@ -2,7 +2,7 @@ import React from 'react';
 import ContactForm from '../components/digilynk/ContactForm';
 import contactBanner from '../assets/images/contactBanner2.png';
 
-export default function Contact() {
+export default function ContactPage() {
     return (
         <>
             <section className='flex flex-col md:flex-row-reverse bg-zinc-50 min-h-screen'>

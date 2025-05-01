@@ -22,7 +22,7 @@ const fadeInUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
+    transition: {
       type: "spring",
       stiffness: 100,
       damping: 10
@@ -47,21 +47,21 @@ export default function ServicesSection() {
       title: "Website Development",
       description: "Learn how Framer can optimize your site for search engines.",
       buttonText: "View More",
-      buttonLink: "/web-development"
+      buttonLink: "services/web-development"
     },
     {
       image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",
       title: "Graphic Design",
       description: "Master the principles of effective graphic design and UI/UX.",
       buttonText: "View More",
-      buttonLink: "/graphic-design"
+      buttonLink: "services/graphic-design"
     },
     {
       image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
       title: "Software Testing",
       description: "Speed up your website with these optimization techniques.",
       buttonText: "View More",
-      buttonLink: "/software-testing"
+      buttonLink: "services/software-testing"
     }
   ];
 
