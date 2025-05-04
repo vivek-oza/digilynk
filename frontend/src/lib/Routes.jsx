@@ -8,8 +8,8 @@ import { BrowserRouter, Routes, Route, ScrollRestoration } from "react-router-do
 import HomePage from "../pages/HomePage";
 import ContactPage from "../pages/ContactPage";
 import AboutUsPage from "../pages/AboutUsPage";
-import WebDevelopmentPage from "../components/digilynk/WebDevelopment";
-import SoftwareTestingPage from "../components/digilynk/SoftwareTesting";
+import WebDevelopmentPage from "../pages/WebDevelopmentPage";
+import SoftwareTestingPage from "../pages/SoftwareTestingPage";
 import ServicesPage from '../pages/ServicesPage';
 
 
