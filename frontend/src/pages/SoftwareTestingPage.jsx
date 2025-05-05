@@ -5,7 +5,8 @@ import testing2 from '../assets/images/testing/testing2.png';
 import testing3 from '../assets/images/testing/testing3.png';
 import testing4 from '../assets/images/testing/testing4.png';
 import testing5 from '../assets/images/testing/testing5.png';
-// import testing6 from '../assets/images/testing/testing6.png';
+import testingBanner from '../assets/images/testing/testingBanner.png';
+import testingBannerEnd from '../assets/images/testing/testingBannerEnd.png';
 // import testing7 from '../assets/images/testing/testing7.png';
 // import testing8 from '../assets/images/testing/testing8.png';
 import ServicesCardStack from '@/components/digilynk/ServicesCardStack';
@@ -72,27 +73,27 @@ const featureCards = [
     {
         title: "Comprehensive Test Coverage",
         description: "We implement thorough testing strategies that cover all aspects of your software, from functional requirements to performance benchmarks and security vulnerabilities, ensuring complete quality assurance.",
-        image: testing4,
+        image: testing5,
         reverse: false
     },
     {
         title: "Domain-Specific Expertise",
         description: "Our team brings specialized knowledge in healthcare, insurance, ecommerce, and gaming domains, allowing us to test your software with industry-specific requirements in mind.",
-        image: testing5,
+        image: testing2,
         reverse: true
     },
-    // {
-    //     title: "Automation Integration",
-    //     description: "We strategically implement test automation where it delivers the most value, combining it with manual testing for comprehensive coverage and efficient regression testing.",
-    //     image: testing6,
-    //     reverse: false
-    // },
-    // {
-    //     title: "Continuous Testing Support",
-    //     description: "Our relationship extends beyond initial testing. We provide ongoing support, maintenance testing, and CI/CD integration to keep your software reliable as it evolves.",
-    //     image: testing7,
-    //     reverse: true
-    // }
+    {
+        title: "Automation Integration",
+        description: "We strategically implement test automation where it delivers the most value, combining it with manual testing for comprehensive coverage and efficient regression testing.",
+        image: testing3,
+        reverse: false
+    },
+    {
+        title: "Continuous Testing Support",
+        description: "Our relationship extends beyond initial testing. We provide ongoing support, maintenance testing, and CI/CD integration to keep your software reliable as it evolves.",
+        image: testing4,
+        reverse: true
+    }
 ];
 
 // Why Choose Us items
@@ -217,7 +218,7 @@ export default function SoftwareTesting() {
                         }}
                     >
                         <img
-                            src={testing1}
+                            src={testingBanner}
                             className='md:min-h-[calc(100vh-5rem)] w-auto object-contain'
                             alt="Software testing illustration"
                         />
@@ -245,7 +246,7 @@ export default function SoftwareTesting() {
                     </motion.div>
                     <motion.div className="md:w-1/2" variants={fadeInRight}>
                         <img
-                            src={testing2}
+                            src={testing1}
                             alt="Software testing services"
                             className="w-full rounded-xl shadow-md"
                         />
@@ -379,7 +380,7 @@ export default function SoftwareTesting() {
 
                     <motion.div className="flex flex-col items-center justify-center mt-16" variants={fadeInUp}>
                         <img
-                            src={testing3}
+                            src={testingBannerEnd}
                             alt="Software testing services"
                             className="w-full max-w-2xl object-contain"
                         />

@@ -20,13 +20,13 @@ export default function SeeOurWork() {
             src: project2,
             title: "Monday Labs",
             description: "Developed Monday Labs' conversion-focused website with dynamic content management, performance optimization, and seamless contact integration - boosting lead generation by 35%.",
-            link: "/projects/placementor"
+            link: "https://www.mondaylabs.ai/"
         },
         {
             src: project1,
             title: "Placementor - Placement cell website",
             description: "Developed a campus recruitment website with secure student profiles, real-time notifications, and coordinator dashboards - slashing placement process time by 40% and integrated placement process.",
-            link: "/projects/placementor"
+            link: "https://placementportal.vercel.app/"
         },
     ];
 
@@ -55,49 +55,3 @@ export default function SeeOurWork() {
         </section>
     );
 }
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-// import ProjectCardGrid from '../magicui/project-card-grid';
-// import project1 from '../../assets/images/projects/project1.png';
-// import project2 from '../../assets/images/projects/project2.png';
-
-// export default function SeeOurWork() {
-
-//     // Sample usage with 4 cards
-//     const cardDetails = [
-//         {
-//             // src: "/api/placeholder/400/320",
-//             src: project2,
-//             title: "Monday Labs",
-//             description: "Developed Monday Labs' conversion-focused website with dynamic content management, performance optimization, and seamless contact integration - boosting lead generation by 35%.",
-//             link: "/projects/placementor" // or full URL
-//         },
-//         {
-//             // src: "/api/placeholder/400/320",
-//             src: project1,
-//             title: "Placementor - Placement cell website",
-//             description: "Developed a campus recruitment website with secure student profiles, real-time notifications, and coordinator dashboards - slashing placement process time by 40% and integrated placement process.",
-//             link: "/projects/placementor" // or full URL
-//         },
-//     ];
-
-
-//     return (
-//         <>
-//             <section className=''>
-//                 <div className="flex justify-center mb-20 text-5xl mx-auto font-semibold text-zinc-800">See our Work</div>
-//                 <div>
-//                     <ProjectCardGrid cards={cardDetails} />
-//                 </div>
-//             </section>
-//         </>
-//     )
-// };

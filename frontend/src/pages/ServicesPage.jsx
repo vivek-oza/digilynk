@@ -76,20 +76,23 @@ export default function ServicesPage() {
             description: "We build responsive, high-performance websites that align with your business goals and delight your users.",
             image: webdevelopment,
             link: "services/web-development",
-            reverse: true
+            reverse: true,
+            showButton: true  // Button will be shown
         },
         {
             title: "Software Testing",
             description: "Quality is at the core of everything we do. We ensure your software works flawlessly under all conditions.",
             image: testing,
-            link: "services/software-testing"
+            link: "services/software-testing",
+            showButton: true  // Button will be shown
         },
         {
             title: "Graphic Design",
             description: "We think and brew intuitive visuals that are not only stunning but strategically aligned with your business goals.",
             image: graphic,
             link: "services/design",
-            reverse: true
+            reverse: true,
+            showButton: true  // Button will be shown
         }
     ];
 

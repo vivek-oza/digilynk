@@ -58,9 +58,7 @@ export default function Footer() {
                 <li className="hover:text-blue-400 transition-colors cursor-pointer">
                   About us
                 </li>
-                <li className="hover:text-blue-400 transition-colors cursor-pointer">
-                  Pricing
-                </li>
+
                 <li className="hover:text-blue-400 transition-colors cursor-pointer">
                   Contact
                 </li>
@@ -73,6 +71,10 @@ export default function Footer() {
                 Connect With Us
               </h2>
               <ul className="flex flex-col items-center md:items-start space-y-2">
+                {/* <li className="flex items-center space-x-2 hover:text-green-400 transition-colors cursor-pointer">
+                  <MessageCircle className="w-5 h-5" />
+                  <span>Message Us</span>
+                </li> */}
                 <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
                   <Linkedin className="w-5 h-5" />
                   <span>LinkedIn</span>
@@ -81,14 +83,14 @@ export default function Footer() {
                   <Instagram className="w-5 h-5" />
                   <span>Instagram</span>
                 </li>
-                <li className="flex items-center space-x-2 hover:text-blue-500 transition-colors cursor-pointer">
+                {/* <li className="flex items-center space-x-2 hover:text-blue-500 transition-colors cursor-pointer">
                   <Facebook className="w-5 h-5" />
                   <span>Facebook</span>
-                </li>
-                <li className="flex items-center space-x-2 hover:text-green-400 transition-colors cursor-pointer">
+                </li> */}
+                {/* <li className="flex items-center space-x-2 hover:text-green-400 transition-colors cursor-pointer">
                   <MessageCircle className="w-5 h-5" />
                   <span>WhatsApp</span>
-                </li>
+                </li> */}
                 <li className="flex items-center space-x-2 hover:text-red-400 transition-colors cursor-pointer">
                   <Mail className="w-5 h-5" />
                   <span>Email</span>

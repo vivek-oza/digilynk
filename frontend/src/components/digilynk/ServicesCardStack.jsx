@@ -67,27 +67,20 @@ const ServicesCardStack = ({ cardData }) => {
                             {service.description}
                         </motion.p>
 
-                        <motion.div
-                            className={`flex md:flex-row flex-col space-y-5 md:space-y-0 md:space-x-5 ${service.reverse ? 'md:justify-start' : 'md:justify-start'}`}
-                            variants={fadeInUp}
-                        >
-                            <Button
-                                onClick={() => handleServiceClick(service.link)}
-                                size={"md"}
-                                className='font-medium shadow-xl shadow-black/20 py-5 text-base'
+                        {service.showButton && (
+                            <motion.div
+                                className={`flex md:flex-row flex-col space-y-5 md:space-y-0 md:space-x-5 ${service.reverse ? 'md:justify-start' : 'md:justify-start'}`}
+                                variants={fadeInUp}
                             >
-                                Get Started
-                            </Button>
-                            {/* <Button
-                                onClick={handleContactClick}
-                                onClick={() => handleServiceClick(service.link)}
-                                size={"md"}
-                                className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-base'
-                                variant="secondary"
-                            >
-                                Learn more
-                            </Button> */}
-                        </motion.div>
+                                <Button
+                                    onClick={() => handleServiceClick(service.link)}
+                                    size={"md"}
+                                    className='font-medium shadow-xl shadow-black/20 py-5 text-base'
+                                >
+                                    Get Started
+                                </Button>
+                            </motion.div>
+                        )}
                     </motion.div>
 
                     {/* Image */}
