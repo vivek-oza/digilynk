@@ -75,10 +75,11 @@ export default function Footer() {
                   <MessageCircle className="w-5 h-5" />
                   <span>Message Us</span>
                 </li> */}
-                <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
-                  <Linkedin className="w-5 h-5" />
-                  <span>LinkedIn</span>
-                </li>
+                <a target="blank" href="https://www.linkedin.com/in/digilynk-448720354/">
+                  <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
+                    <Linkedin className="w-5 h-5" />
+                    <span>LinkedIn</span>
+                  </li></a>
                 <li className="flex items-center space-x-2 hover:text-pink-400 transition-colors cursor-pointer">
                   <Instagram className="w-5 h-5" />
                   <span>Instagram</span>

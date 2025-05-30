@@ -45,21 +45,21 @@ export default function ServicesSection() {
     {
       image: "https://framerusercontent.com/images/U5Tc0PdLNj5yoL19oAkc74mkiXA.png",
       title: "Website Development",
-      description: "Learn how Framer can optimize your site for search engines.",
+      description: "We build fast, responsive, and user-friendly websites that reflect your brand and meet your business needs. We turn ideas into seamless digital experiences.",
       buttonText: "View More",
       buttonLink: "services/web-development"
     },
     {
       image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",
       title: "Graphic Design",
-      description: "Master the principles of effective graphic design and UI/UX.",
+      description: "We craft amazing visuals and intuitive UI/UX that leave a lasting impression. We combine creativity with strategy to communicate your story.",
       buttonText: "View More",
       buttonLink: "services/graphic-design"
     },
     {
       image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
       title: "Software Testing",
-      description: "Speed up your website with these optimization techniques.",
+      description: "We ensure your system secure, stable, and ready for real users. Our QA process minimizes bugs and improves user experience and performance.",
       buttonText: "View More",
       buttonLink: "services/software-testing"
     }
@@ -68,7 +68,7 @@ export default function ServicesSection() {
   return (
     <section ref={ref} className='mb-32'>
       <motion.div
-        className="flex justify-center md:mb-20 mb-10 md:text-5xl text-3xl mx-auto font-semibold text-zinc-800"
+        className="flex justify-center md:mb-20 mb-10 md:text-3xl text-2xl mx-auto font-semibold text-zinc-800"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}

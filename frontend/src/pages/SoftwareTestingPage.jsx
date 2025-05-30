@@ -182,7 +182,7 @@ export default function SoftwareTesting() {
                                 className='text-2xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
-                                Ensuring <span className="text-blue-500 font-medium">Flawless Performance</span>, 
+                                Ensuring <span className="text-blue-500 font-medium">Flawless Performance</span>,
                             </motion.p>
                             <motion.p
                                 className='text-2xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'

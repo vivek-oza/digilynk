@@ -26,7 +26,7 @@ const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
           <h3 className="text-xl font-bold text-zinc-800">{title}</h3>
         </CardHeader>
         <CardContent className="text-center">
-          <p className="text-zinc-600 text-lg">{description}</p>
+          <p className="text-zinc-600 text-sm">{description}</p>
         </CardContent>
         <CardFooter className="">
           <Button

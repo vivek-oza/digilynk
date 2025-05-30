@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { motion } from 'framer-motion';
-import heroBanner from '../../assets/images/heroBanner.png';
+// import heroBanner from '../../assets/images/heroBanner.png';
+import heroBanner from '../../assets/images/heroBanner.jpg';
 import { Button } from '../ui/button';
 import RotatingText from '../reactbits/TextAnimations/RotatingText/RotatingText';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../../lib/utils';
-import Spline from '@splinetool/react-spline';
 
 export default function HeroSection() {
     const navigate = useNavigate();
+
     function handleContactClick() {
         navigate('/contact');
     }
@@ -16,7 +17,6 @@ export default function HeroSection() {
         navigate('/services');
     }
 
-    // Updated spring animation variants
     const container = {
         hidden: { opacity: 0 },
         visible: {
@@ -44,27 +44,13 @@ export default function HeroSection() {
         }
     };
 
-    const fadeInLeft = {
-        hidden: { opacity: 0, x: -30 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10
-            }
-        }
-    };
-
     return (
         <>
-            <div className="relative bg-zinc-800  text-white">
-                {/* Grid background - only for hero section */}
+            <div className="relative bg-black text-white">
+                {/* Background grid - removed styles if not needed */}
                 <div className={cn(
                     "absolute z-0 inset-0 h-[calc(100vh-5rem)] w-full",
-                    "[background-size:150px_60px]",
-                    "[background-image:linear-gradient(to_right,#3b3b3b_1px,transparent_1px),linear-gradient(to_bottom,#3b3b3b_1px,transparent_1px)]",
+                    "[background-size:150px_60px]"
                 )} />
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-zinc-900 md:bg-zinc-900 [mask-image:radial-gradient(circle_at_top,transparent_6%,black)] md:[mask-image:radial-gradient(circle_at_right,transparent_50%,black)] dark:bg-black"></div>
 
@@ -73,96 +59,73 @@ export default function HeroSection() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, margin: "-100px" }}
-                    className='relative z-10 overflow-hidden  grid place-items-center grid-cols-1 gap-5 md:flex min-h-[calc(100vh-5rem)]'
+                    className='relative z-10 overflow-hidden grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-5rem)]'
                 >
                     {/* Left Column - Text Content */}
                     <motion.div
-                        className='min-h-[calc(100vh-20rem)] px-1 md:mx-12 mx-4 my-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center w-auto'
+                        className='flex flex-col justify-center px-4 py-8 md:px-12 space-y-6'
                         variants={container}
                     >
                         <motion.h1
-                            className="md:text-5xl text-3xl text-center md:text-start font-semibold "
+                            className="text-3xl md:text-3xl font-semibold text-center md:text-start"
                             variants={fadeInUp}
                         >
                             Welcome to Digilynk
                         </motion.h1>
 
-                        <motion.div
-                            className="flex flex-col space-y-8 justify-center"
-                            variants={container}
+                        <motion.p
+                            className='text-base md:text-xs text-zinc-300 tracking-tight font-medium leading-relaxed text-center md:text-start'
+                            variants={fadeInUp}
                         >
-                            <motion.p
-                                className='text-base md:text-xl mx-auto md:max-w-full max-w-80 text-center md:text-start text-zinc-300 tracking-tight font-medium leading-relaxed'
-                                variants={fadeInUp}
-                            >
-                                We are a creative studio specializing in website development, software testing and graphic designing. We blend creativity with technology to build scalable, user-focused digital experiences.
-                            </motion.p>
+                            We are a results-driven digital solutions company specializing in website development and software testing. We blend creativity with technology to build scalable, user-focused digital experiences. From startups to enterprises, we help brands grow, innovate, and transform through tailored innovative solutions.
+                        </motion.p>
 
-                            <motion.div
-                                className='flex md:flex-row flex-col space-y-5 md:space-y-0 md:space-x-5'
-                                variants={fadeInUp}
+                        <motion.div
+                            className='flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center md:justify-start'
+                            variants={fadeInUp}
+                        >
+                            <Button
+                                onClick={handleContactClick}
+                                size={""}
+                                className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-xs'
+                                variant="secondary"
                             >
-                                <Button
-                                    onClick={handleContactClick}
-                                    size={"md"}
-                                    className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-base'
-                                    variant="secondary"
-
-                                >
-                                    Get Started
-                                </Button>
-                                <Button
-                                    onClick={handleLearnmoreClick}
-                                    size={"md"}
-                                    className='font-medium shadow-xl shadow-black/20  py-5 text-base'
-                                >
-                                    Learn more
-                                </Button>
-                            </motion.div>
+                                Get Started
+                            </Button>
+                            <Button
+                                onClick={handleLearnmoreClick}
+                                size={""}
+                                className='font-medium shadow-xl shadow-black/20 py-5 text-xs'
+                            >
+                                Learn more
+                            </Button>
                         </motion.div>
                     </motion.div>
 
                     {/* Right Column - Image */}
-                    <div
-                        className='flex items-center md:min-h-[calc(100vh-5rem)]'
-                        variants={{
-                            hidden: { opacity: 0, x: 50 },
-                            visible: {
-                                opacity: 1,
-                                x: 0,
-                                transition: {
-                                    type: "easeOut",
-                                    stiffness: 100,
-                                    damping: 10,
-                                    delay: 0.4,
-
-                                }
-                            }
-                        }}
+                    <motion.div
+                        className='flex items-center justify-center'
+                        variants={fadeInUp}
                     >
-                        {/* <img
+                        <img
                             src={heroBanner}
-                            className='md:min-h-[calc(100vh-5rem)] md:min-w-[calc(100vh-5rem)] aspect-square scale-x-[-1]'
+                            className='w-full h-full object-cover md:max-h-[calc(100vh-5rem)]'
                             alt="Digital creative illustration"
-                        /> */}
-                        <Spline
-                            scene="https://prod.spline.design/3vFhpZ5uvWhwJox9/scene.splinecode"
-                            style={{ width: 450, height: 450, }}
                         />
-                    </div>
+                    </motion.div>
                 </motion.section>
             </div>
 
-            {/* Second Section - No grid background here */}
+            {/* Second Section */}
             <motion.section
-                className='flex flex-col space-y-10 md:my-36 my-10 mb-20'
+                className='flex flex-col space-y-10 md:my-60 my-10 mb-20'
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
                 variants={container}
             >
                 <motion.div
-                    className='flex md:space-x-5 space-x-2 items-center justify-center md:text-5xl text-2xl font-semibold text-zinc-800'
+                    className='flex md:space-x-5 space-x-2 items-center justify-center md:text-3xl text-2xl font-semibold text-zinc-800'
                     variants={fadeInUp}
                 >
                     <span>We Build</span>
@@ -184,12 +147,12 @@ export default function HeroSection() {
                 </motion.div>
 
                 <motion.div
-                    className='flex items-center justify-center text-center text-base md:text-xl md:px-20 px-4 text-zinc-600 tracking-tight font-medium leading-relaxed'
+                    className='flex items-center justify-center text-center text-base md:text-md md:px-20 px-4 text-zinc-600 tracking-tight font-medium leading-relaxed'
                     variants={fadeInUp}
                 >
                     We design and develop websites, apps and digital experiences that help our clients grow, innovate, and transform. We listen, learn and understand before we build. We identify your goals together, then use our expertise to find that sweet spot of realistic and impactful.
                 </motion.div>
             </motion.section>
         </>
-    )
+    );
 }
