@@ -120,7 +120,7 @@ export default function ContactForm() {
         <div className="flex bg-zinc-500 justify-center items-center">
             <Card className="w-full rounded-none border-none bg-zinc-50 py-8 px-4 sm:px-6 lg:px-8">
                 <CardHeader className="text-left">
-                    <CardTitle className="md:text-2xl text-base  font-poppins">
+                    <CardTitle className="md:text-base text-base  font-poppins">
                         Let's Build Something Amazing Together!
                     </CardTitle>
                     <CardDescription>We'll get back to you within 24 hours</CardDescription>

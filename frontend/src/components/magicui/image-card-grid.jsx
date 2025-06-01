@@ -23,7 +23,7 @@ const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
           )}
         </div>
         <CardHeader className="text-center">
-          <h3 className="text-xl font-bold text-zinc-800">{title}</h3>
+          <h3 className="text-xl font-semibold text-zinc-800">{title}</h3>
         </CardHeader>
         <CardContent className="text-center">
           <p className="text-zinc-600 text-sm">{description}</p>
@@ -127,7 +127,7 @@ export default ImageCardGrid;
 //         )}
 //       </div>
 //       <CardHeader className="text-center">
-//         <h3 className="text-xl font-bold text-zinc-800">{title}</h3>
+//         <h3 className="text-xl font-semibold text-zinc-800">{title}</h3>
 //       </CardHeader>
 //       <CardContent className="text-center">
 //         <p className="text-zinc-600 text-lg">{description}</p>

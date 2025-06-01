@@ -23,7 +23,7 @@ export default function WorkWithUs() {
             }}
         >
             <motion.div
-                className="mb-20 md:text-5xl text-3xl mx-auto font-semibold text-zinc-800"
+                className="mb-20 md:text-3xl text-3xl mx-auto font-semibold text-zinc-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}

@@ -160,7 +160,7 @@ const FaqSection = () => {
       variants={container}
     >
       <motion.div variants={item} className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-zinc-800 mb-4">FAQs</h2>
+        <h2 className="text-3xl font-semibold text-zinc-800 mb-4">FAQs</h2>
         <p className="text-lg text-zinc-500">
           Common questions you might have.
         </p>
@@ -168,21 +168,21 @@ const FaqSection = () => {
 
       <motion.div variants={container} className="space-y-12">
         <motion.div variants={item}>
-          <h3 className="text-2xl font-semibold text-zinc-800 mb-6">General Questions</h3>
+          <h3 className="text-base font-semibold text-zinc-800 mb-6">General Questions</h3>
           <div className="space-y-4">
             {renderFaqList(generalFaqs, "general")}
           </div>
         </motion.div>
 
         <motion.div variants={item}>
-          <h3 className="text-2xl font-semibold text-zinc-800 mb-6">Working with DigiLynk</h3>
+          <h3 className="text-base font-semibold text-zinc-800 mb-6">Working with DigiLynk</h3>
           <div className="space-y-4">
             {renderFaqList(digilynkFaqs, "digilynk")}
           </div>
         </motion.div>
 
         {/* <motion.div variants={item}>
-          <h3 className="text-2xl font-semibold text-zinc-800 mb-6">Other Questions</h3>
+          <h3 className="text-base font-semibold text-zinc-800 mb-6">Other Questions</h3>
           <div className="space-y-4">
             {renderFaqList(otherFaqs, "other")}
           </div>

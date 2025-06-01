@@ -73,7 +73,7 @@ const ThreeDShadcnCard = ({ src, title, description, link }) => {
                         <div className=''>
                             <CardItem
                                 translateZ="50"
-                                className="text-xl font-bold text-zinc-800 dark:text-white"
+                                className="text-xl font-semibold text-zinc-800 dark:text-white"
                             >
                                 {title}
                             </CardItem>
@@ -185,7 +185,7 @@ export default function ProjectCardGrid({ cards }) {
 //                         <div>
 //                             <CardItem
 //                                 translateZ="50"
-//                                 className="text-xl font-bold text-zinc-800 dark:text-white"
+//                                 className="text-xl font-semibold text-zinc-800 dark:text-white"
 //                             >
 //                                 {title}
 //                             </CardItem>

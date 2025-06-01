@@ -81,7 +81,7 @@ export const CardTitle = ({
   children
 }) => {
   return (
-    <h3 className={cn("text-zinc-100 tracking-wide mt-4 md:text-2xl font-medium text-2xl", className)}>
+    <h3 className={cn("text-zinc-100 tracking-wide mt-4 md:text-base font-medium text-base", className)}>
       {children}
     </h3>
   );

@@ -68,7 +68,7 @@ export default function ServicesSection() {
   return (
     <section ref={ref} className='mb-32'>
       <motion.div
-        className="flex justify-center md:mb-20 mb-10 md:text-3xl text-2xl mx-auto font-semibold text-zinc-800"
+        className="flex justify-center md:mb-20 mb-10 md:text-3xl text-base mx-auto font-semibold text-zinc-800"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: false, margin: "-100px" }}

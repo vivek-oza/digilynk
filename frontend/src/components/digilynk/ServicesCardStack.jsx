@@ -54,7 +54,7 @@ const ServicesCardStack = ({ cardData }) => {
                         variants={container}
                     >
                         <motion.h2
-                            className={`md:text-5xl text-3xl text-center ${service.reverse ? 'md:text-start' : 'md:text-start'} font-semibold text-zinc-800`}
+                            className={`md:text-3xl text-3xl text-center ${service.reverse ? 'md:text-start' : 'md:text-start'} font-semibold text-zinc-800`}
                             variants={fadeInUp}
                         >
                             {service.title}
