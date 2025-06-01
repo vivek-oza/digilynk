@@ -169,7 +169,7 @@ const FeatureCard = ({ title, description, image, reverse }) => (
 
 export default function SoftwareTesting() {
   return (
-    <div className="relative bg-black  overflow-x-hidden md:p-0 px-3">
+    <div className="relative  overflow-x-hidden md:p-0 px-3">
       {/* Background effects */}
       {/* <div className="absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)] [background-size:150px_50px] [background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]" />
             <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
@@ -182,7 +182,7 @@ export default function SoftwareTesting() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className="relative mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]"
+          className="relative  bg-black mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]"
         >
           {/* Left Column - Text Content */}
           <motion.div
@@ -529,21 +529,21 @@ export default function SoftwareTesting() {
 
         {/* Approach Section */}
         <motion.section
-          className="w-full px-4 md:px-16 py-16 bg-white text-center"
+          className="w-full px-4 md:px-16 py-16 bg-black text-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
           variants={container}
         >
-          <motion.div className="mb-12" variants={fadeInUp}>
+          <motion.div className=" mt-60 h-60" variants={fadeInUp}>
             <motion.h2
-              className="text-3xl md:text-3xl font-semibold text-zinc-800 mb-4"
+              className="text-3xl md:text-5xl font-semibold text-white mb-4"
               variants={fadeInUp}
             >
               Our Testing Methodology
             </motion.h2>
             <motion.h3
-              className="text-3xl md:text-3xl font-semibold"
+              className="text-3xl md:text-xl font-semibold"
               variants={fadeInUp}
             >
               <span className="text-blue-500">Comprehensive </span>
@@ -566,10 +566,10 @@ export default function SoftwareTesting() {
               className="text-3xl font-semibold text-zinc-900 mb-6 text-center"
               variants={fadeInUp}
             >
-              Thorough, Methodical, and Quality-Focused Testing
+              
             </motion.h4>
             <motion.p
-              className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4 max-w-5xl mx-auto"
+              className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mt-20 mb-4 max-w-5xl mx-auto"
               variants={fadeInUp}
             >
               At Digilynk, we specialize in delivering comprehensive software
@@ -589,7 +589,7 @@ export default function SoftwareTesting() {
               performance, and user satisfaction.
             </motion.p>
             <motion.p
-              className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed max-w-5xl mx-auto"
+              className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-20 max-w-5xl mx-auto"
               variants={fadeInUp}
             >
               Partner with Digilynk for testing services that don't just find
