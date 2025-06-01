@@ -113,22 +113,22 @@ export default function AboutUs() {
     return (
         <div className="relative">
             {/* Background effects matching service page */}
-            <div className={cn(
+            {/* <div className={cn(
                 "absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)]",
                 "[background-size:150px_50px]",
                 "[background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]",
             )} />
-            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div>
+            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
 
             {/* Main About Container */}
-            <div className="relative z-10">
+            <div className="relative  z-10">
                 {/* Hero Section */}
                 <motion.section
                     variants={container}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, margin: "-100px" }}
-                    className='relative mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]'
+                    className='relative bg-black mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]'
                 >
                     {/* Left Column - Text Content */}
                     <motion.div
@@ -136,25 +136,25 @@ export default function AboutUs() {
                         variants={container}
                     >
                         <motion.h2
-                            className="md:text-5xl text-3xl text-center md:text-start font-semibold text-zinc-800"
+                            className="md:text-3xl text-3xl text-center md:text-start  text-white"
                             variants={fadeInUp}
                         >
                             About Us
                         </motion.h2>
 
                         <motion.div
-                            className="flex flex-col space-y-8 justify-center"
+                            className="flex flex-col space-y-2 justify-center"
                             variants={container}
                         >
                             <motion.p
-                                className='text-base md:text-xl mx-auto md:max-w-full max-w-80 text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
+                                className='text-sm md:text-base mx-auto md:max-w-full max-w-80 text-center md:text-start text-white tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
                                 We believe that every business is unique and deserves a digital presence that reflects its individuality.
                             </motion.p>
 
                             <motion.p
-                                className='text-base md:text-xl mx-auto md:max-w-full max-w-80 text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
+                                className='text-sm md:text-base mx-auto md:max-w-full max-w-80 text-center md:text-start text-white tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
                                 We are a creative, professional team passionate about design, innovation, and delivering results that help our clients grow and transform.

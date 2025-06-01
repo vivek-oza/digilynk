@@ -67,14 +67,14 @@ export default function HeroSection() {
                         variants={container}
                     >
                         <motion.h1
-                            className="text-3xl md:text-3xl font-semibold text-center md:text-start"
+                            className="text-3xl md:text-3xl text-center md:text-start"
                             variants={fadeInUp}
                         >
                             Welcome to Digilynk
                         </motion.h1>
 
                         <motion.p
-                            className='text-base md:text-xs text-zinc-300 tracking-tight font-medium leading-relaxed text-center md:text-start'
+                            className='text-base md:text-base text-zinc-300 tracking-tight font-medium leading-relaxed text-center md:text-start'
                             variants={fadeInUp}
                         >
                             We are a results-driven digital solutions company specializing in website development and software testing. We blend creativity with technology to build scalable, user-focused digital experiences. From startups to enterprises, we help brands grow, innovate, and transform through tailored innovative solutions.
@@ -87,7 +87,7 @@ export default function HeroSection() {
                             <Button
                                 onClick={handleContactClick}
                                 size={""}
-                                className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-xs'
+                                className='font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-base'
                                 variant="secondary"
                             >
                                 Get Started
@@ -95,7 +95,7 @@ export default function HeroSection() {
                             <Button
                                 onClick={handleLearnmoreClick}
                                 size={""}
-                                className='font-medium shadow-xl shadow-black/20 py-5 text-xs'
+                                className='font-medium shadow-xl shadow-black/20 py-5 text-base'
                             >
                                 Learn more
                             </Button>

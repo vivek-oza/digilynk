@@ -62,7 +62,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <button
                 className="hover:bg-zinc-800 text-zinc-800 hover:text-white px-3 py-2 rounded-md hover:border-b-blue-500 cursor-pointer transition"
-                onClick={() => handleNavigation("/services")}
+                // onClick={() => handleNavigation("/services")}
               >
                 SERVICES
               </button>

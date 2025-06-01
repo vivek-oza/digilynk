@@ -148,8 +148,8 @@ export default function WebDevelopment() {
     return (
         <div className="relative">
             {/* Background effects matching about page */}
-            <div className="absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)] [background-size:150px_50px] [background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]" />
-            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div>
+            {/* <div className="absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)] [background-size:150px_50px] [background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]" />
+            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
 
             {/* Main Content */}
             <div className="relative z-10">
@@ -159,22 +159,22 @@ export default function WebDevelopment() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, margin: "-100px" }}
-                    className='relative mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]'
+                    className='relative mb-32 z-10 w-full bg-black overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]'
                 >
                     {/* Left Column - Text Content */}
                     <motion.div
-                        className='min-h-[calc(100vh-20rem)] w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center'
+                        className='min-h-[calc(100vh-20rem)]  w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center'
                         variants={container}
                     >
                         <motion.h1
-                            className="md:text-5xl text-3xl text-center md:text-start font-semibold text-zinc-800"
+                            className="md:text-5xl  text-3xl text-center md:text-start  text-white"
                             variants={fadeInUp}
                         >
-                            Website Development by Digilynk
+                            Website Development
                         </motion.h1>
 
                         <motion.div
-                            className="flex flex-col space-y-4 justify-center"
+                            className="flex flex-col space-y-0 justify-center"
                             variants={container}
                         >
                             <motion.p
@@ -226,17 +226,6 @@ export default function WebDevelopment() {
                     viewport={{ once: false, margin: "-100px" }}
                     variants={container}
                 >
-                    <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeInLeft}>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
-                            We craft digital experiences that accelerate your business growth, showcase your brand, and inspire trust from the very first click.
-                        </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
-                            We are dedicated to delivering creative, secure, and high-performance websites tailored to your business needs. Our team of passionate developers blends innovative web design with robust development practices, ensuring every project is visually stunning, bug-free, and optimized for growth.
-                        </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
-                            We believe that a well-crafted website is more than just an online presence. It's a powerful tool for building trust, impressing clients, and accelerating your business success.
-                        </motion.p>
-                    </motion.div>
                     <motion.div className="md:w-1/2" variants={fadeInRight}>
                         <img
                             src={web2}
@@ -244,6 +233,19 @@ export default function WebDevelopment() {
                             className="w-full rounded-xl shadow-md"
                         />
                     </motion.div>
+                    <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeInLeft}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                            We craft digital experiences that accelerate your business growth, showcase your brand, and inspire trust from the very first click.
+                        </motion.p>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                            We are dedicated to delivering creative, secure, and high-performance websites tailored to your business needs. Our team of passionate developers blends innovative web design with robust development practices, ensuring every project is visually stunning, bug-free, and optimized for growth.
+                        </motion.p>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
+                            We believe that a well-crafted website is more than just an online presence. It's a powerful tool for building trust, impressing clients, and accelerating your business success.
+                        </motion.p>
+                    </motion.div>
+
+                    
                 </motion.section>
 
                 {/* Importance Section */}
@@ -255,19 +257,19 @@ export default function WebDevelopment() {
                     variants={container}
                 >
                     <motion.div className="md:w-2/3" variants={fadeInLeft}>
-                        <motion.h2 className="text-5xl mb-10 font-semibold text-center text-zinc-800" variants={fadeInUp}>
+                        <motion.h2 className="text-3xl mb-10 text-center text-zinc-800" variants={fadeInUp}>
                             Why Website is important?
                         </motion.h2>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             A website is essential for business growth in today's digital landscape. It acts as your virtual storefront, allowing customers to discover your products and services at any time, from anywhere.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             With more than 80% of consumers researching online before making a purchase, having a professional website ensures you're visible when potential customers are searching for solutions you offer. This continuous online presence expands your reach, generates new leads, and opens up opportunities for increased sales and profitability.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             Beyond visibility, a website builds credibility and trust with your audience. A well-designed, informative site signals professionalism and reliability, making customers more likely to choose your business over competitors.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
                             It also serves as a central hub for your marketing efforts, supporting SEO, social media campaigns, and paid advertising, all of which drive targeted traffic and accelerate business growth.
                         </motion.p>
                     </motion.div>

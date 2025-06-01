@@ -31,7 +31,7 @@ export default function DigilynkRoutes() {
           <Route index element={<HomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
+          {/* <Route path="/services" element={<ServicesPage />} /> */}
           <Route path="/services/web-development" element={<WebDevelopmentPage />} />
           <Route path="/services/software-testing" element={<SoftwareTestingPage />} />
           {/* Other routes */}

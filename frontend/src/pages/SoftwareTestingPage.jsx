@@ -147,10 +147,10 @@ const FeatureCard = ({ title, description, image, reverse }) => (
 
 export default function SoftwareTesting() {
     return (
-        <div className="relative overflow-x-hidden md:p-0 px-3">
+        <div className="relative bg-black  overflow-x-hidden md:p-0 px-3">
             {/* Background effects */}
-            <div className="absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)] [background-size:150px_50px] [background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]" />
-            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div>
+            {/* <div className="absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)] [background-size:150px_50px] [background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]" />
+            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
 
             {/* Main Content */}
             <div className="relative z-10">
@@ -168,34 +168,34 @@ export default function SoftwareTesting() {
                         variants={container}
                     >
                         <motion.h1
-                            className="md:text-5xl text-3xl text-center md:text-start font-semibold text-zinc-800"
+                            className="md:text-3xl text-3xl text-center md:text-start font-semibold text-white"
                             variants={fadeInUp}
                         >
-                            Software Testing by Digilynk
+                            Software Testing
                         </motion.h1>
 
                         <motion.div
-                            className="flex flex-col space-y-4 justify-center"
+                            className="flex flex-col space-y-1 justify-center"
                             variants={container}
                         >
-                            <motion.p
-                                className='text-2xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
+                            <motion.div
+                                className='text-xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
                                 Ensuring <span className="text-blue-500 font-medium">Flawless Performance</span>,
-                            </motion.p>
-                            <motion.p
-                                className='text-2xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
+                            </motion.div>
+                            <motion.div
+                                className='text-xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
                                 Exceptional <span className="text-green-500 font-medium">User Experiences</span>
-                            </motion.p>
-                            <motion.p
-                                className='text-2xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
+                            </motion.div>
+                            <motion.div
+                                className='text-xl text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
                                 variants={fadeInUp}
                             >
                                 and <span className="text-purple-500 font-medium">Business Success</span>
-                            </motion.p>
+                            </motion.div>
                         </motion.div>
                     </motion.div>
 
@@ -219,7 +219,7 @@ export default function SoftwareTesting() {
                     >
                         <img
                             src={testingBanner}
-                            className='md:min-h-[calc(100vh-5rem)] w-auto object-contain'
+                            className='md:min-h-[calc(100vh-5rem)] scale-x-[-1] w-auto object-contain'
                             alt="Software testing illustration"
                         />
                     </motion.div>
@@ -234,13 +234,13 @@ export default function SoftwareTesting() {
                     variants={container}
                 >
                     <motion.div className="md:w-1/2 mb-8 md:mb-0" variants={fadeInLeft}>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             We believe that in today's digital world, software quality is non-negotiable. Whether you're launching a mission-critical healthcare app, an engaging mobile game, or a sophisticated AI chatbot, the success of your product depends on rigorous, end-to-end testing.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             Our expert software testing services are designed to identify defects early, improve usability, optimize performance, and ensure your software works seamlessly across platforms and domains.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
                             We combine technical expertise with business acumen to deliver testing solutions that not only find bugs but also enhance your product's market readiness and user appeal.
                         </motion.p>
                     </motion.div>
@@ -262,19 +262,19 @@ export default function SoftwareTesting() {
                     variants={container}
                 >
                     <motion.div className="md:w-2/3" variants={fadeInLeft}>
-                        <motion.h2 className="text-5xl mb-10 font-semibold text-center text-zinc-800" variants={fadeInUp}>
+                        <motion.h2 className="text-3xl mb-10 font-semibold text-center text-zinc-800" variants={fadeInUp}>
                             Why Software Testing is Important?
                         </motion.h2>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             Software testing is not just a step in the development cycle—it is the foundation of trust between you and your users. It protects your brand reputation, reduces costly post-release fixes, and ensures compliance with industry standards.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             With increasing consumer expectations for flawless digital experiences, comprehensive testing ensures your software meets these demands. Testing helps identify and fix defects early in the development process, leading to improved software quality, increased user satisfaction, and reduced costs.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed mb-4" variants={fadeInUp}>
                             Beyond defect detection, testing validates that your software meets business requirements, performs under load, remains secure against threats, and delivers an intuitive user experience across all platforms and devices.
                         </motion.p>
-                        <motion.p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
+                        <motion.p className="text-md text-zinc-600 tracking-tight font-medium leading-relaxed" variants={fadeInUp}>
                             At Digilynk, we go beyond traditional testing; we deliver insights that help you innovate confidently and launch products that excel in competitive markets.
                         </motion.p>
                     </motion.div>
@@ -351,7 +351,7 @@ export default function SoftwareTesting() {
                     variants={container}
                 >
                     <motion.div className="flex flex-col items-center justify-center text-start" variants={fadeInLeft}>
-                        <motion.h2 className="text-5xl font-semibold text-zinc-800 mb-6" variants={fadeInUp}>
+                        <motion.h2 className="text-3xl font-semibold text-zinc-800 mb-6" variants={fadeInUp}>
                             Why Digilynk for Testing?
                         </motion.h2>
                     </motion.div>
