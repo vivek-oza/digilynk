@@ -7,6 +7,7 @@ import HeroSection from "../components/digilynk/HeroSection";
 import ServicesSection from "../components/digilynk/ServicesSection";
 import SeeOurWork from "../components/digilynk/SeeOurWork";
 import WorkWithUs from "../components/digilynk/WorkWithUs";
+import OurStatsSection from "../components/digilynk/OurStatsSection";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
 
@@ -19,11 +20,15 @@ export default function HomePage() {
       <div id="top" className="overflow-y-hidden">
         <HeroSection />
       </div>
-
+      {/* Our Stats Section */}
+      <OurStatsSection />
+      
       {/* Services section */}
       <div id="services">
         <ServicesSection />
       </div>
+
+
 
       {/* See our us secttion*/}
       <SeeOurWork />

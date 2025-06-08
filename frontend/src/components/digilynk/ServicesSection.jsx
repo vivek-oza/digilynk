@@ -66,7 +66,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section ref={ref} className='mb-32'>
+    <section ref={ref} className='my-32'>
       <motion.div
         className="flex justify-center md:mb-20 mb-10 md:text-3xl text-base mx-auto font-semibold text-zinc-800"
         initial={{ y: 50, opacity: 0 }}
@@ -83,7 +83,7 @@ export default function ServicesSection() {
 
       <motion.div
         style={{ y, opacity }}
-        className="w-full"
+        className="w-full mt-16"
       >
         <ImageCardGrid cards={cardData} />
       </motion.div>

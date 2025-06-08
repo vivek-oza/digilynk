@@ -186,7 +186,7 @@ export default function SoftwareTesting() {
         >
           {/* Left Column - Text Content */}
           <motion.div
-            className="min-h-[calc(100vh-20rem)] w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
+            className="min-h-[calc(100vh-20rem)] bg-green-500 w-1/2  m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
             variants={container}
           >
             <motion.h1
@@ -233,7 +233,7 @@ export default function SoftwareTesting() {
 
           {/* Right Column - Image */}
           <motion.div
-            className="flex items-center md:min-h-[calc(100vh-5rem)] w-1/2"
+            className="flex items-center md:min-h-[calc(100vh-5rem)] bg-red-500 w-1/2"
             variants={{
               hidden: { opacity: 0, x: 50 },
               visible: {
@@ -251,10 +251,11 @@ export default function SoftwareTesting() {
           >
             <img
               src={testingBanner}
-              className="md:min-h-[calc(100vh-5rem)] scale-x-[-1] w-auto object-contain"
+              className="md:min-h-[calc(100vh-5rem)] scale-x-[1] w-auto object-contain"
               alt="Software testing illustration"
             />
           </motion.div>
+
         </motion.section>
 
         {/* Intro Section */}
