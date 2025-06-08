@@ -9,7 +9,7 @@ import ServicesCardStack from "@/components/digilynk/ServicesCardStack";
 import { cn } from "@/lib/utils";
 
 export default function AboutUs() {
-  // Animations same as before...
+  // Matching service page animations
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -38,7 +38,33 @@ export default function AboutUs() {
     },
   };
 
-  // Other fadeInLeft and fadeInRight remain the same...
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        bounce: 0.4,
+      },
+    },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        bounce: 0.4,
+      },
+    },
+  };
 
   const aboutCards = [
     {
@@ -67,6 +93,7 @@ export default function AboutUs() {
     },
   ];
 
+  // Enhanced Why Choose Us items with spring animations
   const whyChooseItems = [
     {
       id: 1,
@@ -88,7 +115,16 @@ export default function AboutUs() {
 
   return (
     <div className="relative">
-      <div className="relative z-10">
+      {/* Background effects matching service page */}
+      {/* <div className={cn(
+                "absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)]",
+                "[background-size:150px_50px]",
+                "[background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]",
+            )} />
+            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
+
+      {/* Main About Container */}
+      <div className="relative  z-10">
         {/* Hero Section */}
         <motion.section
           variants={container}
@@ -99,20 +135,11 @@ export default function AboutUs() {
         >
           {/* Left Column - Text Content */}
           <motion.div
-            className="
-              w-full
-              md:w-1/2
-              px-6 md:px-12
-              py-12 md:py-0
-              flex flex-col
-              justify-center
-              space-y-4 md:space-y-8
-              min-h-auto md:min-h-[calc(100vh-20rem)]
-            "
+            className="min-h-[calc(100vh-20rem)] w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
             variants={container}
           >
             <motion.h2
-              className="text-3xl font-semibold text-center md:text-left text-white"
+              className="text-3xl font-semibold text-center md:text-start text-white"
               variants={fadeInUp}
             >
               About Us
@@ -123,24 +150,27 @@ export default function AboutUs() {
               variants={container}
             >
               <motion.p
-                className="text-base text-center md:text-left text-white tracking-tight font-medium leading-relaxed"
+                className="text-base text-center md:text-start text-white tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                We believe that every business is unique and deserves a digital presence that reflects its individuality.
+                We believe that every business is unique and deserves a digital
+                presence that reflects its individuality.
               </motion.p>
 
               <motion.p
-                className="text-base text-center md:text-left text-white tracking-tight font-medium leading-relaxed"
+                className="text-base text-center md:text-start text-white tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                We are a creative, professional team passionate about design, innovation, and delivering results that help our clients grow and transform.
+                We are a creative, professional team passionate about design,
+                innovation, and delivering results that help our clients grow
+                and transform.
               </motion.p>
             </motion.div>
           </motion.div>
 
           {/* Right Column - Image */}
           <motion.div
-            className="w-full md:w-1/2 flex items-center justify-center md:min-h-[calc(100vh-5rem)] px-6 md:px-0"
+            className="flex items-center md:min-h-[calc(100vh-5rem)] w-1/2"
             variants={{
               hidden: { opacity: 0, x: 50 },
               visible: {
@@ -158,16 +188,15 @@ export default function AboutUs() {
           >
             <img
               src={About}
+              className="md:min-h-[calc(100vh-5rem)] w-auto object-contain"
               alt="About us illustration"
-              className="max-w-full h-auto object-contain"
-              // Removed fixed min height from image, so it scales well on all devices
             />
           </motion.div>
         </motion.section>
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us Section with enhanced animations */}
         <motion.section
-          className="max-w-5xl mx-auto py-16 px-6 sm:px-12"
+          className="max-w-5xl mx-auto py-16 px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
@@ -181,7 +210,7 @@ export default function AboutUs() {
           </motion.h2>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid md:grid-cols-2 gap-8"
             variants={container}
           >
             {whyChooseItems.map((item) => (
@@ -202,8 +231,8 @@ export default function AboutUs() {
           </motion.div>
         </motion.section>
 
-        {/* About Cards Section */}
-        <section className="py-16 px-6 sm:px-12">
+        {/* About Cards Section using ServicesCardStack */}
+        <section className="py-16">
           <ServicesCardStack
             cardData={aboutCards}
             title="Our Core Principles"
@@ -216,7 +245,6 @@ export default function AboutUs() {
     </div>
   );
 }
-
 
 // import React from 'react';
 // import { motion } from 'framer-motion';
