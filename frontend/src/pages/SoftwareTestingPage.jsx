@@ -137,9 +137,8 @@ const whyChooseItems = [
 // Reusable FeatureCard component
 const FeatureCard = ({ title, description, image, reverse }) => (
   <div
-    className={`max-w-5xl mx-auto py-16 px-6 flex items-center ${
-      reverse ? "flex-row-reverse" : ""
-    } gap-16`}
+    className={`max-w-5xl mx-auto py-16 px-6 flex items-center ${reverse ? "flex-row-reverse" : ""
+      } gap-16`}
   >
     <motion.div
       className="w-1/2"
@@ -186,7 +185,7 @@ export default function SoftwareTesting() {
         >
           {/* Left Column - Text Content */}
           <motion.div
-            className="min-h-[calc(100vh-20rem)] bg-green-500 w-1/2  m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
+            className="min-h-[calc(100vh-20rem)]  w-1/2  m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
             variants={container}
           >
             <motion.h1
@@ -233,7 +232,7 @@ export default function SoftwareTesting() {
 
           {/* Right Column - Image */}
           <motion.div
-            className="flex items-center md:min-h-[calc(100vh-5rem)] bg-red-500 w-1/2"
+            className="flex items-center md:min-h-[calc(100vh-5rem)] w-1/2"
             variants={{
               hidden: { opacity: 0, x: 50 },
               visible: {
@@ -567,7 +566,7 @@ export default function SoftwareTesting() {
               className="text-3xl font-semibold text-zinc-900 mb-6 text-center"
               variants={fadeInUp}
             >
-              
+
             </motion.h4>
             <motion.p
               className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mt-20 mb-4 max-w-5xl mx-auto"
