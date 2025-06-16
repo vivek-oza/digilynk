@@ -124,14 +124,14 @@ export default function HeroSection() {
 
       {/* Second Section */}
       <motion.section
-        className="flex flex-col space-y-10 md:my-60 my-10 mb-20"
+        className="flex flex-col space-y-10 min-h-80 justify-center items-center my-10 mb-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
         variants={container}
       >
         <motion.div
-          className="flex md:space-x-5 space-x-2 items-center justify-center text-3xl font-semibold text-zinc-800"
+          className="flex md:space-x-2 space-x-2 items-center justify-center text-3xl font-semibold text-zinc-800"
           variants={fadeInUp}
         >
           <span>We Build</span>
@@ -165,3 +165,10 @@ export default function HeroSection() {
     </>
   );
 }
+
+
+
+
+
+
+

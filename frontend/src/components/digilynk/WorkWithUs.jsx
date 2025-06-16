@@ -12,7 +12,7 @@ export default function WorkWithUs() {
 
     return (
         <motion.section
-            className='min-h-96 mt-20 bg-zinc-100 flex flex-col justify-center items-center'
+            className='min-h-96 mt-20 bg-zinc-50 flex flex-col justify-center items-center'
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}

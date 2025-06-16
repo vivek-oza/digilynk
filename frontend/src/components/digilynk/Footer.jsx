@@ -13,13 +13,13 @@ import GradientText from "../reactbits/TextAnimations/GradientText/GradientText"
 export default function Footer() {
   return (
     <>
-      <div className="flex items-center justify-center z-10 bg-black text-zinc-50 md:min-h-[calc(100vh-10rem)] md:p-0 py-20">
-        <h1 className="flex flex-col text-3xl md:text-6xl lg:text-9xl">
+      <div className="flex items-center justify-center z-10 bg-zinc-900 text-zinc-50 md:min-h-[calc(100vh-10rem)] md:p-0 py-20">
+        <h1 className="flex flex-col">
           <GradientText
             colors={["#6BA9FF", "#4FFF7B", "#D86BFF"]}
             animationSpeed={3}
             showBorder={false}
-            className="custom-class font-black font-poppins"
+            className="custom-class font-black font-poppins text-3xl md:text-9xl"
           >
             DIGILYNK
           </GradientText>

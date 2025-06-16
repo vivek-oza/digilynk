@@ -48,6 +48,13 @@ export default function ServicesSection() {
       description: "We build fast, responsive, and user-friendly websites that reflect your brand and meet your business needs. We turn ideas into seamless digital experiences.",
       buttonText: "View More",
       buttonLink: "services/web-development"
+    },  
+    {
+      image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
+      title: "Software Testing",
+      description: "We ensure your system secure, stable, and ready for real users. Our QA process minimizes bugs and improves user experience and performance.",
+      buttonText: "View More",
+      buttonLink: "services/software-testing"
     },
     {
       image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",
@@ -56,13 +63,6 @@ export default function ServicesSection() {
       buttonText: "View More",
       buttonLink: "services/graphic-design"
     },
-    {
-      image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
-      title: "Software Testing",
-      description: "We ensure your system secure, stable, and ready for real users. Our QA process minimizes bugs and improves user experience and performance.",
-      buttonText: "View More",
-      buttonLink: "services/software-testing"
-    }
   ];
 
   return (
