@@ -38,55 +38,114 @@ export default function ServicesSection() {
   });
 
   // Scroll-based animations
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "3%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
 
   const cardData = [
     {
-      image: "https://framerusercontent.com/images/U5Tc0PdLNj5yoL19oAkc74mkiXA.png",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       title: "Website Development",
-      description: "We build fast, responsive, and user-friendly websites that reflect your brand and meet your business needs. We turn ideas into seamless digital experiences.",
-      buttonText: "View More",
-      buttonLink: "services/web-development"
+      description: "Modern, responsive websites that reflect your brand and drive business growth through seamless user experiences.",
+      buttonText: "Explore Service",
+      buttonLink: "services/web-development",
+      icon: "💻",
+      features: ["Responsive Design", "SEO Optimized", "Fast Loading"]
     },  
     {
-      image: "https://framerusercontent.com/images/nqxXDQ0LRxsVDjpnbJj473mWQ.png",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
       title: "Software Testing",
-      description: "We ensure your system secure, stable, and ready for real users. Our QA process minimizes bugs and improves user experience and performance.",
-      buttonText: "View More",
-      buttonLink: "services/software-testing"
+      description: "Comprehensive QA solutions ensuring your applications are secure, stable, and ready for real-world deployment.",
+      buttonText: "Explore Service",
+      buttonLink: "services/software-testing",
+      icon: "🔍",
+      features: ["Automated Testing", "Performance Testing", "Security Audits"]
     },
     {
-      image: "https://framerusercontent.com/images/50a1D0xjPf1fmGvtEauBQeqUU.png",
-      title: "Graphic Design",
-      description: "We craft amazing visuals and intuitive UI/UX that leave a lasting impression. We combine creativity with strategy to communicate your story.",
-      buttonText: "View More",
-      buttonLink: "services/graphic-design"
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+      title: "Graphics Design",
+      description: "Creative visual solutions and intuitive UI/UX designs that communicate your brand story effectively.",
+      buttonText: "Explore Service",
+      buttonLink: "services/graphic-design",
+      icon: "🎨",
+      features: ["Brand Identity", "UI/UX Design", "Print Design"]
     },
   ];
 
   return (
-    <section ref={ref} className='my-32'>
-      <motion.div
-        className="flex justify-center md:mb-20 mb-10 md:text-3xl text-base mx-auto font-semibold text-zinc-800"
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: false, margin: "-100px" }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10
-        }}
-      >
-        Services
-      </motion.div>
+    <section ref={ref} className='relative bg-white py-16 md:py-24 overflow-hidden'>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+        >
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+            variants={fadeInUp}
+          >
+            <span className="font-playfair italic">Our</span>{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+            variants={fadeInUp}
+          >
+            Comprehensive digital solutions designed to help your business 
+            <span className="font-medium text-green-600"> thrive</span> in the modern world
+          </motion.p>
+          
+          {/* Decorative Elements */}
+          <motion.div 
+            className="flex justify-center mt-8 space-x-2"
+            variants={fadeInUp}
+          >
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+          </motion.div>
+        </motion.div>
 
-      <motion.div
-        style={{ y, opacity }}
-        className="w-full mt-16"
-      >
-        <ImageCardGrid cards={cardData} />
-      </motion.div>
+        <motion.div
+          style={{ y, opacity }}
+          className="w-full"
+        >
+          <ImageCardGrid cards={cardData} />
+        </motion.div>
+        
+        {/* Bottom CTA Section */}
+        <motion.div
+          className="text-center mt-16"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+        >
+          <motion.p
+            className="text-gray-600 mb-6"
+            variants={fadeInUp}
+          >
+            Need a custom solution? Let's discuss your project requirements.
+          </motion.p>
+          <motion.button
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get Custom Quote
+          </motion.button>
+        </motion.div>
+      </div>
     </section>
   );
 }

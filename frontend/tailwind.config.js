@@ -128,6 +128,7 @@ export default {
         "custom-archia": ["custom-archia", "serif"],
         "grotesk": ["grotesk", "serif"],
         "subjectivity": ["subjectivity", "serif"],
+        "playfair": ["Playfair Display", "serif"],
       },
     },
   },

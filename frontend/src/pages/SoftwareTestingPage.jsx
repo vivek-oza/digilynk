@@ -527,54 +527,6 @@ export default function SoftwareTesting() {
             />
           </motion.div>
         </motion.section>
-
-        {/* Feature Cards Section
-        {featureCards.map((card, index) => (
-          <FeatureCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            image={card.image}
-            reverse={card.reverse}
-          />
-        ))} */}
-
-
-
-
-
-
-
-
-
-
-
-        {/* Approach Section */}
-        {/* <motion.section
-          className="w-full px-4 md:px-16 py-16 bg-black text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          <motion.div className=" mt-60 h-60" variants={fadeInUp}>
-            <motion.h2
-              className="text-3xl md:text-5xl font-semibold text-white mb-4"
-              variants={fadeInUp}
-            >
-              Our Testing Methodology
-            </motion.h2>
-            <motion.h3
-              className="text-3xl md:text-xl font-semibold"
-              variants={fadeInUp}
-            >
-              <span className="text-blue-500">Comprehensive </span>
-              <span className="text-green-500">Strategic </span>
-              <span className="text-purple-500">& Results-Driven</span>
-            </motion.h3>
-          </motion.div>
-        </motion.section> */}
-
       </div>
     </div>
   );
