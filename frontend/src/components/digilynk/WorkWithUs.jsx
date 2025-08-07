@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router-dom';
 import { MessageCircle, Users, Zap } from 'lucide-react';
+import { ShimmerButton } from '../magicui/shimmer-button';
 
 export default function WorkWithUs() {
     const navigate = useNavigate();
@@ -65,7 +66,7 @@ export default function WorkWithUs() {
                     backgroundSize: '50px 50px'
                 }}></div>
             </div>
-            
+
             <div className="relative max-w-7xl mx-auto px-4">
                 <motion.div
                     className="text-center mb-16"
@@ -84,12 +85,12 @@ export default function WorkWithUs() {
                         className="text-lg text-gray-600 max-w-2xl mx-auto font-light mb-12"
                         variants={fadeInUp}
                     >
-                        Ready to transform your digital presence? Let's collaborate and bring your vision to life with our 
+                        Ready to transform your digital presence? Let's collaborate and bring your vision to life with our
                         <span className="font-medium text-purple-600"> innovative</span> solutions.
                     </motion.p>
-                    
+
                     {/* Features Grid */}
-                    <motion.div 
+                    <motion.div
                         className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
                         variants={container}
                     >
@@ -108,38 +109,28 @@ export default function WorkWithUs() {
                             </motion.div>
                         ))}
                     </motion.div>
-                    
+
                     {/* CTA Button */}
-                    <motion.button
-                        className="relative px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                        onClick={handleContactClick}
-                        variants={fadeInUp}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
-                            animate={{
-                                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                            style={{ backgroundSize: '200% 200%' }}
-                        />
-                        <span className="relative z-10 text-white">Get a Quote</span>
-                    </motion.button>
-                    
+                    <motion.div variants={fadeInUp} className="mb-8 place-self-center ">
+                        <ShimmerButton
+                            onClick={handleContactClick}
+                            className="text-white px-8 py-4 text-lg font-semibold"
+                            shimmerColor="#ffffff"
+                            shimmerSize="0.15em"
+                            background="rgba(0, 0, 0, 1)"
+                        >
+                            Get a Quote
+                        </ShimmerButton>
+                    </motion.div>
+
                     {/* Decorative Elements */}
-                    <motion.div 
+                    <motion.div
                         className="flex justify-center mt-8 space-x-2"
                         variants={fadeInUp}
                     >
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                     </motion.div>
                 </motion.div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ImageCardGrid from '../magicui/image-card-grid';
+import { ShimmerButton } from '../magicui/shimmer-button';
 
 // Animation variants
 const container = {
@@ -36,6 +37,10 @@ export default function ServicesSection() {
     target: ref,
     offset: ["start end", "end start"]
   });
+
+  function handleContactClick() {
+    navigate("/contact");
+  }
 
   // Scroll-based animations
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "3%"]);
@@ -135,26 +140,17 @@ export default function ServicesSection() {
           >
             Need a custom solution? Let's discuss your project requirements.
           </motion.p>
-          <motion.button
-            className="relative px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-            variants={fadeInUp}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ backgroundSize: '200% 200%' }}
-            />
-            <span className="relative z-10 text-white">Get Custom Quote</span>
-          </motion.button>
+          <motion.div variants={fadeInUp} className="mb-8 place-self-center">
+            <ShimmerButton
+              onClick={handleContactClick}
+              className="text-white px-8 py-4 text-lg font-semibold"
+              shimmerColor="#ffffff"
+              shimmerSize="0.15em"
+              background="rgba(0, 0, 0, 1)"
+            >
+              Get Custome Quote
+            </ShimmerButton>
+          </motion.div>
         </motion.div>
       </div>
     </section>
