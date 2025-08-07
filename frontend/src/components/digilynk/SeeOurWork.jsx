@@ -5,6 +5,7 @@ import project1 from '../../assets/images/projects/project1.png';
 import project2 from '../../assets/images/projects/project2.png';
 import project3 from '../../assets/images/projects/project3.png';
 import project4 from '../../assets/images/projects/project4.png';
+import project5 from '../../assets/images/projects/project5.png';
 
 export default function SeeOurWork() {
     const ref = useRef(null);
@@ -22,7 +23,7 @@ export default function SeeOurWork() {
             src: project4,
             title: "Creed Creations",
             description: "A creative agency website, with custom pages, design elements and 100% satisfaction in customer experience.",
-            link: "#",
+            link: "https://creedcreation-draft.vercel.app/",
             category: "Website App",
             tech: ["React Native", "Firebase", "ML"]
         },
@@ -51,21 +52,21 @@ export default function SeeOurWork() {
             tech: ["React", "Express", "MongoDB"]
         },
         {
-            src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
-            title: "FinanceFlow",
+            src: project5,
+            title: "Personal Portfolio",
             description: "Modern financial dashboard with advanced analytics and automated reporting features.",
-            link: "#",
+            link: "https://sidefolio.vercel.app/",
             category: "Dashboard",
             tech: ["Vue.js", "D3.js", "Python"]
         },
-        {
-            src: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop",
-            title: "CreativeStudio",
-            description: "Digital design platform for creative professionals with collaborative tools and asset management.",
-            link: "#",
-            category: "Design Platform",
-            tech: ["React", "WebGL", "AWS"]
-        }
+        // {
+        //     src: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop",
+        //     title: "CreativeStudio",
+        //     description: "Digital design platform for creative professionals with collaborative tools and asset management.",
+        //     link: "#",
+        //     category: "Design Platform",
+        //     tech: ["React", "WebGL", "AWS"]
+        // }
     ];
 
     const container = {
@@ -114,11 +115,10 @@ export default function SeeOurWork() {
                     viewport={{ once: false, margin: "-100px" }}
                 >
                     <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
                         variants={fadeInUp}
                     >
-                        <span className="font-playfair italic">See Our</span>{' '}
-                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Work</span>
+                        See Our Work
                     </motion.h2>
                     <motion.p
                         className="text-lg text-gray-600 max-w-2xl mx-auto font-light"

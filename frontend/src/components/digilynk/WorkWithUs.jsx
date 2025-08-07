@@ -75,11 +75,10 @@ export default function WorkWithUs() {
                     viewport={{ once: false, margin: "-100px" }}
                 >
                     <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
                         variants={fadeInUp}
                     >
-                        <span className="font-playfair italic">Work</span>{' '}
-                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">With Us</span>
+                        Work With Us
                     </motion.h2>
                     <motion.p
                         className="text-lg text-gray-600 max-w-2xl mx-auto font-light mb-12"
@@ -111,18 +110,27 @@ export default function WorkWithUs() {
                     </motion.div>
                     
                     {/* CTA Button */}
-                    <motion.div
+                    <motion.button
+                        className="relative px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                        onClick={handleContactClick}
                         variants={fadeInUp}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <Button
-                            onClick={handleContactClick}
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-medium shadow-lg transition-all duration-300"
-                        >
-                            Get a Quote
-                        </Button>
-                    </motion.div>
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
+                            animate={{
+                                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                            }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            style={{ backgroundSize: '200% 200%' }}
+                        />
+                        <span className="relative z-10 text-white">Get a Quote</span>
+                    </motion.button>
                     
                     {/* Decorative Elements */}
                     <motion.div 

@@ -28,15 +28,27 @@ const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
         <CardContent className="text-center">
           <p className="text-zinc-600 text-sm">{description}</p>
         </CardContent>
-        <CardFooter className="">
-          <Button
-            size="md"
-            variant="default"
-            className="bg-gray-900 hover:bg-gray-800 text-white shadow-xl shadow-black/20 mx-auto rounded-md"
-            asChild
+        <CardFooter className="flex justify-center">
+          <motion.button
+            className="relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+            onClick={() => window.location.href = buttonLink}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <a href={buttonLink}>{buttonText}</a>
-          </Button>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ backgroundSize: '200% 200%' }}
+            />
+            <span className="relative z-10 text-white">{buttonText}</span>
+          </motion.button>
         </CardFooter>
       </Card>
     </motion.div>

@@ -41,29 +41,28 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav 
-      className={`fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
           : 'bg-white/80 backdrop-blur-md shadow-sm'
-      }`}
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
     >
       {/* Logo and Brand */}
-      <motion.a 
-        href="/" 
+      <motion.a
+        href="/"
         className="flex items-center gap-x-3 cursor-pointer group"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <motion.img 
-          src={logo} 
-          className="md:size-10 size-8 transition-all duration-300" 
+        <motion.img
+          src={logo}
+          className="md:size-10 size-8 transition-all duration-300"
           alt="LOGO"
         />
-        <span className="text-2xl font-bold text-gray-800">
+        <span className="text-3xl font-bold text-zinc-800">
           Digilynk
         </span>
       </motion.a>
@@ -77,7 +76,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-blue-600 transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group"
               onClick={() => handleNavigation("/")}
             >
               <span className="relative z-10">HOME</span>
@@ -94,12 +93,12 @@ export default function Navbar() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <motion.div 
+            <motion.div
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-blue-600 transition-all duration-300 relative overflow-hidden group">
+              <button className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-1">
                   SERVICES
                   <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -133,8 +132,8 @@ export default function Navbar() {
                       onClick={() => handleNavigation(service.path)}
                     >
                       <div className="flex items-center gap-3">
-                        <service.icon size={18} className="text-gray-500 group-hover:text-blue-600 transition-colors duration-300" />
-                        <span className="font-medium group-hover:text-blue-600 transition-colors duration-300">{service.name}</span>
+                        <service.icon size={18} className="text-gray-500 group-hover:text-black transition-colors duration-300" />
+                        <span className="font-medium group-hover:text-black transition-colors duration-300">{service.name}</span>
                       </div>
                     </motion.li>
                   ))}
@@ -149,7 +148,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-blue-600 transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group"
               onClick={() => handleNavigation("/about")}
             >
               <span className="relative z-10">ABOUT</span>
@@ -159,23 +158,23 @@ export default function Navbar() {
             </button>
           </motion.li>
         </ul>
-        
+
         {/* CTA Button */}
         <motion.button
-          className="relative px-6 py-2.5 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+          className="relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
           onClick={() => handleNavigation("/contact")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-green-600 via-blue-600 to-purple-600"
+            className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
             animate={{
               backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
             style={{ backgroundSize: '200% 200%' }}
           />
@@ -218,7 +217,7 @@ export default function Navbar() {
                 backgroundSize: '50px 50px'
               }}></div>
             </div>
-            
+
             <div className="relative w-full p-6">
               <ul className="flex flex-col gap-2 font-medium">
                 <motion.li
@@ -228,7 +227,7 @@ export default function Navbar() {
                   className="w-full"
                 >
                   <button
-                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
                     onClick={() => handleNavigation("/")}
                   >
                     <Home size={18} />
@@ -237,14 +236,14 @@ export default function Navbar() {
                 </motion.li>
 
                 {/* Mobile Services Dropdown */}
-                <motion.div 
+                <motion.div
                   className="w-full"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="flex justify-between items-center w-full py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 rounded-xl transition-all duration-300 cursor-pointer"
-                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
+                  <div className="flex justify-between items-center w-full py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 cursor-pointer"
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
                     <span className="font-medium flex items-center gap-3">
                       <Monitor size={18} />
                       SERVICES
@@ -276,7 +275,7 @@ export default function Navbar() {
                             initial={{ opacity: 0, x: 10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="py-2 px-4 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg cursor-pointer transition-all duration-300"
+                            className="py-2 px-4 text-gray-600 hover:text-black hover:bg-blue-50 rounded-lg cursor-pointer transition-all duration-300"
                             onClick={() => handleNavigation(service.path)}
                           >
                             <span className="flex items-center gap-3">
@@ -297,15 +296,15 @@ export default function Navbar() {
                   className="w-full"
                 >
                   <button
-                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
                     onClick={() => handleNavigation("/about")}
                   >
                     <Users size={18} />
                     ABOUT
                   </button>
                 </motion.li>
-                
-                <motion.li
+
+                {/* <motion.li
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
@@ -329,19 +328,39 @@ export default function Navbar() {
                     />
                     <span className="relative z-10 text-white">GET IN TOUCH</span>
                   </button>
+                </motion.li> */}
+                <motion.li
+                  className="relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  onClick={() => handleNavigation("/contact")}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    style={{ backgroundSize: '200% 200%' }}
+                  />
+                  <span className="relative z-10 text-white">CONTACT</span>
                 </motion.li>
               </ul>
-              
+
               {/* Decorative Elements */}
-              <motion.div 
+              <motion.div
                 className="flex justify-center mt-8 space-x-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               </motion.div>
             </div>
           </motion.div>

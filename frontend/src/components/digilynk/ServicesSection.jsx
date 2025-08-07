@@ -50,7 +50,7 @@ export default function ServicesSection() {
       buttonLink: "services/web-development",
       icon: "💻",
       features: ["Responsive Design", "SEO Optimized", "Fast Loading"]
-    },  
+    },
     {
       image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
       title: "Software Testing",
@@ -80,7 +80,7 @@ export default function ServicesSection() {
           backgroundSize: '50px 50px'
         }}></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -90,28 +90,27 @@ export default function ServicesSection() {
           viewport={{ once: false, margin: "-100px" }}
         >
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
             variants={fadeInUp}
           >
-            <span className="font-playfair italic">Our</span>{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
+            Our Services
           </motion.h2>
           <motion.p
             className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
             variants={fadeInUp}
           >
-            Comprehensive digital solutions designed to help your business 
+            Comprehensive digital solutions designed to help your business
             <span className="font-medium text-green-600"> thrive</span> in the modern world
           </motion.p>
-          
+
           {/* Decorative Elements */}
-          <motion.div 
+          <motion.div
             className="flex justify-center mt-8 space-x-2"
             variants={fadeInUp}
           >
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           </motion.div>
         </motion.div>
 
@@ -121,7 +120,7 @@ export default function ServicesSection() {
         >
           <ImageCardGrid cards={cardData} />
         </motion.div>
-        
+
         {/* Bottom CTA Section */}
         <motion.div
           className="text-center mt-16"
@@ -137,12 +136,24 @@ export default function ServicesSection() {
             Need a custom solution? Let's discuss your project requirements.
           </motion.p>
           <motion.button
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="relative px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
             variants={fadeInUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Custom Quote
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ backgroundSize: '200% 200%' }}
+            />
+            <span className="relative z-10 text-white">Get Custom Quote</span>
           </motion.button>
         </motion.div>
       </div>

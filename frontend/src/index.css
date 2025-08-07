@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@custom-variant dark (&:is(.dark *));
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,7 +37,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 
 :root {
   --radius: 0.625rem;
@@ -131,12 +132,9 @@
   }
 }
 
-
-
 .noScrollbar::-webkit-scrollbar {
   display: none;
 }
-
 
 ::-moz-selection {
   /* Code for Firefox */
@@ -149,14 +147,11 @@
   background: #27272a;
 }
 
-
 * {
   box-sizing: border-box;
   transition: all;
   transition-duration: 300;
 }
-
-
 
 html {
   /* font-family: custom-archia; */
@@ -194,7 +189,6 @@ html {
       #ff0066);
   background-size: 400% 400%;
 }
-
 
 /* Add to your global CSS */
 @keyframes mouseScroll {
@@ -244,4 +238,27 @@ html {
     height: 6px;
     width: 6px;
   }
+}
+
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), calc(100cqh - 100%));
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+}
+
+.animate-spin-around {
+  animation: spin-around calc(var(--speed) * 2) infinite linear;
 }
