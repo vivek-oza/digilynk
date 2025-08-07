@@ -36,7 +36,7 @@ export default function ContactPage() {
         {
             icon: <Mail className="w-6 h-6" />,
             title: "Email Us",
-            content: "digilynk2025@gmail.com",
+            content: "digilynksolutions@gmail.com",
             color: "text-blue-600"
         },
         {

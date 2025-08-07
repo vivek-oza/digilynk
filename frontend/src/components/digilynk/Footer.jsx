@@ -138,7 +138,7 @@ export default function Footer() {
                   </li>
                 </a>
                 <a
-                  href="mailto:digilynk2025@gmail.com?subject=I want to contact Digilynk&body=Hello Digilynk team,%0D%0A%0D%0AI would like to discuss my project requirements.%0D%0A%0D%0AThank you!"
+                  href="mailto:digilynksolutions@gmail.com?subject=I want to contact Digilynk&body=Hello Digilynk team,%0D%0A%0D%0AI would like to discuss my project requirements.%0D%0A%0D%0AThank you!"
                 >
                   <li className="flex items-center space-x-2 hover:text-green-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
                     <Mail className="w-5 h-5" />
