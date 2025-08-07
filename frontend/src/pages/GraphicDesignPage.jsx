@@ -1,33 +1,131 @@
 import React from "react";
 import { motion } from "framer-motion";
-import web1 from "../assets/images/web1.png";
+import graphic from "../assets/images/graphic.png";
 import web2 from "../assets/images/web2.png";
 import web3 from "../assets/images/web3.png";
 import web4 from "../assets/images/web4.png";
 import web5 from "../assets/images/web5.png";
 import web6 from "../assets/images/web6.png";
-import web7 from "../assets/images/web7.png";
-import web8 from "../assets/images/web8.png";
 import DynamicCardSection from "../components/digilynk/DynamicCardSection";
 import {
-  HeartPulse,
-  ShoppingCart,
-  ShieldCheck,
-  FlaskConical,
-  BrainCircuit,
-  Gamepad2,
-  CreditCard,
-  Hotel,
-  Code2,
-  Smartphone,
-  Database,
-  Globe,
   Palette,
-  Zap,
-  Search
+  Shirt,
+  Building2,
+  ShoppingBag,
+  Utensils,
+  HeartPulse,
+  GraduationCap,
+  Gamepad2
 } from 'lucide-react';
+import {
+  PenTool,
+  Image,
+  Layout,
+  Package,
+  FileText,
+  Monitor,
+  Smartphone,
+  Printer
+} from "lucide-react";
 
-// Reusable animations from About page
+const industriesData = {
+  title: "Industries we serve",
+  description: "We create compelling visual identities that resonate with your target audience. Partner with us to build a memorable brand presence.",
+  buttonText: "Get Custom Design Solutions",
+  buttonLink: "/contact",
+  cards: [
+    {
+      title: "Fashion & Apparel",
+      description: "Creating trendy and appealing designs that capture the essence of fashion brands.",
+      icon: <Shirt className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Real Estate",
+      description: "Professional designs that showcase properties and build trust with potential clients.",
+      icon: <Building2 className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Retail & E-commerce",
+      description: "Eye-catching designs that drive sales and enhance customer shopping experiences.",
+      icon: <ShoppingBag className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Food & Beverage",
+      description: "Appetizing designs that make your culinary offerings irresistible to customers.",
+      icon: <Utensils className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Healthcare",
+      description: "Clean, trustworthy designs that communicate care and professionalism in healthcare.",
+      icon: <HeartPulse className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Education",
+      description: "Engaging educational designs that inspire learning and knowledge sharing.",
+      icon: <GraduationCap className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Entertainment",
+      description: "Dynamic designs that capture attention and create memorable entertainment experiences.",
+      icon: <Gamepad2 className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Beauty & Wellness",
+      description: "Elegant designs that reflect beauty, wellness, and self-care values.",
+      icon: <Palette className="text-blue-500 w-7 h-7" />,
+    },
+  ],
+};
+
+const designServicesData = {
+  title: "Design Services",
+  description: "Comprehensive design solutions that bring your brand vision to life. From concept to execution, we create designs that captivate and convert.",
+  buttonText: "Contact for Design Solutions",
+  buttonLink: "/contact",
+  cards: [
+    {
+      title: "Logo Design",
+      description: "Creating memorable logos that perfectly represent your brand identity and values.",
+      icon: <PenTool className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Brand Identity",
+      description: "Developing cohesive visual identities that tell your brand story across all touchpoints.",
+      icon: <Image className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Web Design",
+      description: "Designing beautiful, user-friendly interfaces that enhance digital experiences.",
+      icon: <Layout className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Packaging Design",
+      description: "Creating attractive packaging that stands out on shelves and drives purchase decisions.",
+      icon: <Package className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Marketing Materials",
+      description: "Designing compelling brochures, flyers, and promotional materials that convert.",
+      icon: <FileText className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Digital Graphics",
+      description: "Creating engaging social media graphics and digital assets for online presence.",
+      icon: <Monitor className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Mobile App Design",
+      description: "Designing intuitive mobile interfaces that provide exceptional user experiences.",
+      icon: <Smartphone className="text-blue-500 w-7 h-7" />,
+    },
+    {
+      title: "Print Design",
+      description: "Professional print designs for business cards, posters, and corporate materials.",
+      icon: <Printer className="text-blue-500 w-7 h-7" />,
+    },
+  ],
+};
+
 const container = {
   hidden: { opacity: 0 },
   visible: {
@@ -84,113 +182,41 @@ const fadeInRight = {
   },
 };
 
-const websiteTypesData = {
-  title: "Website Types",
-  description: "We create diverse website solutions tailored to your specific needs. From personal portfolios to complex business platforms.",
-  buttonText: "Start Your Project",
-  buttonLink: "/contact",
-  cards: [
-    {
-      title: "Personal Portfolio Websites",
-      description: "Showcase your skills, work, and achievements with a professional personal portfolio.",
-      icon: <Code2 className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Landing Pages",
-      description: "High-converting landing pages designed to capture leads and drive conversions.",
-      icon: <Globe className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Ecommerce Websites",
-      description: "Complete online stores with secure payment processing and inventory management.",
-      icon: <ShoppingCart className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Business Websites",
-      description: "Professional corporate websites that establish credibility and drive growth.",
-      icon: <Database className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Educational Websites",
-      description: "Interactive learning platforms and educational institution websites.",
-      icon: <BrainCircuit className="text-blue-500 w-7 h-7" />,
-    },
-  ],
-};
-
-const specializedWebsitesData = {
-  title: "Specialized Websites",
-  description: "Industry-specific website solutions designed for unique business requirements and specialized functionalities.",
-  buttonText: "Get Custom Solution",
-  buttonLink: "/contact",
-  cards: [
-    {
-      title: "Hotel Websites",
-      description: "Beautiful hotel websites with booking systems and guest management features.",
-      icon: <Hotel className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Hospital Websites",
-      description: "Professional healthcare websites with appointment booking and patient portals.",
-      icon: <HeartPulse className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Event Websites",
-      description: "Dynamic event websites with registration, ticketing, and event management.",
-      icon: <Gamepad2 className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Booking Websites",
-      description: "Comprehensive booking platforms for services, appointments, and reservations.",
-      icon: <CreditCard className="text-blue-500 w-7 h-7" />,
-    },
-    {
-      title: "Blogs",
-      description: "Content-rich blog websites with CMS integration and SEO optimization.",
-      icon: <Palette className="text-blue-500 w-7 h-7" />,
-    },
-  ],
-};
-
-
-
 // Why Choose Us items
 const whyChooseItems = [
   {
     id: 1,
-    title: "Creative Web Design Excellence",
-    text: "Our strength lies in delivering creative web designs that captivate visitors and reflect your brand identity. Every website we build is crafted with attention to detail, ensuring a unique and engaging user experience that sets you apart from the competition.",
+    title: "Creative Excellence",
+    text: "We combine artistic vision with strategic thinking to create designs that not only look stunning but also achieve your business objectives and resonate with your target audience.",
   },
   {
     id: 2,
-    title: "Bug-Free, Smooth, and Secure Websites",
-    text: "We prioritize quality at every step, rigorously testing our websites to ensure they are bug-free, smooth in performance, and protected with the latest security measures. Your peace of mind is our priority.",
+    title: "Brand-Focused Approach",
+    text: "Every design we create is carefully crafted to strengthen your brand identity, ensuring consistency across all touchpoints and building lasting recognition in the market.",
   },
   {
     id: 3,
-    title: "Accelerate Your Business Growth",
-    text: "A great website is a catalyst for business growth. We design websites that not only attract visitors but also convert them into loyal customers, helping you achieve your business goals faster.",
+    title: "Fast Turnaround Times",
+    text: "Our efficient design process and experienced team enable us to deliver high-quality designs quickly, helping you meet tight deadlines without compromising on creativity.",
   },
   {
     id: 4,
-    title: "First Impressions That Build Trust",
-    text: "Your website is often the first point of contact with potential clients. Our visually appealing and professional designs create a strong first impression, building trust and credibility from the moment visitors land on your site.",
+    title: "User-Centered Design",
+    text: "We prioritize user experience in every design, ensuring that your visual communications are not only beautiful but also intuitive and effective for your audience.",
   },
   {
     id: 5,
-    title: "Efficient, Research-Driven Processes",
-    text: "We follow well-researched Standard Operating Procedures (SOPs) and industry best practices, making our development process efficient and time-saving. This allows us to deliver projects on time, every time, without compromising on creativity or quality.",
+    title: "Industry Expertise",
+    text: "Our team brings deep knowledge across various industries, allowing us to create designs that speak the language of your specific market and audience.",
   },
   {
     id: 6,
-    title: "On-Time Delivery",
-    text: "We understand the importance of deadlines. Our streamlined workflow ensures there are no delays. Expect your website to be delivered on time, with responsive and amazing web design that exceeds your expectations.",
+    title: "Collaborative Process",
+    text: "We work closely with you throughout the design process, incorporating your feedback and vision to ensure the final result exceeds your expectations.",
   },
 ];
 
-
-
-export default function WebDevelopment() {
+export default function GraphicDesign() {
   return (
     <div className="relative overflow-x-hidden md:p-0">
       {/* Main Content */}
@@ -212,7 +238,7 @@ export default function WebDevelopment() {
               className="text-3xl font-semibold text-center md:text-start text-white"
               variants={fadeInUp}
             >
-              Website Development
+              Graphic Design
             </motion.h1>
 
             <motion.div
@@ -223,24 +249,23 @@ export default function WebDevelopment() {
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                Your{" "}
-                <span className="text-blue-500 font-medium">Vision</span>,
+                Transforming{" "}
+                <span className="text-blue-500 font-medium">Ideas</span>
+                ,
               </motion.div>
               <motion.div
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                Our{" "}
-                <span className="text-green-500 font-medium">Code</span>
+                Into{" "}
+                <span className="text-green-500 font-medium">Visual Stories</span>
               </motion.div>
               <motion.div
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                Crafting{" "}
-                <span className="text-purple-500 font-medium">
-                  Ideas into Reality
-                </span>
+                That{" "}
+                <span className="text-purple-500 font-medium">Inspire Action</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -264,9 +289,9 @@ export default function WebDevelopment() {
             }}
           >
             <img
-              src={web1}
+              src={graphic}
               className="md:min-h-[calc(100vh-5rem)] min-w-[calc(100vw)] md:min-w-full object-cover"
-              alt="Web development illustration"
+              alt="Graphic design illustration"
             />
           </motion.div>
         </motion.section>
@@ -288,7 +313,7 @@ export default function WebDevelopment() {
               className="text-3xl font-semibold text-black"
               variants={fadeInUp}
             >
-              Craft Digital Excellence
+              Design That Speaks
             </motion.h1>
 
             <motion.div
@@ -299,21 +324,21 @@ export default function WebDevelopment() {
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                We craft digital experiences that accelerate your business growth, showcase your brand, and inspire trust from the very first click.
+                In a world where first impressions matter more than ever, exceptional design isn't just an option — it's essential for success.
               </motion.div>
 
               <motion.div
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                Our team of passionate developers blends innovative web design with robust development practices, ensuring every project is visually stunning, bug-free, and optimized for growth.
+                At Digilynk, we create visual experiences that captivate audiences, communicate your brand message clearly, and drive meaningful engagement. From logos to complete brand identities, we craft designs that tell your unique story.
               </motion.div>
 
               <motion.div
                 className="text-base text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed"
                 variants={fadeInUp}
               >
-                We believe that a well-crafted website is more than just an online presence. It's a powerful tool for building trust, impressing clients, and accelerating your business success.
+                Our design philosophy combines creativity with strategy, ensuring every visual element serves a purpose and contributes to your business growth and brand recognition.
               </motion.div>
             </motion.div>
           </motion.div>
@@ -337,18 +362,18 @@ export default function WebDevelopment() {
             }}
           >
             <img
-              src={web2}
+              src={web4}
               className="w-full md:min-h-[calc(100vh-5rem)] object-cover object-top"
-              alt="Web development services"
+              alt="Design services illustration"
             />
           </motion.div>
         </motion.section>
 
-        {/* Website Types */}
-        <DynamicCardSection {...websiteTypesData} />
+        {/* Industries we serve */}
+        <DynamicCardSection {...industriesData} />
 
-        {/* Specialized Websites */}
-        <DynamicCardSection {...specializedWebsitesData} />
+        {/* Design services */}
+        <DynamicCardSection {...designServicesData} />
 
         {/* Why Choose Us Section */}
         <motion.section
@@ -360,13 +385,13 @@ export default function WebDevelopment() {
         >
           <motion.div
             className="flex flex-col items-center justify-center text-start"
-            variants={fadeInLeft}
+            variants={fadeInUp}
           >
             <motion.h2
               className="text-3xl font-semibold text-zinc-800 mb-6"
               variants={fadeInUp}
             >
-              Why Digilynk for Web Development?
+              Why Digilynk for Design?
             </motion.h2>
           </motion.div>
 
@@ -399,8 +424,8 @@ export default function WebDevelopment() {
             variants={fadeInUp}
           >
             <img
-              src={web3}
-              alt="Web development services"
+              src={web6}
+              alt="Graphic design services"
               className="w-full max-w-2xl object-contain"
             />
           </motion.div>

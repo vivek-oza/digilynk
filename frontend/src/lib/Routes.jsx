@@ -10,6 +10,7 @@ import ContactPage from "../pages/ContactPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import WebDevelopmentPage from "../pages/WebDevelopmentPage";
 import SoftwareTestingPage from "../pages/SoftwareTestingPage";
+import GraphicDesignPage from "../pages/GraphicDesignPage";
 import ServicesPage from '../pages/ServicesPage';
 
 
@@ -34,6 +35,7 @@ export default function DigilynkRoutes() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/web-development" element={<WebDevelopmentPage />} />
           <Route path="/services/software-testing" element={<SoftwareTestingPage />} />
+          <Route path="/services/design" element={<GraphicDesignPage />} />
           {/* Other routes */}
         </Route>
       </Routes>

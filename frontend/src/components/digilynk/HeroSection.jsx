@@ -1,13 +1,54 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-// import heroBanner from '../../assets/images/heroBanner.png';
-import heroBanner from "../../assets/images/heroBanner.jpg";
 import { Button } from "../ui/button";
+import { ShimmerButton } from "../magicui/shimmer-button";
 import RotatingText from "../reactbits/TextAnimations/RotatingText/RotatingText";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../../lib/utils";
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+const World = React.lazy(() => import("../ui/globe").then((m) => ({ default: m.World })));
+
 
 export default function HeroSection() {
+
+  const globeConfig = {
+    pointSize: 4,
+    globeColor: "#1a1a1a",
+    showAtmosphere: true,
+    atmosphereColor: "#FFFFFF",
+    atmosphereAltitude: 0.1,
+    emissive: "#062056",
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
+    polygonColor: "rgba(255,255,255,0.7)",
+    ambientLight: "#38bdf8",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffffff",
+    arcTime: 1000,
+    arcLength: 0.9,
+    rings: 1,
+    maxRings: 3,
+    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+    zoom:2.5
+  };
+  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  const sampleArcs = [
+    {
+      order: 1,
+      startLat: 28.6139,
+      startLng: 77.209,
+      endLat: 24.6139,
+      endLng: 72.209,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    }
+  ];
+
+
   const navigate = useNavigate();
 
   function handleContactClick() {
@@ -46,129 +87,118 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="relative bg-black text-white">
-        {/* Background grid - removed styles if not needed */}
-        <div
-          className={cn(
-            "absolute z-0 inset-0 h-[calc(100vh-5rem)] w-full",
-            "[background-size:150px_60px]"
-          )}
-        />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-zinc-900 md:bg-zinc-900 [mask-image:radial-gradient(circle_at_top,transparent_6%,black)] md:[mask-image:radial-gradient(circle_at_right,transparent_50%,black)] dark:bg-black"></div>
-
+      <div className=" min-h-screen relative overflow-hidden flex md:items-center justify-center">
         <motion.section
           variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className="relative z-10 overflow-hidden grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-5rem)]"
+          className="w-full max-w-7xl mx-auto relative z-10"
         >
-          {/* Left Column - Text Content */}
-          <motion.div
-            className="flex flex-col justify-center px-4 py-8 md:px-12 space-y-6"
-            variants={container}
-          >
-            <motion.h1
-              className="text-3xl font-semibold text-center md:text-start"
+          {/* Main Content */}
+          <div className="text-center flex py-10 flex-col items-center">
+
+            <div className="text-center  px-4 flex flex-col items-center">
+              <motion.h1
               variants={fadeInUp}
+              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 whitespace-nowrap"
             >
-              Welcome to Digilynk
+              Welcome to <span className="">Digilynk</span>
             </motion.h1>
 
-            <motion.p
-              className="text-base text-zinc-300 tracking-tight font-normal leading-relaxed text-center md:text-start"
-              variants={fadeInUp}
-            >
-              We are a results-driven digital solutions company specializing in
-              website development and software testing. We blend creativity with
-              technology to build scalable, user-focused digital experiences.
-              From startups to enterprises, we help brands grow, innovate, and
-              transform through tailored innovative solutions.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center md:justify-start"
-              variants={fadeInUp}
-            >
-              <Button
-                onClick={handleContactClick}
-                size={""}
-                className="font-medium shadow-xl shadow-black/20 bg-slate-100 py-5 text-base"
-                variant="secondary"
+              <motion.p
+                variants={fadeInUp}
+                className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto"
               >
-                Get Started
-              </Button>
-              <Button
-                onClick={handleLearnmoreClick}
-                size={""}
-                className="font-medium shadow-xl shadow-black/20 py-5 text-base"
-              >
-                Learn more
-              </Button>
-            </motion.div>
-          </motion.div>
+                Results-driven digital solutions specializing in website development and software testing.
+              </motion.p>
 
-          {/* Right Column - Image */}
-          <motion.div
-            className="flex items-center justify-center"
-            variants={fadeInUp}
-          >
-            <img
-              src={heroBanner}
-              className="w-full h-full object-cover md:max-h-[calc(100vh-5rem)]"
-              alt="Digital creative illustration"
-            />
-          </motion.div>
+              <motion.div variants={fadeInUp} className="mb-8">
+                <ShimmerButton
+                  onClick={handleContactClick}
+                  className="text-white px-8 py-4 text-lg font-semibold"
+                  shimmerColor="#ffffff"
+                  shimmerSize="0.15em"
+                  background="rgba(0, 0, 0, 1)"
+                >
+                  Get Started
+                </ShimmerButton>
+              </motion.div>
+            </div>
+            {/* Globe */}
+            <div className="md:h-[600px] h-[350px] aspect-square p-0 m-0">
+              <React.Suspense fallback={
+                <div className="flex items-center justify-center h-full">
+                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+                </div>
+              }>
+                <World data={sampleArcs} globeConfig={globeConfig} />
+              </React.Suspense>
+            </div>
+          </div>
         </motion.section>
       </div>
 
       {/* Second Section */}
       <motion.section
-        className="flex flex-col space-y-10 min-h-80 justify-center items-center my-10 mb-20"
+        className="relative bg-white py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
         variants={container}
       >
-        <motion.div
-          className="flex md:space-x-2 space-x-2 items-center justify-center text-3xl font-semibold text-zinc-800"
-          variants={fadeInUp}
-        >
-          <span>We Build</span>
-          <RotatingText
-            texts={["Smarter", "Faster", "Better"]}
-            colors={["text-blue-500", "text-green-500", "text-purple-500"]}
-            bgColors={["bg-blue-100", "bg-green-100", "bg-purple-100"]}
-            mainClassName="px-4 sm:px-2 md:px-3 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-            staggerFrom={"last"}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-120%" }}
-            staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            rotationInterval={2000}
-          />
-          <span>Websites</span>
-        </motion.div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
 
-        <motion.div
-          className="flex items-center justify-center text-center text-base md:px-20 px-4 text-zinc-600 tracking-tight font-normal leading-relaxed"
-          variants={fadeInUp}
-        >
-          We design and develop websites, apps and digital experiences that help
-          our clients grow, innovate, and transform. We listen, learn and
-          understand before we build. We identify your goals together, then use
-          our expertise to find that sweet spot of realistic and impactful.
-        </motion.div>
+        <div className="relative max-w-6xl mx-auto px-4 text-center">
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-8"
+            variants={fadeInUp}
+          >
+            <span>We Build</span>
+            <RotatingText
+              texts={["Smarter", "Faster", "Better"]}
+              colors={["text-blue-600", "text-green-600", "text-purple-600"]}
+              bgColors={["bg-blue-100", "bg-green-100", "bg-purple-100"]}
+              mainClassName="px-3 sm:px-4 md:px-6 py-2 md:py-3 overflow-hidden justify-center rounded-2xl shadow-sm border border-gray-200"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2500}
+            />
+            <span>Websites</span>
+          </motion.div>
+
+          <motion.div
+            className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light"
+            variants={fadeInUp}
+          >
+            We design and develop websites, apps and digital experiences that help
+            our clients <span className="font-medium text-blue-600">grow</span>, <span className="font-medium text-green-600">innovate</span>, and <span className="font-medium text-purple-600">transform</span>. We listen, learn and
+            understand before we build. We identify your goals together, then use
+            our expertise to find that sweet spot of realistic and impactful.
+          </motion.div>
+
+          {/* Decorative Elements */}
+          <motion.div
+            className="flex justify-center mt-12 space-x-2"
+            variants={fadeInUp}
+          >
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </motion.div>
+        </div>
       </motion.section>
     </>
   );
-}
-
-
-
-
-
-
-
+};

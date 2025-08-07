@@ -29,6 +29,8 @@ export default {
           "marquee-vertical-reverse 20s linear infinite",
         borderGlow: "borderGlow 3s infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
+        "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
       },
       keyframes: {
         gradient: {
@@ -65,6 +67,19 @@ export default {
         pulse: {
           "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
           "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
+        },
+        "shimmer-slide": {
+          "to": {
+            "transform": "translate(calc(100cqw - 100%), calc(100cqh - 100%))"
+          }
+        },
+        "spin-around": {
+          "0%": {
+            "transform": "rotate(0deg)"
+          },
+          "100%": {
+            "transform": "rotate(360deg)"
+          }
         },
 
       },
@@ -128,6 +143,7 @@ export default {
         "custom-archia": ["custom-archia", "serif"],
         "grotesk": ["grotesk", "serif"],
         "subjectivity": ["subjectivity", "serif"],
+
       },
     },
   },
