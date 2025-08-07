@@ -5,11 +5,13 @@ import values from "../assets/images/values.png";
 import mission from "../assets/images/mission.png";
 import vision from "../assets/images/vision.png";
 import FaqSection from "../components/digilynk/FaqSection";
-import ServicesCardStack from "@/components/digilynk/ServicesCardStack";
-import { cn } from "@/lib/utils";
+import { ShimmerButton } from "../components/magicui/shimmer-button";
+import { useNavigate } from "react-router-dom";
+import { Users, Target, Eye, Heart } from "lucide-react";
 
 export default function AboutUs() {
-  // Matching service page animations
+  const navigate = useNavigate();
+
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,144 +35,130 @@ export default function AboutUs() {
         type: "spring",
         stiffness: 100,
         damping: 10,
-        bounce: 0.4,
-      },
-    },
-  };
-
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-        bounce: 0.4,
-      },
-    },
-  };
-
-  const fadeInRight = {
-    hidden: { opacity: 0, x: 30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-        bounce: 0.4,
       },
     },
   };
 
   const aboutCards = [
     {
-      title: "Values",
-      description:
-        "We believe in creativity, professionalism, and collaboration. Every project is unique, and we strive to deliver tailored digital experiences that truly reflect our clients' vision.",
+      icon: <Heart className="w-8 h-8" />,
+      title: "Our Values",
+      description: "We believe in creativity, professionalism, and collaboration. Every project is unique, and we strive to deliver tailored digital experiences that truly reflect our clients' vision.",
       image: values,
-      reverse: false,
-      link: "#values",
+      color: "from-red-500 to-pink-500"
     },
     {
-      title: "Mission",
-      description:
-        "To design and develop innovative, high-quality websites and apps that help businesses grow, transform, and succeed in the digital world.",
+      icon: <Target className="w-8 h-8" />,
+      title: "Our Mission",
+      description: "To design and develop innovative, high-quality websites and apps that help businesses grow, transform, and succeed in the digital world.",
       image: mission,
-      reverse: true,
-      link: "#mission",
+      color: "from-blue-500 to-cyan-500"
     },
     {
-      title: "Vision",
-      description:
-        "To be a leading creative partner known for crafting impactful, user-centric digital solutions that set new standards in writing your growth story.",
+      icon: <Eye className="w-8 h-8" />,
+      title: "Our Vision",
+      description: "To be a leading creative partner known for crafting impactful, user-centric digital solutions that set new standards in writing your growth story.",
       image: vision,
-      reverse: false,
-      link: "#vision",
+      color: "from-purple-500 to-indigo-500"
     },
   ];
 
-  // Enhanced Why Choose Us items with spring animations
   const whyChooseItems = [
     {
       id: 1,
-      text: "At Digilynk, we don't just deliver services,  we build partnerships.",
+      icon: <Users className="w-6 h-6" />,
+      title: "Partnership Approach",
+      text: "At Digilynk, we don't just deliver services, we build partnerships.",
+      color: "text-blue-600"
     },
     {
       id: 2,
+      icon: <Target className="w-6 h-6" />,
+      title: "Goal-Oriented",
       text: "Our approach is rooted in understanding your unique goals, challenges, and market.",
+      color: "text-green-600"
     },
     {
       id: 3,
+      icon: <Heart className="w-6 h-6" />,
+      title: "User-Centric",
       text: "We combine technical expertise with a deep understanding of user behavior.",
+      color: "text-purple-600"
     },
     {
       id: 4,
+      icon: <Eye className="w-6 h-6" />,
+      title: "Impactful Solutions",
       text: "Every solution we deliver is not just functional but impactful.",
+      color: "text-orange-600"
     },
   ];
 
   return (
     <div className="relative">
-      {/* Background effects matching service page */}
-      {/* <div className={cn(
-                "absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)]",
-                "[background-size:150px_50px]",
-                "[background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]",
-            )} />
-            <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div> */}
+      {/* Hero Section */}
+      <motion.section
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-100px" }}
+        className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
 
-      {/* Main About Container */}
-      <div className="relative  z-10">
-        {/* Hero Section */}
-        <motion.section
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          className="relative bg-black mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]"
-        >
+        <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <motion.div
-            className="min-h-[calc(100vh-20rem)] w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center"
-            variants={container}
-          >
-            <motion.h2
-              className="text-3xl font-semibold text-center md:text-start text-white"
+          <motion.div className="space-y-8 text-center md:text-left" variants={container}>
+            <motion.h1
+              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6"
               variants={fadeInUp}
             >
-              About Us
-            </motion.h2>
+              About Digilynk
+            </motion.h1>
 
-            <motion.div
-              className="flex flex-col space-y-2 justify-center"
-              variants={container}
+            <motion.p
+              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              variants={fadeInUp}
             >
-              <motion.p
-                className="text-base text-center md:text-start text-white tracking-tight font-medium leading-relaxed"
-                variants={fadeInUp}
-              >
-                We believe that every business is unique and deserves a digital
-                presence that reflects its individuality.
-              </motion.p>
+              We believe that every business is unique and deserves a digital presence that reflects its individuality.
+            </motion.p>
 
-              <motion.p
-                className="text-base text-center md:text-start text-white tracking-tight font-medium leading-relaxed"
-                variants={fadeInUp}
+            <motion.p
+              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              variants={fadeInUp}
+            >
+              We are a creative, professional team passionate about design, innovation, and delivering results that help our clients <span className="font-medium text-blue-600">grow</span> and <span className="font-medium text-purple-600">transform</span>.
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="inline-block">
+              <ShimmerButton
+                onClick={() => navigate('/contact')}
+                className="text-white px-8 py-4 text-lg font-semibold"
+                shimmerColor="#ffffff"
+                shimmerSize="0.15em"
+                background="rgba(0, 0, 0, 1)"
               >
-                We are a creative, professional team passionate about design,
-                innovation, and delivering results that help our clients grow
-                and transform.
-              </motion.p>
+                Work With Us
+              </ShimmerButton>
+            </motion.div>
+
+            {/* Decorative Elements */}
+            <motion.div className="flex space-x-2 justify-center md:justify-start" variants={fadeInUp}>
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
             </motion.div>
           </motion.div>
 
           {/* Right Column - Image */}
           <motion.div
-            className="flex items-center md:min-h-[calc(100vh-5rem)] w-1/2"
+            className="flex justify-center"
             variants={{
               hidden: { opacity: 0, x: 50 },
               visible: {
@@ -180,7 +168,6 @@ export default function AboutUs() {
                   type: "spring",
                   stiffness: 100,
                   damping: 10,
-                  bounce: 0.4,
                   delay: 0.4,
                 },
               },
@@ -188,290 +175,146 @@ export default function AboutUs() {
           >
             <img
               src={About}
-              className="md:min-h-[calc(100vh-5rem)] w-auto object-contain"
+              className="w-full max-w-lg object-contain rounded-2xl"
               alt="About us illustration"
             />
           </motion.div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* Why Choose Us Section with enhanced animations */}
-        <motion.section
-          className="max-w-5xl mx-auto py-16 px-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          <motion.h2
-            className="text-3xl font-semibold text-zinc-800 mb-12 text-center"
-            variants={fadeInUp}
-          >
-            Why choose us?
-          </motion.h2>
+      {/* Why Choose Us Section */}
+      <motion.section
+        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-100px" }}
+        variants={container}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
 
-          <motion.div
-            className="grid md:grid-cols-2 gap-8"
-            variants={container}
-          >
+        <div className="relative max-w-7xl mx-auto px-4">
+          <motion.div className="text-center mb-16" variants={container}>
+            <motion.h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              variants={fadeInUp}
+            >
+              Why Choose Us?
+            </motion.h2>
+            <motion.p
+              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              variants={fadeInUp}
+            >
+              We don't just deliver services — we build <span className="font-medium text-green-600">partnerships</span> that drive your success
+            </motion.p>
+
+            {/* Decorative Elements */}
+            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div className="grid md:grid-cols-2 gap-8" variants={container}>
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="p-6 bg-white rounded-xl shadow-sm border border-zinc-100"
+                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
                 variants={fadeInUp}
                 whileHover={{
                   y: -5,
                   transition: { type: "spring", stiffness: 300, damping: 10 },
                 }}
               >
-                <p className="text-base text-zinc-600 tracking-tight font-medium leading-relaxed">
-                  {item.text}
-                </p>
+                <div className={`${item.color} mb-4`}>
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
-        </motion.section>
+        </div>
+      </motion.section>
 
-        {/* About Cards Section using ServicesCardStack */}
-        <section className="py-16">
-          <ServicesCardStack
-            cardData={aboutCards}
-            title="Our Core Principles"
-            description="These fundamentals guide everything we do at Digilynk"
-          />
-        </section>
+      {/* ---------------- */}
 
-        <FaqSection />
-      </div>
+      {/* Our Core Principles Section */}
+      <motion.section
+        className="relative py-16 md:py-24 overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-100px" }}
+        variants={container}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+
+        <div className="relative mx-auto px-4 max-w-5xl">
+          <motion.div className="text-center mb-16" variants={container}>
+            <motion.h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              variants={fadeInUp}
+            >
+              Our Core Principles
+            </motion.h2>
+            <motion.p
+              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              variants={fadeInUp}
+            >
+              These fundamentals guide everything we do at <span className="font-medium text-blue-600">Digilynk</span>
+            </motion.p>
+
+            {/* Decorative Elements */}
+            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </motion.div>
+          </motion.div>
+
+          <div className="space-y-12 md:space-y-24">
+            {aboutCards.map((card, index) => (
+              <motion.div
+                key={index}
+                className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16`}
+                variants={container}
+              >
+                <motion.div className={`w-full md:w-1/2 flex justify-center ${index % 2 === 1 ? 'md:justify-end' : 'md:justify-start'}`} variants={fadeInUp}>
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full max-w-md rounded-3xl shadow-lg"
+                  />
+                </motion.div>
+                <motion.div className="w-full md:w-1/2 space-y-6 text-center md:text-left" variants={fadeInUp}>
+                  <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${card.color} text-white`}>
+                    {card.icon}
+                  </div>
+                  <h3 className="text-3xl font-semibold text-gray-900">{card.title}</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">{card.description}</p>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+          
+      </motion.section>
+
+      <FaqSection />
     </div>
   );
 }
 
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import About from '../assets/images/About.png';
-// import values from '../assets/images/values.png';
-// import mission from '../assets/images/mission.png';
-// import vision from '../assets/images/vision.png';
-// import FaqSection from '../components/digilynk/FaqSection';
-// import { cn } from '@/lib/utils';
 
-// export default function AboutUs() {
-//     // Matching service page animations
-//     const container = {
-//         hidden: { opacity: 0 },
-//         visible: {
-//             opacity: 1,
-//             transition: {
-//                 staggerChildren: 0.15,
-//                 delayChildren: 0.2,
-//                 type: "spring",
-//                 stiffness: 100,
-//                 damping: 10
-//             }
-//         }
-//     };
-
-//     const fadeInUp = {
-//         hidden: { opacity: 0, y: 30 },
-//         visible: {
-//             opacity: 1,
-//             y: 0,
-//             transition: {
-//                 type: "spring",
-//                 stiffness: 100,
-//                 damping: 10
-//             }
-//         }
-//     };
-
-//     const fadeInLeft = {
-//         hidden: { opacity: 0, x: -30 },
-//         visible: {
-//             opacity: 1,
-//             x: 0,
-//             transition: {
-//                 type: "spring",
-//                 stiffness: 100,
-//                 damping: 10
-//             }
-//         }
-//     };
-
-//     const fadeInRight = {
-//         hidden: { opacity: 0, x: 30 },
-//         visible: {
-//             opacity: 1,
-//             x: 0,
-//             transition: {
-//                 type: "spring",
-//                 stiffness: 100,
-//                 damping: 10
-//             }
-//         }
-//     };
-
-//     const aboutCards = [
-//         {
-//             title: "Values",
-//             description: "We believe in creativity, professionalism, and collaboration. Every project is unique, and we strive to deliver tailored digital experiences that truly reflect our clients' vision.",
-//             image: values,
-//             reverse: false
-//         },
-//         {
-//             title: "Mission",
-//             description: "To design and develop innovative, high-quality websites and apps that help businesses grow, transform, and succeed in the digital world.",
-//             image: mission,
-//             reverse: true
-//         },
-//         {
-//             title: "Vision",
-//             description: "To be a leading creative partner known for crafting impactful, user-centric digital solutions that set new standards in writing your growth story.",
-//             image: vision,
-//             reverse: false
-//         }
-//     ];
-
-//     return (
-//         <div className="relative overflow-x-hidden">
-//             {/* Matching service page background effects */}
-//             <div className={cn(
-//                 "absolute z-0 inset-0 w-full max-h-[calc(100vh-5rem)]",
-//                 "[background-size:150px_50px]",
-//                 "[background-image:linear-gradient(to_right,#dbeafe_1px,transparent_1px),linear-gradient(to_bottom,#dbeafe_1px,transparent_1px)]",
-//             )} />
-//             <div className="pointer-events-none max-h-[calc(100vh-5rem)] absolute inset-0 flex items-center justify-center bg-white md:bg-zinc-50 [mask-image:radial-gradient(circle_at_top,transparent_5%,black)] md:[mask-image:radial-gradient(circle_at_top,transparent_1%,black)] dark:bg-black"></div>
-
-//             {/* Main About Container */}
-//             <div className="relative z-10">
-//                 {/* Hero Section */}
-//                 <motion.section
-//                     variants={container}
-//                     initial="hidden"
-//                     whileInView="visible"
-//                     viewport={{ once: false, margin: "-100px" }}
-//                     className='relative mb-32 z-10 w-full overflow-hidden grid place-items-center grid-cols-1 gap-5 md:flex max-h-[calc(100vh-5rem)]'
-//                 >
-//                     {/* Left Column - Text Content */}
-//                     <motion.div
-//                         className='min-h-[calc(100vh-20rem)] w-1/2 md:mx-12 m-4 md:my-0 flex flex-col md:space-y-8 space-y-3 justify-center'
-//                         variants={container}
-//                     >
-//                         <motion.h2
-//                             className="md:text-3xl text-3xl text-center md:text-start font-semibold text-zinc-800"
-//                             variants={fadeInUp}
-//                         >
-//                             About Us
-//                         </motion.h2>
-
-//                         <motion.div
-//                             className="flex flex-col space-y-8 justify-center"
-//                             variants={container}
-//                         >
-//                             <motion.p
-//                                 className='text-base md:text-xl mx-auto md:max-w-full max-w-80 text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
-//                                 variants={fadeInUp}
-//                             >
-//                                 We believe that every business is unique and deserves a digital presence that reflects its individuality.
-//                             </motion.p>
-
-//                             <motion.p
-//                                 className='text-base md:text-xl mx-auto md:max-w-full max-w-80 text-center md:text-start text-zinc-600 tracking-tight font-medium leading-relaxed'
-//                                 variants={fadeInUp}
-//                             >
-//                                 We are a creative, professional team passionate about design, innovation, and delivering results that help our clients grow and transform.
-//                             </motion.p>
-//                         </motion.div>
-//                     </motion.div>
-
-//                     {/* Right Column - Image */}
-//                     <motion.div
-//                         className='flex items-center md:min-h-[calc(100vh-5rem)] w-1/2'
-//                         variants={{
-//                             hidden: { opacity: 0, x: 50 },
-//                             visible: {
-//                                 opacity: 1,
-//                                 x: 0,
-//                                 transition: {
-//                                     type: "easeOut",
-//                                     stiffness: 100,
-//                                     damping: 10,
-//                                     delay: 0.4,
-//                                 }
-//                             }
-//                         }}
-//                     >
-//                         <img
-//                             src={About}
-//                             className='md:min-h-[calc(100vh-5rem)] w-auto object-contain'
-//                             alt="About us illustration"
-//                         />
-//                     </motion.div>
-//                 </motion.section>
-
-//                 {/* Why Choose Us Section */}
-//                 <motion.section
-//                     className="max-w-3xl mx-auto py-16 px-6"
-//                     initial="hidden"
-//                     whileInView="visible"
-//                     viewport={{ once: true, margin: "-100px" }}
-//                     variants={container}
-//                 >
-//                     <motion.h2
-//                         className="text-3xl font-semibold text-zinc-800 mb-6 text-center"
-//                         variants={fadeInUp}
-//                     >
-//                         Why choose us?
-//                     </motion.h2>
-//                     <motion.p
-//                         className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed mb-4 text-center"
-//                         variants={fadeInUp}
-//                     >
-//                         At Digilynk, we don't just deliver services — we build partnerships. Our approach is rooted in understanding your unique goals, challenges, and market before proposing any solution.
-//                     </motion.p>
-//                     <motion.p
-//                         className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed text-center"
-//                         variants={fadeInUp}
-//                     >
-//                         What sets us apart is our dedication to quality, creativity, and results. We combine technical expertise with a deep understanding of user behavior.
-//                     </motion.p>
-//                 </motion.section>
-
-//                 {/* About Cards Section */}
-//                 <div className="max-w-7xl mx-auto space-y-32 py-16 px-6">
-//                     {aboutCards.map((card, index) => (
-//                         <motion.div
-//                             key={index}
-//                             className={`flex flex-col ${card.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-16`}
-//                             initial="hidden"
-//                             whileInView="visible"
-//                             viewport={{ once: true, margin: "-100px" }}
-//                             variants={container}
-//                         >
-//                             <motion.div
-//                                 className="w-full md:w-1/2"
-//                                 variants={card.reverse ? fadeInRight : fadeInLeft}
-//                             >
-//                                 <img
-//                                     src={card.image}
-//                                     alt={card.title}
-//                                     className="w-full max-w-md mx-auto rounded-xl shadow-md"
-//                                 />
-//                             </motion.div>
-//                             <motion.div
-//                                 className="w-full md:w-1/2"
-//                                 variants={card.reverse ? fadeInLeft : fadeInRight}
-//                             >
-//                                 <h2 className="text-3xl font-semibold text-zinc-800 mb-6">{card.title}</h2>
-//                                 <p className="text-xl text-zinc-600 tracking-tight font-medium leading-relaxed">
-//                                     {card.description}
-//                                 </p>
-//                             </motion.div>
-//                         </motion.div>
-//                     ))}
-//                 </div>
-
-//                 <FaqSection />
-//             </div>
-//         </div>
-//     );
-// }

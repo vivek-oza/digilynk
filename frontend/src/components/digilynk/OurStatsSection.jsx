@@ -3,10 +3,10 @@ import { useInView, useMotionValue, useSpring, animate, motion } from 'framer-mo
 
 // Hardcoded values
 const STATS = {
-  projects: 10,
-  clients: 5,
-  experience: 2,
-  team: 6,
+  projects: 45,
+  clients: 35,
+  experience: 6,
+  team: 12,
 };
 
 // Reusable animated counter component

@@ -42,13 +42,13 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 h-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 z-50 transition-all duration-500 ${scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50'
+      className={`sticky top-0 w-full h-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg'
           : 'bg-white/80 backdrop-blur-md shadow-sm'
         }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       {/* Logo and Brand */}
       <motion.a
