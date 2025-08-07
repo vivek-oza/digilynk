@@ -39,7 +39,7 @@ export default function Footer() {
   return (
     <>
       {/* Footer Content */}
-      <footer className="relative bg-zinc-900 px-4 sm:px-6 py-4 md:py-8 text-gray-300 w-full overflow-hidden">
+      <footer className="relative bg-zinc-900 px-4 sm:px-6 py-8 md:py-8 text-gray-300 w-full overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
