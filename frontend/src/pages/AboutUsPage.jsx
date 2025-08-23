@@ -1,13 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
-import About from "../assets/images/About.png";
-import values from "../assets/images/values.png";
-import mission from "../assets/images/mission.png";
-import vision from "../assets/images/vision.png";
 import FaqSection from "../components/digilynk/FaqSection";
-import { ShimmerButton } from "../components/magicui/shimmer-button";
+import { RainbowButton } from "../components/magicui/rainbow-button";
 import { useNavigate } from "react-router-dom";
-import { Users, Target, Eye, Heart } from "lucide-react";
+import {
+  Heart,
+  Target,
+  Eye,
+  Users,
+  Sparkles,
+  Award,
+  Handshake,
+  TrendingUp,
+} from "lucide-react";
 
 export default function AboutUs() {
   const navigate = useNavigate();
@@ -39,58 +44,57 @@ export default function AboutUs() {
     },
   };
 
-  const aboutCards = [
+  const coreValues = [
     {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Our Values",
-      description: "We believe in creativity, professionalism, and collaboration. Every project is unique, and we strive to deliver tailored digital experiences that truly reflect our clients' vision.",
-      image: values,
-      color: "from-red-500 to-pink-500"
+      icon: <Sparkles className="w-8 h-8 text-blue-400" />,
+      title: "Creativity & Innovation",
+      description:
+        "We push boundaries and think outside the box to create unique digital experiences that stand out in today's competitive landscape.",
     },
     {
-      icon: <Target className="w-8 h-8" />,
-      title: "Our Mission",
-      description: "To design and develop innovative, high-quality websites and apps that help businesses grow, transform, and succeed in the digital world.",
-      image: mission,
-      color: "from-blue-500 to-cyan-500"
+      icon: <Award className="w-8 h-8 text-yellow-400" />,
+      title: "Professional Excellence",
+      description:
+        "Every project is delivered with the highest standards of quality, attention to detail, and professional craftsmanship.",
     },
     {
-      icon: <Eye className="w-8 h-8" />,
-      title: "Our Vision",
-      description: "To be a leading creative partner known for crafting impactful, user-centric digital solutions that set new standards in writing your growth story.",
-      image: vision,
-      color: "from-purple-500 to-indigo-500"
+      icon: <Handshake className="w-8 h-8 text-green-400" />,
+      title: "Client Partnership",
+      description:
+        "We build long-term relationships based on trust, transparency, and mutual success rather than just delivering services.",
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8 text-purple-400" />,
+      title: "Results-Driven",
+      description:
+        "Our focus is always on measurable outcomes and tangible business value for our clients.",
     },
   ];
 
   const whyChooseItems = [
     {
       id: 1,
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-8 h-8 text-blue-400" />,
       title: "Partnership Approach",
-      text: "At Digilynk, we don't just deliver services, we build partnerships.",
-      color: "text-blue-600"
+      text: "At Digilynk, we don't just deliver services, we build partnerships that drive your success.",
     },
     {
       id: 2,
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="w-8 h-8 text-green-400" />,
       title: "Goal-Oriented",
-      text: "Our approach is rooted in understanding your unique goals, challenges, and market.",
-      color: "text-green-600"
+      text: "Our approach is rooted in understanding your unique goals, challenges, and market positioning.",
     },
     {
       id: 3,
-      icon: <Heart className="w-6 h-6" />,
+      icon: <Heart className="w-8 h-8 text-red-400" />,
       title: "User-Centric",
-      text: "We combine technical expertise with a deep understanding of user behavior.",
-      color: "text-purple-600"
+      text: "We combine technical expertise with a deep understanding of user behavior and experience design.",
     },
     {
       id: 4,
-      icon: <Eye className="w-6 h-6" />,
+      icon: <Eye className="w-8 h-8 text-purple-400" />,
       title: "Impactful Solutions",
-      text: "Every solution we deliver is not just functional but impactful.",
-      color: "text-orange-600"
+      text: "Every solution we deliver is not just functional but impactful, designed to move your business forward.",
     },
   ];
 
@@ -102,89 +106,128 @@ export default function AboutUs() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div className="space-y-8 text-center md:text-left" variants={container}>
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <motion.div className="space-y-8" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-white mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-8 leading-tight"
               variants={fadeInUp}
             >
               About Digilynk
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
+              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-8"
               variants={fadeInUp}
             >
-              We believe that every business is unique and deserves a digital presence that reflects its individuality.
+              We believe that every business is unique and deserves a digital
+              presence that reflects its individuality and drives real results.
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-12"
               variants={fadeInUp}
             >
-              We are a creative, professional team passionate about design, innovation, and delivering results that help our clients <span className="font-medium text-blue-600">grow</span> and <span className="font-medium text-purple-600">transform</span>.
+              We are a creative, professional team passionate about design,
+              innovation, and delivering solutions that help our clients{" "}
+              <span className="font-medium text-white">grow</span> and{" "}
+              <span className="font-medium text-white">transform</span>.
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate('/contact')}
-                className="text-white px-8 py-4 text-lg font-semibold"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
+            <motion.div
+              variants={fadeInUp}
+              className="inline-block"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <RainbowButton
+                onClick={() => navigate("/contact")}
+                size="lg"
+                className="font-semibold"
               >
                 Work With Us
-              </ShimmerButton>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div className="flex space-x-2 justify-center md:justify-start" variants={fadeInUp}>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              </RainbowButton>
             </motion.div>
           </motion.div>
+        </div>
+      </motion.section>
 
-          {/* Right Column - Image */}
-          <motion.div
-            className="flex justify-center"
-            variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                  delay: 0.4,
-                },
-              },
+      {/* Core Values Section */}
+      <motion.section
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-100px" }}
+        variants={container}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
             }}
+          ></div>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-4">
+          <motion.div className="text-center mb-20" variants={container}>
+            <motion.h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
+              variants={fadeInUp}
+            >
+              Our Core Values
+            </motion.h2>
+            <motion.p
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
+              variants={fadeInUp}
+            >
+              The principles that guide everything we do and every decision we
+              make
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 lg:gap-12"
+            variants={container}
           >
-            <img
-              src={About}
-              className="w-full max-w-lg object-contain rounded-2xl"
-              alt="About us illustration"
-            />
+            {coreValues.map((value, index) => (
+              <motion.div
+                key={index}
+                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300"
+                variants={fadeInUp}
+              >
+                <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6">
+                  {value.icon}
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-zinc-300 leading-relaxed text-lg">
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </motion.section>
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -192,58 +235,61 @@ export default function AboutUs() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-16" variants={container}>
+        <div className="relative max-w-6xl mx-auto px-4">
+          <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
               variants={fadeInUp}
             >
               Why Choose Us?
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
               variants={fadeInUp}
             >
-              We don't just deliver services — we build <span className="font-medium text-green-600">partnerships</span> that drive your success
+              We don't just deliver services — we build{" "}
+              <span className="font-medium text-white">partnerships</span> that
+              drive your success
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </motion.div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 gap-8" variants={container}>
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 lg:gap-12"
+            variants={container}
+          >
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
+                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-4`}>
+                <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
+                <h3 className="text-2xl font-semibold text-white mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-zinc-300 leading-relaxed text-lg">
+                  {item.text}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </motion.section>
 
-      {/* ---------------- */}
-
-      {/* Our Core Principles Section */}
+      {/* Mission & Vision Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -251,66 +297,63 @@ export default function AboutUs() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #8b5cf6 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
-        <div className="relative mx-auto px-4 max-w-5xl">
-          <motion.div className="text-center mb-16" variants={container}>
+        <div className="relative max-w-6xl mx-auto px-4">
+          <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
               variants={fadeInUp}
             >
-              Our Core Principles
+              Our Mission & Vision
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
               variants={fadeInUp}
             >
-              These fundamentals guide everything we do at <span className="font-medium text-blue-600">Digilynk</span>
+              The driving force behind everything we do at{" "}
+              <span className="font-medium text-white">Digilynk</span>
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </motion.div>
           </motion.div>
 
-          <div className="space-y-12 md:space-y-24">
-            {aboutCards.map((card, index) => (
-              <motion.div
-                key={index}
-                className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16`}
-                variants={container}
-              >
-                <motion.div className={`w-full md:w-1/2 flex justify-center ${index % 2 === 1 ? 'md:justify-end' : 'md:justify-start'}`} variants={fadeInUp}>
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full max-w-md rounded-3xl shadow-lg"
-                  />
-                </motion.div>
-                <motion.div className="w-full md:w-1/2 space-y-6 text-center md:text-left" variants={fadeInUp}>
-                  <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${card.color} text-white`}>
-                    {card.icon}
-                  </div>
-                  <h3 className="text-3xl font-semibold text-white">{card.title}</h3>
-                  <p className="text-lg text-zinc-300 leading-relaxed">{card.description}</p>
-                </motion.div>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+            <motion.div className="space-y-6" variants={fadeInUp}>
+              <h3 className="text-3xl font-semibold text-white mb-6">
+                Our Mission
+              </h3>
+              <p className="text-lg text-zinc-300 leading-relaxed">
+                To design and develop innovative, high-quality websites and
+                applications that help businesses grow, transform, and succeed
+                in the digital world. We strive to deliver tailored digital
+                experiences that truly reflect our clients' vision and drive
+                measurable results.
+              </p>
+            </motion.div>
+
+            <motion.div className="space-y-6" variants={fadeInUp}>
+              <h3 className="text-3xl font-semibold text-white mb-6">
+                Our Vision
+              </h3>
+              <p className="text-lg text-zinc-300 leading-relaxed">
+                To be a leading creative partner known for crafting impactful,
+                user-centric digital solutions that set new standards in the
+                industry. We envision a future where every business has access
+                to exceptional digital experiences that drive growth and
+                success.
+              </p>
+            </motion.div>
           </div>
         </div>
-          
       </motion.section>
 
       <FaqSection />
     </div>
   );
 }
-
-

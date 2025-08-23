@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import ImageCardGrid from '../magicui/image-card-grid';
-import { ShimmerButton } from '../magicui/shimmer-button';
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import ImageCardGrid from "../magicui/image-card-grid";
+import { ShimmerButton } from "../magicui/shimmer-button";
 
 // Animation variants
 const container = {
@@ -13,9 +13,9 @@ const container = {
       delayChildren: 0.2,
       type: "spring",
       stiffness: 100,
-      damping: 10
-    }
-  }
+      damping: 10,
+    },
+  },
 };
 
 const fadeInUp = {
@@ -26,16 +26,16 @@ const fadeInUp = {
     transition: {
       type: "spring",
       stiffness: 100,
-      damping: 10
-    }
-  }
+      damping: 10,
+    },
+  },
 };
 
 export default function ServicesSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   function handleContactClick() {
@@ -48,42 +48,51 @@ export default function ServicesSection() {
 
   const cardData = [
     {
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       title: "Website Development",
-      description: "Modern, responsive websites that reflect your brand and drive business growth through seamless user experiences.",
+      description:
+        "Modern, responsive websites that reflect your brand and drive business growth through seamless user experiences.",
       buttonText: "Explore Service",
       buttonLink: "services/web-development",
       icon: "💻",
-      features: ["Responsive Design", "SEO Optimized", "Fast Loading"]
+      features: ["Responsive Design", "SEO Optimized", "Fast Loading"],
     },
     {
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
       title: "Software Testing",
-      description: "Comprehensive QA solutions ensuring your applications are secure, stable, and ready for real-world deployment.",
+      description:
+        "Comprehensive QA solutions ensuring your applications are secure, stable, and ready for real-world deployment.",
       buttonText: "Explore Service",
       buttonLink: "services/software-testing",
       icon: "🔍",
-      features: ["Automated Testing", "Performance Testing", "Security Audits"]
+      features: ["Automated Testing", "Performance Testing", "Security Audits"],
     },
     {
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
       title: "Graphics Design",
-      description: "Creative visual solutions and intuitive UI/UX designs that communicate your brand story effectively.",
+      description:
+        "Creative visual solutions and intuitive UI/UX designs that communicate your brand story effectively.",
       buttonText: "Explore Service",
       buttonLink: "services/graphic-design",
       icon: "🎨",
-      features: ["Brand Identity", "UI/UX Design", "Print Design"]
+      features: ["Brand Identity", "UI/UX Design", "Print Design"],
     },
   ];
 
   return (
-    <section ref={ref} className='relative py-16 md:py-24 overflow-hidden'>
+    <section ref={ref} className="relative py-16 md:py-24 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-          backgroundSize: '50px 50px'
-        }}></div>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+            backgroundSize: "50px 50px",
+          }}
+        ></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4">
@@ -105,7 +114,8 @@ export default function ServicesSection() {
             variants={fadeInUp}
           >
             Comprehensive digital solutions designed to help your business
-            <span className="font-medium text-green-600"> thrive</span> in the modern world
+            <span className="font-medium text-white"> thrive</span> in the
+            modern world
           </motion.p>
 
           {/* Decorative Elements */}
@@ -114,15 +124,18 @@ export default function ServicesSection() {
             variants={fadeInUp}
           >
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div
+              className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+              style={{ animationDelay: "0.5s" }}
+            ></div>
+            <div
+              className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
           </motion.div>
         </motion.div>
 
-        <motion.div
-          style={{ y, opacity }}
-          className="w-full"
-        >
+        <motion.div style={{ y, opacity }} className="w-full">
           <ImageCardGrid cards={cardData} />
         </motion.div>
 
@@ -134,10 +147,7 @@ export default function ServicesSection() {
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
         >
-          <motion.p
-            className="text-gray-600 mb-6"
-            variants={fadeInUp}
-          >
+          <motion.p className="text-gray-600 mb-6" variants={fadeInUp}>
             Need a custom solution? Let's discuss your project requirements.
           </motion.p>
           <motion.div variants={fadeInUp} className="mb-8 place-self-center">

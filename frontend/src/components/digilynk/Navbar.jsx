@@ -316,25 +316,21 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, ChevronUp, Monitor, Settings, Wand2, Home, Users } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  Monitor,
+  Settings,
+  Wand2,
+  Home,
+  Users,
+} from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -347,19 +343,22 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isOpen && !event.target.closest('.mobile-menu-container') &&
-        !event.target.closest('.hamburger-react')) {
+      if (
+        isOpen &&
+        !event.target.closest(".mobile-menu-container") &&
+        !event.target.closest(".hamburger-react")
+      ) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
   const handleNavigation = (path) => {
@@ -371,10 +370,11 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-5 w-full max-w-[93%] mx-auto left-0 right-0 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-xl ${scrolled
-        ? 'bg-black backdrop-blur-xl shadow-lg shadow-zinc-900 border border-zinc-800'
-        : 'bg-black backdrop-blur-md'
-        }`}
+      className={`fixed top-5 w-full max-w-[93%] mx-auto left-0 right-0 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-xl ${
+        scrolled
+          ? "bg-black backdrop-blur-xl shadow-lg shadow-zinc-900 border border-zinc-800"
+          : "bg-black backdrop-blur-md"
+      }`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
@@ -386,9 +386,7 @@ export default function Navbar() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-4xl font-jersey text-white">
-          digilynk
-        </span>
+        <span className="text-4xl font-jersey text-white">digilynk</span>
       </motion.a>
 
       {/* Desktop Navigation */}
@@ -400,14 +398,10 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-white font-medium rounded-xl hover:text-gray-300 transition-all duration-300"
               onClick={() => handleNavigation("/")}
             >
               <span className="relative z-10">HOME</span>
-              <motion.div
-                className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                layoutId="navHover"
-              />
             </button>
           </motion.li>
 
@@ -422,14 +416,16 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group">
+              <button className="px-4 py-2 text-white font-medium rounded-xl hover:text-gray-300 transition-all duration-300 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-1">
                   SERVICES
-                  <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${
+                      servicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
               </button>
             </motion.div>
 
@@ -443,9 +439,21 @@ export default function Navbar() {
                   className="absolute top-full left-0 mt-2 w-64 bg-zinc-950 backdrop-blur-xl shadow-xl rounded-2xl py-2 z-50 border border-zinc-800"
                 >
                   {[
-                    { name: "Web Development", path: "/services/web-development", icon: Monitor },
-                    { name: "Software Testing", path: "/services/software-testing", icon: Settings },
-                    { name: "Graphic Design", path: "/services/design", icon: Wand2 }
+                    {
+                      name: "Web Development",
+                      path: "/services/web-development",
+                      icon: Monitor,
+                    },
+                    {
+                      name: "Software Testing",
+                      path: "/services/software-testing",
+                      icon: Settings,
+                    },
+                    {
+                      name: "Graphic Design",
+                      path: "/services/design",
+                      icon: Wand2,
+                    },
                   ].map((service, index) => (
                     <motion.li
                       key={service.name}
@@ -456,7 +464,10 @@ export default function Navbar() {
                       onClick={() => handleNavigation(service.path)}
                     >
                       <div className="flex items-center gap-3">
-                        <service.icon size={18} className="text-gray-400 group-hover:text-white transition-colors duration-300" />
+                        <service.icon
+                          size={18}
+                          className="text-gray-400 group-hover:text-white transition-colors duration-300"
+                        />
                         <span className="font-medium">{service.name}</span>
                       </div>
                     </motion.li>
@@ -472,13 +483,10 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-white font-medium rounded-xl hover:text-gray-300 transition-all duration-300 relative overflow-hidden group"
               onClick={() => handleNavigation("/about")}
             >
               <span className="relative z-10">ABOUT</span>
-              <motion.div
-                className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
             </button>
           </motion.li>
         </ul>
@@ -490,9 +498,7 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <motion.div
-            className="absolute inset-0 bg-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
+          <motion.div className="absolute inset-0 bg-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <span className="relative z-10 text-white">CONTACT</span>
         </motion.button>
       </div>
@@ -525,7 +531,6 @@ export default function Navbar() {
             transition={{ type: "ease", stiffness: 300, damping: 30 }}
             className="lg:hidden fixed top-16 right-0 w-full bg-black rounded-2xl mt-2 backdrop-blur-xl border-l border-b border-zinc-800 shadow-2xl flex justify-start mobile-menu-container overflow-hidden"
           >
-
             <div className="relative w-full p-5">
               <ul className="flex flex-col gap-2 font-medium">
                 <motion.li
@@ -550,8 +555,10 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="flex justify-between items-center w-full py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 cursor-pointer"
-                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
+                  <div
+                    className="flex justify-between items-center w-full py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 cursor-pointer"
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  >
                     <span className="font-medium flex items-center gap-3">
                       <Monitor size={18} />
                       SERVICES
@@ -568,15 +575,27 @@ export default function Navbar() {
                     {mobileServicesOpen && (
                       <motion.ul
                         initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
+                        animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden ml-4 mt-2 space-y-1"
                       >
                         {[
-                          { name: "WEB DEVELOPMENT", path: "/services/web-development", icon: Monitor },
-                          { name: "SOFTWARE TESTING", path: "/services/software-testing", icon: Settings },
-                          { name: "GRAPHIC DESIGN", path: "/services/design", icon: Wand2 }
+                          {
+                            name: "WEB DEVELOPMENT",
+                            path: "/services/web-development",
+                            icon: Monitor,
+                          },
+                          {
+                            name: "SOFTWARE TESTING",
+                            path: "/services/software-testing",
+                            icon: Settings,
+                          },
+                          {
+                            name: "GRAPHIC DESIGN",
+                            path: "/services/design",
+                            icon: Wand2,
+                          },
                         ].map((service, index) => (
                           <motion.li
                             key={service.name}
@@ -635,8 +654,14 @@ export default function Navbar() {
                 transition={{ delay: 0.6 }}
               >
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div
+                  className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.5s" }}
+                ></div>
+                <div
+                  className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "1s" }}
+                ></div>
               </motion.div>
             </div>
           </motion.div>

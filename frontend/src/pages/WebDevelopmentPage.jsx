@@ -29,8 +29,8 @@ import {
   Rocket,
   Shield,
   Clock,
-  Users
-} from 'lucide-react';
+  Users,
+} from "lucide-react";
 
 export default function WebDevelopment() {
   const navigate = useNavigate();
@@ -65,66 +65,76 @@ export default function WebDevelopment() {
   const websiteTypesData = [
     {
       title: "Personal Portfolio Websites",
-      description: "Showcase your skills, work, and achievements with a professional personal portfolio.",
+      description:
+        "Showcase your skills, work, and achievements with a professional personal portfolio.",
       icon: <Code2 className="w-8 h-8" />,
-      color: "text-blue-600"
+      color: "text-blue-600",
     },
     {
       title: "Landing Pages",
-      description: "High-converting landing pages designed to capture leads and drive conversions.",
+      description:
+        "High-converting landing pages designed to capture leads and drive conversions.",
       icon: <Globe className="w-8 h-8" />,
-      color: "text-green-600"
+      color: "text-green-600",
     },
     {
       title: "Ecommerce Websites",
-      description: "Complete online stores with secure payment processing and inventory management.",
+      description:
+        "Complete online stores with secure payment processing and inventory management.",
       icon: <ShoppingCart className="w-8 h-8" />,
-      color: "text-purple-600"
+      color: "text-purple-600",
     },
     {
       title: "Business Websites",
-      description: "Professional corporate websites that establish credibility and drive growth.",
+      description:
+        "Professional corporate websites that establish credibility and drive growth.",
       icon: <Database className="w-8 h-8" />,
-      color: "text-orange-600"
+      color: "text-orange-600",
     },
     {
       title: "Educational Websites",
-      description: "Interactive learning platforms and educational institution websites.",
+      description:
+        "Interactive learning platforms and educational institution websites.",
       icon: <BrainCircuit className="w-8 h-8" />,
-      color: "text-indigo-600"
+      color: "text-indigo-600",
     },
   ];
 
   const specializedWebsitesData = [
     {
       title: "Hotel Websites",
-      description: "Beautiful hotel websites with booking systems and guest management features.",
+      description:
+        "Beautiful hotel websites with booking systems and guest management features.",
       icon: <Hotel className="w-8 h-8" />,
-      color: "text-blue-600"
+      color: "text-blue-600",
     },
     {
       title: "Hospital Websites",
-      description: "Professional healthcare websites with appointment booking and patient portals.",
+      description:
+        "Professional healthcare websites with appointment booking and patient portals.",
       icon: <HeartPulse className="w-8 h-8" />,
-      color: "text-red-600"
+      color: "text-red-600",
     },
     {
       title: "Event Websites",
-      description: "Dynamic event websites with registration, ticketing, and event management.",
+      description:
+        "Dynamic event websites with registration, ticketing, and event management.",
       icon: <Gamepad2 className="w-8 h-8" />,
-      color: "text-green-600"
+      color: "text-green-600",
     },
     {
       title: "Booking Websites",
-      description: "Comprehensive booking platforms for services, appointments, and reservations.",
+      description:
+        "Comprehensive booking platforms for services, appointments, and reservations.",
       icon: <CreditCard className="w-8 h-8" />,
-      color: "text-purple-600"
+      color: "text-purple-600",
     },
     {
       title: "Blogs",
-      description: "Content-rich blog websites with CMS integration and SEO optimization.",
+      description:
+        "Content-rich blog websites with CMS integration and SEO optimization.",
       icon: <Palette className="w-8 h-8" />,
-      color: "text-pink-600"
+      color: "text-pink-600",
     },
   ];
 
@@ -134,28 +144,28 @@ export default function WebDevelopment() {
       icon: <Palette className="w-6 h-6" />,
       title: "Creative Web Design Excellence",
       text: "Our strength lies in delivering creative web designs that captivate visitors and reflect your brand identity.",
-      color: "text-blue-600"
+      color: "text-blue-600",
     },
     {
       id: 2,
       icon: <Shield className="w-6 h-6" />,
       title: "Bug-Free, Smooth, and Secure Websites",
       text: "We prioritize quality at every step, rigorously testing our websites to ensure they are bug-free and secure.",
-      color: "text-green-600"
+      color: "text-green-600",
     },
     {
       id: 3,
       icon: <Rocket className="w-6 h-6" />,
       title: "Accelerate Your Business Growth",
       text: "A great website is a catalyst for business growth, converting visitors into loyal customers.",
-      color: "text-purple-600"
+      color: "text-purple-600",
     },
     {
       id: 4,
       icon: <Users className="w-6 h-6" />,
       title: "First Impressions That Build Trust",
       text: "Our visually appealing designs create strong first impressions, building trust and credibility.",
-      color: "text-orange-600"
+      color: "text-orange-600",
     },
   ];
   return (
@@ -170,15 +180,21 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <motion.div className="space-y-8 text-center md:text-left" variants={container}>
+          <motion.div
+            className="space-y-8 text-center md:text-left"
+            variants={container}
+          >
             <motion.h1
               className="text-4xl md:text-6xl font-semibold text-white mb-6"
               variants={fadeInUp}
@@ -190,19 +206,22 @@ export default function WebDevelopment() {
               className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
-              Your <span className="font-medium text-blue-600">Vision</span>, Our <span className="font-medium text-green-600">Code</span> — Crafting <span className="font-medium text-purple-600">Ideas into Reality</span>
+              Your <span className="font-medium text-white">Vision</span>, Our{" "}
+              <span className="font-medium text-white">Code</span> — Crafting{" "}
+              <span className="font-medium text-white">Ideas into Reality</span>
             </motion.p>
 
             <motion.p
               className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
-              We craft digital experiences that accelerate your business growth, showcase your brand, and inspire trust from the very first click.
+              We craft digital experiences that accelerate your business growth,
+              showcase your brand, and inspire trust from the very first click.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="inline-block">
               <ShimmerButton
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate("/contact")}
                 className="text-white px-8 py-4 text-lg font-semibold"
                 shimmerColor="#ffffff"
                 shimmerSize="0.15em"
@@ -213,10 +232,19 @@ export default function WebDevelopment() {
             </motion.div>
 
             {/* Decorative Elements */}
-            <motion.div className="flex space-x-2 justify-center md:justify-start" variants={fadeInUp}>
+            <motion.div
+              className="flex space-x-2 justify-center md:justify-start"
+              variants={fadeInUp}
+            >
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              ></div>
+              <div
+                className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </motion.div>
           </motion.div>
 
@@ -256,10 +284,13 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
@@ -274,29 +305,45 @@ export default function WebDevelopment() {
               className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
-              From personal portfolios to complex business platforms — we create <span className="font-medium text-green-600">diverse solutions</span> tailored to your needs
+              From personal portfolios to complex business platforms — we create{" "}
+              <span className="font-medium text-white">diverse solutions</span>{" "}
+              tailored to your needs
             </motion.p>
 
             {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+            <motion.div
+              className="flex justify-center mt-8 space-x-2"
+              variants={fadeInUp}
+            >
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              ></div>
+              <div
+                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </motion.div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container}>
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={container}
+          >
             {websiteTypesData.map((item, index) => (
               <motion.div
                 key={index}
                 className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-4`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-zinc-300 leading-relaxed">{item.description}</p>
+                <div className={`${item.color} mb-4`}>{item.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-zinc-300 leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -313,10 +360,13 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
@@ -331,29 +381,47 @@ export default function WebDevelopment() {
               className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
-              Industry-specific websites designed for <span className="font-medium text-blue-600">unique requirements</span> and specialized functionalities
+              Industry-specific websites designed for{" "}
+              <span className="font-medium text-white">
+                unique requirements
+              </span>{" "}
+              and specialized functionalities
             </motion.p>
 
             {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+            <motion.div
+              className="flex justify-center mt-8 space-x-2"
+              variants={fadeInUp}
+            >
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              ></div>
+              <div
+                className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </motion.div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={container}>
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={container}
+          >
             {specializedWebsitesData.map((item, index) => (
               <motion.div
                 key={index}
                 className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-4`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-zinc-300 leading-relaxed">{item.description}</p>
+                <div className={`${item.color} mb-4`}>{item.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-zinc-300 leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -370,10 +438,13 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
@@ -388,28 +459,44 @@ export default function WebDevelopment() {
               className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
-              We don't just build websites — we craft <span className="font-medium text-green-600">digital experiences</span> that drive results
+              We don't just build websites — we craft{" "}
+              <span className="font-medium text-white">
+                digital experiences
+              </span>{" "}
+              that drive results
             </motion.p>
 
             {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+            <motion.div
+              className="flex justify-center mt-8 space-x-2"
+              variants={fadeInUp}
+            >
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              ></div>
+              <div
+                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </motion.div>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 gap-8" variants={container}>
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            variants={container}
+          >
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
                 className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-4`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <div className={`${item.color} mb-4`}>{item.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {item.title}
+                </h3>
                 <p className="text-zinc-300 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
@@ -427,15 +514,21 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <motion.div className="space-y-8 text-center md:text-left" variants={container}>
+          <motion.div
+            className="space-y-8 text-center md:text-left"
+            variants={container}
+          >
             <motion.h2
               className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
@@ -447,19 +540,23 @@ export default function WebDevelopment() {
               className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
-              Our team of passionate developers blends innovative web design with robust development practices, ensuring every project is visually stunning, bug-free, and optimized for growth.
+              Our team of passionate developers blends innovative web design
+              with robust development practices, ensuring every project is
+              visually stunning, bug-free, and optimized for growth.
             </motion.p>
 
             <motion.p
               className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
-              We believe that a well-crafted website is more than just an online presence. It's a powerful tool for building trust, impressing clients, and accelerating your business success.
+              We believe that a well-crafted website is more than just an online
+              presence. It's a powerful tool for building trust, impressing
+              clients, and accelerating your business success.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="inline-block">
               <ShimmerButton
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate("/contact")}
                 className="text-white px-8 py-4 text-lg font-semibold"
                 shimmerColor="#ffffff"
                 shimmerSize="0.15em"
@@ -506,10 +603,13 @@ export default function WebDevelopment() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 text-center">
@@ -525,13 +625,12 @@ export default function WebDevelopment() {
               className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
-              Let's create a website that not only looks amazing but also drives your business <span className="font-medium text-green-600">forward</span>
+              Let's create a website that not only looks amazing but also drives
+              your business{" "}
+              <span className="font-medium text-white">forward</span>
             </motion.p>
 
-            <motion.div
-              className="flex justify-center"
-              variants={fadeInUp}
-            >
+            <motion.div className="flex justify-center" variants={fadeInUp}>
               <img
                 src={web3}
                 alt="Web development services"
@@ -540,10 +639,19 @@ export default function WebDevelopment() {
             </motion.div>
 
             {/* Decorative Elements */}
-            <motion.div className="flex justify-center mt-8 space-x-2" variants={fadeInUp}>
+            <motion.div
+              className="flex justify-center mt-8 space-x-2"
+              variants={fadeInUp}
+            >
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                style={{ animationDelay: "0.5s" }}
+              ></div>
+              <div
+                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </motion.div>
           </motion.div>
         </div>

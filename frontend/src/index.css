@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -9,32 +9,32 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'diodia';
-  src: url('assets/fonts/Diodia.otf') format('opentype');
+  font-family: "diodia";
+  src: url("assets/fonts/Diodia.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'grotesk';
-  src: url('assets/fonts/LabGrotesk.otf') format('opentype');
+  font-family: "grotesk";
+  src: url("assets/fonts/LabGrotesk.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'custom-archia';
-  src: url('assets/fonts/archia-regular-webfont.woff') format('woff');
+  font-family: "custom-archia";
+  src: url("assets/fonts/archia-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'subjectivity';
-  src: url('assets/fonts/Subjectivity-Medium.woff2') format('woff2');
+  font-family: "subjectivity";
+  src: url("assets/fonts/Subjectivity-Medium.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -73,11 +73,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --color-1: 0 100% 63%;
-  --color-2: 270 100% 63%;
-  --color-3: 210 100% 63%;
-  --color-4: 195 100% 63%;
-  --color-5: 90 100% 63%;
+  --color-1: hsl(0 100% 63%);
+  --color-2: hsl(270 100% 63%);
+  --color-3: hsl(210 100% 63%);
+  --color-4: hsl(195 100% 63%);
+  --color-5: hsl(90 100% 63%);
   --digilynk-accent: #091540;
   --digilynk-primary: #0f6bfd;
   --digilynk-secondary: #82cefd;
@@ -163,7 +163,7 @@ html {
 
 /* Allow Tailwind font utilities to override global font */
 .font-jersey {
-  font-family: 'Jersey 10', sans-serif !important;
+  font-family: "Jersey 10", sans-serif !important;
 }
 
 .digilynkAccent {
@@ -187,13 +187,15 @@ html {
 }
 
 .rainbow-bg {
-  background: linear-gradient(90deg,
-      #ff0000,
-      #ff9900,
-      #33cc33,
-      #0099ff,
-      #6633cc,
-      #ff0066);
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff9900,
+    #33cc33,
+    #0099ff,
+    #6633cc,
+    #ff0066
+  );
   background-size: 400% 400%;
 }
 
@@ -263,10 +265,55 @@ html {
   }
 }
 
+@keyframes rainbow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
 .animate-shimmer-slide {
   animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
 }
 
 .animate-spin-around {
   animation: spin-around calc(var(--speed) * 2) infinite linear;
+}
+
+.animate-rainbow {
+  animation: rainbow 2s infinite linear;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+@theme inline {
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --color-color-5: var(--color-5);
+  --color-color-4: var(--color-4);
+  --color-color-3: var(--color-3);
+  --color-color-2: var(--color-2);
+  --color-color-1: var(--color-1);
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
 }

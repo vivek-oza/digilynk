@@ -5,14 +5,14 @@ import { ShimmerButton } from "../magicui/shimmer-button";
 import RotatingText from "../reactbits/TextAnimations/RotatingText/RotatingText";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../../lib/utils";
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-const World = React.lazy(() => import("../ui/globe").then((m) => ({ default: m.World })));
-import hero_new from '../../assets/images/hero_new.webp';
-
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+const World = React.lazy(() =>
+  import("../ui/globe").then((m) => ({ default: m.World }))
+);
+import hero_new from "../../assets/images/hero_new.webp";
 
 export default function HeroSection() {
-
   const globeConfig = {
     pointSize: 4,
     globeColor: "#1a1a1a",
@@ -34,7 +34,7 @@ export default function HeroSection() {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
-    zoom: 2.5
+    zoom: 2.5,
   };
 
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
@@ -47,9 +47,8 @@ export default function HeroSection() {
       endLng: 72.209,
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    }
+    },
   ];
-
 
   const navigate = useNavigate();
 
@@ -92,7 +91,6 @@ export default function HeroSection() {
       <div
         id="hero"
         className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-16 mt-32 relative overflow-hidden flex md:items-center justify-center"
-
       >
         <motion.section
           variants={container}
@@ -102,14 +100,13 @@ export default function HeroSection() {
           className="w-full  max-w-8xl py-10 relative z-10 rounded-xl mx-10"
           style={{
             backgroundImage: `url(${hero_new})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
           {/* Main Content */}
           <div className="text-center flex py-10 flex-col items-center">
-
             <div className="text-center  px-4 flex flex-col items-center">
               <motion.h1
                 variants={fadeInUp}
@@ -161,10 +158,13 @@ export default function HeroSection() {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-6xl mx-auto px-4 text-center">
@@ -175,9 +175,9 @@ export default function HeroSection() {
             <span>We Build</span>
             <RotatingText
               texts={["Smarter", "Faster", "Better"]}
-              colors={["text-blue-600", "text-green-600", "text-purple-600"]}
-              bgColors={["bg-blue-100", "bg-green-100", "bg-purple-100"]}
-              mainClassName="px-3 sm:px-4 md:px-6 py-2 md:py-3 overflow-hidden justify-center rounded-2xl shadow-sm border border-gray-200"
+              colors={["text-white", "text-white", "text-white"]}
+              bgColors={["", "", ""]}
+              mainClassName="px-3 sm:px-4 md:px-6 py-2 md:py-3 overflow-hidden justify-center rounded-2xl"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -194,10 +194,14 @@ export default function HeroSection() {
             className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-zinc-300 leading-relaxed font-light"
             variants={fadeInUp}
           >
-            We design and develop websites, apps and digital experiences that help
-            our clients <span className="font-medium text-blue-600">grow</span>, <span className="font-medium text-green-600">innovate</span>, and <span className="font-medium text-purple-600">transform</span>. We listen, learn and
-            understand before we build. We identify your goals together, then use
-            our expertise to find that sweet spot of realistic and impactful.
+            We design and develop websites, apps and digital experiences that
+            help our clients{" "}
+            <span className="font-medium text-white">grow</span>,{" "}
+            <span className="font-medium text-white">innovate</span>, and{" "}
+            <span className="font-medium text-white">transform</span>. We
+            listen, learn and understand before we build. We identify your goals
+            together, then use our expertise to find that sweet spot of
+            realistic and impactful.
           </motion.div>
 
           {/* Decorative Elements */}
@@ -206,11 +210,17 @@ export default function HeroSection() {
             variants={fadeInUp}
           >
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div
+              className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+              style={{ animationDelay: "0.5s" }}
+            ></div>
+            <div
+              className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
           </motion.div>
         </div>
       </motion.section>
     </>
   );
-};
+}

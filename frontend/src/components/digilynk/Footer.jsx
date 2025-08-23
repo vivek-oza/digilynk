@@ -1,11 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import digiLynkLight from "../../assets/icons/digilynk_light.svg";
-import {
-  Linkedin,
-  Instagram,
-  Mail,
-} from "lucide-react";
+import { Linkedin, Instagram, Mail } from "lucide-react";
 import GradientText from "../reactbits/TextAnimations/GradientText/GradientText";
 
 export default function Footer() {
@@ -39,13 +35,16 @@ export default function Footer() {
   return (
     <>
       {/* Footer Content */}
-    <footer className="relative bg-black px-4 sm:px-6 py-8 md:py-8 text-gray-300 w-full overflow-hidden">
+      <footer className="relative bg-black px-4 sm:px-6 py-8 md:py-8 text-gray-300 w-full overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #8b5cf6 2px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, #8b5cf6 2px, transparent 0)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto">
@@ -71,11 +70,12 @@ export default function Footer() {
               </div>
               <p className="text-base text-center md:text-left text-gray-400 max-w-md font-light">
                 Transforming ideas into digital reality. We provide
-                <span className="text-blue-400 font-medium"> innovative</span> solutions for your business needs.
+                <span className="text-white font-medium"> innovative</span>{" "}
+                solutions for your business needs.
               </p>
-              
+
               {/* Decorative Elements */}
-              <motion.div 
+              <motion.div
                 className="flex justify-center md:justify-start mt-4 space-x-2"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -83,8 +83,14 @@ export default function Footer() {
                 transition={{ delay: 0.3 }}
               >
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div
+                  className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.5s" }}
+                ></div>
+                <div
+                  className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "1s" }}
+                ></div>
               </motion.div>
             </motion.div>
 
@@ -95,16 +101,16 @@ export default function Footer() {
             >
               <h2 className="text-xl font-semibold text-white">Quick Links</h2>
               <ul className="flex flex-col items-center md:items-start space-y-3">
-                <li className="hover:text-blue-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                   Home
                 </li>
-                <li className="hover:text-purple-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                   Services
                 </li>
-                <li className="hover:text-green-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                   About us
                 </li>
-                <li className="hover:text-blue-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                   Contact
                 </li>
               </ul>
@@ -115,14 +121,16 @@ export default function Footer() {
               className="flex flex-col items-center md:items-start space-y-4"
               variants={fadeInUp}
             >
-              <h2 className="text-xl font-semibold text-white">Connect With Us</h2>
+              <h2 className="text-xl font-semibold text-white">
+                Connect With Us
+              </h2>
               <ul className="flex flex-col items-center md:items-start space-y-3">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/in/digilynk-448720354/"
                   rel="noopener noreferrer"
                 >
-                  <li className="flex items-center space-x-2 hover:text-blue-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                  <li className="flex items-center space-x-2 hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                     <Linkedin className="w-5 h-5" />
                     <span>LinkedIn</span>
                   </li>
@@ -132,15 +140,13 @@ export default function Footer() {
                   href="https://www.instagram.com/digilynk.in/"
                   rel="noopener noreferrer"
                 >
-                  <li className="flex items-center space-x-2 hover:text-purple-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                  <li className="flex items-center space-x-2 hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                     <Instagram className="w-5 h-5" />
                     <span>Instagram</span>
                   </li>
                 </a>
-                <a
-                  href="mailto:digilynksolutions@gmail.com?subject=I want to contact Digilynk&body=Hello Digilynk team,%0D%0A%0D%0AI would like to discuss my project requirements.%0D%0A%0D%0AThank you!"
-                >
-                  <li className="flex items-center space-x-2 hover:text-green-400 transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <a href="mailto:digilynksolutions@gmail.com?subject=I want to contact Digilynk&body=Hello Digilynk team,%0D%0A%0D%0AI would like to discuss my project requirements.%0D%0A%0D%0AThank you!">
+                  <li className="flex items-center space-x-2 hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
                     <Mail className="w-5 h-5" />
                     <span>Email</span>
                   </li>
