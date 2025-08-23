@@ -14,14 +14,11 @@ export default {
     "./src/index.css",
     "./node_modules/@heroui/theme/dist/components/(button|input|ripple|spinner|form).js",
   ],
-  safelist: [
-    "animate-marquee",
-    "animate-marquee-vertical",
-  ],
+  safelist: ["animate-marquee", "animate-marquee-vertical"],
   theme: {
     extend: {
       animation: {
-        gradient: 'gradient 8s linear infinite',
+        gradient: "gradient 8s linear infinite",
         marquee: "marquee 20s linear infinite",
         "marquee-reverse": "marquee-reverse 20s linear infinite",
         "marquee-vertical": "marquee-vertical 20s linear infinite",
@@ -29,14 +26,16 @@ export default {
           "marquee-vertical-reverse 20s linear infinite",
         borderGlow: "borderGlow 3s infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
-        "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
+        "shimmer-slide":
+          "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        rainbow: "rainbow 2s infinite linear",
       },
       keyframes: {
         gradient: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
         },
         marquee: {
           from: { transform: "translateX(0)" },
@@ -55,7 +54,6 @@ export default {
           to: { transform: "translateY(0)" },
         },
 
-
         borderGlow: {
           "0%, 100%": {
             "border-image-source": "linear-gradient(90deg, #ff7eb3, #ff758c)",
@@ -69,19 +67,26 @@ export default {
           "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
         },
         "shimmer-slide": {
-          "to": {
-            "transform": "translate(calc(100cqw - 100%), calc(100cqh - 100%))"
-          }
+          to: {
+            transform: "translate(calc(100cqw - 100%), calc(100cqh - 100%))",
+          },
         },
         "spin-around": {
           "0%": {
-            "transform": "rotate(0deg)"
+            transform: "rotate(0deg)",
           },
           "100%": {
-            "transform": "rotate(360deg)"
-          }
+            transform: "rotate(360deg)",
+          },
         },
-
+        rainbow: {
+          "0%": {
+            "background-position": "0%",
+          },
+          "100%": {
+            "background-position": "200%",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -143,10 +148,10 @@ export default {
         zilla: ["Zilla Slab", "serif"],
         diodia: ["Diodia", "poppins"],
         "custom-archia": ["custom-archia", "serif"],
-        "grotesk": ["grotesk", "serif"],
-        "subjectivity": ["subjectivity", "serif"],
-        "jersey": ['Jersey 10', 'sans-serif']
-      }
+        grotesk: ["grotesk", "serif"],
+        subjectivity: ["subjectivity", "serif"],
+        jersey: ["Jersey 10", "sans-serif"],
+      },
     },
   },
   plugins: [
@@ -156,7 +161,7 @@ export default {
       addVariant("group-hover", ":merge(.group):hover &");
     },
     addVariablesForColors, // Add this new plugin
-    require('tailwind-scrollbar-hide')
+    require("tailwind-scrollbar-hide"),
   ],
 };
 

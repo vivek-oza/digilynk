@@ -5,14 +5,16 @@ import { useState } from "react";
 import { CardFooter } from "./card";
 import { PulsatingButtonCustom } from "../magicui/PulsatingButtonCustom";
 
-export const HoverEffect = ({
-  items,
-  className
-}) => {
+export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-4", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10 gap-4",
+        className
+      )}
+    >
       {items.map((item, idx) => (
         <a
           href={item?.link}
@@ -58,10 +60,7 @@ export const HoverEffect = ({
   );
 };
 
-export const Card = ({
-  className,
-  children
-}) => {
+export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
@@ -69,45 +68,43 @@ export const Card = ({
         className
       )}
     >
-      <div className="relative z-50 flex flex-col h-full p-4">
-        {children}
-      </div>
+      <div className="relative z-50 flex flex-col h-full p-4">{children}</div>
     </div>
   );
 };
 
-export const CardTitle = ({
-  className,
-  children
-}) => {
+export const CardTitle = ({ className, children }) => {
   return (
-    <h3 className={cn("text-zinc-100 tracking-wide mt-4 md:text-base font-medium text-base", className)}>
+    <h3
+      className={cn(
+        "text-zinc-100 tracking-wide mt-4 md:text-base font-medium text-base",
+        className
+      )}
+    >
       {children}
     </h3>
   );
 };
 
-export const CardDescription = ({
-  className,
-  children
-}) => {
+export const CardDescription = ({ className, children }) => {
   return (
     <p
-      className={cn("mt-4 text-zinc-300 tracking-wide leading-relaxed text-sm", className)}>
+      className={cn(
+        "mt-4 text-zinc-300 tracking-wide leading-relaxed text-sm",
+        className
+      )}
+    >
       {children}
     </p>
   );
 };
 
-export const CardPoints = ({
-  points,
-  className
-}) => {
+export const CardPoints = ({ points, className }) => {
   return (
     <ul className={cn("mt-6 space-y-3", className)}>
       {points.map((point, index) => (
         <li key={index} className="flex items-start">
-          <CircleCheck className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+          <CircleCheck className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" />
           {/* <FontAwesomeIcon icon={faCircleCheck} /> */}
           <span className="text-zinc-300 text-sm">{point}</span>
         </li>

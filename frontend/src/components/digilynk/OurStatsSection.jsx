@@ -1,12 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useInView, useMotionValue, useSpring, animate, motion } from 'framer-motion';
+import React, { useRef, useEffect, useState } from "react";
+import {
+  useInView,
+  useMotionValue,
+  useSpring,
+  animate,
+  motion,
+} from "framer-motion";
 
 // Hardcoded values
 const STATS = {
-  projects: 45,
-  clients: 35,
-  experience: 6,
-  team: 12,
+  projects: 10,
+  clients: 6,
+  experience: 2,
+  team: 5,
 };
 
 // Reusable animated counter component
@@ -65,13 +71,26 @@ const OurStatsSection = () => {
   const isInView = useInView(sectionRef, { amount: 0.4 }); // 40% visible
 
   return (
-    <div ref={sectionRef} className="bg-black text-white relative overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="bg-black text-white relative overflow-hidden"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 1200 800">
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#333" strokeWidth="1" />
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="#333"
+                strokeWidth="1"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
@@ -88,7 +107,6 @@ const OurStatsSection = () => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 w-full max-w-6xl mx-auto">
-
           {/* Left - Text with Animation */}
           <motion.div
             variants={container}
@@ -101,19 +119,19 @@ const OurStatsSection = () => {
               <div className="space-y-2">
                 <motion.h2
                   variants={fadeInUp}
-                  className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
+                  className="text-5xl md:text-6xl font-bold text-white"
                 >
                   IMPACT
                 </motion.h2>
                 <motion.h2
                   variants={fadeInUp}
-                  className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent"
+                  className="text-5xl md:text-6xl font-bold text-white"
                 >
                   VALUE
                 </motion.h2>
                 <motion.h2
                   variants={fadeInUp}
-                  className="text-5xl md:text-6xl font-bold text-green-400"
+                  className="text-5xl md:text-6xl font-bold text-white"
                 >
                   GROWTH
                 </motion.h2>
@@ -132,7 +150,8 @@ const OurStatsSection = () => {
             {/* Projects */}
             <div className="text-center space-y-3">
               <div className="text-6xl md:text-7xl font-bold text-white">
-                <Counter target={STATS.projects} trigger={isInView} /><span className="text-white">+</span>
+                <Counter target={STATS.projects} trigger={isInView} />
+                <span className="text-white">+</span>
               </div>
               <p className="text-gray-300 text-lg">Projects Delivered</p>
             </div>
@@ -140,7 +159,8 @@ const OurStatsSection = () => {
             {/* Clients */}
             <div className="text-center space-y-3">
               <div className="text-6xl md:text-7xl font-bold text-white">
-                <Counter target={STATS.clients} trigger={isInView} /><span className="text-white">+</span>
+                <Counter target={STATS.clients} trigger={isInView} />
+                <span className="text-white">+</span>
               </div>
               <p className="text-gray-300 text-lg">Happy Clients</p>
             </div>
@@ -148,15 +168,19 @@ const OurStatsSection = () => {
             {/* Experience */}
             <div className="text-center space-y-3">
               <div className="text-6xl md:text-7xl font-bold text-white">
-                <Counter target={STATS.experience} trigger={isInView} /><span className="text-white">+</span>
+                <Counter target={STATS.experience} trigger={isInView} />
+                <span className="text-white">+</span>
               </div>
-              <p className="text-gray-300 text-lg">Years of Industry Experience</p>
+              <p className="text-gray-300 text-lg">
+                Years of Industry Experience
+              </p>
             </div>
 
             {/* Team */}
             <div className="text-center space-y-3">
               <div className="text-6xl md:text-7xl font-bold text-white">
-                <Counter target={STATS.team} trigger={isInView} /><span className="text-white">+</span>
+                <Counter target={STATS.team} trigger={isInView} />
+                <span className="text-white">+</span>
               </div>
               <p className="text-gray-300 text-lg">Professional Team</p>
             </div>
@@ -168,19 +192,6 @@ const OurStatsSection = () => {
 };
 
 export default OurStatsSection;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useRef, useEffect, useState } from 'react';
 // import { useInView, useMotionValue, useSpring, animate } from 'framer-motion';

@@ -12,8 +12,13 @@ import { useEffect, useState } from "react";
 import { PulsatingButtonCustom } from "../magicui/PulsatingButtonCustom";
 import { useNavigate } from "react-router-dom";
 
-const FrostedCard = ({ imageSrc, imgHeight, title, bulletPoints, cardLink = [] }) => {
-
+const FrostedCard = ({
+  imageSrc,
+  imgHeight,
+  title,
+  bulletPoints,
+  cardLink = [],
+}) => {
   const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const handleCardClick = () => {
@@ -28,8 +33,14 @@ const FrostedCard = ({ imageSrc, imgHeight, title, bulletPoints, cardLink = [] }
           {title}
         </CardTitle>
         {bulletPoints.map((point, index) => (
-          <div key={index} className="flex items-start justify-start mx-auto space-x-2">
-            <CircleCheck className="text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" size={20} />
+          <div
+            key={index}
+            className="flex items-start justify-start mx-auto space-x-2"
+          >
+            <CircleCheck
+              className="text-white dark:text-white mt-0.5 flex-shrink-0"
+              size={20}
+            />
             <span className="text-sm sm:text-base">{point}</span>
           </div>
         ))}
@@ -37,7 +48,11 @@ const FrostedCard = ({ imageSrc, imgHeight, title, bulletPoints, cardLink = [] }
 
       <CardFooter className="flex items-center justify-center">
         <div onClick={handleCardClick}>
-          <PulsatingButtonCustom intensity="low" color="#000" className="hover:scale-110 transition-all">
+          <PulsatingButtonCustom
+            intensity="low"
+            color="#000"
+            className="hover:scale-110 transition-all"
+          >
             View more
           </PulsatingButtonCustom>
         </div>
