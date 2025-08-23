@@ -159,14 +159,14 @@ export default function WebDevelopment() {
     },
   ];
   return (
-    <div className="relative">
+    <div className="relative md:mt-16 mt-32">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -180,21 +180,21 @@ export default function WebDevelopment() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6"
+              className="text-4xl md:text-6xl font-semibold text-white mb-6"
               variants={fadeInUp}
             >
               Web Development
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               Your <span className="font-medium text-blue-600">Vision</span>, Our <span className="font-medium text-green-600">Code</span> — Crafting <span className="font-medium text-purple-600">Ideas into Reality</span>
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We craft digital experiences that accelerate your business growth, showcase your brand, and inspire trust from the very first click.
@@ -248,7 +248,7 @@ export default function WebDevelopment() {
 
       {/* Website Types Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -265,13 +265,13 @@ export default function WebDevelopment() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Website Types We Create
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               From personal portfolios to complex business platforms — we create <span className="font-medium text-green-600">diverse solutions</span> tailored to your needs
@@ -289,18 +289,14 @@ export default function WebDevelopment() {
             {websiteTypesData.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -309,7 +305,7 @@ export default function WebDevelopment() {
 
       {/* Specialized Websites Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -326,13 +322,13 @@ export default function WebDevelopment() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Specialized Solutions
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Industry-specific websites designed for <span className="font-medium text-blue-600">unique requirements</span> and specialized functionalities
@@ -350,18 +346,14 @@ export default function WebDevelopment() {
             {specializedWebsitesData.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -370,7 +362,7 @@ export default function WebDevelopment() {
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -387,13 +379,13 @@ export default function WebDevelopment() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Why Choose Digilynk?
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               We don't just build websites — we craft <span className="font-medium text-green-600">digital experiences</span> that drive results
@@ -411,18 +403,14 @@ export default function WebDevelopment() {
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -431,7 +419,7 @@ export default function WebDevelopment() {
 
       {/* Development Showcase Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -449,21 +437,21 @@ export default function WebDevelopment() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Craft Digital Excellence
             </motion.h2>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               Our team of passionate developers blends innovative web design with robust development practices, ensuring every project is visually stunning, bug-free, and optimized for growth.
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We believe that a well-crafted website is more than just an online presence. It's a powerful tool for building trust, impressing clients, and accelerating your business success.
@@ -510,7 +498,7 @@ export default function WebDevelopment() {
 
       {/* Final CTA Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -527,14 +515,14 @@ export default function WebDevelopment() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <motion.div className="space-y-8" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Ready to Build Your Digital Presence?
             </motion.h2>
-            
+
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Let's create a website that not only looks amazing but also drives your business <span className="font-medium text-green-600">forward</span>

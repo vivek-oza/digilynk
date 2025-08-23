@@ -1,7 +1,336 @@
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { Squash as Hamburger } from "hamburger-react";
+// import { useNavigate } from "react-router-dom";
+// import { ChevronDown, ChevronUp, Monitor, Settings, Wand2, Home, Users } from "lucide-react";
+
+// export default function Navbar() {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [servicesOpen, setServicesOpen] = useState(false);
+//   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setScrolled(window.scrollY > 20);
+//     };
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (isOpen && !event.target.closest('.mobile-menu-container') &&
+//         !event.target.closest('.hamburger-react')) {
+//         setIsOpen(false);
+//       }
+//     };
+//     document.addEventListener('mousedown', handleClickOutside);
+//     return () => document.removeEventListener('mousedown', handleClickOutside);
+//   }, [isOpen]);
+
+//   const handleNavigation = (path) => {
+//     navigate(path);
+//     setIsOpen(false);
+//     setServicesOpen(false);
+//     setMobileServicesOpen(false);
+//   };
+
+//   return (
+//     <motion.nav
+//       className={`fixed top-4 -translate-x-1/2 w-full mx-5 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-2xl ${scrolled
+//         ? 'bg-black backdrop-blur-xl shadow-xl border border-zinc-800'
+//         : 'bg-black backdrop-blur-md shadow-lg'
+//         }`}
+//       initial={{ opacity: 0, y: -20 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.3, ease: "easeOut" }}
+//     >
+//       {/* Logo and Brand */}
+//       <motion.a
+//         href="/"
+//         className="flex items-center gap-x-3 cursor-pointer group"
+//         whileHover={{ scale: 1.05 }}
+//         whileTap={{ scale: 0.95 }}
+//       >
+//         <span className="text-xl font-bold text-white">
+//           Digilynk
+//         </span>
+//       </motion.a>
+
+//       {/* Desktop Navigation */}
+//       <div className="hidden lg:flex items-center gap-6">
+//         <ul className="flex items-center gap-1">
+//           <motion.li
+//             className="relative group"
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//           >
+//             <button
+//               className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
+//               onClick={() => handleNavigation("/")}
+//             >
+//               <span className="relative z-10">HOME</span>
+//               <motion.div
+//                 className="absolute inset-0 bg-zinc-900 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+//                 layoutId="navHover"
+//               />
+//             </button>
+//           </motion.li>
+
+//           {/* Services Dropdown */}
+//           <div
+//             className="relative group"
+//             onMouseEnter={() => setServicesOpen(true)}
+//             onMouseLeave={() => setServicesOpen(false)}
+//           >
+//             <motion.div
+//               className="flex items-center"
+//               whileHover={{ scale: 1.05 }}
+//               whileTap={{ scale: 0.95 }}
+//             >
+//               <button className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group">
+//                 <span className="relative z-10 flex items-center gap-1">
+//                   SERVICES
+//                   <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+//                 </span>
+//                 <motion.div
+//                   className="absolute inset-0 bg-zinc-900 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+//                 />
+//               </button>
+//             </motion.div>
+
+//             <AnimatePresence>
+//               {servicesOpen && (
+//                 <motion.ul
+//                   initial={{ opacity: 0, y: -10, scale: 0.95 }}
+//                   animate={{ opacity: 1, y: 0, scale: 1 }}
+//                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
+//                   transition={{ duration: 0.2, ease: "easeOut" }}
+//                   className="absolute top-full left-0 mt-2 w-64 bg-zinc-900/95 backdrop-blur-xl shadow-xl rounded-2xl py-2 z-50 border border-gray-800"
+//                 >
+//                   {[
+//                     { name: "Web Development", path: "/services/web-development", icon: Monitor },
+//                     { name: "Software Testing", path: "/services/software-testing", icon: Settings },
+//                     { name: "Graphic Design", path: "/services/design", icon: Wand2 }
+//                   ].map((service, index) => (
+//                     <motion.li
+//                       key={service.name}
+//                       initial={{ opacity: 0, x: -10 }}
+//                       animate={{ opacity: 1, x: 0 }}
+//                       transition={{ delay: index * 0.05 }}
+//                       className="px-4 py-3 text-gray-300 hover:text-white hover:bg-zinc-900 cursor-pointer transition-all duration-300 mx-2 rounded-xl group"
+//                       onClick={() => handleNavigation(service.path)}
+//                     >
+//                       <div className="flex items-center gap-3">
+//                         <service.icon size={18} className="text-gray-400 group-hover:text-white transition-colors duration-300" />
+//                         <span className="font-medium">{service.name}</span>
+//                       </div>
+//                     </motion.li>
+//                   ))}
+//                 </motion.ul>
+//               )}
+//             </AnimatePresence>
+//           </div>
+
+//           <motion.li
+//             className="relative group"
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//           >
+//             <button
+//               className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
+//               onClick={() => handleNavigation("/about")}
+//             >
+//               <span className="relative z-10">ABOUT</span>
+//               <motion.div
+//                 className="absolute inset-0 bg-zinc-900 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+//               />
+//             </button>
+//           </motion.li>
+//         </ul>
+
+//         {/* CTA Button */}
+//         <motion.button
+//           className="relative px-5 py-2 rounded-xl font-medium transition-all duration-300 overflow-hidden group border border-zinc-400 hover:border-zinc-500"
+//           onClick={() => handleNavigation("/contact")}
+//           whileHover={{ scale: 1.05 }}
+//           whileTap={{ scale: 0.95 }}
+//         >
+//           <motion.div
+//             className="absolute inset-0 bg-gradient-to-r from-black to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+//           />
+//           <span className="relative z-10 text-white">CONTACT</span>
+//         </motion.button>
+//       </div>
+
+//       {/* Mobile Navigation */}
+//       <div className="lg:hidden mx-auto w-[95%] flex items-center ">
+//         <motion.button
+//           className="focus:outline-none p-2 rounded-xl hover:bg-black transition-colors duration-300"
+//           onClick={() => setIsOpen(!isOpen)}
+//           aria-label="Toggle menu"
+//           whileTap={{ scale: 0.95 }}
+//         >
+//           <Hamburger
+//             toggled={isOpen}
+//             duration={0.4}
+//             toggle={setIsOpen}
+//             color={isOpen ? "#60a5fa" : "#f3f4f6"}
+//             size={20}
+//           />
+//         </motion.button>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       <AnimatePresence>
+//         {isOpen && (
+//           <motion.div
+//             initial={{ opacity: 0, x: 350 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             exit={{ opacity: 0, x: 350 }}
+//             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+//             className="lg:hidden absolute top-[calc(4rem+16px)] right-0 w-72 bg-black backdrop-blur-xl border shadow-2xl flex justify-start mobile-menu-container rounded-2xl overflow-hidden"
+//           >
+
+//             <div className="relative w-full p-5">
+//               <ul className="flex flex-col gap-2 font-medium">
+//                 <motion.li
+//                   initial={{ opacity: 0, x: 20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   transition={{ delay: 0.1 }}
+//                   className="w-full"
+//                 >
+//                   <button
+//                     className="w-full text-left py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-900 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+//                     onClick={() => handleNavigation("/")}
+//                   >
+//                     <Home size={18} />
+//                     HOME
+//                   </button>
+//                 </motion.li>
+
+//                 {/* Mobile Services Dropdown */}
+//                 <motion.div
+//                   className="w-full"
+//                   initial={{ opacity: 0, x: 20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   transition={{ delay: 0.2 }}
+//                 >
+//                   <div className="flex justify-between items-center w-full py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-900 rounded-xl transition-all duration-300 cursor-pointer"
+//                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
+//                     <span className="font-medium flex items-center gap-3">
+//                       <Monitor size={18} />
+//                       SERVICES
+//                     </span>
+//                     <motion.div
+//                       animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
+//                       transition={{ duration: 0.3 }}
+//                     >
+//                       <ChevronDown size={18} />
+//                     </motion.div>
+//                   </div>
+
+//                   <AnimatePresence>
+//                     {mobileServicesOpen && (
+//                       <motion.ul
+//                         initial={{ height: 0, opacity: 0 }}
+//                         animate={{ height: 'auto', opacity: 1 }}
+//                         exit={{ height: 0, opacity: 0 }}
+//                         transition={{ duration: 0.3, ease: "easeInOut" }}
+//                         className="overflow-hidden ml-4 mt-2 space-y-1"
+//                       >
+//                         {[
+//                           { name: "Web Development", path: "/services/web-development", icon: Monitor },
+//                           { name: "Software Testing", path: "/services/software-testing", icon: Settings },
+//                           { name: "Graphic Design", path: "/services/design", icon: Wand2 }
+//                         ].map((service, index) => (
+//                           <motion.li
+//                             key={service.name}
+//                             initial={{ opacity: 0, x: 10 }}
+//                             animate={{ opacity: 1, x: 0 }}
+//                             transition={{ delay: index * 0.1 }}
+//                             className="py-2 px-4 text-gray-400 hover:text-white hover:bg-zinc-900 rounded-lg cursor-pointer transition-all duration-300"
+//                             onClick={() => handleNavigation(service.path)}
+//                           >
+//                             <span className="flex items-center gap-3">
+//                               <service.icon size={16} />
+//                               <span>{service.name}</span>
+//                             </span>
+//                           </motion.li>
+//                         ))}
+//                       </motion.ul>
+//                     )}
+//                   </AnimatePresence>
+//                 </motion.div>
+
+//                 <motion.li
+//                   initial={{ opacity: 0, x: 20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   transition={{ delay: 0.3 }}
+//                   className="w-full"
+//                 >
+//                   <button
+//                     className="w-full text-left py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-900 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+//                     onClick={() => handleNavigation("/about")}
+//                   >
+//                     <Users size={18} />
+//                     ABOUT
+//                   </button>
+//                 </motion.li>
+
+//                 <motion.li
+//                   initial={{ opacity: 0, x: 20 }}
+//                   animate={{ opacity: 1, x: 0 }}
+//                   transition={{ delay: 0.4 }}
+//                   className="w-full mt-2"
+//                 >
+//                   <button
+//                     className="w-full text-left py-3 px-4 text-white hover:bg-zinc-900 rounded-xl transition-all duration-300 font-medium border border-gray-700"
+//                     onClick={() => handleNavigation("/contact")}
+//                   >
+//                     CONTACT
+//                   </button>
+//                 </motion.li>
+//               </ul>
+
+//               {/* Decorative Elements */}
+//               <motion.div
+//                 className="flex justify-center mt-6 space-x-2"
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ delay: 0.6 }}
+//               >
+//                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+//                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+//                 <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+//               </motion.div>
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </motion.nav>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import React, { useState, useEffect } from "react";
-import logo from "../../assets/icons/digilynk_dark.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +345,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,12 +371,12 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`sticky top-0 w-full h-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 z-50 transition-all duration-500 ${scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg'
-          : 'bg-white/80 backdrop-blur-md shadow-sm'
+      className={`fixed top-5 w-full max-w-[90%] mx-auto left-0 right-0 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-xl ${scrolled
+        ? 'bg-black backdrop-blur-xl shadow-lg shadow-zinc-900 border border-zinc-800'
+        : 'bg-black backdrop-blur-md'
         }`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
       {/* Logo and Brand */}
@@ -57,31 +386,26 @@ export default function Navbar() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <motion.img
-          src={logo}
-          className="md:size-10 size-8 transition-all duration-300"
-          alt="LOGO"
-        />
-        <span className="text-3xl font-bold text-zinc-800">
-          Digilynk
+        <span className="text-4xl font-jersey text-white">
+          digilynk
         </span>
       </motion.a>
 
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center gap-8">
-        <ul className="flex items-center gap-2">
+      <div className="hidden lg:flex items-center gap-6">
+        <ul className="flex items-center gap-1">
           <motion.li
             className="relative group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
               onClick={() => handleNavigation("/")}
             >
               <span className="relative z-10">HOME</span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 layoutId="navHover"
               />
             </button>
@@ -98,13 +422,13 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group">
+              <button className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group">
                 <span className="relative z-10 flex items-center gap-1">
                   SERVICES
                   <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
                 </span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </button>
             </motion.div>
@@ -116,7 +440,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl shadow-xl rounded-2xl py-2 z-50 border border-gray-200/50"
+                  className="absolute top-full left-0 mt-2 w-64 bg-zinc-950 backdrop-blur-xl shadow-xl rounded-2xl py-2 z-50 border border-zinc-800"
                 >
                   {[
                     { name: "Web Development", path: "/services/web-development", icon: Monitor },
@@ -128,12 +452,12 @@ export default function Navbar() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 cursor-pointer transition-all duration-300 mx-2 rounded-xl group"
+                      className="px-4 py-3 text-gray-300 hover:text-white hover:bg-zinc-900 cursor-pointer transition-all duration-300 mx-2 rounded-xl group"
                       onClick={() => handleNavigation(service.path)}
                     >
                       <div className="flex items-center gap-3">
-                        <service.icon size={18} className="text-gray-500 group-hover:text-black transition-colors duration-300" />
-                        <span className="font-medium group-hover:text-black transition-colors duration-300">{service.name}</span>
+                        <service.icon size={18} className="text-gray-400 group-hover:text-white transition-colors duration-300" />
+                        <span className="font-medium">{service.name}</span>
                       </div>
                     </motion.li>
                   ))}
@@ -148,12 +472,12 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <button
-              className="px-4 py-2 text-gray-700 font-medium rounded-xl hover:text-black transition-all duration-300 relative overflow-hidden group"
+              className="px-4 py-2 text-gray-300 font-medium rounded-xl hover:text-white transition-all duration-300 relative overflow-hidden group"
               onClick={() => handleNavigation("/about")}
             >
               <span className="relative z-10">ABOUT</span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-zinc-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               />
             </button>
           </motion.li>
@@ -161,31 +485,22 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <motion.button
-          className="relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+          className="relative px-5 py-2 rounded-xl font-medium transition-all duration-300 overflow-hidden group border border-zinc-600 hover:border-zinc-500"
           onClick={() => handleNavigation("/contact")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ backgroundSize: '200% 200%' }}
+            className="absolute inset-0 bg-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           />
           <span className="relative z-10 text-white">CONTACT</span>
         </motion.button>
       </div>
 
       {/* Mobile Navigation */}
-      <div className="lg:hidden flex items-center gap-4">
+      <div className="lg:hidden flex items-center">
         <motion.button
-          className="focus:outline-none p-2 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+          className="focus:outline-none p-2 rounded-xl hover:bg-zinc-800 transition-colors duration-300"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
           whileTap={{ scale: 0.95 }}
@@ -194,7 +509,7 @@ export default function Navbar() {
             toggled={isOpen}
             duration={0.4}
             toggle={setIsOpen}
-            color={isOpen ? "#3b82f6" : "#1f2937"}
+            color={isOpen ? "#60a5fa" : "#f3f4f6"}
             size={20}
           />
         </motion.button>
@@ -204,21 +519,14 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 350 }}
+            initial={{ opacity: 0, x: 999 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 350 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="lg:hidden absolute top-[calc(5rem)] right-0 w-80 h-[calc(100vh-5rem)] bg-white/95 backdrop-blur-xl border-l border-gray-200/50 shadow-2xl flex justify-start mobile-menu-container"
+            exit={{ opacity: 0, x: 999 }}
+            transition={{ type: "ease", stiffness: 300, damping: 30 }}
+            className="lg:hidden fixed top-16 right-0 w-full bg-black rounded-2xl mt-2 backdrop-blur-xl border-l border-b border-zinc-800 shadow-2xl flex justify-start mobile-menu-container overflow-hidden"
           >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-                backgroundSize: '50px 50px'
-              }}></div>
-            </div>
 
-            <div className="relative w-full p-6">
+            <div className="relative w-full p-5">
               <ul className="flex flex-col gap-2 font-medium">
                 <motion.li
                   initial={{ opacity: 0, x: 20 }}
@@ -227,7 +535,7 @@ export default function Navbar() {
                   className="w-full"
                 >
                   <button
-                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+                    className="w-full text-left py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
                     onClick={() => handleNavigation("/")}
                   >
                     <Home size={18} />
@@ -242,7 +550,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="flex justify-between items-center w-full py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 cursor-pointer"
+                  <div className="flex justify-between items-center w-full py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 cursor-pointer"
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}>
                     <span className="font-medium flex items-center gap-3">
                       <Monitor size={18} />
@@ -266,16 +574,16 @@ export default function Navbar() {
                         className="overflow-hidden ml-4 mt-2 space-y-1"
                       >
                         {[
-                          { name: "Web Development", path: "/services/web-development", icon: Monitor },
-                          { name: "Software Testing", path: "/services/software-testing", icon: Settings },
-                          { name: "Graphic Design", path: "/services/design", icon: Wand2 }
+                          { name: "WEB DEVELOPMENT", path: "/services/web-development", icon: Monitor },
+                          { name: "SOFTWARE TESTING", path: "/services/software-testing", icon: Settings },
+                          { name: "GRAPHIC DESIGN", path: "/services/design", icon: Wand2 }
                         ].map((service, index) => (
                           <motion.li
                             key={service.name}
                             initial={{ opacity: 0, x: 10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="py-2 px-4 text-gray-600 hover:text-black hover:bg-blue-50 rounded-lg cursor-pointer transition-all duration-300"
+                            className="py-2 px-4 text-gray-400 hover:text-white hover:bg-zinc-800 rounded-lg cursor-pointer transition-all duration-300"
                             onClick={() => handleNavigation(service.path)}
                           >
                             <span className="flex items-center gap-3">
@@ -296,7 +604,7 @@ export default function Navbar() {
                   className="w-full"
                 >
                   <button
-                    className="w-full text-left py-3 px-4 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
+                    className="w-full text-left py-3 px-4 text-gray-300 hover:text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 font-medium flex items-center gap-3"
                     onClick={() => handleNavigation("/about")}
                   >
                     <Users size={18} />
@@ -304,63 +612,31 @@ export default function Navbar() {
                   </button>
                 </motion.li>
 
-                {/* <motion.li
+                <motion.li
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="w-full mt-4"
+                  className="w-full mt-2"
                 >
                   <button
-                    className="w-full py-3 px-4 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center relative overflow-hidden"
+                    className="w-full text-left py-3 px-4 text-white hover:bg-zinc-800 rounded-xl transition-all duration-300 font-medium border border-zinc-700"
                     onClick={() => handleNavigation("/contact")}
                   >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"
-                      animate={{
-                        backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }}
-                      style={{ backgroundSize: '200% 200%' }}
-                    />
-                    <span className="relative z-10 text-white">GET IN TOUCH</span>
+                    CONTACT
                   </button>
-                </motion.li> */}
-                <motion.li
-                  className="relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                  onClick={() => handleNavigation("/contact")}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-black to-zinc-700"
-                    animate={{
-                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    style={{ backgroundSize: '200% 200%' }}
-                  />
-                  <span className="relative z-10 text-white">CONTACT</span>
                 </motion.li>
               </ul>
 
               {/* Decorative Elements */}
               <motion.div
-                className="flex justify-center mt-8 space-x-2"
+                className="flex justify-center mt-6 space-x-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               </motion.div>
             </div>
           </motion.div>

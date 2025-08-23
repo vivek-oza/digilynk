@@ -95,14 +95,14 @@ export default function AboutUs() {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative md:mt-16 mt-32">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -116,21 +116,21 @@ export default function AboutUs() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6"
+              className="text-4xl md:text-6xl font-semibold text-white mb-6"
               variants={fadeInUp}
             >
               About Digilynk
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We believe that every business is unique and deserves a digital presence that reflects its individuality.
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We are a creative, professional team passionate about design, innovation, and delivering results that help our clients <span className="font-medium text-blue-600">grow</span> and <span className="font-medium text-purple-600">transform</span>.
@@ -184,7 +184,7 @@ export default function AboutUs() {
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -201,13 +201,13 @@ export default function AboutUs() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Why Choose Us?
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               We don't just deliver services — we build <span className="font-medium text-green-600">partnerships</span> that drive your success
@@ -225,18 +225,14 @@ export default function AboutUs() {
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -247,7 +243,7 @@ export default function AboutUs() {
 
       {/* Our Core Principles Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -264,13 +260,13 @@ export default function AboutUs() {
         <div className="relative mx-auto px-4 max-w-5xl">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Our Core Principles
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               These fundamentals guide everything we do at <span className="font-medium text-blue-600">Digilynk</span>
@@ -302,8 +298,8 @@ export default function AboutUs() {
                   <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-r ${card.color} text-white`}>
                     {card.icon}
                   </div>
-                  <h3 className="text-3xl font-semibold text-gray-900">{card.title}</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">{card.description}</p>
+                  <h3 className="text-3xl font-semibold text-white">{card.title}</h3>
+                  <p className="text-lg text-zinc-300 leading-relaxed">{card.description}</p>
                 </motion.div>
               </motion.div>
             ))}

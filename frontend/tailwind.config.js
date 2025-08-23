@@ -137,14 +137,16 @@ export default {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        ibmplexsans: ["IBM Plex Sans", "sans-serif"],
         bree: ["Bree Serif", "serif"],
         zilla: ["Zilla Slab", "serif"],
         diodia: ["Diodia", "poppins"],
         "custom-archia": ["custom-archia", "serif"],
         "grotesk": ["grotesk", "serif"],
         "subjectivity": ["subjectivity", "serif"],
-
-      },
+        "jersey": ['Jersey 10', 'sans-serif']
+      }
     },
   },
   plugins: [
@@ -164,7 +166,7 @@ function addVariablesForColors({ addBase, theme }) {
   const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });

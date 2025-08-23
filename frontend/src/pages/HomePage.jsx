@@ -31,7 +31,7 @@ export default function HomePage() {
 
 
       {/* See our us secttion*/}
-      <SeeOurWork />
+      {/* <SeeOurWork /> */}
 
       {/* Work with section */}
       <WorkWithUs />
