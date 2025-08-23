@@ -371,7 +371,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed top-5 w-full max-w-[90%] mx-auto left-0 right-0 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-xl ${scrolled
+      className={`fixed top-5 w-full max-w-[93%] mx-auto left-0 right-0 h-16 flex items-center justify-between px-6 z-50 transition-all duration-300 rounded-xl ${scrolled
         ? 'bg-black backdrop-blur-xl shadow-lg shadow-zinc-900 border border-zinc-800'
         : 'bg-black backdrop-blur-md'
         }`}
