@@ -58,7 +58,7 @@ export default function WorkWithUs() {
     ];
 
     return (
-        <section className='relative bg-gray-50 py-16 md:py-24 overflow-hidden'>
+        <section className='relative bg-black py-16 md:py-24 overflow-hidden'>
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
@@ -76,13 +76,13 @@ export default function WorkWithUs() {
                     viewport={{ once: false, margin: "-100px" }}
                 >
                     <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
                         variants={fadeInUp}
                     >
                         Work With Us
                     </motion.h2>
                     <motion.p
-                        className="text-lg text-gray-600 max-w-2xl mx-auto font-light mb-12"
+                        className="text-lg text-gray-300 max-w-2xl mx-auto font-light mb-12"
                         variants={fadeInUp}
                     >
                         Ready to transform your digital presence? Let's collaborate and bring your vision to life with our

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+/*************  ✨ Windsurf Command ⭐  *************/
+/*******  a8f31931-1b22-4964-9ed6-f7c14e8c19dc  *******/
 const ImageCard = ({ image, title, description, buttonText, buttonLink }) => {
   return (
     <motion.div

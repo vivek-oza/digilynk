@@ -60,14 +60,14 @@ export default function ContactPage() {
     ];
 
     return (
-        <div className="relative">
+        <div className="relative md:mt-16 mt-32">
             {/* Hero Section */}
             <motion.section
                 variants={container}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
-                className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+                className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
             >
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-5">
@@ -81,14 +81,14 @@ export default function ContactPage() {
                     {/* Left Column - Text Content */}
                     <motion.div className="space-y-8 text-center md:text-left" variants={container}>
                         <motion.h1
-                            className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6"
+                            className="text-4xl md:text-5xl font-semibold text-white mb-6"
                             variants={fadeInUp}
                         >
                             Let's Build Something Amazing Together!
                         </motion.h1>
 
                         <motion.p
-                            className="text-lg md:text-xl text-gray-600 leading-relaxed"
+                            className="text-lg md:text-xl text-zinc-300 leading-relaxed"
                             variants={fadeInUp}
                         >
                             Ready to transform your ideas into reality? We're here to help you create digital experiences that <span className="font-medium text-blue-600">inspire</span> and <span className="font-medium text-purple-600">engage</span>.
@@ -99,20 +99,16 @@ export default function ContactPage() {
                             {contactInfo.map((info, index) => (
                                 <motion.div
                                     key={index}
-                                    className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all duration-300"
+                                    className="bg-zinc-900 rounded-xl p-4 border border-zinc-800"
                                     variants={fadeInUp}
-                                    whileHover={{
-                                        y: -3,
-                                        transition: { type: "spring", stiffness: 300, damping: 10 },
-                                    }}
                                 >
                                     <div className="flex items-center space-x-3">
-                                        <div className={`${info.color} bg-white rounded-lg p-2 shadow-sm`}>
+                                        <div className={`${info.color} bg-zinc-800 rounded-lg p-2 shadow-sm`}>
                                             {info.icon}
                                         </div>
                                         <div>
-                                            <h3 className="font-medium text-gray-900 text-sm">{info.title}</h3>
-                                            <p className="text-gray-600 text-sm">{info.content}</p>
+                                            <h3 className="font-medium text-white text-sm">{info.title}</h3>
+                                            <p className="text-zinc-300 text-sm">{info.content}</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -155,7 +151,7 @@ export default function ContactPage() {
 
             {/* Contact Form Section */}
             <motion.section
-                className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+                className="relative bg-black py-16 md:py-24 overflow-hidden"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
@@ -172,13 +168,13 @@ export default function ContactPage() {
                 <div className="relative max-w-4xl mx-auto px-4">
                     <motion.div className="text-center mb-12" variants={container}>
                         <motion.h2
-                            className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+                            className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
                             variants={fadeInUp}
                         >
                             Start Your Project
                         </motion.h2>
                         <motion.p
-                            className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+                            className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
                             variants={fadeInUp}
                         >
                             Tell us about your vision and we'll help bring it to <span className="font-medium text-green-600">life</span>
@@ -193,12 +189,8 @@ export default function ContactPage() {
                     </motion.div>
 
                     <motion.div
-                        className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                        className="bg-zinc-900 rounded-2xl shadow-sm border border-zinc-800 overflow-hidden"
                         variants={fadeInUp}
-                        whileHover={{
-                            y: -5,
-                            transition: { type: "spring", stiffness: 300, damping: 10 },
-                        }}
                     >
                         <ContactForm />
                     </motion.div>

@@ -196,14 +196,14 @@ export default function SoftwareTesting() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative">
+    <div className="relative md:mt-16 mt-32">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -217,21 +217,21 @@ export default function SoftwareTesting() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6"
+              className="text-4xl md:text-6xl font-semibold text-white mb-6"
               variants={fadeInUp}
             >
               Software Testing
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               Ensuring <span className="font-medium text-blue-600">flawless performance</span>, exceptional <span className="font-medium text-green-600">user experiences</span>, and <span className="font-medium text-purple-600">business success</span>.
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We deliver comprehensive QA solutions that go beyond finding bugs to ensure your software exceeds quality standards.
@@ -285,7 +285,7 @@ export default function SoftwareTesting() {
 
       {/* Testing Services Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -302,13 +302,13 @@ export default function SoftwareTesting() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Testing Services
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Comprehensive QA solutions tailored to validate every aspect of your <span className="font-medium text-green-600">product</span>
@@ -326,18 +326,14 @@ export default function SoftwareTesting() {
             {testingServicesData.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${service.color} mb-4`}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -346,7 +342,7 @@ export default function SoftwareTesting() {
 
       {/* Industries Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -363,13 +359,13 @@ export default function SoftwareTesting() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Industries We Serve
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Delivering tailored QA solutions for your industry's unique <span className="font-medium text-blue-600">challenges</span>
@@ -387,18 +383,14 @@ export default function SoftwareTesting() {
             {industriesData.map((industry, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${industry.color} mb-4`}>
                   {industry.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{industry.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{industry.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{industry.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{industry.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -407,7 +399,7 @@ export default function SoftwareTesting() {
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -424,13 +416,13 @@ export default function SoftwareTesting() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Why Choose Digilynk?
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               We don't just find bugs — we craft <span className="font-medium text-green-600">quality experiences</span> that drive results
@@ -448,18 +440,14 @@ export default function SoftwareTesting() {
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -468,7 +456,7 @@ export default function SoftwareTesting() {
 
       {/* Testing Showcase Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -486,21 +474,21 @@ export default function SoftwareTesting() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Build With Confidence
             </motion.h2>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               In today's fast-moving digital era, flawless software isn't optional — it's expected. Your product's success hinges on rigorous, end-to-end testing.
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               At Digilynk, we deliver smarter QA solutions that go beyond just finding bugs. We identify risks early, boost performance, refine usability, and ensure seamless cross-platform functionality.
@@ -547,7 +535,7 @@ export default function SoftwareTesting() {
 
       {/* Final CTA Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -564,14 +552,14 @@ export default function SoftwareTesting() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <motion.div className="space-y-8" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Ready to Ensure Quality?
             </motion.h2>
             
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Let's create software that not only works flawlessly but also drives your business <span className="font-medium text-green-600">forward</span>

@@ -26,8 +26,7 @@ export async function handleContact(req, res) {
       message: "Message sent successfully",
       data: {
         contactId: contact._id,
-        name: contact.name,
-        services: contact.services
+        name: contact.name
       }
     });
 

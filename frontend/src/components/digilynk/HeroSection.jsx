@@ -8,6 +8,7 @@ import { cn } from "../../lib/utils";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 const World = React.lazy(() => import("../ui/globe").then((m) => ({ default: m.World })));
+import hero_new from '../../assets/images/hero_new.webp';
 
 
 export default function HeroSection() {
@@ -33,8 +34,9 @@ export default function HeroSection() {
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
-    zoom:2.5
+    zoom: 2.5
   };
+
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
   const sampleArcs = [
     {
@@ -87,30 +89,40 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className=" min-h-screen relative overflow-hidden flex md:items-center justify-center">
+      <div
+        id="hero"
+        className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-16 mt-32 relative overflow-hidden flex md:items-center justify-center"
+
+      >
         <motion.section
           variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className="w-full max-w-7xl mx-auto relative z-10"
+          className="w-full  max-w-8xl py-10 relative z-10 rounded-xl mx-10"
+          style={{
+            backgroundImage: `url(${hero_new})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
         >
           {/* Main Content */}
           <div className="text-center flex py-10 flex-col items-center">
 
             <div className="text-center  px-4 flex flex-col items-center">
               <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 whitespace-nowrap"
-            >
-              Welcome to <span className="">Digilynk</span>
-            </motion.h1>
+                variants={fadeInUp}
+                className="text-4xl md:text-8xl font-semibold text-white mb-6 whitespace-nowrap"
+              >
+                <span className="">Digilynk</span>
+              </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
-                className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto"
+                className="text-xl md:text-3xl text-gray-100 mb-8 leading-relaxed max-w-3xl mx-auto"
               >
-                Results-driven digital solutions specializing in website development and software testing.
+                We build tech solutions for your business.
               </motion.p>
 
               <motion.div variants={fadeInUp} className="mb-8">
@@ -126,7 +138,7 @@ export default function HeroSection() {
               </motion.div>
             </div>
             {/* Globe */}
-            <div className="md:h-[600px] h-[350px] aspect-square p-0 m-0">
+            {/* <div className="md:h-[600px] h-[350px] aspect-square p-0 m-0">
               <React.Suspense fallback={
                 <div className="flex items-center justify-center h-full">
                   <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -134,14 +146,14 @@ export default function HeroSection() {
               }>
                 <World data={sampleArcs} globeConfig={globeConfig} />
               </React.Suspense>
-            </div>
+            </div> */}
           </div>
         </motion.section>
       </div>
 
       {/* Second Section */}
       <motion.section
-        className="relative bg-white py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -157,7 +169,7 @@ export default function HeroSection() {
 
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-8"
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-8"
             variants={fadeInUp}
           >
             <span>We Build</span>
@@ -179,7 +191,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div
-            className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light"
+            className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-zinc-300 leading-relaxed font-light"
             variants={fadeInUp}
           >
             We design and develop websites, apps and digital experiences that help

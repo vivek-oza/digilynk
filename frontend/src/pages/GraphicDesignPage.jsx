@@ -189,14 +189,14 @@ export default function GraphicDesign() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative">
+    <div className="relative md:mt-16 mt-32">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-white overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -210,21 +210,21 @@ export default function GraphicDesign() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6"
+              className="text-4xl md:text-6xl font-semibold text-white mb-6"
               variants={fadeInUp}
             >
               Graphic Design
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               Transforming <span className="font-medium text-blue-600">ideas</span> into <span className="font-medium text-purple-600">visual stories</span> that inspire action.
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               We create compelling visual identities that resonate with your target audience and build memorable brand experiences.
@@ -278,7 +278,7 @@ export default function GraphicDesign() {
 
       {/* Design Services Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -295,13 +295,13 @@ export default function GraphicDesign() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Design Services
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Comprehensive design solutions that bring your brand vision to <span className="font-medium text-green-600">life</span>
@@ -319,18 +319,14 @@ export default function GraphicDesign() {
             {designServicesData.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${service.color} mb-4`}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -339,7 +335,7 @@ export default function GraphicDesign() {
 
       {/* Industries Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -356,13 +352,13 @@ export default function GraphicDesign() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Industries We Serve
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Creating compelling visual identities that resonate with your <span className="font-medium text-blue-600">target audience</span>
@@ -380,18 +376,14 @@ export default function GraphicDesign() {
             {industriesData.map((industry, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${industry.color} mb-4`}>
                   {industry.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{industry.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{industry.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{industry.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{industry.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -400,7 +392,7 @@ export default function GraphicDesign() {
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -417,13 +409,13 @@ export default function GraphicDesign() {
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Why Choose Digilynk?
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               We don't just create designs — we craft <span className="font-medium text-green-600">visual experiences</span> that drive results
@@ -441,18 +433,14 @@ export default function GraphicDesign() {
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
                 variants={fadeInUp}
-                whileHover={{
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 10 },
-                }}
               >
                 <div className={`${item.color} mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -461,7 +449,7 @@ export default function GraphicDesign() {
 
       {/* Design Showcase Section */}
       <motion.section
-        className="relative py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -479,21 +467,21 @@ export default function GraphicDesign() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8 text-center md:text-left" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Design That Speaks
             </motion.h2>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               In a world where first impressions matter more than ever, exceptional design isn't just an option — it's essential for success.
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed"
+              className="text-lg text-zinc-300 leading-relaxed"
               variants={fadeInUp}
             >
               At Digilynk, we create visual experiences that captivate audiences, communicate your brand message clearly, and drive meaningful engagement.
@@ -540,7 +528,7 @@ export default function GraphicDesign() {
 
       {/* Final CTA Section */}
       <motion.section
-        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-16 md:py-24 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -557,14 +545,14 @@ export default function GraphicDesign() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <motion.div className="space-y-8" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
               variants={fadeInUp}
             >
               Ready to Transform Your Brand?
             </motion.h2>
             
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
               variants={fadeInUp}
             >
               Let's create visual experiences that captivate your audience and drive your business <span className="font-medium text-green-600">forward</span>

@@ -77,7 +77,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section ref={ref} className='relative bg-white py-16 md:py-24 overflow-hidden'>
+    <section ref={ref} className='relative py-16 md:py-24 overflow-hidden'>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -95,13 +95,13 @@ export default function ServicesSection() {
           viewport={{ once: false, margin: "-100px" }}
         >
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
             variants={fadeInUp}
           >
             Our Services
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+            className="text-lg text-gray-300 max-w-2xl mx-auto font-light"
             variants={fadeInUp}
           >
             Comprehensive digital solutions designed to help your business

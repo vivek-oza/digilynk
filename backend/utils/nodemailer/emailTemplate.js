@@ -26,22 +26,7 @@ const bgColors = {
  * Generate HTML email template with minimal sleek Bento UI styling
  */
 const bentoEmailTemplate = (data) => {
-  // Ensure services is an array even if it's empty or undefined
-  const services = Array.isArray(data.services) ? data.services : [];
 
-  // Generate service tags with alternating colors (vertical layout)
-  const colors = ["blue", "green", "purple"];
-  const serviceTags = services
-    .map((service, index) => {
-      const colorClass = colors[index % colors.length];
-      return `
-      <div style="margin-bottom: 8px;">
-        <span style="display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; color: white; background-color: ${accentColors[colorClass]};">
-          ${service}
-        </span>
-      </div>`;
-    })
-    .join("");
 
   // Format current date
   const currentDate = new Date().toLocaleString();
@@ -132,36 +117,12 @@ const bentoEmailTemplate = (data) => {
               <h2 style="font-weight: 600; font-size: 16px; margin: 0; color: #1E293B;">Project Details</h2>
             </div>
             <div>
-              <div style="margin-bottom: 16px;">
-                <div style="font-weight: 500; font-size: 13px; color: #64748B; margin-bottom: 6px;">Budget</div>
+              <div style="margin-bottom: 0;">
+                <div style="font-weight: 500; font-size: 13px; color: #64748B; margin-bottom: 6px;">Project Inquiry</div>
                 <div style="font-weight: 500; font-size: 15px; word-break: break-word; color: ${
                   accentColors.green
-                };">${data.budget}</div>
+                };">Contact Request</div>
               </div>
-              <div style="margin-bottom: 0;">
-                <div style="font-weight: 500; font-size: 13px; color: #64748B; margin-bottom: 6px;">Discovery Source</div>
-                <div style="font-weight: 500; font-size: 15px; word-break: break-word;">${
-                  data.discoverySource
-                }</div>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" width="100%" style="display: block;">
-          <!-- Services Card -->
-          <div style="background: ${
-            bgColors.card
-          }; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); position: relative; overflow: hidden;">
-            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-              <div style="width: 8px; height: 8px; border-radius: 50%; background-color: ${
-                accentColors.purple
-              }; margin-right: 10px;"></div>
-              <h2 style="font-weight: 600; font-size: 16px; margin: 0; color: #1E293B;">Services Needed</h2>
-            </div>
-            <div>
-              ${serviceTags}
             </div>
           </div>
         </td>

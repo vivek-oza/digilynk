@@ -18,7 +18,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"budget\": \"$1000 - $5000\",\n  \"services\": [\"Web Design\", \"SEO\"],\n  \"discoverySource\": \"Google\",\n  \"message\": \"I am interested in your services.\"\n}"
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"message\": \"I am interested in your services.\"\n}"
         },
         "url": {
           "raw": "http://localhost:5000/api/contact",
@@ -42,7 +42,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Jane\",\n  \"phone\": \"9876543210\",\n  \"budget\": \"$500 - $1000\",\n  \"services\": [\"Marketing\"],\n  \"discoverySource\": \"LinkedIn\",\n  \"message\": \"Please reach out to me.\"\n}"
+          "raw": "{\n  \"name\": \"Jane\",\n  \"phone\": \"9876543210\",\n  \"message\": \"Please reach out to me.\"\n}"
         },
         "url": {
           "raw": "http://localhost:5000/api/contact",
