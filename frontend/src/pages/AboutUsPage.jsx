@@ -99,7 +99,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <div className="relative md:mt-16 mt-32">
+    <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
         variants={container}
@@ -122,14 +122,14 @@ export default function AboutUs() {
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <motion.div className="space-y-8" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-8 leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-8 leading-tight font-roboto"
               variants={fadeInUp}
             >
               About Digilynk
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-8"
+              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-8 font-roboto"
               variants={fadeInUp}
             >
               We believe that every business is unique and deserves a digital
@@ -137,7 +137,7 @@ export default function AboutUs() {
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-12"
+              className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mx-auto mb-12 font-roboto"
               variants={fadeInUp}
             >
               We are a creative, professional team passionate about design,
@@ -155,7 +155,7 @@ export default function AboutUs() {
               <RainbowButton
                 onClick={() => navigate("/contact")}
                 size="lg"
-                className="font-semibold"
+                className="font-semibold font-roboto"
               >
                 Work With Us
               </RainbowButton>
@@ -186,13 +186,13 @@ export default function AboutUs() {
         <div className="relative max-w-6xl mx-auto px-4">
           <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 font-roboto"
               variants={fadeInUp}
             >
               Our Core Values
             </motion.h2>
             <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               The principles that guide everything we do and every decision we
@@ -207,18 +207,25 @@ export default function AboutUs() {
             {coreValues.map((value, index) => (
               <motion.div
                 key={index}
-                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300"
+                className="group relative bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-zinc-800/50 hover:border-pink-400/60 hover:shadow-pink-500/20 transition-all duration-500 hover:scale-105 overflow-hidden"
                 variants={fadeInUp}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.3 },
+                }}
               >
-                <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6">
-                  {value.icon}
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white mb-4 font-roboto group-hover:text-white transition-colors duration-300">
+                    {value.title}
+                  </h3>
+                  <p className="text-zinc-300 leading-relaxed text-lg font-roboto group-hover:text-zinc-200 transition-colors duration-300">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg">
-                  {value.description}
-                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -247,13 +254,13 @@ export default function AboutUs() {
         <div className="relative max-w-6xl mx-auto px-4">
           <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 font-roboto"
               variants={fadeInUp}
             >
               Why Choose Us?
             </motion.h2>
             <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               We don't just deliver services — we build{" "}
@@ -269,18 +276,25 @@ export default function AboutUs() {
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300"
+                className="group relative bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-zinc-800/50 hover:border-blue-400/60 hover:shadow-blue-500/20 transition-all duration-500 hover:scale-105 overflow-hidden"
                 variants={fadeInUp}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.3 },
+                }}
               >
-                <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6">
-                  {item.icon}
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="inline-flex p-3 rounded-2xl bg-zinc-800/50 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white mb-4 font-roboto group-hover:text-white transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-zinc-300 leading-relaxed text-lg font-roboto group-hover:text-zinc-200 transition-colors duration-300">
+                    {item.text}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg">
-                  {item.text}
-                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -309,13 +323,13 @@ export default function AboutUs() {
         <div className="relative max-w-6xl mx-auto px-4">
           <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 font-roboto"
               variants={fadeInUp}
             >
               Our Mission & Vision
             </motion.h2>
             <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               The driving force behind everything we do at{" "}
@@ -325,10 +339,10 @@ export default function AboutUs() {
 
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
             <motion.div className="space-y-6" variants={fadeInUp}>
-              <h3 className="text-3xl font-semibold text-white mb-6">
+              <h3 className="text-3xl font-semibold text-white mb-6 font-roboto">
                 Our Mission
               </h3>
-              <p className="text-lg text-zinc-300 leading-relaxed">
+              <p className="text-lg text-zinc-300 leading-relaxed font-roboto">
                 To design and develop innovative, high-quality websites and
                 applications that help businesses grow, transform, and succeed
                 in the digital world. We strive to deliver tailored digital
@@ -338,10 +352,10 @@ export default function AboutUs() {
             </motion.div>
 
             <motion.div className="space-y-6" variants={fadeInUp}>
-              <h3 className="text-3xl font-semibold text-white mb-6">
+              <h3 className="text-3xl font-semibold text-white mb-6 font-roboto">
                 Our Vision
               </h3>
-              <p className="text-lg text-zinc-300 leading-relaxed">
+              <p className="text-lg text-zinc-300 leading-relaxed font-roboto">
                 To be a leading creative partner known for crafting impactful,
                 user-centric digital solutions that set new standards in the
                 industry. We envision a future where every business has access

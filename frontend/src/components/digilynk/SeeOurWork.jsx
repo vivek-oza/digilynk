@@ -1,78 +1,10 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import ProjectCardGrid from "../magicui/project-card-grid";
-import project1 from "../../assets/images/projects/project1.png";
-import project2 from "../../assets/images/projects/project2.png";
-import project3 from "../../assets/images/projects/project3.png";
-import project4 from "../../assets/images/projects/project4.png";
-import project5 from "../../assets/images/projects/project5.png";
+import React from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { ShimmerButton } from "../magicui/shimmer-button";
 
 export default function SeeOurWork() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // Scroll-based animations
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "3%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
-
-  const cardDetails = [
-    {
-      src: project4,
-      title: "Creed Creations",
-      description:
-        "A creative agency website, with custom pages, design elements and 100% satisfaction in customer experience.",
-      link: "https://creedcreation-draft.vercel.app/",
-      category: "Website App",
-      tech: ["React Native", "Firebase", "ML"],
-    },
-    {
-      src: project3,
-      title: "The bachelor's space ",
-      description:
-        "A beautiful landing page for a hostel, now converting more and more viewers into hostelers and tenants.",
-      link: "https://the-bachelors-space.vercel.app/",
-      category: "Web Development",
-      tech: ["Next.js", "TypeScript", "Stripe"],
-    },
-    {
-      src: project2,
-      title: "Monday Labs",
-      description:
-        "AI-powered business solutions platform with dynamic content management and performance optimization.",
-      link: "https://www.mondaylabs.ai/",
-      category: "Web Development",
-      tech: ["React", "Node.js", "AI Integration"],
-    },
-    {
-      src: project1,
-      title: "Placementor",
-      description:
-        "Campus recruitment platform with secure profiles, real-time notifications, and coordinator dashboards.",
-      link: "https://placementportal.vercel.app/",
-      category: "Full Stack",
-      tech: ["React", "Express", "MongoDB"],
-    },
-    {
-      src: project5,
-      title: "Personal Portfolio",
-      description:
-        "Modern financial dashboard with advanced analytics and automated reporting features.",
-      link: "https://sidefolio.vercel.app/",
-      category: "Dashboard",
-      tech: ["Vue.js", "D3.js", "Python"],
-    },
-    // {
-    //     src: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop",
-    //     title: "CreativeStudio",
-    //     description: "Digital design platform for creative professionals with collaborative tools and asset management.",
-    //     link: "#",
-    //     category: "Design Platform",
-    //     tech: ["React", "WebGL", "AWS"]
-    // }
-  ];
+  const navigate = useNavigate();
 
   const container = {
     hidden: { opacity: 0 },
@@ -102,10 +34,7 @@ export default function SeeOurWork() {
   };
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
-    >
+    <section className="relative bg-black py-24 md:py-32 overflow-hidden font-roboto">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -117,49 +46,58 @@ export default function SeeOurWork() {
         ></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
-        <motion.div
-          className="text-center mb-16"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-        >
+      <div className="relative max-w-6xl mx-auto px-4 text-center">
+        <motion.div className="space-y-12" variants={container}>
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
             variants={fadeInUp}
           >
             See Our Work
           </motion.h2>
+
           <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto font-light"
+            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
             variants={fadeInUp}
           >
-            Discover our portfolio of innovative digital solutions that have
-            helped businesses
-            <span className="font-medium text-white"> transform</span> and{" "}
-            <span className="font-medium text-white">grow</span>
+            Explore our portfolio of successful projects that showcase our
+            expertise in web development, software testing, and graphic design.
           </motion.p>
+
+          <motion.p
+            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+            variants={fadeInUp}
+          >
+            Each project represents our commitment to quality, innovation, and
+            delivering solutions that drive real business results.
+          </motion.p>
+
+          <motion.div variants={fadeInUp} className="inline-block">
+            <ShimmerButton
+              onClick={() => navigate("/contact")}
+              className="text-white px-10 py-5 text-xl font-semibold font-roboto"
+              shimmerColor="#ffffff"
+              shimmerSize="0.15em"
+              background="rgba(0, 0, 0, 1)"
+            >
+              View Portfolio
+            </ShimmerButton>
+          </motion.div>
 
           {/* Decorative Elements */}
           <motion.div
-            className="flex justify-center mt-8 space-x-2"
+            className="flex justify-center mt-12 space-x-3"
             variants={fadeInUp}
           >
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
             <div
-              className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+              className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
               style={{ animationDelay: "0.5s" }}
             ></div>
             <div
-              className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+              className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
               style={{ animationDelay: "1s" }}
             ></div>
           </motion.div>
-        </motion.div>
-
-        <motion.div style={{ y, opacity }} className="w-full">
-          <ProjectCardGrid cards={cardDetails} />
         </motion.div>
       </div>
     </section>

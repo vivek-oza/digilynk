@@ -1,14 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import testing1 from "../assets/images/testing/testing1.png";
-import testing2 from "../assets/images/testing/testing2.png";
-import testing3 from "../assets/images/testing/testing3.png";
-import testing4 from "../assets/images/testing/testing4.png";
-import testing5 from "../assets/images/testing/testing5.png";
-import testingBanner from "../assets/images/testing/testingBanner.png";
-import testingBanner2 from "../assets/images/testing/testingBanner2.jpg";
-import testingBannerEnd from "../assets/images/testing/testingBannerEnd.png";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
 import {
   HeartPulse,
@@ -212,14 +204,14 @@ export default function SoftwareTesting() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative md:mt-16 mt-32">
+    <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -232,21 +224,17 @@ export default function SoftwareTesting() {
           ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            className="space-y-8 text-center md:text-left"
-            variants={container}
-          >
+        <div className="relative max-w-6xl mx-auto px-4 text-center">
+          <motion.div className="space-y-12" variants={container}>
             <motion.h1
-              className="text-4xl md:text-6xl font-semibold text-white mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Software Testing
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
+              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
               variants={fadeInUp}
             >
               Ensuring{" "}
@@ -260,7 +248,7 @@ export default function SoftwareTesting() {
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
+              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
               variants={fadeInUp}
             >
               We deliver comprehensive QA solutions that go beyond finding bugs
@@ -270,7 +258,7 @@ export default function SoftwareTesting() {
             <motion.div variants={fadeInUp} className="inline-block">
               <ShimmerButton
                 onClick={() => navigate("/contact")}
-                className="text-white px-8 py-4 text-lg font-semibold"
+                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
                 shimmerColor="#ffffff"
                 shimmerSize="0.15em"
                 background="rgba(0, 0, 0, 1)"
@@ -281,50 +269,26 @@ export default function SoftwareTesting() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex space-x-2 justify-center md:justify-start"
+              className="flex space-x-3 justify-center mt-12"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Column - Image */}
-          <motion.div
-            className="flex justify-center"
-            variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                  delay: 0.4,
-                },
-              },
-            }}
-          >
-            <img
-              src={testingBanner}
-              className="w-full max-w-lg object-contain rounded-2xl"
-              alt="Software testing illustration"
-            />
           </motion.div>
         </div>
       </motion.section>
 
       {/* Testing Services Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -335,22 +299,22 @@ export default function SoftwareTesting() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
               backgroundSize: "50px 50px",
             }}
           ></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-16" variants={container}>
+          <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Testing Services
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               Comprehensive QA solutions tailored to validate every aspect of
@@ -359,38 +323,41 @@ export default function SoftwareTesting() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-8 space-x-2"
+              className="flex justify-center mt-10 space-x-3"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
             variants={container}
           >
             {testingServicesData.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
+                className="group relative bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-zinc-800/50 hover:border-pink-400/60 hover:shadow-pink-500/20 transition-all duration-500 hover:scale-105 overflow-hidden"
                 variants={fadeInUp}
               >
-                <div className={`${service.color} mb-4`}>{service.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed">
-                  {service.description}
-                </p>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className={`${service.color} mb-6`}>{service.icon}</div>
+                  <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
+                    {service.title}
+                  </h3>
+                  <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
+                    {service.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -399,7 +366,7 @@ export default function SoftwareTesting() {
 
       {/* Industries Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -417,15 +384,15 @@ export default function SoftwareTesting() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-16" variants={container}>
+          <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Industries We Serve
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               Delivering tailored QA solutions for your industry's unique{" "}
@@ -434,36 +401,36 @@ export default function SoftwareTesting() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-8 space-x-2"
+              className="flex justify-center mt-10 space-x-3"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
             variants={container}
           >
             {industriesData.map((industry, index) => (
               <motion.div
                 key={index}
-                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
+                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
                 variants={fadeInUp}
               >
-                <div className={`${industry.color} mb-4`}>{industry.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <div className={`${industry.color} mb-6`}>{industry.icon}</div>
+                <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
                   {industry.title}
                 </h3>
-                <p className="text-zinc-300 leading-relaxed">
+                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
                   {industry.description}
                 </p>
               </motion.div>
@@ -474,7 +441,7 @@ export default function SoftwareTesting() {
 
       {/* Why Choose Us Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -492,15 +459,15 @@ export default function SoftwareTesting() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-16" variants={container}>
+          <motion.div className="text-center mb-20" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Why Choose Digilynk?
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               We don't just find bugs — we craft{" "}
@@ -512,36 +479,38 @@ export default function SoftwareTesting() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-8 space-x-2"
+              className="flex justify-center mt-10 space-x-3"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-8"
+            className="grid md:grid-cols-2 gap-12"
             variants={container}
           >
             {whyChooseItems.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-zinc-900 rounded-2xl p-8 shadow-sm border border-zinc-800"
+                className="bg-zinc-900/50 rounded-3xl p-12 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-4`}>{item.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <div className={`${item.color} mb-6`}>{item.icon}</div>
+                <h3 className="text-2xl font-semibold text-white mb-6 font-roboto">
                   {item.title}
                 </h3>
-                <p className="text-zinc-300 leading-relaxed">{item.text}</p>
+                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
+                  {item.text}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -550,7 +519,7 @@ export default function SoftwareTesting() {
 
       {/* Testing Showcase Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -567,21 +536,17 @@ export default function SoftwareTesting() {
           ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            className="space-y-8 text-center md:text-left"
-            variants={container}
-          >
+        <div className="relative max-w-6xl mx-auto px-4 text-center">
+          <motion.div className="space-y-12" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Build With Confidence
             </motion.h2>
 
             <motion.p
-              className="text-lg text-zinc-300 leading-relaxed"
+              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
               variants={fadeInUp}
             >
               In today's fast-moving digital era, flawless software isn't
@@ -590,7 +555,7 @@ export default function SoftwareTesting() {
             </motion.p>
 
             <motion.p
-              className="text-lg text-zinc-300 leading-relaxed"
+              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
               variants={fadeInUp}
             >
               At Digilynk, we deliver smarter QA solutions that go beyond just
@@ -601,7 +566,7 @@ export default function SoftwareTesting() {
             <motion.div variants={fadeInUp} className="inline-block">
               <ShimmerButton
                 onClick={() => navigate("/contact")}
-                className="text-white px-8 py-4 text-lg font-semibold"
+                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
                 shimmerColor="#ffffff"
                 shimmerSize="0.15em"
                 background="rgba(0, 0, 0, 1)"
@@ -610,36 +575,12 @@ export default function SoftwareTesting() {
               </ShimmerButton>
             </motion.div>
           </motion.div>
-
-          {/* Right Column - Image */}
-          <motion.div
-            className="flex justify-center"
-            variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                  delay: 0.4,
-                },
-              },
-            }}
-          >
-            <img
-              src={testingBanner2}
-              className="w-full max-w-lg object-contain rounded-2xl"
-              alt="Testing services illustration"
-            />
-          </motion.div>
         </div>
       </motion.section>
 
       {/* Final CTA Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -657,16 +598,16 @@ export default function SoftwareTesting() {
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <motion.div className="space-y-8" variants={container}>
+          <motion.div className="space-y-12" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Ready to Ensure Quality?
             </motion.h2>
 
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               Let's create software that not only works flawlessly but also
@@ -674,26 +615,30 @@ export default function SoftwareTesting() {
               <span className="font-medium text-white">forward</span>
             </motion.p>
 
-            <motion.div className="flex justify-center" variants={fadeInUp}>
-              <img
-                src={testingBannerEnd}
-                alt="Software testing services"
-                className="w-full max-w-2xl object-contain rounded-2xl"
-              />
+            <motion.div variants={fadeInUp} className="inline-block">
+              <ShimmerButton
+                onClick={() => navigate("/contact")}
+                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
+                shimmerColor="#ffffff"
+                shimmerSize="0.15em"
+                background="rgba(0, 0, 0, 1)"
+              >
+                Start Quality Assurance
+              </ShimmerButton>
             </motion.div>
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-8 space-x-2"
+              className="flex justify-center mt-12 space-x-3"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>

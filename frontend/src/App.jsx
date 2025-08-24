@@ -9,7 +9,8 @@ function App() {
     <>
       <ClickSpark
         // sparkColors={["#3B82F6", "#10B981", "#8B5CF6"]} // Blue, Green, Purple
-        sparkColors={["#3B82F6"]} // Blue
+        // sparkColors={["#3B82F6"]} // Blue
+        sparkColors={["#fff"]} // Blue
         sparkSize={10}
         sparkRadius={20}
         sparkCount={8}

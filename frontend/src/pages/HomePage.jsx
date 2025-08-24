@@ -11,35 +11,29 @@ import OurStatsSection from "../components/digilynk/OurStatsSection";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
 
-
 export default function HomePage() {
   return (
-    <div className="flex flex-col font-poppins overflow-y-hidden">
-
+    <div className="flex flex-col font-roboto overflow-y-hidden">
       {/* Hero section */}
       <div id="top" className="overflow-y-hidden">
         <HeroSection />
       </div>
       {/* Our Stats Section */}
       <OurStatsSection />
-      
+
       {/* Services section */}
       <div id="services">
         <ServicesSection />
       </div>
 
-
-
-      {/* See our us secttion*/}
-      {/* <SeeOurWork /> */}
+      {/* See our work section*/}
+      <SeeOurWork />
 
       {/* Work with section */}
       <WorkWithUs />
 
       {/* Test component */}
       <TestComponent />
-
-      {/* <ContactForm /> */}
 
       {/* Floating buttons */}
       <FloatingButtons></FloatingButtons>
