@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ContactForm from "../components/digilynk/ContactForm";
-import contactBanner from "../assets/images/contactBanner2.jpg";
 import { Mail, Phone, MapPin, Clock, Laugh } from "lucide-react";
 
 export default function ContactPage() {
@@ -35,13 +34,13 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
-      title: "Email Us",
+      title: "Email",
       content: "digilynksolutions@gmail.com",
       color: "text-blue-600",
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      title: "Call Us",
+      title: "Call",
       content: "+91 6353959930",
       color: "text-green-600",
     },
@@ -60,14 +59,14 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="relative md:mt-16 mt-32">
+    <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-6 bg-black overflow-hidden flex items-center justify-center"
+        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -80,21 +79,17 @@ export default function ContactPage() {
           ></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            className="space-y-8 text-center md:text-left"
-            variants={container}
-          >
+        <div className="relative max-w-6xl mx-auto px-4 text-center">
+          <motion.div className="space-y-12" variants={container}>
             <motion.h1
-              className="text-4xl md:text-5xl font-semibold text-white mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Let's Build Something Amazing Together!
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed"
+              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
               variants={fadeInUp}
             >
               Ready to transform your ideas into reality? We're here to help you
@@ -105,26 +100,28 @@ export default function ContactPage() {
 
             {/* Contact Info Cards */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto"
               variants={container}
             >
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  className="bg-zinc-900 rounded-xl p-4 border border-zinc-800"
+                  className="bg-zinc-900/50 rounded-2xl p-8 border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
                   variants={fadeInUp}
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-4">
                     <div
-                      className={`${info.color} bg-zinc-800 rounded-lg p-2 shadow-sm`}
+                      className={`${info.color} bg-zinc-800/50 rounded-xl p-3 shadow-sm`}
                     >
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium text-white text-sm">
+                      <h3 className="font-medium text-white text-lg font-roboto">
                         {info.title}
                       </h3>
-                      <p className="text-zinc-300 text-sm">{info.content}</p>
+                      <p className="text-zinc-300 text-base font-roboto">
+                        {info.content}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -133,50 +130,26 @@ export default function ContactPage() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex space-x-2 justify-center md:justify-start"
+              className="flex space-x-3 justify-center mt-12"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Column - Image */}
-          <motion.div
-            className="flex justify-center"
-            variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                  delay: 0.4,
-                },
-              },
-            }}
-          >
-            <img
-              src={contactBanner}
-              className="w-full max-w-lg object-contain rounded-2xl scale-x-[-1]"
-              alt="Contact us illustration"
-            />
           </motion.div>
         </div>
       </motion.section>
 
       {/* Contact Form Section */}
       <motion.section
-        className="relative bg-black py-16 md:py-24 overflow-hidden"
+        className="relative bg-black py-24 md:py-32 overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, margin: "-100px" }}
@@ -194,15 +167,15 @@ export default function ContactPage() {
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4">
-          <motion.div className="text-center mb-12" variants={container}>
+          <motion.div className="text-center mb-16" variants={container}>
             <motion.h2
-              className="text-2xl sm:text-3xl md:text-4xl font-medium text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
               variants={fadeInUp}
             >
               Start Your Project
             </motion.h2>
             <motion.p
-              className="text-lg text-zinc-300 max-w-2xl mx-auto font-light"
+              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
               variants={fadeInUp}
             >
               Tell us about your vision and we'll help bring it to{" "}
@@ -211,23 +184,23 @@ export default function ContactPage() {
 
             {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-6 space-x-2"
+              className="flex justify-center mt-10 space-x-3"
               variants={fadeInUp}
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <div
-                className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
                 style={{ animationDelay: "1s" }}
               ></div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="bg-zinc-900 rounded-2xl shadow-sm border border-zinc-800 overflow-hidden"
+            className="bg-zinc-900/50 rounded-3xl shadow-lg border border-zinc-800/50 overflow-hidden"
             variants={fadeInUp}
           >
             <ContactForm />

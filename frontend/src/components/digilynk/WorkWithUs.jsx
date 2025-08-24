@@ -1,16 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
-import { MessageCircle, Users, Zap } from "lucide-react";
 import { ShimmerButton } from "../magicui/shimmer-button";
 
 export default function WorkWithUs() {
   const navigate = useNavigate();
-
-  function handleContactClick() {
-    navigate("/contact#top");
-  }
 
   const container = {
     hidden: { opacity: 0 },
@@ -39,109 +33,70 @@ export default function WorkWithUs() {
     },
   };
 
-  const features = [
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Fast Delivery",
-      description: "Quick turnaround times",
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Expert Team",
-      description: "Skilled professionals",
-    },
-    {
-      icon: <MessageCircle className="w-6 h-6" />,
-      title: "24/7 Support",
-      description: "Always available to help",
-    },
-  ];
-
   return (
-    <section className="relative bg-black py-16 md:py-24 overflow-hidden">
+    <section className="relative bg-black py-24 md:py-32 overflow-hidden font-roboto">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #8b5cf6 2px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
             backgroundSize: "50px 50px",
           }}
         ></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
-        <motion.div
-          className="text-center mb-16"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-        >
+      <div className="relative max-w-6xl mx-auto px-4 text-center">
+        <motion.div className="space-y-12" variants={container}>
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
             variants={fadeInUp}
           >
-            Work With Us
+            Ready to Work Together?
           </motion.h2>
+
           <motion.p
-            className="text-lg text-gray-300 max-w-2xl mx-auto font-light mb-12"
+            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
             variants={fadeInUp}
           >
-            Ready to transform your digital presence? Let's collaborate and
-            bring your vision to life with our
-            <span className="font-medium text-white"> innovative</span>{" "}
-            solutions.
+            Let's transform your ideas into reality. Whether you need a stunning
+            website, robust software testing, or compelling graphic design —
+            we're here to help you succeed.
           </motion.p>
 
-          {/* Features Grid */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-            variants={container}
+          <motion.p
+            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+            variants={fadeInUp}
           >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="text-white mb-4 flex justify-center">
-                  {feature.icon}
-                </div>
-                <h3 className="text-gray-900 font-semibold mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+            Our team combines creativity with technical expertise to deliver
+            solutions that not only meet your requirements but exceed your
+            expectations.
+          </motion.p>
 
-          {/* CTA Button */}
-          <motion.div variants={fadeInUp} className="mb-8 place-self-center ">
+          <motion.div variants={fadeInUp} className="inline-block">
             <ShimmerButton
-              onClick={handleContactClick}
-              className="text-white px-8 py-4 text-lg font-semibold"
+              onClick={() => navigate("/contact")}
+              className="text-white px-10 py-5 text-xl font-semibold font-roboto"
               shimmerColor="#ffffff"
               shimmerSize="0.15em"
               background="rgba(0, 0, 0, 1)"
             >
-              Get a Quote
+              Start Your Project
             </ShimmerButton>
           </motion.div>
 
           {/* Decorative Elements */}
           <motion.div
-            className="flex justify-center mt-8 space-x-2"
+            className="flex justify-center mt-12 space-x-3"
             variants={fadeInUp}
           >
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
             <div
-              className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
+              className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
               style={{ animationDelay: "0.5s" }}
             ></div>
             <div
-              className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+              className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
               style={{ animationDelay: "1s" }}
             ></div>
           </motion.div>
