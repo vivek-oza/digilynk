@@ -268,22 +268,6 @@ export default function GraphicDesign() {
                 Start Your Design Project
               </ShimmerButton>
             </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex space-x-3 justify-center mt-12"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -323,22 +307,6 @@ export default function GraphicDesign() {
               <span className="font-medium text-white">vision to life</span>{" "}
               across all platforms and mediums
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -399,22 +367,6 @@ export default function GraphicDesign() {
               <span className="font-medium text-white">challenges</span> and
               audience expectations
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -475,22 +427,6 @@ export default function GraphicDesign() {
               <span className="font-medium text-white">visual experiences</span>{" "}
               that drive results
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -623,22 +559,6 @@ export default function GraphicDesign() {
               >
                 Start Your Design Journey
               </ShimmerButton>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-12 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
             </motion.div>
           </motion.div>
         </div>

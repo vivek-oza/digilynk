@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Instagram, Mail } from "lucide-react";
+import { Linkedin, Instagram, Mail, Star, MapPin, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   const container = {
@@ -46,6 +46,76 @@ export default function Footer() {
         </div>
 
         <div className="relative max-w-7xl mx-auto">
+          {/* Global Rating Strip + Map */}
+          <motion.div
+            className="mb-10 min-h-96 rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-sm overflow-hidden"
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-100px" }}
+          >
+            <div className="grid lg:grid-cols-2">
+              {/* Call to Rate */}
+              <motion.div
+                className="p-6 sm:p-8 flex flex-col justify-center"
+                variants={fadeInUp}
+              >
+                <div className="flex items-start sm:items-center gap-3">
+                  {/* <div className="inline-flex p-3 rounded-2xl bg-zinc-800/70 text-yellow-400">
+                    <Star className="w-6 h-6" />
+                  </div> */}
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-white">
+                      Rate us on Google
+                    </h3>
+                    <p className="mt-2 text-zinc-300 text-sm sm:text-base">
+                      Your feedback keeps our team inspired.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://g.page/r/CaJmAHoO9fyaEAI/review"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2.5 text-white font-medium shadow hover:opacity-95 active:opacity-90 transition"
+                  >
+                    <Star className="w-4 h-4" />
+                    <span>Rate us on Google</span>
+                  </a>
+
+                  <a
+                    href="https://g.co/kgs/fmvoHYc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-zinc-200 hover:text-white hover:border-zinc-500 transition"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>View Business Profile</span>
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Map Embed */}
+              <motion.div className="h-96 sm:h-96 md:h-96 lg:h-96 min-h-[220px]" variants={fadeInUp}>
+                <div className="relative w-full h-full">
+                  <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-2 rounded-xl bg-zinc-900/80 border border-zinc-800 px-3 py-1.5 text-zinc-200">
+                    <MapPin className="w-4 h-4 text-red-400" />
+                    <span className="text-sm">Gandhinagar, Gujarat</span>
+                  </div>
+                  <iframe
+                    title="Gandhinagar, Gujarat - Digilynk Location"
+                    src="https://www.google.com/maps?q=Gandhinagar,+Gujarat&output=embed"
+                    className="w-full h-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
           <motion.div
             className="grid md:grid-cols-3 gap-8 md:gap-12"
             variants={container}
@@ -66,25 +136,6 @@ export default function Footer() {
                 <span className="text-white font-medium"> innovative</span>{" "}
                 solutions for your business needs.
               </p>
-
-              {/* Decorative Elements */}
-              <motion.div
-                className="flex justify-center md:justify-start mt-4 space-x-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <div
-                  className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
-                  style={{ animationDelay: "0.5s" }}
-                ></div>
-                <div
-                  className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
-                  style={{ animationDelay: "1s" }}
-                ></div>
-              </motion.div>
             </motion.div>
 
             {/* Quick Links */}

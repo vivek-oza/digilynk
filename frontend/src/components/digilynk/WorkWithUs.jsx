@@ -52,7 +52,7 @@ export default function WorkWithUs() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
             variants={fadeInUp}
           >
-            Ready to Work Together?
+            Let's Work Together?
           </motion.h2>
 
           <motion.p
@@ -60,17 +60,8 @@ export default function WorkWithUs() {
             variants={fadeInUp}
           >
             Let's transform your ideas into reality. Whether you need a stunning
-            website, robust software testing, or compelling graphic design —
+            website, robust software testing
             we're here to help you succeed.
-          </motion.p>
-
-          <motion.p
-            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-            variants={fadeInUp}
-          >
-            Our team combines creativity with technical expertise to deliver
-            solutions that not only meet your requirements but exceed your
-            expectations.
           </motion.p>
 
           <motion.div variants={fadeInUp} className="inline-block">
@@ -83,22 +74,6 @@ export default function WorkWithUs() {
             >
               Start Your Project
             </ShimmerButton>
-          </motion.div>
-
-          {/* Decorative Elements */}
-          <motion.div
-            className="flex justify-center mt-12 space-x-3"
-            variants={fadeInUp}
-          >
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <div
-              className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-              style={{ animationDelay: "0.5s" }}
-            ></div>
-            <div
-              className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-              style={{ animationDelay: "1s" }}
-            ></div>
           </motion.div>
         </motion.div>
       </div>

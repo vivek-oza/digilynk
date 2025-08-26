@@ -94,11 +94,11 @@ export default function ServicesSection() {
           </motion.p>
         </motion.div>
 
-        <motion.div className="grid md:grid-cols-3 gap-8" variants={container}>
+        <motion.div className="grid md:grid-cols-3 gap-8 place-items-center" variants={container}>
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-zinc-900/50 rounded-3xl p-8 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105 cursor-pointer group"
+              className="w-full max-w-sm bg-zinc-900/50 rounded-3xl p-8 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105 cursor-pointer group"
               variants={fadeInUp}
               onClick={() => navigate(service.link)}
             >

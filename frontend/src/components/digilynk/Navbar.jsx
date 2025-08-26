@@ -645,24 +645,6 @@ export default function Navbar() {
                   </button>
                 </motion.li>
               </ul>
-
-              {/* Decorative Elements */}
-              <motion.div
-                className="flex justify-center mt-6 space-x-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                <div
-                  className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
-                  style={{ animationDelay: "0.5s" }}
-                ></div>
-                <div
-                  className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"
-                  style={{ animationDelay: "1s" }}
-                ></div>
-              </motion.div>
             </div>
           </motion.div>
         )}

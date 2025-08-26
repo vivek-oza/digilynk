@@ -220,22 +220,6 @@ export default function WebDevelopment() {
                 Start Your Project
               </ShimmerButton>
             </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex space-x-3 justify-center mt-12"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -275,22 +259,6 @@ export default function WebDevelopment() {
               <span className="font-medium text-white">diverse solutions</span>{" "}
               tailored to your needs
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -353,22 +321,6 @@ export default function WebDevelopment() {
               </span>{" "}
               and specialized functionalities
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -431,22 +383,6 @@ export default function WebDevelopment() {
               </span>{" "}
               that drive results
             </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -580,22 +516,6 @@ export default function WebDevelopment() {
               >
                 Start Your Project Today
               </ShimmerButton>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-12 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
             </motion.div>
           </motion.div>
         </div>
