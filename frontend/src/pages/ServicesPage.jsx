@@ -88,15 +88,15 @@ export default function ServicesPage() {
       link: "services/software-testing",
       showButton: true, // Button will be shown
     },
-    {
-      title: "Graphic Design",
-      description:
-        "We think and brew intuitive visuals that are not only stunning but strategically aligned with your business goals.",
-      image: graphic,
-      link: "services/design",
-      reverse: true,
-      showButton: true, // Button will be shown
-    },
+    // {
+    //   title: "Graphic Design",
+    //   description:
+    //     "We think and brew intuitive visuals that are not only stunning but strategically aligned with your business goals.",
+    //   image: graphic,
+    //   link: "services/design",
+    //   reverse: true,
+    //   showButton: true, // Button will be shown
+    // },
   ];
 
   return (

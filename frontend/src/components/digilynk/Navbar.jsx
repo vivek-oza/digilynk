@@ -449,11 +449,11 @@ export default function Navbar() {
                       path: "/services/software-testing",
                       icon: Settings,
                     },
-                    {
-                      name: "Graphic Design",
-                      path: "/services/design",
-                      icon: Wand2,
-                    },
+                    // {
+                    //   name: "Graphic Design",
+                    //   path: "/services/design",
+                    //   icon: Wand2,
+                    // },
                   ].map((service, index) => (
                     <motion.li
                       key={service.name}
@@ -591,11 +591,11 @@ export default function Navbar() {
                             path: "/services/software-testing",
                             icon: Settings,
                           },
-                          {
-                            name: "GRAPHIC DESIGN",
-                            path: "/services/design",
-                            icon: Wand2,
-                          },
+                          // {
+                          //   name: "GRAPHIC DESIGN",
+                          //   path: "/services/design",
+                          //   icon: Wand2,
+                          // },
                         ].map((service, index) => (
                           <motion.li
                             key={service.name}

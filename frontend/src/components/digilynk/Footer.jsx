@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import digiLynkLight from "../../assets/icons/digilynk_light.svg";
 import { Linkedin, Instagram, Mail } from "lucide-react";
-import GradientText from "../reactbits/TextAnimations/GradientText/GradientText";
 
 export default function Footer() {
   const container = {
@@ -61,12 +59,7 @@ export default function Footer() {
               variants={fadeInUp}
             >
               <div className="flex flex-row items-center space-x-3">
-                <img
-                  src={digiLynkLight}
-                  className="size-12"
-                  alt="Digilynk Logo"
-                />
-                <h1 className="text-3xl text-white">Digilynk</h1>
+                <span className="text-4xl font-jersey text-white">digilynk</span>
               </div>
               <p className="text-base text-center md:text-left text-gray-400 max-w-md font-light">
                 Transforming ideas into digital reality. We provide
