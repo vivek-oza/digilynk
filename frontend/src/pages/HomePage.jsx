@@ -5,12 +5,12 @@ import "../index.css";
 import ClickSpark from "../components/reactbits/Animations/ClickSpark/ClickSpark";
 import HeroSection from "../components/digilynk/HeroSection";
 import ServicesSection from "../components/digilynk/ServicesSection";
-import SeeOurWork from "../components/digilynk/SeeOurWork";
 import WorkWithUs from "../components/digilynk/WorkWithUs";
 import OurStatsSection from "../components/digilynk/OurStatsSection";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
 import SEO from "../components/SEO";
+import TestimonialMarquee from "../components/digilynk/TestimonialMarquee";
 
 export default function HomePage() {
   return (
@@ -34,8 +34,8 @@ export default function HomePage() {
           <ServicesSection />
         </div>
 
-        {/* See our work section*/}
-        <SeeOurWork />
+        {/* Testimonials after Services */}
+        <TestimonialMarquee />
 
         {/* Work with section */}
         <WorkWithUs />

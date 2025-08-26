@@ -82,22 +82,6 @@ export default function SeeOurWork() {
               View Portfolio
             </ShimmerButton>
           </motion.div>
-
-          {/* Decorative Elements */}
-          <motion.div
-            className="flex justify-center mt-12 space-x-3"
-            variants={fadeInUp}
-          >
-            <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-            <div
-              className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-              style={{ animationDelay: "0.5s" }}
-            ></div>
-            <div
-              className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-              style={{ animationDelay: "1s" }}
-            ></div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

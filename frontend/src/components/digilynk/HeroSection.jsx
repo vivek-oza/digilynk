@@ -203,22 +203,6 @@ export default function HeroSection() {
             together, then use our expertise to find that sweet spot of
             realistic and impactful.
           </motion.div>
-
-          {/* Decorative Elements */}
-          <motion.div
-            className="flex justify-center mt-12 space-x-2"
-            variants={fadeInUp}
-          >
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <div
-              className="w-2 h-2 bg-green-500 rounded-full animate-pulse"
-              style={{ animationDelay: "0.5s" }}
-            ></div>
-            <div
-              className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"
-              style={{ animationDelay: "1s" }}
-            ></div>
-          </motion.div>
         </div>
       </motion.section>
     </>

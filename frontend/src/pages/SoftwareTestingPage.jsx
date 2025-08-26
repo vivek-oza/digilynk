@@ -264,396 +264,266 @@ export default function SoftwareTesting() {
             </motion.p>
 
             <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
-              >
-                Get Custom QA Solutions
-              </ShimmerButton>
+                <ShimmerButton
+                  onClick={() => navigate("/contact")}
+                  className="text-white px-10 py-5 text-xl font-semibold font-roboto"
+                  shimmerColor="#ffffff"
+                  shimmerSize="0.15em"
+                  background="rgba(0, 0, 0, 1)"
+                >
+                  Get Custom QA Solutions
+                </ShimmerButton>
+              </motion.div>
             </motion.div>
+          </div>
+        </motion.section>
 
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex space-x-3 justify-center mt-12"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+        {/* Testing Services Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
 
-      {/* Testing Services Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Testing Services
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Comprehensive QA solutions tailored to validate every aspect of
-              your <span className="font-medium text-white">product</span>
-            </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
-            variants={container}
-          >
-            {testingServicesData.map((service, index) => (
-              <motion.div
-                key={index}
-                className="group relative bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-zinc-800/50 hover:border-pink-400/60 hover:shadow-pink-500/20 transition-all duration-500 hover:scale-105 overflow-hidden"
+          <div className="relative max-w-7xl mx-auto px-4">
+            <motion.div className="text-center mb-20" variants={container}>
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
                 variants={fadeInUp}
               >
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className={`${service.color} mb-6`}>{service.icon}</div>
+                Testing Services
+              </motion.h2>
+              <motion.p
+                className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
+                variants={fadeInUp}
+              >
+                Comprehensive QA solutions tailored to validate every aspect of
+                your <span className="font-medium text-white">product</span>
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
+              variants={container}
+            >
+              {testingServicesData.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="group relative bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-zinc-800/50 hover:border-pink-400/60 hover:shadow-pink-500/20 transition-all duration-500 hover:scale-105 overflow-hidden"
+                  variants={fadeInUp}
+                >
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className={`${service.color} mb-6`}>{service.icon}</div>
+                    <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
+                      {service.title}
+                    </h3>
+                    <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </motion.section>
+        
+        {/* Industries Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            <motion.div className="text-center mb-20" variants={container}>
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
+                variants={fadeInUp}
+              >
+                Industries We Serve
+              </motion.h2>
+              <motion.p
+                className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
+                variants={fadeInUp}
+              >
+                Delivering tailored QA solutions for your industry's unique{" "}
+                <span className="font-medium text-white">challenges</span>
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
+              variants={container}
+            >
+              {industriesData.map((industry, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
+                  variants={fadeInUp}
+                >
+                  <div className={`${industry.color} mb-6`}>{industry.icon}</div>
                   <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
-                    {service.title}
+                    {industry.title}
                   </h3>
                   <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                    {service.description}
+                    {industry.description}
                   </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Industries Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Industries We Serve
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Delivering tailored QA solutions for your industry's unique{" "}
-              <span className="font-medium text-white">challenges</span>
-            </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
+                </motion.div>
+              ))}
             </motion.div>
-          </motion.div>
+          </div>
+        </motion.section>
 
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-10"
-            variants={container}
-          >
-            {industriesData.map((industry, index) => (
-              <motion.div
-                key={index}
-                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
+        {/* Why Choose Us Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            <motion.div className="text-center mb-20" variants={container}>
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
                 variants={fadeInUp}
               >
-                <div className={`${industry.color} mb-6`}>{industry.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
-                  {industry.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                  {industry.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Why Choose Us Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Why Choose Digilynk?
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              We don't just find bugs — we craft{" "}
-              <span className="font-medium text-white">
-                quality experiences
-              </span>{" "}
-              that drive results
-            </motion.p>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="flex justify-center mt-10 space-x-3"
-              variants={fadeInUp}
-            >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 gap-12"
-            variants={container}
-          >
-            {whyChooseItems.map((item) => (
-              <motion.div
-                key={item.id}
-                className="bg-zinc-900/50 rounded-3xl p-12 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
+                Why Choose Digilynk?
+              </motion.h2>
+              <motion.p
+                className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-6`}>{item.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-6 font-roboto">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                  {item.text}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Testing Showcase Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Build With Confidence
-            </motion.h2>
-
-            <motion.p
-              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              In today's fast-moving digital era, flawless software isn't
-              optional — it's expected. Your product's success hinges on
-              rigorous, end-to-end testing.
-            </motion.p>
-
-            <motion.p
-              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              At Digilynk, we deliver smarter QA solutions that go beyond just
-              finding bugs. We identify risks early, boost performance, refine
-              usability, and ensure seamless cross-platform functionality.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
-              >
-                Get Testing Solutions
-              </ShimmerButton>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Final CTA Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Ready to Ensure Quality?
-            </motion.h2>
-
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Let's create software that not only works flawlessly but also
-              drives your business{" "}
-              <span className="font-medium text-white">forward</span>
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
-              >
-                Start Quality Assurance
-              </ShimmerButton>
+                We don't just find bugs — we craft{" "}
+                <span className="font-medium text-white">
+                  quality experiences
+                </span>{" "}
+                that drive results
+              </motion.p>
             </motion.div>
 
-            {/* Decorative Elements */}
             <motion.div
-              className="flex justify-center mt-12 space-x-3"
-              variants={fadeInUp}
+              className="grid md:grid-cols-2 gap-12"
+              variants={container}
             >
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <div
-                className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
-              <div
-                className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
+              {whyChooseItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  className="bg-zinc-900/50 rounded-3xl p-12 shadow-lg border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
+                  variants={fadeInUp}
+                >
+                  <div className={`${item.color} mb-6`}>{item.icon}</div>
+                  <h3 className="text-2xl font-semibold text-white mb-6 font-roboto">
+                    {item.title}
+                  </h3>
+                  <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-    </div>
+          </div>
+        </motion.section>
+
+        {/* Testing Showcase Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-4 text-center">
+            <motion.div className="space-y-12" variants={container}>
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
+                variants={fadeInUp}
+              >
+                Build With Confidence
+              </motion.h2>
+
+              <motion.p
+                className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                In today's fast-moving digital era, flawless software isn't
+                optional — it's expected. Your product's success hinges on
+                rigorous, end-to-end testing.
+              </motion.p>
+
+              <motion.p
+                className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                At Digilynk, we deliver smarter QA solutions that go beyond just
+                finding bugs. We identify risks early, boost performance, refine
+                usability, and ensure seamless cross-platform functionality.
+              </motion.p>
+
+              <motion.div variants={fadeInUp} className="inline-block">
+                <ShimmerButton
+                  onClick={() => navigate("/contact")}
+                  className="text-white px-10 py-5 text-xl font-semibold font-roboto"
+                  shimmerColor="#ffffff"
+                  shimmerSize="0.15em"
+                  background="rgba(0, 0, 0, 1)"
+                >
+                  Get Testing Solutions
+                </ShimmerButton>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        
+      </div>
     </>
   );
 }
