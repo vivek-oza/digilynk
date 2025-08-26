@@ -212,58 +212,58 @@ export default function SoftwareTesting() {
         path="/services/software-testing"
         image="/vite.svg"
       />
-    <div className="relative md:mt-16 mt-32 font-roboto">
-      {/* Hero Section */}
-      <motion.section
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
+      <div className="relative md:mt-16 mt-32 font-roboto">
+        {/* Hero Section */}
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Software Testing
-            </motion.h1>
+          <div className="relative max-w-6xl mx-auto px-4 text-center">
+            <motion.div className="space-y-12" variants={container}>
+              <motion.h1
+                className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
+                variants={fadeInUp}
+              >
+                Software Testing
+              </motion.h1>
 
-            <motion.p
-              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              Ensuring{" "}
-              <span className="font-medium text-white">
-                flawless performance
-              </span>
-              , exceptional{" "}
-              <span className="font-medium text-white">user experiences</span>,
-              and{" "}
-              <span className="font-medium text-white">business success</span>.
-            </motion.p>
+              <motion.p
+                className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                Ensuring{" "}
+                <span className="font-medium text-white">
+                  flawless performance
+                </span>
+                , exceptional{" "}
+                <span className="font-medium text-white">user experiences</span>,
+                and{" "}
+                <span className="font-medium text-white">business success</span>.
+              </motion.p>
 
-            <motion.p
-              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              We deliver comprehensive QA solutions that go beyond finding bugs
-              to ensure your software exceeds quality standards.
-            </motion.p>
+              <motion.p
+                className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                We deliver comprehensive QA solutions that go beyond finding bugs
+                to ensure your software exceeds quality standards.
+              </motion.p>
 
-            <motion.div variants={fadeInUp} className="inline-block">
+              <motion.div variants={fadeInUp} className="inline-block">
                 <ShimmerButton
                   onClick={() => navigate("/contact")}
                   className="text-white px-10 py-5 text-xl font-semibold font-roboto"
@@ -339,7 +339,7 @@ export default function SoftwareTesting() {
             </motion.div>
           </div>
         </motion.section>
-        
+
         {/* Industries Section */}
         <motion.section
           className="relative bg-black py-24 md:py-32 overflow-hidden"
@@ -417,6 +417,7 @@ export default function SoftwareTesting() {
               }}
             ></div>
           </div>
+
 
           <div className="relative max-w-7xl mx-auto px-4">
             <motion.div className="text-center mb-20" variants={container}>
@@ -522,7 +523,7 @@ export default function SoftwareTesting() {
           </div>
         </motion.section>
 
-        
+
       </div>
     </>
   );
