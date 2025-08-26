@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import FaqSection from "../components/digilynk/FaqSection";
 import { RainbowButton } from "../components/magicui/rainbow-button";
 import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   Heart,
   Target,
@@ -99,7 +100,14 @@ export default function AboutUs() {
   ];
 
   return (
-    <div className="relative md:mt-16 mt-32 font-roboto">
+    <>
+      <SEO
+        title="About Digilynk | Who We Are"
+        description="Learn about Digilynk's mission, vision, and values. We craft impactful, user-centric digital solutions that drive real business results."
+        path="/about"
+        image="/vite.svg"
+      />
+      <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
         variants={container}
@@ -364,10 +372,12 @@ export default function AboutUs() {
               </p>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
-
-      <FaqSection />
     </div>
+  </motion.section>
+
+  <FaqSection />
+</div>
+</>
+
   );
 }

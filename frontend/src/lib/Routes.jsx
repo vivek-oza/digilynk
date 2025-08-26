@@ -10,8 +10,9 @@ import ContactPage from "../pages/ContactPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import WebDevelopmentPage from "../pages/WebDevelopmentPage";
 import SoftwareTestingPage from "../pages/SoftwareTestingPage";
-import GraphicDesignPage from "../pages/GraphicDesignPage";
+// import GraphicDesignPage from "../pages/GraphicDesignPage"; // temporarily hidden
 import ServicesPage from '../pages/ServicesPage';
+import NotFoundPage from "../pages/NotFoundPage";
 
 
 function ScrollToTop() {
@@ -32,13 +33,15 @@ export default function DigilynkRoutes() {
           <Route index element={<HomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
+          {/* <Route path="/services" element={<ServicesPage />} /> */}
           <Route path="/services/web-development" element={<WebDevelopmentPage />} />
           <Route path="/services/software-testing" element={<SoftwareTestingPage />} />
-          <Route path="/services/design" element={<GraphicDesignPage />} />
+          {/* <Route path="/services/design" element={<GraphicDesignPage />} /> */}
           {/* Other routes */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
 }
+

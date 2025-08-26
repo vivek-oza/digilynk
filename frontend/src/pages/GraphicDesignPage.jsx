@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
+import SEO from "../components/SEO";
 import {
   Palette,
   Shirt,
@@ -201,6 +202,13 @@ export default function GraphicDesign() {
   const navigate = useNavigate();
 
   return (
+    <>
+      <SEO
+        title="Graphic Design Services | Digilynk"
+        description="Logos, brand identity, web and app UI, packaging, print and digital graphics designed to drive results."
+        path="/services/design"
+        image="/vite.svg"
+      />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
@@ -636,5 +644,6 @@ export default function GraphicDesign() {
         </div>
       </motion.section>
     </div>
+    </>
   );
 }

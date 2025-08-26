@@ -50,14 +50,14 @@ export default function ServicesSection() {
       link: "/services/software-testing",
       color: "text-green-400",
     },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Graphic Design",
-      description:
-        "Creative visual solutions that strengthen your brand and engage your audience.",
-      link: "/services/graphic-design",
-      color: "text-purple-400",
-    },
+    // {
+    //   icon: <Palette className="w-8 h-8" />,
+    //   title: "Graphic Design",
+    //   description:
+    //     "Creative visual solutions that strengthen your brand and engage your audience.",
+    //   link: "/services/graphic-design",
+    //   color: "text-purple-400",
+    // },
   ];
 
   return (

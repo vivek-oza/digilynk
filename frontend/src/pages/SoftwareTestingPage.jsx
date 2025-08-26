@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
+import SEO from "../components/SEO";
 import {
   HeartPulse,
   ShoppingCart,
@@ -204,6 +205,13 @@ export default function SoftwareTesting() {
   const navigate = useNavigate();
 
   return (
+    <>
+      <SEO
+        title="Software Testing Services | Digilynk"
+        description="End-to-end QA: automation, performance, functional, API, mobile, and UX testing to ensure reliability and speed."
+        path="/services/software-testing"
+        image="/vite.svg"
+      />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
@@ -646,5 +654,6 @@ export default function SoftwareTesting() {
         </div>
       </motion.section>
     </div>
+    </>
   );
 }

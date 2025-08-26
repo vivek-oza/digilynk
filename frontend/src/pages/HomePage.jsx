@@ -10,33 +10,42 @@ import WorkWithUs from "../components/digilynk/WorkWithUs";
 import OurStatsSection from "../components/digilynk/OurStatsSection";
 import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
+import SEO from "../components/SEO";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col font-roboto overflow-y-hidden">
-      {/* Hero section */}
-      <div id="top" className="overflow-y-hidden">
-        <HeroSection />
+    <>
+      <SEO
+        title="Digilynk | Modern Web Development Agency"
+        description="We design and develop high-performance websites, apps, and digital experiences that help businesses grow."
+        path="/"
+        image="/vite.svg"
+      />
+      <div className="flex flex-col font-roboto overflow-y-hidden">
+        {/* Hero section */}
+        <div id="top" className="overflow-y-hidden">
+          <HeroSection />
+        </div>
+        {/* Our Stats Section */}
+        <OurStatsSection />
+
+        {/* Services section */}
+        <div id="services">
+          <ServicesSection />
+        </div>
+
+        {/* See our work section*/}
+        <SeeOurWork />
+
+        {/* Work with section */}
+        <WorkWithUs />
+
+        {/* Test component */}
+        <TestComponent />
+
+        {/* Floating buttons */}
+        <FloatingButtons></FloatingButtons>
       </div>
-      {/* Our Stats Section */}
-      <OurStatsSection />
-
-      {/* Services section */}
-      <div id="services">
-        <ServicesSection />
-      </div>
-
-      {/* See our work section*/}
-      <SeeOurWork />
-
-      {/* Work with section */}
-      <WorkWithUs />
-
-      {/* Test component */}
-      <TestComponent />
-
-      {/* Floating buttons */}
-      <FloatingButtons></FloatingButtons>
-    </div>
+    </>
   );
 }
