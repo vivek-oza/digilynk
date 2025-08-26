@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
+import SEO from "../components/SEO";
 import {
   HeartPulse,
   ShoppingCart,
@@ -162,6 +163,13 @@ export default function WebDevelopment() {
   ];
 
   return (
+    <>
+      <SEO
+        title="Web Development Services | Digilynk"
+        description="Custom websites, landing pages, e-commerce, and business sites built for performance, security, and growth."
+        path="/services/web-development"
+        image="/vite.svg"
+      />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
@@ -593,5 +601,6 @@ export default function WebDevelopment() {
         </div>
       </motion.section>
     </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ShimmerButton } from "../components/magicui/shimmer-button";
 import hero_new from "../assets/images/hero_new.webp";
+import SEO from "../components/SEO";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -25,6 +26,14 @@ export default function NotFoundPage() {
   };
 
   return (
+    <>
+      <SEO
+        title="404 | Page not found - Digilynk"
+        description="The page you’re looking for doesn’t exist. Go back home or contact us."
+        path={typeof window !== 'undefined' ? window.location.pathname : '/404'}
+        image="/vite.svg"
+        noindex
+      />
     <div className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] md:mt-16 mt-32 relative overflow-hidden flex md:items-center justify-center">
       <motion.section
         variants={container}
@@ -74,5 +83,6 @@ export default function NotFoundPage() {
         </div>
       </motion.section>
     </div>
+    </>
   );
 }

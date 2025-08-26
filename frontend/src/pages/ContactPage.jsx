@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ContactForm from "../components/digilynk/ContactForm";
 import { Mail, Phone, MapPin, Clock, Laugh } from "lucide-react";
+import SEO from "../components/SEO";
 
 export default function ContactPage() {
   const container = {
@@ -59,6 +60,13 @@ export default function ContactPage() {
   ];
 
   return (
+    <>
+      <SEO
+        title="Contact Digilynk | Start Your Project"
+        description="Contact Digilynk for web development, testing, and design services. We typically respond within 24 hours."
+        path="/contact"
+        image="/vite.svg"
+      />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
       <motion.section
@@ -208,5 +216,6 @@ export default function ContactPage() {
         </div>
       </motion.section>
     </div>
+    </>
   );
 }

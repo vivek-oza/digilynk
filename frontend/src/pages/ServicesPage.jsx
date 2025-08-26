@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import ServicesCardStack from "@/components/digilynk/ServicesCardStack"; // Import the new component
+import SEO from "../components/SEO";
 
 export default function ServicesPage() {
   const navigate = useNavigate();
@@ -100,6 +101,13 @@ export default function ServicesPage() {
   ];
 
   return (
+    <>
+      <SEO
+        title="Services | Digilynk"
+        description="Explore Digilynk services: web development and software testing to build, launch, and scale your digital presence."
+        path="/services"
+        image="/vite.svg"
+      />
     <div className="relative">
       {/* Matching hero section background effects */}
       <div
@@ -186,5 +194,6 @@ export default function ServicesPage() {
         <ServicesCardStack cardData={cardData} />
       </div>
     </div>
+    </>
   );
 }
