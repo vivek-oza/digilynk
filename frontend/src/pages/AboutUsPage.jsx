@@ -105,7 +105,7 @@ export default function AboutUs() {
         title="About Digilynk | Who We Are"
         description="Learn about Digilynk's mission, vision, and values. We craft impactful, user-centric digital solutions that drive real business results."
         path="/about"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
       <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}
@@ -153,6 +153,14 @@ export default function AboutUs() {
               <span className="font-medium text-white">grow</span> and{" "}
               <span className="font-medium text-white">transform</span>.
             </motion.p>
+
+            <motion.img
+              src="/digilynk_about.png"
+              alt="About Digilynk"
+              loading="lazy"
+              className="w-full max-w-3xl mx-auto rounded-2xl shadow-2xl border border-zinc-800 mb-12"
+              variants={fadeInUp}
+            />
 
             <motion.div
               variants={fadeInUp}

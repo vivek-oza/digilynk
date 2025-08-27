@@ -65,7 +65,7 @@ export default function ContactPage() {
         title="Contact Digilynk | Start Your Project"
         description="Contact Digilynk for web development, testing, and design services. We typically respond within 24 hours."
         path="/contact"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}

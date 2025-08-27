@@ -19,7 +19,7 @@ export default function HomePage() {
         title="Digilynk | Modern Web Development Agency"
         description="We design and develop high-performance websites, apps, and digital experiences that help businesses grow."
         path="/"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
       <div className="flex flex-col font-roboto overflow-y-hidden">
         {/* Hero section */}
