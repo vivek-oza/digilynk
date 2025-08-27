@@ -94,7 +94,7 @@ export default function ServicesSection() {
           </motion.p>
         </motion.div>
 
-        <motion.div className="grid md:grid-cols-3 gap-8 place-items-center" variants={container}>
+        <motion.div className="grid md:grid-cols-2 gap-8 place-items-center" variants={container}>
           {services.map((service, index) => (
             <motion.div
               key={index}

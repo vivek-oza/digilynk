@@ -210,7 +210,7 @@ export default function SoftwareTesting() {
         title="Software Testing Services | Digilynk"
         description="End-to-end QA: automation, performance, functional, API, mobile, and UX testing to ensure reliability and speed."
         path="/services/software-testing"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
       <div className="relative md:mt-16 mt-32 font-roboto">
         {/* Hero Section */}

@@ -168,7 +168,7 @@ export default function WebDevelopment() {
         title="Web Development Services | Digilynk"
         description="Custom websites, landing pages, e-commerce, and business sites built for performance, security, and growth."
         path="/services/web-development"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}

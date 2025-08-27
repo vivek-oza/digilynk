@@ -31,7 +31,7 @@ export default function NotFoundPage() {
         title="404 | Page not found - Digilynk"
         description="The page you’re looking for doesn’t exist. Go back home or contact us."
         path={typeof window !== 'undefined' ? window.location.pathname : '/404'}
-        image="/vite.svg"
+        image="/digilynk_about.png"
         noindex
       />
     <div className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] md:mt-16 mt-32 relative overflow-hidden flex md:items-center justify-center">

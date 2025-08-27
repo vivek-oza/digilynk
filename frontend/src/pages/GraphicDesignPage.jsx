@@ -207,7 +207,7 @@ export default function GraphicDesign() {
         title="Graphic Design Services | Digilynk"
         description="Logos, brand identity, web and app UI, packaging, print and digital graphics designed to drive results."
         path="/services/design"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
     <div className="relative md:mt-16 mt-32 font-roboto">
       {/* Hero Section */}

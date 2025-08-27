@@ -106,7 +106,7 @@ export default function ServicesPage() {
         title="Services | Digilynk"
         description="Explore Digilynk services: web development and software testing to build, launch, and scale your digital presence."
         path="/services"
-        image="/vite.svg"
+        image="/digilynk_about.png"
       />
     <div className="relative">
       {/* Matching hero section background effects */}
