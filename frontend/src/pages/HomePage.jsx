@@ -11,6 +11,7 @@ import { FloatingButtons } from "../components/digilynk/FloatingButtons";
 import TestComponent from "../components/ui/test-component";
 import SEO from "../components/SEO";
 import TestimonialMarquee from "../components/digilynk/TestimonialMarquee";
+import CompanyMarquee from "../components/digilynk/CompanyMarquee";
 
 export default function HomePage() {
   return (
@@ -26,6 +27,8 @@ export default function HomePage() {
         <div id="top" className="overflow-y-hidden">
           <HeroSection />
         </div>
+        {/* Company logos marquee */}
+        <CompanyMarquee />
         {/* Our Stats Section */}
         <OurStatsSection />
 
