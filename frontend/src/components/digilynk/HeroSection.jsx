@@ -11,6 +11,7 @@ const World = React.lazy(() =>
   import("../ui/globe").then((m) => ({ default: m.World }))
 );
 import hero_new from "../../assets/images/hero_new.webp";
+import { Award, Gem, GiftIcon } from "lucide-react";
 
 export default function HeroSection() {
   const globeConfig = {
@@ -90,7 +91,7 @@ export default function HeroSection() {
     <>
       <div
         id="hero"
-        className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-16 mt-32 relative overflow-hidden flex md:items-center justify-center"
+        className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-32 mt-32 relative overflow-hidden flex md:items-center justify-center"
       >
         <motion.section
           variants={container}
@@ -108,11 +109,24 @@ export default function HeroSection() {
           {/* Main Content */}
           <div className="text-center flex py-10 flex-col items-center">
             <div className="text-center  px-4 flex flex-col items-center">
+              {/* Digilynk Chip/Tag */}
+              <motion.div
+                variants={fadeInUp}
+                className="mb-6"
+              >
+                <div className="inline-flex text-white items-center px-4 py-2 rounded-full bg-black/60 border border-black/50 backdrop-blur-sm">
+                  {/* <span className="text-sm font-medium mr-2"> <Award /> </span> */}
+                  <span className="text-sm font-medium">#1 Development company</span>
+                </div>
+              </motion.div>
+
               <motion.h1
                 variants={fadeInUp}
                 className="text-4xl md:text-8xl font-semibold text-white mb-6 whitespace-nowrap"
               >
-                <span className="">Digilynk</span>
+                <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-100 bg-clip-text text-transparent">
+                  Digilynk
+                </span>
               </motion.h1>
 
               <motion.p
@@ -122,7 +136,10 @@ export default function HeroSection() {
                 We build tech solutions for your business.
               </motion.p>
 
-              <motion.div variants={fadeInUp} className="mb-8">
+              <motion.div
+                variants={fadeInUp}
+                className="mb-6"
+              >
                 <ShimmerButton
                   onClick={handleContactClick}
                   className="text-white px-8 py-4 text-lg font-semibold"
@@ -133,6 +150,19 @@ export default function HeroSection() {
                   Get Started
                 </ShimmerButton>
               </motion.div>
+
+              {/* Free Website Offer */}
+              <motion.div
+                variants={fadeInUp}
+                className="mt-0"
+              >
+                <div className="inline-flex items-center gap-2">
+                  <span className="text-white text-lg"><Gem /></span>
+                  <span className="text-white font-bold">Get Your First Website For FREE !</span>
+                  {/* <span className="text-white text-sm font-bold">Limited Time Offer</span> */}
+                </div>
+              </motion.div>
+
             </div>
             {/* Globe */}
             {/* <div className="md:h-[600px] h-[350px] aspect-square p-0 m-0">
