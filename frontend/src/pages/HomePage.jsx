@@ -27,15 +27,16 @@ export default function HomePage() {
         <div id="top" className="overflow-y-hidden">
           <HeroSection />
         </div>
-        {/* Company logos marquee */}
-        <CompanyMarquee />
-        {/* Our Stats Section */}
-        <OurStatsSection />
-
         {/* Services section */}
         <div id="services">
           <ServicesSection />
         </div>
+
+        {/* Our Stats Section */}
+        <OurStatsSection />
+
+        {/* Company logos marquee */}
+        <CompanyMarquee />
 
         {/* Testimonials after Services */}
         <TestimonialMarquee />
