@@ -12,6 +12,7 @@ const World = React.lazy(() =>
 );
 import hero_new from "../../assets/images/hero_new.webp";
 import { Award, Gem, GiftIcon } from "lucide-react";
+import { BackgroundGradientAnimation } from "../ui/background-gradient-animation";
 
 export default function HeroSection() {
   const globeConfig = {
@@ -91,6 +92,7 @@ export default function HeroSection() {
     <>
       <div
         id="hero"
+        // className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-32 mt-32 relative overflow-hidden flex md:items-center justify-center"
         className="md:min-h-[calc(100vh-5rem)] min-h-[calc(100vh-40vh)] bg:url('../../assets/images/hero_new.webp') md:mt-32 mt-32 relative overflow-hidden flex md:items-center justify-center"
       >
         <motion.section
@@ -109,16 +111,6 @@ export default function HeroSection() {
           {/* Main Content */}
           <div className="text-center flex py-10 flex-col items-center">
             <div className="text-center  px-4 flex flex-col items-center">
-              {/* Digilynk Chip/Tag */}
-              <motion.div
-                variants={fadeInUp}
-                className="mb-6"
-              >
-                <div className="inline-flex text-white items-center px-4 py-2 rounded-full bg-black/60 border border-black/50 backdrop-blur-sm">
-                  {/* <span className="text-sm font-medium mr-2"> <Award /> </span> */}
-                  <span className="text-sm font-medium">#1 Development company</span>
-                </div>
-              </motion.div>
 
               <motion.h1
                 variants={fadeInUp}
@@ -150,30 +142,7 @@ export default function HeroSection() {
                   Get Started
                 </ShimmerButton>
               </motion.div>
-
-              {/* Free Website Offer */}
-              <motion.div
-                variants={fadeInUp}
-                className="mt-0"
-              >
-                <div className="inline-flex items-center gap-2">
-                  <span className="text-white text-lg"><Gem /></span>
-                  <span className="text-white font-bold">Get Your First Website For FREE !</span>
-                  {/* <span className="text-white text-sm font-bold">Limited Time Offer</span> */}
-                </div>
-              </motion.div>
-
             </div>
-            {/* Globe */}
-            {/* <div className="md:h-[600px] h-[350px] aspect-square p-0 m-0">
-              <React.Suspense fallback={
-                <div className="flex items-center justify-center h-full">
-                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-                </div>
-              }>
-                <World data={sampleArcs} globeConfig={globeConfig} />
-              </React.Suspense>
-            </div> */}
           </div>
         </motion.section>
       </div>
