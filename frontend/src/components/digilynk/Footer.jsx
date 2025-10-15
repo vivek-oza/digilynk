@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Instagram, Mail, Star, MapPin, ExternalLink } from "lucide-react";
+import { Linkedin, Instagram, Mail, Star, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   const container = {
@@ -46,40 +46,35 @@ export default function Footer() {
         </div>
 
         <div className="relative max-w-7xl mx-auto">
-          {/* Global Rating Strip + Map */}
+          {/* Global Rating Strip */}
           <motion.div
-            className="mb-10 min-h-96 rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-sm overflow-hidden"
+            className="mb-10 bg-black py-16 px-6"
             variants={container}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, margin: "-100px" }}
           >
-            <div className="grid lg:grid-cols-2">
+            <div className="flex flex-col justify-center items-center text-center">
               {/* Call to Rate */}
               <motion.div
-                className="p-6 sm:p-8 flex flex-col justify-center"
+                className="flex flex-col items-center"
                 variants={fadeInUp}
               >
-                <div className="flex items-start sm:items-center gap-3">
-                  {/* <div className="inline-flex p-3 rounded-2xl bg-zinc-800/70 text-yellow-400">
-                    <Star className="w-6 h-6" />
-                  </div> */}
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-semibold text-white">
-                      Rate us on Google
-                    </h3>
-                    <p className="mt-2 text-zinc-300 text-sm sm:text-base">
-                      Your feedback keeps our team inspired.
-                    </p>
-                  </div>
+                <div className="mb-6">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 font-roboto">
+                    Rate us on Google
+                  </h3>
+                  <p className="text-lg md:text-xl text-gray-300 font-roboto">
+                    Your feedback keeps our team inspired.
+                  </p>
                 </div>
 
-                <div className="mt-5 flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center justify-center gap-4">
                   <a
                     href="https://g.page/r/CaJmAHoO9fyaEAI/review"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2.5 text-white font-medium shadow hover:opacity-95 active:opacity-90 transition"
+                    className="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 rounded font-roboto"
                   >
                     <Star className="w-4 h-4" />
                     <span>Rate us on Google</span>
@@ -89,28 +84,11 @@ export default function Footer() {
                     href="https://g.co/kgs/fmvoHYc"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-zinc-200 hover:text-white hover:border-zinc-500 transition"
+                    className="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold border border-white text-white hover:bg-white hover:text-black transition-all duration-300 rounded font-roboto"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span>View Business Profile</span>
+                    <span>View Profile</span>
                   </a>
-                </div>
-              </motion.div>
-
-              {/* Map Embed */}
-              <motion.div className="h-96 sm:h-96 md:h-96 lg:h-96 min-h-[220px]" variants={fadeInUp}>
-                <div className="relative w-full h-full">
-                  <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-2 rounded-xl bg-zinc-900/80 border border-zinc-800 px-3 py-1.5 text-zinc-200">
-                    <MapPin className="w-4 h-4 text-red-400" />
-                    <span className="text-sm">Gandhinagar, Gujarat</span>
-                  </div>
-                  <iframe
-                    title="Gandhinagar, Gujarat - Digilynk Location"
-                    src="https://www.google.com/maps?q=Gandhinagar,+Gujarat&output=embed"
-                    className="w-full h-full"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
                 </div>
               </motion.div>
             </div>
@@ -129,7 +107,9 @@ export default function Footer() {
               variants={fadeInUp}
             >
               <div className="flex flex-row items-center space-x-3">
-                <span className="text-4xl font-jersey text-white">digilynk</span>
+                <span className="text-4xl font-jersey text-white">
+                  digilynk
+                </span>
               </div>
               <p className="text-base text-center md:text-left text-gray-400 max-w-md font-light">
                 Transforming ideas into digital reality. We provide

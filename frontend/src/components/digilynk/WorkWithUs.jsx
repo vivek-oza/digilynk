@@ -33,50 +33,5 @@ export default function WorkWithUs() {
     },
   };
 
-  return (
-    <section className="relative bg-black py-24 md:py-32 overflow-hidden font-roboto">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-            backgroundSize: "50px 50px",
-          }}
-        ></div>
-      </div>
-
-      <div className="relative max-w-6xl mx-auto px-4 text-center">
-        <motion.div className="space-y-12" variants={container}>
-          <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-            variants={fadeInUp}
-          >
-            Let's Work Together?
-          </motion.h2>
-
-          <motion.p
-            className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-            variants={fadeInUp}
-          >
-            Let's transform your ideas into reality. Whether you need a stunning
-            website, robust software testing
-            we're here to help you succeed.
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="inline-block">
-            <ShimmerButton
-              onClick={() => navigate("/contact")}
-              className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-              shimmerColor="#ffffff"
-              shimmerSize="0.15em"
-              background="rgba(0, 0, 0, 1)"
-            >
-              Start Your Project
-            </ShimmerButton>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
+  return null;
 }
