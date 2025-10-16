@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import contactRoutes from "./routes/contactRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use(limiter);
 
 // Routes
 app.use("/api/contact", contactRoutes);
+app.use("/api/blog", blogRoutes);
 
 // MongoDB Connection
 mongoose

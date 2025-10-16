@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Code2, TestTube, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function ServicesSection() {
   const navigate = useNavigate();
@@ -35,20 +35,16 @@ export default function ServicesSection() {
 
   const services = [
     {
-      icon: <Code2 className="w-8 h-8" />,
       title: "Web Development",
       description:
         "Custom websites and web applications built with modern technologies and best practices.",
       link: "/services/web-development",
-      color: "text-blue-400",
     },
     {
-      icon: <TestTube className="w-8 h-8" />,
       title: "Software Testing",
       description:
         "Comprehensive QA solutions to ensure your software is bug-free and performs flawlessly.",
       link: "/services/software-testing",
-      color: "text-green-400",
     },
     // {
     //   icon: <Palette className="w-8 h-8" />,
@@ -76,12 +72,12 @@ export default function ServicesSection() {
       <div className="relative max-w-7xl mx-auto px-4">
         <motion.div className="text-center mb-20" variants={container}>
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
+            className="text-2xl md:text-4xl font-medium text-white font-roboto"
             variants={fadeInUp}
           >
             Our Services
           </motion.h2>
-          <motion.p
+          {/* <motion.p
             className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
             variants={fadeInUp}
           >
@@ -91,10 +87,13 @@ export default function ServicesSection() {
           </motion.p>
           <motion.p className="text-lg text-zinc-600 mb-6 font-roboto">
             Need a custom solution? Let's discuss your project requirements.
-          </motion.p>
+          </motion.p> */}
         </motion.div>
 
-        <motion.div className="grid md:grid-cols-2 gap-8 place-items-center" variants={container}>
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 place-items-center"
+          variants={container}
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -102,7 +101,6 @@ export default function ServicesSection() {
               variants={fadeInUp}
               onClick={() => navigate(service.link)}
             >
-              <div className={`${service.color} mb-6`}>{service.icon}</div>
               <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
                 {service.title}
               </h3>

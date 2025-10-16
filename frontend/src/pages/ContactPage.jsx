@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ContactForm from "../components/digilynk/ContactForm";
-import { Mail, Phone, MapPin, Clock, Laugh } from "lucide-react";
+import SimpleContactForm from "../components/digilynk/SimpleContactForm";
+import { Mail, Phone } from "lucide-react";
 import SEO from "../components/SEO";
 
 export default function ContactPage() {
@@ -32,33 +32,6 @@ export default function ContactPage() {
     },
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      content: "digilynksolutions@gmail.com",
-      color: "text-blue-600",
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Call",
-      content: "+91 6353959930",
-      color: "text-green-600",
-    },
-    {
-      icon: <Laugh className="w-6 h-6" />,
-      title: "Satisfaction",
-      content: "100% Client satisfaction",
-      color: "text-purple-600",
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Response Time",
-      content: "Within 24 hours",
-      color: "text-orange-600",
-    },
-  ];
-
   return (
     <>
       <SEO
@@ -67,123 +40,80 @@ export default function ContactPage() {
         path="/contact"
         image="/digilynk_about.png"
       />
-    <div className="relative md:mt-16 mt-32 font-roboto">
-      {/* Hero Section */}
-      <motion.section
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+      <div className="relative md:mt-16 mt-32 font-roboto">
+        {/* Hero Section */}
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className="relative min-h-screen py-20 bg-black overflow-hidden flex items-center justify-center"
+        >
+          {/* Background Image */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
+              backgroundImage: `url('https://images.unsplash.com/photo-1752485627700-f182b75e1069?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170')`,
             }}
-          ></div>
-        </div>
+          />
 
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Let's Build Something Amazing Together!
-            </motion.h1>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/70" />
 
-            <motion.p
-              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              Ready to transform your ideas into reality? We're here to help you
-              create digital experiences that{" "}
-              <span className="font-medium text-white">inspire</span> and{" "}
-              <span className="font-medium text-white">engage</span>.
-            </motion.p>
+          <div className="relative max-w-4xl mx-auto px-4 w-full text-center">
+            <motion.div className="space-y-8" variants={container}>
+              {/* Title */}
+              <motion.h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-roboto"
+                variants={fadeInUp}
+              >
+                Let's discuss your ideas
+              </motion.h1>
 
-            {/* Contact Info Cards */}
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto"
-              variants={container}
-            >
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-zinc-900/50 rounded-2xl p-8 border border-zinc-800/50 hover:border-zinc-700/50 transition-all duration-300 hover:scale-105"
-                  variants={fadeInUp}
+              {/* Contact Info */}
+              <motion.div
+                className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8"
+                variants={fadeInUp}
+              >
+                <a
+                  href="mailto:digilynksolutions@gmail.com"
+                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group"
                 >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className={`${info.color} bg-zinc-800/50 rounded-xl p-3 shadow-sm`}
-                    >
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white text-lg font-roboto">
-                        {info.title}
-                      </h3>
-                      <p className="text-zinc-300 text-base font-roboto">
-                        {info.content}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span className="text-base md:text-lg">
+                    digilynksolutions@gmail.com
+                  </span>
+                </a>
+                <span className="hidden sm:block text-gray-600 text-2xl">
+                  •
+                </span>
+                <a
+                  href="tel:+916353959930"
+                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group"
+                >
+                  <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span className="text-base md:text-lg">+91 6353959930</span>
+                </a>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+          </div>
+        </motion.section>
 
-      {/* Contact Form Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4">
-          <motion.div className="text-center mb-16" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Start Your Project
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Tell us about your vision and we'll help bring it to{" "}
-              <span className="font-medium text-white">life</span>
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="bg-zinc-900/50 rounded-3xl shadow-lg border border-zinc-800/50 overflow-hidden"
-            variants={fadeInUp}
-          >
-            <ContactForm />
-          </motion.div>
-        </div>
-      </motion.section>
-    </div>
+        {/* Form Section */}
+        <motion.section
+          className="relative bg-black py-16 md:py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          <div className="relative max-w-2xl mx-auto px-4">
+            <motion.div variants={fadeInUp}>
+              <SimpleContactForm />
+            </motion.div>
+          </div>
+        </motion.section>
+      </div>
     </>
   );
 }

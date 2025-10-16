@@ -12,7 +12,6 @@ import TestComponent from "../components/ui/test-component";
 import SEO from "../components/SEO";
 import TestimonialMarquee from "../components/digilynk/TestimonialMarquee";
 import CompanyMarquee from "../components/digilynk/CompanyMarquee";
-import BlogSection from "../components/digilynk/BlogSection";
 
 export default function HomePage() {
   return (
@@ -41,9 +40,6 @@ export default function HomePage() {
 
         {/* Testimonials after Services */}
         <TestimonialMarquee />
-
-        {/* Blog Section */}
-        <BlogSection />
 
         {/* Work with section */}
         <WorkWithUs />

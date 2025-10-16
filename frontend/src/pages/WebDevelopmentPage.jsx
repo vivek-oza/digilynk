@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ShimmerButton } from "../components/magicui/shimmer-button";
+import { Button } from "../components/ui/button";
+import { ArrowRight } from "lucide-react";
 import SEO from "../components/SEO";
 import {
   HeartPulse,
@@ -23,6 +24,10 @@ import {
   Shield,
   Clock,
   Users,
+  Building2,
+  Store,
+  GraduationCap,
+  Check,
 } from "lucide-react";
 
 export default function WebDevelopment() {
@@ -55,79 +60,73 @@ export default function WebDevelopment() {
     },
   };
 
+  const popIn = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      },
+    },
+  };
+
   const websiteTypesData = [
     {
-      title: "Personal Portfolio Websites",
+      title: "Portfolio Websites",
       description:
-        "Showcase your skills, work, and achievements with a professional personal portfolio.",
+        "Personal or agency portfolios to showcase your work and expertise.",
       icon: <Code2 className="w-8 h-8" />,
-      color: "text-blue-600",
-    },
-    {
-      title: "Landing Pages",
-      description:
-        "High-converting landing pages designed to capture leads and drive conversions.",
-      icon: <Globe className="w-8 h-8" />,
-      color: "text-green-600",
-    },
-    {
-      title: "Ecommerce Websites",
-      description:
-        "Complete online stores with secure payment processing and inventory management.",
-      icon: <ShoppingCart className="w-8 h-8" />,
-      color: "text-purple-600",
+      color: "text-blue-500",
     },
     {
       title: "Business Websites",
       description:
-        "Professional corporate websites that establish credibility and drive growth.",
-      icon: <Database className="w-8 h-8" />,
-      color: "text-orange-600",
+        "Corporate sites that build credibility and attract customers.",
+      icon: <Building2 className="w-8 h-8" />,
+      color: "text-purple-500",
     },
     {
-      title: "Educational Websites",
+      title: "E-Commerce Stores",
       description:
-        "Interactive learning platforms and educational institution websites.",
-      icon: <BrainCircuit className="w-8 h-8" />,
-      color: "text-indigo-600",
-    },
-  ];
-
-  const specializedWebsitesData = [
-    {
-      title: "Hotel Websites",
-      description:
-        "Beautiful hotel websites with booking systems and guest management features.",
-      icon: <Hotel className="w-8 h-8" />,
-      color: "text-blue-600",
+        "Online stores with secure checkout and inventory management.",
+      icon: <Store className="w-8 h-8" />,
+      color: "text-green-500",
     },
     {
-      title: "Hospital Websites",
+      title: "Landing Pages",
       description:
-        "Professional healthcare websites with appointment booking and patient portals.",
-      icon: <HeartPulse className="w-8 h-8" />,
-      color: "text-red-600",
+        "High-converting pages designed to capture leads effectively.",
+      icon: <Rocket className="w-8 h-8" />,
+      color: "text-orange-500",
     },
     {
-      title: "Event Websites",
-      description:
-        "Dynamic event websites with registration, ticketing, and event management.",
-      icon: <Gamepad2 className="w-8 h-8" />,
-      color: "text-green-600",
-    },
-    {
-      title: "Booking Websites",
-      description:
-        "Comprehensive booking platforms for services, appointments, and reservations.",
+      title: "Booking Platforms",
+      description: "Reservation systems for hotels, appointments, and events.",
       icon: <CreditCard className="w-8 h-8" />,
-      color: "text-purple-600",
+      color: "text-cyan-500",
     },
     {
-      title: "Blogs",
+      title: "Healthcare Portals",
       description:
-        "Content-rich blog websites with CMS integration and SEO optimization.",
+        "Patient portals and appointment systems for medical practices.",
+      icon: <HeartPulse className="w-8 h-8" />,
+      color: "text-red-500",
+    },
+    {
+      title: "Educational Platforms",
+      description: "Learning management systems and educational websites.",
+      icon: <GraduationCap className="w-8 h-8" />,
+      color: "text-indigo-500",
+    },
+    {
+      title: "Blogs & Content Sites",
+      description: "SEO-optimized blogs with content management systems.",
       icon: <Palette className="w-8 h-8" />,
-      color: "text-pink-600",
+      color: "text-pink-500",
     },
   ];
 
@@ -170,357 +169,621 @@ export default function WebDevelopment() {
         path="/services/web-development"
         image="/digilynk_about.png"
       />
-    <div className="relative md:mt-16 mt-32 font-roboto">
-      {/* Hero Section */}
-      <motion.section
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        className="relative min-h-[calc(100vh-5rem)] py-20 bg-black overflow-hidden flex items-center justify-center"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+      <div className="relative md:mt-16 mt-32 font-roboto">
+        {/* Hero Section */}
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className="relative min-h-screen py-20 overflow-hidden flex items-center justify-center"
+        >
+          {/* Background Image */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
+              backgroundImage: `url('https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1255')`,
             }}
-          ></div>
-        </div>
+          />
 
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Your <span className="font-medium text-white">Vision</span>, Our{" "}
-              <span className="font-medium text-white">Code</span> — Crafting{" "}
-              <span className="font-medium text-white">Ideas into Reality</span>
-            </motion.h1>
+          {/* Dark Overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60" />
 
-            <motion.p
-              className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              We craft digital experiences that accelerate your business growth,
-              showcase your brand, and inspire trust from the very first click.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
-              >
-                Start Your Project
-              </ShimmerButton>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Website Types Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Website Types We Create
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              From personal portfolios to complex business platforms — we create{" "}
-              <span className="font-medium text-white">diverse solutions</span>{" "}
-              tailored to your needs
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
-            variants={container}
-          >
-            {websiteTypesData.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-pink-400/40 hover:border-pink-400/80 hover:shadow-pink-500/20 transition-all duration-300 hover:scale-105"
+          <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+            <motion.div className="space-y-12" variants={container}>
+              <motion.h1
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-roboto"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-6`}>{item.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+                Need a Website?
+              </motion.h1>
 
-      {/* Specialized Websites Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Specialized Solutions
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Industry-specific websites designed for{" "}
-              <span className="font-medium text-white">
-                unique requirements
-              </span>{" "}
-              and specialized functionalities
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
-            variants={container}
-          >
-            {specializedWebsitesData.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-zinc-900/50 rounded-3xl p-10 shadow-lg border-2 border-blue-400/40 hover:border-blue-400/80 hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105"
+              <motion.p
+                className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-roboto"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-6`}>{item.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-4 font-roboto">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                  {item.description}
-                </p>
+                We develop modern, fast and stunning websites
+              </motion.p>
+
+              <motion.div variants={fadeInUp}>
+                <Button
+                  onClick={() => navigate("/contact")}
+                  className="px-6 py-3 text-base font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105"
+                >
+                  Get a quote
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+            </motion.div>
+          </div>
+        </motion.section>
 
-      {/* Why Choose Us Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
+        {/* Website Types Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #3b82f6 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
 
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div className="text-center mb-20" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Why Choose Digilynk?
-            </motion.h2>
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              We don't just build websites — we craft{" "}
-              <span className="font-medium text-white">
-                digital experiences
-              </span>{" "}
-              that drive results
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 gap-12"
-            variants={container}
-          >
-            {whyChooseItems.map((item) => (
-              <motion.div
-                key={item.id}
-                className="bg-zinc-900/50 rounded-3xl p-12 shadow-lg border-2 border-green-400/40 hover:border-green-400/80 hover:shadow-green-500/20 transition-all duration-300 hover:scale-105"
+          <div className="relative max-w-7xl mx-auto px-4">
+            <motion.div className="text-center mb-20" variants={container}>
+              <motion.h2
+                className="text-2xl md:text-4xl font-bold text-white mb-4 font-roboto"
                 variants={fadeInUp}
               >
-                <div className={`${item.color} mb-6`}>{item.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-6 font-roboto">
-                  {item.title}
-                </h3>
-                <p className="text-zinc-300 leading-relaxed text-lg font-roboto">
-                  {item.text}
-                </p>
+                What we build?
+              </motion.h2>
+              <motion.p
+                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                We develop single page website to enterprise level solutions.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              variants={container}
+            >
+              {websiteTypesData.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl p-6 shadow-xl border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 overflow-hidden"
+                  variants={popIn}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Hover gradient effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/0 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative z-10">
+                    {/* Icon with background */}
+                    <div
+                      className={`${item.color} mb-4 p-3 bg-zinc-800/50 rounded-xl w-fit`}
+                    >
+                      {item.icon}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-zinc-400 text-sm leading-relaxed font-roboto group-hover:text-zinc-300 transition-colors">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom accent line */}
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 ${item.color.replace(
+                      "text-",
+                      "bg-"
+                    )} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl`}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Why Choose Us Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            <motion.div className="text-center mb-20" variants={container}>
+              <motion.h2
+                className="text-2xl md:text-4xl font-bold text-white mb-4 font-roboto"
+                variants={fadeInUp}
+              >
+                Why Choose Digilynk?
+              </motion.h2>
+              <motion.p
+                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                We don't just build websites — we craft digital experiences that
+                drive results
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              variants={container}
+            >
+              {whyChooseItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl p-6 shadow-xl border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 overflow-hidden"
+                  variants={popIn}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Hover gradient effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/0 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative z-10">
+                    {/* Icon with background */}
+                    <div
+                      className={`${item.color} mb-4 p-3 bg-zinc-800/50 rounded-xl w-fit`}
+                    >
+                      {item.icon}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
+                      {item.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-zinc-400 text-sm leading-relaxed font-roboto group-hover:text-zinc-300 transition-colors">
+                      {item.text}
+                    </p>
+                  </div>
+
+                  {/* Bottom accent line */}
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 ${item.color.replace(
+                      "text-",
+                      "bg-"
+                    )} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl`}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Pricing Section */}
+        <motion.section
+          className="relative bg-black py-24 md:py-32 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
+                backgroundSize: "50px 50px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            {/* Section Header */}
+            <motion.div className="text-center mb-16" variants={container}>
+              <motion.h2
+                className="text-3xl md:text-5xl font-bold text-white mb-4 font-roboto"
+                variants={fadeInUp}
+              >
+                Pricing Plans
+              </motion.h2>
+              <motion.p
+                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-roboto"
+                variants={fadeInUp}
+              >
+                Choose the perfect plan for your business needs
+              </motion.p>
+            </motion.div>
+
+            {/* Pricing Cards */}
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+              variants={container}
+            >
+              {/* Basic Plan */}
+              <motion.div
+                className="group relative bg-gradient-to-br from-zinc-900/90 to-zinc-900/50 rounded-2xl p-8 border border-zinc-700/50 hover:border-zinc-600 transition-all duration-300 overflow-hidden"
+                variants={popIn}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-white mb-2 font-roboto">
+                    Basic Plan
+                  </h3>
+
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-white">
+                      ₹14,999
+                    </span>
+                    <span className="text-gray-400"> - ₹24,999</span>
+                  </div>
+
+                  <p className="text-sm text-gray-400 mb-6 font-medium">
+                    Best for: Freelancers, startups, or small businesses
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Up to 5 Static Pages
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Custom UI Design
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Mobile Responsive
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Contact Form Integration
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">Basic SEO</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        SSL Setup & Security
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        1 Month Free Maintenance
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-sm text-gray-400 mb-6 pb-6 border-t border-zinc-800 pt-4">
+                    <p>
+                      <strong className="text-white">Delivery:</strong> 7-10
+                      Business Days
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={() => navigate("/contact")}
+                    className="w-full bg-white hover:bg-gray-100 text-black font-semibold"
+                  >
+                    Get a quote
+                  </Button>
+                </div>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
 
-      {/* Development Showcase Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Craft Digital Excellence
-            </motion.h2>
-
-            <motion.p
-              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              Our team of passionate developers blends innovative web design
-              with robust development practices, ensuring every project is
-              visually stunning, bug-free, and optimized for growth.
-            </motion.p>
-
-            <motion.p
-              className="text-xl text-zinc-300 leading-relaxed max-w-4xl mx-auto font-roboto"
-              variants={fadeInUp}
-            >
-              We believe that a well-crafted website is more than just an online
-              presence. It's a powerful tool for building trust, impressing
-              clients, and accelerating your business success.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
+              {/* Value Plan */}
+              <motion.div
+                className="group relative bg-gradient-to-br from-zinc-900/90 to-zinc-900/50 rounded-2xl p-8 border-2 border-blue-500/50 hover:border-blue-500 transition-all duration-300 overflow-hidden shadow-2xl shadow-blue-500/10"
+                variants={popIn}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                Get Custom Web Solutions
-              </ShimmerButton>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+                <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  POPULAR
+                </div>
 
-      {/* Final CTA Section */}
-      <motion.section
-        className="relative bg-black py-24 md:py-32 overflow-hidden"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
-        variants={container}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-white mb-2 font-roboto">
+                    Value Plan
+                  </h3>
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <motion.div className="space-y-12" variants={container}>
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-8 font-roboto"
-              variants={fadeInUp}
-            >
-              Ready to Build Your Digital Presence?
-            </motion.h2>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-white">
+                      ₹29,999
+                    </span>
+                    <span className="text-gray-400"> - ₹49,999</span>
+                  </div>
 
-            <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-              variants={fadeInUp}
-            >
-              Let's create a website that not only looks amazing but also drives
-              your business{" "}
-              <span className="font-medium text-white">forward</span>
-            </motion.p>
+                  <p className="text-sm text-gray-400 mb-6 font-medium">
+                    Best for: Small and mid-sized businesses
+                  </p>
 
-            <motion.div variants={fadeInUp} className="inline-block">
-              <ShimmerButton
-                onClick={() => navigate("/contact")}
-                className="text-white px-10 py-5 text-xl font-semibold font-roboto"
-                shimmerColor="#ffffff"
-                shimmerSize="0.15em"
-                background="rgba(0, 0, 0, 1)"
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Up to 10 Pages
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Custom UI/UX Design
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        CMS Integration (WordPress/Webflow)
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Blog Section Setup
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        API Integrations
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Standard SEO & Analytics
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        2 Months Maintenance
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-sm text-gray-400 mb-6 pb-6 border-t border-zinc-800 pt-4">
+                    <p>
+                      <strong className="text-white">Delivery:</strong> 14-20
+                      Business Days
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={() => navigate("/contact")}
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold"
+                  >
+                    Get a quote
+                  </Button>
+                </div>
+              </motion.div>
+
+              {/* Premium Plan */}
+              <motion.div
+                className="group relative bg-gradient-to-br from-zinc-900/90 to-zinc-900/50 rounded-2xl p-8 border border-zinc-700/50 hover:border-zinc-600 transition-all duration-300 overflow-hidden"
+                variants={popIn}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                Start Your Project Today
-              </ShimmerButton>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-white mb-2 font-roboto">
+                    Premium Plan
+                  </h3>
+
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-white">
+                      ₹59,999
+                    </span>
+                    <span className="text-gray-400"> - ₹1,20,000+</span>
+                  </div>
+
+                  <p className="text-sm text-gray-400 mb-6 font-medium">
+                    Best for: Enterprises and e-commerce stores
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Unlimited Pages
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Advanced UI/UX Design
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        E-commerce Development
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Custom CMS/Admin Dashboard
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Payment Gateway Integration
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        Advanced SEO
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-gray-300">
+                        3 Months Premium Support
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-sm text-gray-400 mb-6 pb-6 border-t border-zinc-800 pt-4">
+                    <p>
+                      <strong className="text-white">Delivery:</strong> 25-40
+                      Business Days
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={() => navigate("/contact")}
+                    className="w-full bg-white hover:bg-gray-100 text-black font-semibold"
+                  >
+                    Get a quote
+                  </Button>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-    </div>
+
+            {/* Add-on Services */}
+            <motion.div
+              className="bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 rounded-2xl p-8 border border-zinc-800"
+              variants={fadeInUp}
+            >
+              <h3 className="text-2xl font-bold text-white mb-6 font-roboto">
+                Add-on Services
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-base text-gray-200 font-medium">
+                      Website Redesign
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">from ₹7,999</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-base text-gray-200 font-medium">
+                      Landing Page Design
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">from ₹6,999</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-base text-gray-200 font-medium">
+                      Logo & Graphic Design
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">from ₹4,999</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-base text-gray-200 font-medium">
+                      Ongoing Maintenance
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">₹1,999/month</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-base text-gray-200 font-medium">
+                      SEO & Marketing Setup
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">from ₹9,999</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Final CTA Section */}
+        <motion.section
+          className="relative py-32 md:py-40 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1721864428907-647320ec2917?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074')`,
+            }}
+          />
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/70" />
+
+          <div className="relative z-20 max-w-4xl mx-auto px-4 text-center">
+            <motion.div className="space-y-12" variants={container}>
+              <motion.h2
+                className="text-3xl md:text-5xl font-bold text-white mb-6 font-roboto"
+                variants={fadeInUp}
+              >
+                Let's Discuss Your Requirements
+              </motion.h2>
+
+              <motion.p
+                className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-12 font-roboto"
+                variants={fadeInUp}
+              >
+                A 15-minute call is all we need to understand your vision and
+                provide expert consultation
+              </motion.p>
+
+              <motion.div variants={fadeInUp}>
+                <Button
+                  onClick={() => navigate("/contact")}
+                  className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl"
+                >
+                  Get a quote
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.section>
+      </div>
     </>
   );
 }

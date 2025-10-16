@@ -75,8 +75,19 @@ const OurStatsSection = () => {
       ref={sectionRef}
       className="bg-black text-white relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1677784975579-b16f8028b555?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228')`,
+        }}
+      />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70" />
+
+      {/* Grid Pattern (subtle) */}
+      <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" viewBox="0 0 1200 800">
           <defs>
             <pattern
@@ -88,7 +99,7 @@ const OurStatsSection = () => {
               <path
                 d="M 40 0 L 0 0 0 40"
                 fill="none"
-                stroke="#333"
+                stroke="#fff"
                 strokeWidth="1"
               />
             </pattern>
