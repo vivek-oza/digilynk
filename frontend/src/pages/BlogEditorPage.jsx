@@ -5,13 +5,15 @@ import {
   ArrowLeft,
   Save,
   Eye,
+  Download,
   Image as ImageIcon,
   Tag,
   Clock,
-  User,
+  Calendar,
   Star,
+  FileText,
 } from "lucide-react";
-import useBlogStore from "../lib/blogStore";
+import { blogStorage } from "../lib/blogLocalStorage";
 import BlogContent from "../components/BlogContent";
 
 export default function BlogEditorPage() {
@@ -19,52 +21,29 @@ export default function BlogEditorPage() {
   const { id } = useParams();
   const isEditMode = !!id;
 
-  const { createBlog, updateBlog, fetchBlog, currentBlog, clearCurrentBlog } =
-    useBlogStore();
-
   const [formData, setFormData] = useState({
+    id: Date.now().toString(),
     title: "",
-    excerpt: "",
+    description: "",
     content: "",
     coverImage: "",
     readTime: "5 min read",
-    author: "Digilynk Team",
+    datePublished: new Date().toISOString().split("T")[0],
     tags: [],
-    published: true,
     featured: false,
   });
 
   const [tagInput, setTagInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
     if (isEditMode) {
-      loadBlog();
+      const blog = blogStorage.getBlog(id);
+      if (blog) {
+        setFormData(blog);
+      }
     }
-
-    return () => clearCurrentBlog();
-  }, [id]);
-
-  const loadBlog = async () => {
-    try {
-      const blog = await fetchBlog(id);
-      setFormData({
-        title: blog.title || "",
-        excerpt: blog.excerpt || "",
-        content: blog.content || "",
-        coverImage: blog.coverImage || "",
-        readTime: blog.readTime || "5 min read",
-        author: blog.author || "Digilynk Team",
-        tags: blog.tags || [],
-        published: blog.published ?? true,
-        featured: blog.featured ?? false,
-      });
-    } catch (err) {
-      setError("Failed to load blog");
-    }
-  };
+  }, [id, isEditMode]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -94,32 +73,14 @@ export default function BlogEditorPage() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+  const handlePublish = () => {
+    blogStorage.saveBlog(formData);
+    alert("Blog saved! It will appear on your blog page.");
+    navigate("/blog");
+  };
 
-    try {
-      if (isEditMode) {
-        await updateBlog(id, formData);
-      } else {
-        await createBlog(formData);
-      }
-
-      navigate("/blog");
-    } catch (err) {
-      const errorMessage =
-        err.response?.data?.error ||
-        err.response?.data?.details?.[0]?.message ||
-        err.message ||
-        "An error occurred";
-      setError(
-        `Failed to ${isEditMode ? "update" : "create"} blog: ${errorMessage}`
-      );
-      console.error("Submit error:", err.response?.data || err);
-    } finally {
-      setLoading(false);
-    }
+  const handleDownloadMarkdown = () => {
+    blogStorage.downloadAsMarkdown(formData);
   };
 
   return (
@@ -144,38 +105,35 @@ export default function BlogEditorPage() {
               {preview ? "Edit" : "Preview"}
             </button>
             <button
-              onClick={handleSubmit}
-              disabled={loading}
-              className="flex items-center gap-2 px-6 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all disabled:opacity-50"
+              onClick={handleDownloadMarkdown}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              Download .md
+            </button>
+            <button
+              onClick={handlePublish}
+              className="flex items-center gap-2 px-6 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all"
             >
               <Save className="w-4 h-4" />
-              {loading
-                ? "Saving..."
-                : isEditMode
-                ? "Update Blog"
-                : "Create Blog"}
+              {isEditMode ? "Update" : "Publish"}
             </button>
           </div>
         </div>
-
-        {error && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400">
-            {error}
-          </div>
-        )}
 
         {/* Editor or Preview */}
         {preview ? (
           <BlogPreview formData={formData} />
         ) : (
-          <motion.form
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
             {/* Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
+                <FileText className="w-4 h-4" />
                 Title *
               </label>
               <input
@@ -201,7 +159,7 @@ export default function BlogEditorPage() {
                 value={formData.coverImage}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
-                placeholder="https://example.com/image.jpg"
+                placeholder="https://images.unsplash.com/..."
                 required
               />
               {formData.coverImage && (
@@ -213,14 +171,14 @@ export default function BlogEditorPage() {
               )}
             </div>
 
-            {/* Excerpt */}
+            {/* Description */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Excerpt *
+                Description *
               </label>
               <textarea
-                name="excerpt"
-                value={formData.excerpt}
+                name="description"
+                value={formData.description}
                 onChange={handleChange}
                 rows={3}
                 className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-none"
@@ -232,21 +190,25 @@ export default function BlogEditorPage() {
             {/* Content */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Content * (Markdown supported)
+                Blog Content * (Markdown supported)
               </label>
               <textarea
                 name="content"
                 value={formData.content}
                 onChange={handleChange}
-                rows={15}
+                rows={20}
                 className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors resize-y font-mono text-sm"
                 placeholder="Write your blog content here... You can use markdown formatting."
                 required
               />
+              <div className="mt-2 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg text-sm text-blue-200">
+                <strong>Markdown Tips:</strong> Use # for H1, ## for H2, ### for
+                H3, **bold**, *italic*, - for lists
+              </div>
             </div>
 
             {/* Meta Information */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
                   <Clock className="w-4 h-4" />
@@ -264,17 +226,30 @@ export default function BlogEditorPage() {
 
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                  <User className="w-4 h-4" />
-                  Author
+                  <Calendar className="w-4 h-4" />
+                  Date Published
                 </label>
                 <input
-                  type="text"
-                  name="author"
-                  value={formData.author}
+                  type="date"
+                  name="datePublished"
+                  value={formData.datePublished}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
-                  placeholder="Author name"
+                  className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white focus:outline-none focus:border-zinc-600 transition-colors"
                 />
+              </div>
+
+              <div className="flex items-center">
+                <label className="flex items-center gap-2 text-gray-300 cursor-pointer mt-6">
+                  <input
+                    type="checkbox"
+                    name="featured"
+                    checked={formData.featured}
+                    onChange={handleChange}
+                    className="w-5 h-5 rounded border-zinc-700 bg-zinc-900"
+                  />
+                  <Star className="w-5 h-5 text-yellow-500" />
+                  <span className="text-sm font-medium">Featured Blog</span>
+                </label>
               </div>
             </div>
 
@@ -311,32 +286,15 @@ export default function BlogEditorPage() {
               </div>
             </div>
 
-            {/* Checkboxes */}
-            <div className="flex gap-6">
-              <label className="flex items-center gap-2 text-gray-300 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="published"
-                  checked={formData.published}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-zinc-700 bg-zinc-900"
-                />
-                <span className="text-sm">Published</span>
-              </label>
-
-              <label className="flex items-center gap-2 text-gray-300 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="featured"
-                  checked={formData.featured}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-zinc-700 bg-zinc-900"
-                />
-                <Star className="w-4 h-4" />
-                <span className="text-sm">Featured</span>
-              </label>
+            {/* Instructions */}
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+              <p className="text-blue-200 text-sm">
+                <strong>💡 Tip:</strong> Click "Download .md" to get the
+                markdown file, then commit it to your GitHub repo. Your blogs
+                are also saved locally for easy editing.
+              </p>
             </div>
-          </motion.form>
+          </motion.div>
         )}
       </div>
     </div>
@@ -365,30 +323,31 @@ function BlogPreview({ formData }) {
 
       {/* Content */}
       <div className="p-8">
+        {formData.featured && (
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-500/20 text-yellow-500 rounded-full text-sm mb-4">
+            <Star className="w-4 h-4 fill-current" />
+            Featured
+          </span>
+        )}
+
         <h1 className="text-4xl font-bold text-white mb-4">
           {formData.title || "Untitled Blog"}
         </h1>
 
         <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
           <span className="flex items-center gap-2">
-            <User className="w-4 h-4" />
-            {formData.author}
+            <Calendar className="w-4 h-4" />
+            {formData.datePublished}
           </span>
           <span className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
             {formData.readTime}
           </span>
-          {formData.featured && (
-            <span className="flex items-center gap-1 text-yellow-500">
-              <Star className="w-4 h-4 fill-current" />
-              Featured
-            </span>
-          )}
         </div>
 
-        {formData.excerpt && (
+        {formData.description && (
           <p className="text-lg text-gray-300 mb-6 italic">
-            {formData.excerpt}
+            {formData.description}
           </p>
         )}
 

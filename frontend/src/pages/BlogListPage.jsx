@@ -1,15 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import { Clock, ArrowRight, Plus, Edit, Trash2 } from "lucide-react";
-import useBlogStore from "../lib/blogStore";
+import { blogStorage } from "../lib/blogLocalStorage";
+
+// Hardcoded default blogs
+const defaultBlogs = [
+  {
+    id: "1",
+    title: "Top 5 Reasons Every Small Business Needs a Website in 2025",
+    coverImage:
+      "https://images.unsplash.com/photo-1614854262178-03c96e9c8c28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    readTime: "4 min read",
+    description:
+      "Discover why having a website is essential for business growth in 2025.",
+    datePublished: "2025-01-15",
+  },
+  {
+    id: "2",
+    title: "How Custom Web Development Can Boost Your Brand Credibility",
+    coverImage:
+      "https://images.unsplash.com/photo-1614854262178-03c96e9c8c28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    readTime: "6 min read",
+    description:
+      "Learn how custom development sets you apart from the competition.",
+    datePublished: "2025-01-10",
+  },
+];
 
 export default function BlogListPage() {
   const navigate = useNavigate();
   const [showAdminButton, setShowAdminButton] = useState(false);
+  const [blogs, setBlogs] = useState([]);
 
-  const { blogs, fetchBlogs, deleteBlog, loading } = useBlogStore();
+  // Load blogs from localStorage + defaults
+  useEffect(() => {
+    const savedBlogs = blogStorage.getBlogs();
+    const allBlogs = [...savedBlogs, ...defaultBlogs];
+    setBlogs(allBlogs);
+  }, []);
 
   // Secret key combination: Press Ctrl + Shift + A to show admin button
   useEffect(() => {
@@ -24,29 +54,14 @@ export default function BlogListPage() {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
 
-  // Fetch blogs on mount
-  useEffect(() => {
-    fetchBlogs({ published: true });
-  }, []);
-
-  const handleAdminClick = () => {
-    navigate("/blog/new");
-  };
-
-  const handleDeleteBlog = async (blogId, e) => {
+  const handleDeleteBlog = (blogId, e) => {
     e.stopPropagation();
     if (window.confirm("Are you sure you want to delete this blog?")) {
-      try {
-        await deleteBlog(blogId);
-      } catch (err) {
-        alert("Failed to delete blog");
-      }
+      blogStorage.deleteBlog(blogId);
+      const savedBlogs = blogStorage.getBlogs();
+      const allBlogs = [...savedBlogs, ...defaultBlogs];
+      setBlogs(allBlogs);
     }
-  };
-
-  const handleEditBlog = (blogId, e) => {
-    e.stopPropagation();
-    navigate(`/blog/edit/${blogId}`);
   };
 
   const container = {
@@ -90,7 +105,7 @@ export default function BlogListPage() {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1644177291353-a15aea11f315?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170')`,
+              backgroundImage: `url('https://images.unsplash.com/photo-1673692011577-b98b96b0ed3c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170')`,
             }}
           />
 
@@ -122,7 +137,7 @@ export default function BlogListPage() {
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
           >
             <button
-              onClick={handleAdminClick}
+              onClick={() => navigate("/blog/new")}
               className="p-4 bg-white text-black rounded-full shadow-2xl hover:bg-gray-200 transition-all duration-300 hover:scale-110"
               title="Create New Blog"
             >
@@ -140,48 +155,34 @@ export default function BlogListPage() {
           variants={container}
         >
           <div className="max-w-7xl mx-auto px-4">
-            {loading ? (
-              <div className="text-center text-white py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
-                <p className="mt-4">Loading blogs...</p>
-              </div>
-            ) : blogs.length === 0 ? (
-              <div className="text-center text-gray-400 py-12">
-                <p className="text-xl">No blogs published yet.</p>
-                {showAdminButton && (
-                  <button
-                    onClick={() => navigate("/blog/new")}
-                    className="mt-6 px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-                  >
-                    Create Your First Blog
-                  </button>
-                )}
-              </div>
-            ) : (
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                variants={container}
-              >
-                {blogs.map((blog) => (
-                  <motion.article
-                    key={blog._id}
-                    className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all duration-300 cursor-pointer"
-                    variants={fadeInUp}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    onClick={() => navigate(`/blog/${blog._id}`)}
-                  >
-                    {/* Admin Actions */}
-                    {showAdminButton && (
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={container}
+            >
+              {blogs.map((blog) => (
+                <motion.article
+                  key={blog.id}
+                  className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all duration-300 cursor-pointer"
+                  variants={fadeInUp}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  onClick={() => navigate(`/blog/${blog.id}`)}
+                >
+                  {/* Admin Actions */}
+                  {showAdminButton &&
+                    !defaultBlogs.find((b) => b.id === blog.id) && (
                       <div className="absolute top-3 right-3 z-10 flex gap-2">
                         <button
-                          onClick={(e) => handleEditBlog(blog._id, e)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/blog/edit/${blog.id}`);
+                          }}
                           className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                           title="Edit"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={(e) => handleDeleteBlog(blog._id, e)}
+                          onClick={(e) => handleDeleteBlog(blog.id, e)}
                           className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
                           title="Delete"
                         >
@@ -190,46 +191,38 @@ export default function BlogListPage() {
                       </div>
                     )}
 
-                    {/* Blog Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={blog.coverImage}
-                        alt={blog.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-60" />
+                  {/* Blog Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={blog.coverImage || blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-60" />
+                  </div>
+
+                  {/* Blog Content */}
+                  <div className="p-6">
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
+                      {blog.title}
+                    </h3>
+
+                    {/* Read Time */}
+                    <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
+                      <Clock className="w-4 h-4" />
+                      <span>{blog.readTime}</span>
                     </div>
 
-                    {/* Blog Content */}
-                    <div className="p-6">
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
-                        {blog.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      {blog.excerpt && (
-                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                          {blog.excerpt}
-                        </p>
-                      )}
-
-                      {/* Read Time */}
-                      <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
-                        <Clock className="w-4 h-4" />
-                        <span>{blog.readTime}</span>
-                      </div>
-
-                      {/* Read More */}
-                      <div className="flex items-center gap-2 text-white font-medium group-hover:gap-3 transition-all">
-                        <span>Read More</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
+                    {/* Read More */}
+                    <div className="flex items-center gap-2 text-white font-medium group-hover:gap-3 transition-all">
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
-                  </motion.article>
-                ))}
-              </motion.div>
-            )}
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
 

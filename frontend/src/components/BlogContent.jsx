@@ -1,14 +1,12 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 
 export default function BlogContent({ content }) {
   return (
-    <div className="blog-content prose prose-lg prose-invert max-w-none">
+    <div className="blog-content">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({ children }) => (
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 mt-12 font-roboto">
@@ -99,28 +97,6 @@ export default function BlogContent({ content }) {
             />
           ),
           hr: () => <hr className="border-zinc-800 my-8" />,
-          table: ({ children }) => (
-            <div className="overflow-x-auto my-6">
-              <table className="min-w-full border border-zinc-800">
-                {children}
-              </table>
-            </div>
-          ),
-          thead: ({ children }) => (
-            <thead className="bg-zinc-900">{children}</thead>
-          ),
-          tbody: ({ children }) => <tbody>{children}</tbody>,
-          tr: ({ children }) => (
-            <tr className="border-b border-zinc-800">{children}</tr>
-          ),
-          th: ({ children }) => (
-            <th className="px-4 py-3 text-left text-white font-semibold">
-              {children}
-            </th>
-          ),
-          td: ({ children }) => (
-            <td className="px-4 py-3 text-gray-300">{children}</td>
-          ),
           strong: ({ children }) => (
             <strong className="font-bold text-white">{children}</strong>
           ),

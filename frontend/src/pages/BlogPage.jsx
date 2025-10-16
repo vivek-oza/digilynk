@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
-import { ArrowLeft, Clock, User, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import useBlogStore from "../lib/blogStore";
+import { blogStorage } from "../lib/blogLocalStorage";
 import BlogContent from "../components/BlogContent";
 
-// Legacy hardcoded blogs - will be used as fallback
-const legacyBlogs = [
+const defaultBlogs = [
   {
     id: 1,
     title: "Top 5 Reasons Every Small Business Needs a Website in 2025",
@@ -744,46 +743,27 @@ const legacyBlogs = [
 export default function BlogPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { currentBlog, fetchBlog, loading } = useBlogStore();
-  const [error, setError] = useState(false);
+  const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    loadBlog();
+    // Try to find in localStorage first
+    const savedBlog = blogStorage.getBlog(id);
+    if (savedBlog) {
+      setBlog(savedBlog);
+    } else {
+      // Fallback to default blogs
+      const defaultBlog = defaultBlogs.find(
+        (b) => b.id === id || b.id === parseInt(id)
+      );
+      setBlog(defaultBlog);
+    }
   }, [id]);
 
-  const loadBlog = async () => {
-    try {
-      setError(false);
-      await fetchBlog(id);
-    } catch (err) {
-      console.error("Failed to load blog:", err);
-      setError(true);
-    }
-  };
-
-  // Try to find legacy blog as fallback
-  const legacyBlog = legacyBlogs.find((b) => b.id === parseInt(id));
-  const blog = currentBlog || legacyBlog;
-
-  if (loading) {
-    return (
-      <div className="pt-16 min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-white text-lg">Loading blog...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!blog || error) {
+  if (!blog) {
     return (
       <div className="pt-16 min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Blog Not Found</h1>
-          <p className="text-gray-400 mb-8">
-            The blog you're looking for doesn't exist or has been removed.
-          </p>
           <button
             onClick={() => navigate("/blog")}
             className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition-all duration-300"
@@ -794,13 +774,6 @@ export default function BlogPage() {
       </div>
     );
   }
-
-  // Format content for display
-  const displayContent = currentBlog ? (
-    <BlogContent content={currentBlog.content} />
-  ) : (
-    blog.content
-  );
 
   return (
     <>
@@ -813,7 +786,7 @@ export default function BlogPage() {
         {/* Hero Section with Image */}
         <div className="relative h-screen overflow-hidden">
           <img
-            src={currentBlog ? blog.coverImage : blog.image}
+            src={blog.coverImage || blog.image}
             alt={blog.title}
             className="w-full h-full object-cover"
           />
@@ -842,14 +815,20 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
+              {blog.featured && (
+                <span className="inline-flex items-center gap-1 px-3 py-1 bg-yellow-500/20 text-yellow-500 rounded-full text-sm mb-4">
+                  <Star className="w-4 h-4 fill-current" />
+                  Featured
+                </span>
+              )}
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight font-roboto">
                 {blog.title}
               </h1>
 
-              {/* Excerpt */}
-              {currentBlog?.excerpt && (
+              {blog.description && (
                 <p className="text-xl text-gray-300 mb-6 italic">
-                  {currentBlog.excerpt}
+                  {blog.description}
                 </p>
               )}
 
@@ -859,24 +838,20 @@ export default function BlogPage() {
                   <Clock className="w-4 h-4" />
                   <span>{blog.readTime}</span>
                 </div>
-                {currentBlog?.author && (
+                {blog.datePublished && (
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    <span>{currentBlog.author}</span>
-                  </div>
-                )}
-                {currentBlog?.views !== undefined && (
-                  <div className="flex items-center gap-2">
-                    <span>{currentBlog.views} views</span>
+                    <Calendar className="w-4 h-4" />
+                    <span>
+                      {new Date(blog.datePublished).toLocaleDateString()}
+                    </span>
                   </div>
                 )}
               </div>
 
               {/* Tags */}
-              {currentBlog?.tags && currentBlog.tags.length > 0 && (
-                <div className="flex items-center gap-2 mt-4 flex-wrap">
-                  <Tag className="w-4 h-4 text-gray-400" />
-                  {currentBlog.tags.map((tag) => (
+              {blog.tags && blog.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {blog.tags.map((tag) => (
                     <span
                       key={tag}
                       className="px-3 py-1 bg-zinc-800 text-gray-300 rounded-full text-sm"
@@ -894,7 +869,13 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              {displayContent}
+              {blog.content ? (
+                <BlogContent content={blog.content} />
+              ) : (
+                <div className="prose prose-lg prose-invert max-w-none">
+                  {blog.description || "No content available"}
+                </div>
+              )}
             </motion.article>
 
             {/* Share Section */}
