@@ -1,168 +1,266 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import SEO from '../components/SEO';
-
-const blogs = [
-  {
-    id: 1,
-    title: "Website Development Services in Gandhinagar: A Complete Guide",
-    excerpt: "Comprehensive guide covering Gandhinagar's digital transformation, technical stack, case studies from Apollo Hospitals and GIDC, performance standards, and local SEO strategies for businesses.",
-    keywords: ["website development", "gandhinagar", "web design"],
-    readTime: "12 min read",
-    date: "2024-08-30"
-  },
-  {
-    id: 2,
-    title: "Choosing the Right Web Development Agency: Technical Considerations",
-    excerpt: "Complete technical assessment framework covering 6 critical domains, red flags to avoid, interview questions, success metrics, and proven evaluation methodologies for agency selection.",
-    keywords: ["web development", "agency", "technical assessment"],
-    readTime: "15 min read",
-    date: "2024-08-29"
-  },
-  {
-    id: 3,
-    title: "Comprehensive Guide to Software Testing Methodologies",
-    excerpt: "In-depth exploration of testing pyramid, advanced methodologies (BDD, TDD, property-based testing), performance testing, security frameworks, and CI/CD integration strategies.",
-    keywords: ["software testing", "quality assurance", "testing pyramid"],
-    readTime: "18 min read",
-    date: "2024-08-28"
-  },
-  {
-    id: 4,
-    title: "E-commerce Development: Building Scalable Online Stores in Ahmedabad",
-    excerpt: "Learn how to build scalable e-commerce platforms in Ahmedabad with modern technologies and local payment integration.",
-    keywords: ["ecommerce", "ahmedabad", "online stores"],
-    readTime: "9 min read",
-    date: "2024-08-27"
-  },
-  {
-    id: 5,
-    title: "Progressive Web Apps vs Native: What Gujarat Businesses Should Choose",
-    excerpt: "Compare PWA and native apps to determine the best approach for your Gujarat business needs and budget.",
-    keywords: ["progressive web apps", "native apps", "gujarat"],
-    readTime: "7 min read",
-    date: "2024-08-26"
-  },
-  {
-    id: 6,
-    title: "SEO Strategies That Actually Work for Local Gujarat Businesses",
-    excerpt: "Discover proven SEO strategies specifically tailored for Gujarat businesses to improve local search rankings.",
-    keywords: ["SEO", "gujarat", "local search"],
-    readTime: "11 min read",
-    date: "2024-08-25"
-  }
-];
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
+import { Clock, ArrowRight, Plus, Edit, Trash2 } from "lucide-react";
+import useBlogStore from "../lib/blogStore";
 
 export default function BlogListPage() {
   const navigate = useNavigate();
+  const [showAdminButton, setShowAdminButton] = useState(false);
+
+  const { blogs, fetchBlogs, deleteBlog, loading } = useBlogStore();
+
+  // Secret key combination: Press Ctrl + Shift + A to show admin button
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "A") {
+        e.preventDefault();
+        setShowAdminButton(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, []);
+
+  // Fetch blogs on mount
+  useEffect(() => {
+    fetchBlogs({ published: true });
+  }, []);
+
+  const handleAdminClick = () => {
+    navigate("/blog/new");
+  };
+
+  const handleDeleteBlog = async (blogId, e) => {
+    e.stopPropagation();
+    if (window.confirm("Are you sure you want to delete this blog?")) {
+      try {
+        await deleteBlog(blogId);
+      } catch (err) {
+        alert("Failed to delete blog");
+      }
+    }
+  };
+
+  const handleEditBlog = (blogId, e) => {
+    e.stopPropagation();
+    navigate(`/blog/edit/${blogId}`);
+  };
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
 
   return (
     <>
       <SEO
-        title="Blog | Digilynk - Web Development & Technology Insights"
-        description="Stay updated with the latest insights on web development, software testing, and digital solutions for Gujarat businesses."
+        title="Latest from Digilynk | Web Development & Technology Insights"
+        description="Stay updated with latest tech insights"
         path="/blog"
       />
-      <div className="pt-16 min-h-screen bg-black">
-        <div className="relative mx-auto max-w-7xl px-4 py-16">
-          {/* Header Section */}
-          <div className="text-center mb-16">
+
+      <div className="pt-16 min-h-screen bg-black relative">
+        {/* Hero Section */}
+        <motion.div
+          className="relative overflow-hidden h-screen flex items-center justify-center"
+          initial="hidden"
+          animate="visible"
+          variants={container}
+        >
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1644177291353-a15aea11f315?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170')`,
+            }}
+          />
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/70" />
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <motion.h1
-              className="text-4xl md:text-6xl font-bold text-white mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl font-bold text-white mb-6 font-roboto"
+              variants={fadeInUp}
             >
-              Our Blog
+              Latest from Digilynk
             </motion.h1>
             <motion.p
-              className="text-xl text-zinc-300 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-roboto"
+              variants={fadeInUp}
             >
-              Stay updated with the latest insights on web development, software testing,
-              and digital solutions for Gujarat businesses.
+              Stay updated with latest tech insights
             </motion.p>
           </div>
+        </motion.div>
 
-          {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog, index) => (
-              <motion.article
-                key={blog.id}
-                className="bg-zinc-900 rounded-2xl border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group cursor-pointer"
-                onClick={() => navigate(`/blog/${blog.id}`)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm text-zinc-400">{blog.readTime}</span>
-                    <span className="text-zinc-600">•</span>
-                    <span className="text-sm text-zinc-400">{blog.date}</span>
-                  </div>
-
-                  <h2 className="text-xl font-semibold text-white mb-4 group-hover:text-zinc-300 transition-colors duration-300">
-                    {blog.title}
-                  </h2>
-
-                  <p className="text-zinc-300 mb-6 line-clamp-3">
-                    {blog.excerpt}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {blog.keywords.slice(0, 3).map((keyword, i) => (
-                      <span key={i} className="text-xs px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full">
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <button
-                      className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors duration-300 group-hover:translate-x-1 transform transition-transform"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate(`/blog/${blog.id}`);
-                      }}
-                    >
-                      Read More →
-                    </button>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
-          {/* Newsletter Section */}
+        {/* Floating Admin Button */}
+        {showAdminButton && (
           <motion.div
-            className="mt-20 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-2xl border border-zinc-700 p-8 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            className="fixed bottom-8 right-8 z-40"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
           >
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Stay Updated
+            <button
+              onClick={handleAdminClick}
+              className="p-4 bg-white text-black rounded-full shadow-2xl hover:bg-gray-200 transition-all duration-300 hover:scale-110"
+              title="Create New Blog"
+            >
+              <Plus className="w-6 h-6" />
+            </button>
+          </motion.div>
+        )}
+
+        {/* Blog Cards Section */}
+        <motion.div
+          className="relative bg-black py-24 md:py-32"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          <div className="max-w-7xl mx-auto px-4">
+            {loading ? (
+              <div className="text-center text-white py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+                <p className="mt-4">Loading blogs...</p>
+              </div>
+            ) : blogs.length === 0 ? (
+              <div className="text-center text-gray-400 py-12">
+                <p className="text-xl">No blogs published yet.</p>
+                {showAdminButton && (
+                  <button
+                    onClick={() => navigate("/blog/new")}
+                    className="mt-6 px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+                  >
+                    Create Your First Blog
+                  </button>
+                )}
+              </div>
+            ) : (
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                variants={container}
+              >
+                {blogs.map((blog) => (
+                  <motion.article
+                    key={blog._id}
+                    className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all duration-300 cursor-pointer"
+                    variants={fadeInUp}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    onClick={() => navigate(`/blog/${blog._id}`)}
+                  >
+                    {/* Admin Actions */}
+                    {showAdminButton && (
+                      <div className="absolute top-3 right-3 z-10 flex gap-2">
+                        <button
+                          onClick={(e) => handleEditBlog(blog._id, e)}
+                          className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                          title="Edit"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={(e) => handleDeleteBlog(blog._id, e)}
+                          className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                          title="Delete"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Blog Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={blog.coverImage}
+                        alt={blog.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-60" />
+                    </div>
+
+                    {/* Blog Content */}
+                    <div className="p-6">
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
+                        {blog.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      {blog.excerpt && (
+                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                          {blog.excerpt}
+                        </p>
+                      )}
+
+                      {/* Read Time */}
+                      <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
+                        <Clock className="w-4 h-4" />
+                        <span>{blog.readTime}</span>
+                      </div>
+
+                      {/* Read More */}
+                      <div className="flex items-center gap-2 text-white font-medium group-hover:gap-3 transition-all">
+                        <span>Read More</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Newsletter Section */}
+        <motion.div
+          className="max-w-4xl mx-auto px-4 py-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 rounded-2xl p-8 md:p-12 border border-zinc-800 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-roboto">
+              Stay in the Loop
             </h3>
-            <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-              Get the latest insights on web development and technology delivered to your inbox.
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto font-roboto">
+              Be the first to know when we publish new insights on web
+              development, software testing, and digital transformation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-zinc-800 border border-zinc-600 rounded-lg text-white placeholder-zinc-400 focus:outline-none focus:border-cyan-400 transition-colors"
+                className="flex-1 px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 transition-colors"
               />
-              <button className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-medium transition-colors duration-300">
+              <button className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
                 Subscribe
               </button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </>
   );

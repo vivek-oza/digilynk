@@ -1,1639 +1,942 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import SEO from '../components/SEO';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
+import { ArrowLeft, Clock, User, Tag } from "lucide-react";
+import { motion } from "framer-motion";
+import useBlogStore from "../lib/blogStore";
+import BlogContent from "../components/BlogContent";
 
-const blogs = [
+// Legacy hardcoded blogs - will be used as fallback
+const legacyBlogs = [
   {
     id: 1,
-    title: "Website Development Services in Gandhinagar: A Complete Guide",
+    title: "Top 5 Reasons Every Small Business Needs a Website in 2025",
+    image:
+      "https://images.unsplash.com/photo-1614854262178-03c96e9c8c28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    readTime: "4 min read",
     content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">Website Development in Gandhinagar: A Complete Guide</h1>
+      <div className="space-y-8">
+        <p className="text-lg text-gray-300 leading-relaxed">
+          In 2025, having a business without a website is like owning a shop
+          with no signboard — people won't know you exist. Whether you're a café
+          owner, a freelance designer, or a local service provider, your
+          customers first look for you online. A website is no longer a luxury;
+          it's a necessity for growth, trust, and survival in today's
+          digital-first world.
+        </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">The Digital Transformation of Gandhinagar Businesses</h2>
-          <p className="text-zinc-300 mb-4">
-            Gandhinagar, Gujarat's capital city, has emerged as a hub for innovative businesses across sectors including
-            pharmaceuticals, manufacturing, education, and IT services. The city's strategic location and infrastructure
-            have attracted over 15,000 businesses, creating a competitive market where digital presence is no longer optional.
-          </p>
-          <h3 className="text-xl font-medium text-blue-400 mb-3">Market Statistics</h3>
-          <p className="text-zinc-300 mb-4">
-            According to recent comprehensive market research conducted in Gandhinagar, an impressive 92% of local businesses have now established a robust digital presence through professionally designed websites, reflecting the growing recognition of digital transformation's critical importance in this rapidly expanding business hub. Furthermore, 78% of consumers in the region actively research businesses online before making a physical visit, which underscores the critical role of strong search engine visibility in driving foot traffic and customer engagement. This significant trend is further evidenced by the fact that 65% of local purchases now originate from an initial online search, demonstrating how modern consumers have increasingly shifted to relying on digital channels for informed, data-driven decision-making processes. As a direct result, businesses that have invested strategically in professional, user-centric websites have reported a remarkable 40% increase in online revenue streams, proving the tangible financial and competitive benefits of establishing a strong, optimized digital foundation in today's highly competitive market landscape.
-          </p>
-        </section>
+        <p className="text-lg text-gray-300 leading-relaxed">
+          Let's explore the top 5 reasons why every small business needs a
+          website in 2025, along with some current trends shaping the digital
+          landscape.
+        </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Core Technologies & Frameworks</h2>
-          <p className="text-zinc-300 mb-6">
-            Our technology stack is carefully selected to ensure performance, scalability, and maintainability:
-          </p>
+        {/* Section 1 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            1. Your Website Builds Credibility and Trust
+          </h2>
 
-          <div className="space-y-6 mb-8">
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Frontend Architecture</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">React.js Ecosystem</h4>
-                  <p className="text-zinc-300 text-sm mb-4">
-                    Our React.js ecosystem includes Next.js for server-side rendering and SEO optimization, React Router for seamless navigation, Context API and Redux Toolkit for efficient state management, and React Query for optimal data fetching. These technologies ensure a robust and performant frontend architecture.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">Styling & UI</h4>
-                  <p className="text-zinc-300 text-sm mb-4">
-                    For styling and UI, we utilize Tailwind CSS for utility-first styling, Framer Motion for smooth animations, Radix UI for accessible components, and Lucide React for consistent iconography. This combination ensures a modern, responsive, and user-friendly interface.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Backend Infrastructure</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-green-400 font-medium mb-2">Node.js & Express</h4>
-                  <p className="text-zinc-300 text-sm mb-4">
-                    Our backend is powered by Node.js and Express, featuring RESTful API design, JWT authentication and authorization, rate limiting and security middleware, along with comprehensive error handling and logging systems. This setup ensures secure and efficient server-side operations.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-green-400 font-medium mb-2">Database Solutions</h4>
-                  <p className="text-zinc-300 text-sm mb-4">
-                    For data storage, we employ MongoDB with Mongoose ODM for flexible document-based storage, PostgreSQL for handling complex relationships, Redis for efficient caching and sessions, and implement database indexing and optimization for peak performance.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-medium text-white mb-4">DevOps & Deployment</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Version Control</h4>
-                <p className="text-zinc-300 text-sm mb-4">
-                  We use Git with GitHub for version control, implementing feature branching for organized development, conducting thorough code reviews for quality assurance, and setting up CI/CD pipelines for automated deployment and testing.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Cloud Hosting</h4>
-                <p className="text-zinc-300 text-sm mb-4">
-                  For cloud hosting, we leverage AWS, GCP, or Azure platforms, implementing load balancing for efficient traffic distribution, auto-scaling to handle varying loads, and CDN integration for faster global content delivery.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-purple-400 font-medium mb-2">Monitoring</h4>
-                <p className="text-zinc-300 text-sm mb-4">
-                  Our monitoring solutions include performance monitoring to track system health, error tracking for quick issue resolution, analytics integration for data-driven insights, and security auditing to maintain compliance and protect against threats.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Comprehensive Case Studies</h2>
-
-          <div className="space-y-6">
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">Apollo Hospitals Gandhinagar - Patient Portal</h3>
-                  <p className="text-zinc-300 mb-3">
-                    Developed a comprehensive patient portal with telemedicine integration, appointment booking, and medical records management.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">60%</div>
-                      <div className="text-sm text-zinc-400">Reduced wait times</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">45%</div>
-                      <div className="text-sm text-zinc-400">Online bookings</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">30%</div>
-                      <div className="text-sm text-zinc-400">Patient satisfaction</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Technical Implementation:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The technical implementation included HIPAA-compliant security measures, real-time appointment synchronization, integration with existing HIS systems, and mobile-responsive design for doctors and patients.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">GIDC Industrial Portal - B2B Marketplace</h3>
-                  <p className="text-zinc-300 mb-3">
-                    Built a comprehensive B2B marketplace connecting manufacturers with suppliers across Gujarat's industrial corridor.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">500+</div>
-                      <div className="text-sm text-zinc-400">Registered businesses</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">₹2.5Cr</div>
-                      <div className="text-sm text-zinc-400">Monthly transactions</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">95%</div>
-                      <div className="text-sm text-zinc-400">Uptime SLA</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Key Features:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The key features included advanced search with filters and AI recommendations, real-time inventory management, multi-language support (English, Gujarati, Hindi), automated quotation and order management, and integration with logistics and payment gateways.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">DAIICT Student Portal - Learning Management System</h3>
-                  <p className="text-zinc-300 mb-3">
-                    Comprehensive LMS with course management, assessment tools, and student progress tracking.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">3,200+</div>
-                      <div className="text-sm text-zinc-400">Active students</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">150+</div>
-                      <div className="text-sm text-zinc-400">Online courses</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">98%</div>
-                      <div className="text-sm text-zinc-400">Course completion</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Advanced Features:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The advanced features included video streaming with adaptive bitrate, interactive quizzes and assessments, discussion forums and collaboration tools, progress analytics and reporting, and mobile app integration for offline learning.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local SEO & Digital Marketing Integration</h2>
-          <p className="text-zinc-300 mb-6">
-            Our websites are built with local search optimization from day one:
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            In a world where people Google everything, trust begins online. A
+            professional-looking website helps your business appear legitimate,
+            even if you're small or newly established. Consumers today expect
+            every brand—no matter its size—to have an online presence they can
+            explore before making a decision.
           </p>
 
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-medium text-cyan-400 mb-4">On-Page SEO</h3>
-              <p className="text-zinc-300 mb-4">
-                Our on-page SEO strategy incorporates schema markup for LocalBusiness, Organization, and Review schemas, location-specific meta tags, Gandhinagar-focused keywords and content, AMP pages for local search results, and Core Web Vitals optimization for site speed.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-medium text-green-400 mb-4">Local Search Features</h3>
-              <p className="text-zinc-300 mb-4">
-                Our local search features include automated Google My Business management, optimization for local keywords like "Gandhinagar web development" and "near me" searches, Google Reviews integration for testimonial display, dedicated location pages for different localities, and consistent NAP citations across local directories.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Performance & Security Standards</h2>
-
-          <div className="space-y-8 mb-6">
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Performance Metrics</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Page Load Speed</span>
-                  <span className="text-green-400 font-medium">&lt; 2.5 seconds</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Lighthouse Score</span>
-                  <span className="text-green-400 font-medium">95+</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Mobile Responsiveness</span>
-                  <span className="text-green-400 font-medium">100%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Uptime SLA</span>
-                  <span className="text-green-400 font-medium">99.9%</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Security Implementation</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">OWASP Compliance</h4>
-                  <p className="text-zinc-300 text-sm">Protection against top 10 web application vulnerabilities</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">Data Encryption</h4>
-                  <p className="text-zinc-300 text-sm">AES-256 encryption for all sensitive data</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">SSL/TLS</h4>
-                  <p className="text-zinc-300 text-sm">Latest SSL certificates with HSTS headers</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">Regular Audits</h4>
-                  <p className="text-zinc-300 text-sm">Monthly security assessments and penetration testing</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Why Choose Digilynk for Your Gandhinagar Website?</h2>
-
-          <div className="mb-6">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Local Expertise</h3>
-                <p className="text-zinc-300 mb-4">
-                  Our local expertise includes a deep understanding of the Gandhinagar business landscape, extensive local network and industry connections, Gujarati language support and cultural insights, and comprehensive knowledge of local regulations and compliance requirements.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Technical Excellence</h3>
-                <p className="text-zinc-300 mb-4">
-                  Our technical excellence encompasses modern development practices and frameworks, scalable architecture designed for future growth, performance optimization and SEO best practices, and round-the-clock monitoring and maintenance support.
-                </p>
-              </div>
-            </div>
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              Why it matters in 2025:
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Customers are more skeptical of social-media-only businesses.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Google Business Profiles and reviews now link directly to
+                  websites for authenticity checks.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Users prefer exploring a clean, informative website before
+                  engaging on social media.
+                </span>
+              </li>
+            </ul>
           </div>
 
-          <div className="text-center">
-            <h3 className="text-2xl font-medium text-white mb-4">Ready to Transform Your Business Online?</h3>
-            <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-              Join hundreds of Gandhinagar businesses that have increased their online presence and revenue with our professional website development services.
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-5">
+            <p className="text-blue-200">
+              <strong className="text-blue-400">Tip:</strong> Use customer
+              testimonials, real images, and a clear "About Us" section to make
+              your website feel genuine and relatable.
             </p>
           </div>
         </section>
+
+        {/* Section 2 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            2. It's the Most Cost-Effective Marketing Tool
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Unlike print ads or paid campaigns, your website works
+            24/7—promoting your products and services even while you sleep.
+            Think of it as your digital salesperson, providing information,
+            capturing leads, and driving sales without ongoing costs.
+          </p>
+
+          <div className="bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-3 font-roboto">
+              Latest Trend (2025):
+            </h3>
+            <p className="text-gray-300 mb-4">
+              Small businesses are investing in SEO-optimized landing pages and
+              AI-driven chatbots to engage visitors instantly. Modern tools
+              allow easy integration of contact forms, WhatsApp chats, and
+              booking systems—without heavy technical knowledge.
+            </p>
+
+            <h4 className="text-lg font-semibold text-white mb-3 mt-6">
+              Benefits:
+            </h4>
+            <ul className="space-y-2 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Reduces reliance on expensive social ads.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Increases long-term organic traffic through SEO.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Helps track performance via tools like Google Analytics and
+                  Search Console.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Section 3 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            3. You Control Your Online Narrative
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Social media platforms are great for engagement—but they control the
+            rules. Algorithm changes can limit your visibility overnight. A
+            website gives you complete ownership over your content, design, and
+            audience reach.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            <strong className="text-white">Why it's important:</strong> Your
+            website acts as a digital headquarters. It lets you tell your brand
+            story, showcase your services, and highlight what makes you
+            unique—all in one place. It also builds long-term SEO value,
+            something no social post can match.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-3 font-roboto">
+              2025 Insight:
+            </h3>
+            <p className="text-gray-300">
+              With AI-based personalization, small businesses are using websites
+              to deliver customized experiences—like showing local offers or
+              remembering returning customers.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 4 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            4. Websites Boost Sales and Customer Engagement
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Customers today research before buying. They compare prices, read
+            reviews, and look for convenience. Your website can turn that
+            curiosity into real conversions.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              Practical Benefits:
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Show products, pricing, and offers in one place.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Integrate secure online payment systems.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Collect customer feedback and leads instantly.</span>
+              </li>
+            </ul>
+
+            <p className="text-gray-300 mt-6">
+              In 2025, trends show more small businesses using AI-based
+              recommendations, voice search optimization, and fast-loading
+              mobile designs to enhance engagement and sales.
+            </p>
+          </div>
+
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-5">
+            <p className="text-blue-200">
+              <strong className="text-blue-400">Example:</strong> A local bakery
+              with an online ordering page or a fitness coach offering booking
+              slots online sees 2–3x more inquiries than those relying only on
+              social media.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 5 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            5. It Keeps You Competitive in the Digital Era
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Your competitors are online—and your future customers are too. A
+            professional website ensures you stay relevant and don't lose
+            customers to businesses that have embraced digital tools.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              Emerging Trends (2025):
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">
+                    Voice search is booming:
+                  </strong>{" "}
+                  People ask smart devices to "find nearby services."
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">
+                    Google favors mobile-friendly and secure websites
+                  </strong>{" "}
+                  (SSL-certified) in rankings.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">Local SEO is key:</strong>{" "}
+                  Businesses optimizing for "near me" searches get higher
+                  conversions.
+                </span>
+              </li>
+            </ul>
+
+            <p className="text-gray-300 mt-6">
+              Having a well-structured, fast, and SEO-optimized website is no
+              longer optional—it's essential for visibility and competitiveness.
+            </p>
+          </div>
+        </section>
+
+        {/* Bonus Section */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            Bonus: It Reflects Professionalism and Growth
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Even if you're a solo entrepreneur or startup, a website gives the
+            impression of a well-established business. It shows that you care
+            about customer experience and your digital identity. Plus, with
+            tools like Google My Business, your website can appear in local
+            maps, making it easy for customers to find and contact you.
+          </p>
+        </section>
+
+        {/* Final Thoughts */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            Final Thoughts
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            In 2025, a website is your business foundation—not just a digital
+            card. It builds trust, generates leads, and opens the door to
+            endless opportunities. Whether you're selling products, offering
+            services, or simply building a brand, your website is where it all
+            begins.
+          </p>
+
+          <div className="bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800 rounded-2xl p-8 text-center">
+            <p className="text-lg text-gray-300 mb-6">
+              At <strong className="text-white">Digilynk</strong>, we specialize
+              in designing and developing custom websites for small
+              businesses—responsive, secure, SEO-ready, and tailored to your
+              brand.
+            </p>
+            <p className="text-lg text-gray-300 mb-8">
+              If you're ready to take your business online or upgrade your
+              existing site, reach out today and let's build your digital
+              success story together.
+            </p>
+            <button
+              onClick={() => navigate("/contact")}
+              className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
+            >
+              Get Started Today
+            </button>
+          </div>
+        </section>
       </div>
-    )
+    ),
   },
   {
     id: 2,
-    title: "Choosing the Right Web Development Agency: Technical Considerations",
+    title: "How Custom Web Development Can Boost Your Brand Credibility",
+    image:
+      "https://images.unsplash.com/photo-1614854262178-03c96e9c8c28?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    readTime: "6 min read",
     content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">Choosing the Right Web Development Agency: Technical Considerations</h1>
+      <div className="space-y-8">
+        <p className="text-lg text-gray-300 leading-relaxed">
+          In today's digital-first world, your website is often the first
+          impression customers have of your business. A well-built, customized
+          website doesn't just look good — it builds trust, credibility, and
+          confidence in your brand. While template-based websites may get you
+          online quickly, custom web development takes things a step further by
+          aligning your website's design, features, and performance with your
+          unique brand identity.
+        </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">The Critical Importance of Technical Due Diligence</h2>
-          <p className="text-zinc-300 mb-4">
-            In today's competitive digital landscape, selecting the right web development agency can make or break your online presence. 
-            A recent survey by Clutch.co revealed that 68% of businesses regret their web development decision within the first year, 
-            primarily due to technical shortcomings rather than budget or timeline issues. The average cost of a failed website project is $50,000, 
-            with technical issues being the leading cause of project failure. According to Gartner, 85% of digital transformation projects fail due to poor technology choices, 
-            making technical due diligence the most critical factor in agency selection.
+        {/* Section 1 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            1. Understanding Custom Web Development
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Custom web development means designing and building a website from
+            the ground up — specifically tailored to your business goals,
+            audience, and brand vision. Unlike pre-built templates, it gives you
+            full control over:
           </p>
-          <h3 className="text-xl font-medium text-blue-400 mb-3">Market Statistics</h3>
-          <p className="text-zinc-300 mb-4">
-            According to recent comprehensive market research conducted in the web development industry, an impressive 78% of successful digital projects involve agencies with proven technical frameworks. Furthermore, 92% of businesses that conduct thorough technical due diligence report higher satisfaction rates within the first six months. This significant trend is further evidenced by the fact that 65% of failed projects could have been saved with better technical evaluation, demonstrating how modern businesses have increasingly shifted to relying on data-driven technical assessments for informed decision-making processes. As a direct result, businesses that invest in comprehensive technical due diligence have reported a remarkable 40% reduction in project risks and costs, proving the tangible benefits of establishing strong technical evaluation processes in today's competitive market landscape.
-          </p>
-          <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-800 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-medium text-red-400 mb-3">⚠️ Industry Statistics</h3>
-            <ul className="text-zinc-300 space-y-2">
-              <li>• <strong>68%</strong> of businesses regret their web development agency choice within 12 months</li>
-              <li>• <strong>45%</strong> of website failures are due to poor technical implementation</li>
-              <li>• <strong>32%</strong> of agencies lack basic security certifications</li>
-              <li>• <strong>78%</strong> of successful projects involve agencies with proven technical frameworks</li>
-              <li>• <strong>85%</strong> of digital transformation projects fail due to poor technology choices</li>
-              <li>• <strong>92%</strong> of businesses with thorough technical due diligence report higher satisfaction</li>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Layout and user interface</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Features and functionality</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Website performance and scalability</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Security and backend structure</span>
+              </li>
             </ul>
           </div>
-        </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Core Technologies & Frameworks</h2>
-          <p className="text-zinc-300 mb-6">
-            Our comprehensive evaluation framework covers six critical technical domains that determine agency quality and reliability:
+          <p className="text-lg text-gray-300 leading-relaxed">
+            This approach ensures that every part of your website — from design
+            to navigation — reflects who you are as a brand and what you stand
+            for.
           </p>
-          
-          <div className="space-y-6 mb-8">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-600 text-white p-3 rounded-lg text-xl font-bold">1</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-blue-400 mb-3">Core Technology Stack Proficiency</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Modern web development requires expertise in current frameworks and tools. Evaluate agencies based on:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 className="text-cyan-400 font-medium mb-2">Frontend Technologies</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• React.js/Vue.js/Angular expertise</li>
-                        <li>• TypeScript implementation</li>
-                        <li>• State management (Redux/Zustand)</li>
-                        <li>• CSS frameworks (Tailwind/Sass)</li>
-                        <li>• Testing frameworks (Jest/Cypress)</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-green-400 font-medium mb-2">Backend Technologies</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• Node.js/Python/Go proficiency</li>
-                        <li>• RESTful/GraphQL API design</li>
-                        <li>• Database optimization (SQL/NoSQL)</li>
-                        <li>• Authentication & authorization</li>
-                        <li>• Microservices architecture</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-green-600 text-white p-3 rounded-lg text-xl font-bold">2</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-green-400 mb-3">Performance Optimization Expertise</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Speed and performance directly impact user experience and search rankings:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400 mb-2">&lt; 2.5s</div>
-                      <div className="text-sm text-zinc-400">Target Load Time</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400 mb-2">95+</div>
-                      <div className="text-sm text-zinc-400">Lighthouse Score</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400 mb-2">&lt; 100KB</div>
-                      <div className="text-sm text-zinc-400">Initial Bundle Size</div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <h4 className="text-white font-medium mb-2">Optimization Techniques:</h4>
-                    <ul className="text-zinc-300 space-y-1 text-sm grid grid-cols-1 md:grid-cols-2 gap-2">
-                      <li>• Code splitting and lazy loading</li>
-                      <li>• Image optimization and WebP format</li>
-                      <li>• CDN implementation</li>
-                      <li>• Database query optimization</li>
-                      <li>• Caching strategies</li>
-                      <li>• Bundle analysis and tree shaking</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-purple-600 text-white p-3 rounded-lg text-xl font-bold">3</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-purple-400 mb-3">Security Implementation Standards</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Comprehensive security measures protect both your data and your users:
-                  </p>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <h4 className="text-red-400 font-medium mb-2">Authentication & Authorization</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• JWT/OAuth implementation</li>
-                          <li>• Role-based access control</li>
-                          <li>• Multi-factor authentication</li>
-                          <li>• Session management</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-orange-400 font-medium mb-2">Data Protection</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• AES-256 encryption</li>
-                          <li>• HTTPS/TLS implementation</li>
-                          <li>• GDPR/CCPA compliance</li>
-                          <li>• Secure data storage</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="bg-zinc-800 p-4 rounded-lg">
-                      <h4 className="text-white font-medium mb-2">Security Certifications:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-red-600 text-white text-xs rounded-full">OWASP</span>
-                        <span className="px-3 py-1 bg-blue-600 text-white text-xs rounded-full">ISO 27001</span>
-                        <span className="px-3 py-1 bg-green-600 text-white text-xs rounded-full">SOC 2</span>
-                        <span className="px-3 py-1 bg-purple-600 text-white text-xs rounded-full">PCI DSS</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-cyan-600 text-white p-3 rounded-lg text-xl font-bold">4</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-cyan-400 mb-3">SEO & Digital Marketing Integration</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Modern websites must be built with search engine optimization and digital marketing in mind:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-green-400 font-medium mb-2">Technical SEO</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• Schema markup implementation</li>
-                        <li>• Meta tags optimization</li>
-                        <li>• XML sitemap generation</li>
-                        <li>• Robots.txt configuration</li>
-                        <li>• Core Web Vitals optimization</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-blue-400 font-medium mb-2">Content Strategy</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• SEO-friendly URL structure</li>
-                        <li>• Semantic HTML implementation</li>
-                        <li>• Alt text for images</li>
-                        <li>• Internal linking strategy</li>
-                        <li>• Mobile-first indexing readiness</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-orange-600 text-white p-3 rounded-lg text-xl font-bold">5</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-orange-400 mb-3">DevOps & Deployment Capabilities</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Professional deployment practices ensure reliability and scalability:
-                  </p>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div>
-                        <h4 className="text-purple-400 font-medium mb-2">Version Control</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• Git workflow mastery</li>
-                          <li>• Branching strategy</li>
-                          <li>• Code review process</li>
-                          <li>• Conflict resolution</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-indigo-400 font-medium mb-2">CI/CD Pipeline</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• Automated testing</li>
-                          <li>• Build optimization</li>
-                          <li>• Deployment automation</li>
-                          <li>• Rollback procedures</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-pink-400 font-medium mb-2">Monitoring & Analytics</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• Performance monitoring</li>
-                          <li>• Error tracking</li>
-                          <li>• User analytics</li>
-                          <li>• Security monitoring</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-pink-600 text-white p-3 rounded-lg text-xl font-bold">6</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-pink-400 mb-3">Scalability & Architecture Planning</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Future-proof architecture ensures your website can grow with your business:
-                  </p>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="text-yellow-400 font-medium mb-2">System Architecture</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• Modular component design</li>
-                          <li>• Microservices consideration</li>
-                          <li>• Database scalability planning</li>
-                          <li>• API versioning strategy</li>
-                          <li>• Load balancing setup</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-teal-400 font-medium mb-2">Performance Scaling</h4>
-                        <ul className="text-zinc-300 space-y-1 text-sm">
-                          <li>• Horizontal scaling design</li>
-                          <li>• Caching layer implementation</li>
-                          <li>• CDN integration strategy</li>
-                          <li>• Database optimization</li>
-                          <li>• Resource minification</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Comprehensive Case Studies</h2>
-          
-          <div className="space-y-6">
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">TechStartup Inc. - E-commerce Platform Success</h3>
-                  <p className="text-zinc-300 mb-3">
-                    After conducting thorough technical due diligence, TechStartup Inc. selected an agency with proven React and Node.js expertise, resulting in a 300% increase in online sales.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">300%</div>
-                      <div className="text-sm text-zinc-400">Sales increase</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">50%</div>
-                      <div className="text-sm text-zinc-400">Faster load times</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">95%</div>
-                      <div className="text-sm text-zinc-400">User satisfaction</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Technical Implementation:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The agency implemented a scalable architecture with microservices, comprehensive testing, and performance optimization, ensuring the platform could handle 10x traffic growth.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Section 2 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            2. Why Brand Credibility Matters
+          </h2>
 
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">HealthTech Solutions - Patient Portal Development</h3>
-                  <p className="text-zinc-300 mb-3">
-                    By choosing an agency with strong security certifications and HIPAA compliance knowledge, HealthTech Solutions launched a secure patient portal with telemedicine features.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">80%</div>
-                      <div className="text-sm text-zinc-400">Appointment bookings</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">99.9%</div>
-                      <div className="text-sm text-zinc-400">Uptime achieved</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">A+</div>
-                      <div className="text-sm text-zinc-400">Security rating</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Security & Compliance:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The implementation included AES-256 encryption, multi-factor authentication, and regular security audits, ensuring full compliance with healthcare regulations.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium text-white mb-2">EduLearn Platform - LMS Development</h3>
-                  <p className="text-zinc-300 mb-3">
-                    Selecting an agency with expertise in scalable architecture and performance optimization, EduLearn launched a learning management system serving 50,000+ students.
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">50,000+</div>
-                      <div className="text-sm text-zinc-400">Active students</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">98%</div>
-                      <div className="text-sm text-zinc-400">Course completion</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-400">&lt; 1s</div>
-                      <div className="text-sm text-zinc-400">Page load speed</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Scalability Features:</h4>
-                    <p className="text-zinc-300 text-sm mb-4">
-                      The platform was built with horizontal scaling, CDN integration, and automated deployment, supporting seamless growth from 1,000 to 50,000 users.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local SEO & Digital Marketing Integration</h2>
-          <p className="text-zinc-300 mb-6">
-            Modern web development agencies must integrate SEO and digital marketing from the ground up:
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            In 2025, consumers have countless choices. People don't just buy
+            products or services anymore — they buy trust. Your website plays a
+            critical role in shaping that perception.
           </p>
-          
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-medium text-cyan-400 mb-4">On-Page SEO</h3>
-              <p className="text-zinc-300 mb-4">
-                Agencies should implement technical SEO best practices including schema markup for rich snippets, optimized meta tags, XML sitemaps, robots.txt configuration, and Core Web Vitals optimization for better search rankings.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-medium text-green-400 mb-4">Digital Marketing Integration</h3>
-              <p className="text-zinc-300 mb-4">
-                Successful agencies integrate digital marketing tools like Google Analytics, Google Tag Manager, social media APIs, email marketing platforms, and conversion tracking systems into their development process.
-              </p>
-            </div>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              A credible website:
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Encourages visitors to explore your services confidently.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Reduces bounce rates and increases engagement.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Converts more leads into paying customers.</span>
+              </li>
+            </ul>
           </div>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            If your website looks outdated or functions poorly, users are more
+            likely to question your professionalism. A custom-built website, on
+            the other hand, communicates that your business is serious,
+            established, and focused on quality.
+          </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Performance & Security Standards</h2>
-          
-          <div className="space-y-8 mb-6">
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Performance Metrics</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Page Load Speed</span>
-                  <span className="text-green-400 font-medium">&lt; 2.5 seconds</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Lighthouse Score</span>
-                  <span className="text-green-400 font-medium">95+</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Mobile Responsiveness</span>
-                  <span className="text-green-400 font-medium">100%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-zinc-300">Uptime SLA</span>
-                  <span className="text-green-400 font-medium">99.9%</span>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-medium text-white mb-4">Security Implementation</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">OWASP Compliance</h4>
-                  <p className="text-zinc-300 text-sm">Protection against top 10 web application vulnerabilities</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">Data Encryption</h4>
-                  <p className="text-zinc-300 text-sm">AES-256 encryption for all sensitive data</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">SSL/TLS</h4>
-                  <p className="text-zinc-300 text-sm">Latest SSL certificates with HSTS headers</p>
-                </div>
-                <div>
-                  <h4 className="text-cyan-400 font-medium mb-2">Regular Audits</h4>
-                  <p className="text-zinc-300 text-sm">Monthly security assessments and penetration testing</p>
-                </div>
-              </div>
-            </div>
+        {/* Section 3 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            3. Personalized Design That Reflects Your Brand Identity
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            One of the biggest advantages of custom web development is the
+            ability to create a unique visual identity. Every color, font,
+            image, and interaction can be carefully chosen to align with your
+            brand voice.
+          </p>
+
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 my-6">
+            <h3 className="text-lg font-semibold text-blue-400 mb-4">
+              For example:
+            </h3>
+            <ul className="space-y-3 text-blue-200">
+              <li className="flex items-start gap-3">
+                <span className="text-blue-400 mt-1">•</span>
+                <span>
+                  A healthcare brand might use calm colors and clear visuals to
+                  inspire trust.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-blue-400 mt-1">•</span>
+                <span>
+                  A tech startup could opt for a bold, modern design with
+                  interactive animations.
+                </span>
+              </li>
+            </ul>
           </div>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            This level of personalization simply isn't possible with
+            cookie-cutter templates. When your website visually aligns with your
+            offline branding — such as your logo, social media, and marketing
+            material — it reinforces a consistent, professional image that
+            visitors remember.
+          </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Why Choose Digilynk for Your Web Development Agency Selection?</h2>
-          
-          <div className="mb-6">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Technical Expertise</h3>
-                <p className="text-zinc-300 mb-4">
-                  Our technical excellence encompasses modern development practices and frameworks, scalable architecture designed for future growth, performance optimization and SEO best practices, and round-the-clock monitoring and maintenance support.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Proven Track Record</h3>
-                <p className="text-zinc-300 mb-4">
-                  We have successfully helped hundreds of businesses select the right web development agencies, resulting in improved online presence, higher conversion rates, and significant ROI improvements.
-                </p>
-              </div>
-            </div>
+        {/* Section 4 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            4. Enhanced User Experience (UX) Builds Trust
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Today's users expect smooth, fast, and engaging experiences online.
+            User experience (UX) has become one of the strongest signals of
+            credibility. A custom website allows developers to optimize every
+            interaction — from page transitions to navigation paths.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              Key user experience elements include:
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">Mobile responsiveness:</strong>{" "}
+                  A must-have, as over 70% of users browse from mobile devices.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">Speed optimization:</strong>{" "}
+                  Fast-loading websites improve retention and SEO rankings.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">Accessibility:</strong>{" "}
+                  Inclusive design ensures all users, including those with
+                  disabilities, can access your content.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  <strong className="text-white">Intuitive navigation:</strong>{" "}
+                  Helps users find what they need without frustration.
+                </span>
+              </li>
+            </ul>
           </div>
 
-          <div className="text-center">
-            <h3 className="text-2xl font-medium text-white mb-4">Ready to Choose the Right Web Development Agency?</h3>
-            <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-              Don't make costly mistakes. Let our technical expertise guide you to the perfect web development agency for your business needs.
+          <p className="text-lg text-gray-300 leading-relaxed">
+            When users feel comfortable navigating your site, they
+            subconsciously begin to trust your brand more.
+          </p>
+        </section>
+
+        {/* Section 5 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            5. SEO-Friendly Architecture for Better Visibility
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Even the most visually stunning website is ineffective if people
+            can't find it. Custom web development integrates SEO best practices
+            right into the foundation of your website — from clean code to
+            structured URLs and optimized performance.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <h3 className="text-xl font-semibold text-white mb-4 font-roboto">
+              Developers can build your site with:
+            </h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Schema markup for better search engine understanding
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Meta and image optimization</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Fast-loading pages to reduce bounce rates</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Mobile-first design to improve rankings</span>
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            Combined, these factors improve your visibility on Google, making
+            your brand appear more professional and reliable in search results —
+            a direct credibility boost.
+          </p>
+        </section>
+
+        {/* Section 6 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            6. Security That Builds User Confidence
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            Online security has become a major factor in customer trust. Data
+            breaches or unsecured connections can damage a brand's image
+            overnight. Custom-built websites allow developers to implement
+            strong, business-specific security measures, such as:
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>SSL certification and HTTPS encryption</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Secure admin panels</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Regular vulnerability checks</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Data protection and privacy compliance</span>
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            When customers see that your website is secure, they feel more
+            confident in engaging, sharing details, or making purchases.
+          </p>
+        </section>
+
+        {/* Section 7 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            7. Integration and Future Scalability
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            A credible brand grows with time, and your website should too.
+            Custom development allows easy integration with tools like CRM
+            systems, payment gateways, chatbots, and analytics platforms —
+            making your site smarter and more functional.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            As new technologies emerge — like AI-based chat support,
+            personalization engines, or voice search optimization — a
+            custom-built site can adapt and evolve, keeping your brand relevant
+            and modern.
+          </p>
+        </section>
+
+        {/* Section 8 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            8. Trends Defining Custom Web Development in 2025
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            The digital space continues to evolve, and so do user expectations.
+            The following web trends are enhancing credibility for brands
+            worldwide:
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 my-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>AI-powered chatbots for faster customer support</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>Dark mode and minimalistic UI for modern aesthetics</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Micro-animations and motion UI to create interactive
+                  experiences
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Sustainable web design focused on faster load times and energy
+                  efficiency
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-white mt-1">•</span>
+                <span>
+                  Headless CMS for better content control and flexibility
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            Brands that embrace these trends early are seen as forward-thinking
+            and trustworthy.
+          </p>
+        </section>
+
+        {/* Section 9 */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            9. How Digilynk Helps You Build Credible Digital Experiences
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            At Digilynk, we specialize in crafting custom websites that go
+            beyond visuals. Our goal is to build digital experiences that
+            reflect your business values, enhance customer trust, and deliver
+            measurable growth.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-4">
+            We combine modern design principles, clean development practices,
+            and in-depth testing to ensure every site we create is fast, secure,
+            and brand-aligned.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed">
+            Whether you're a startup or an established business, a tailored
+            website can be the key to standing out, earning trust, and driving
+            conversions.
+          </p>
+        </section>
+
+        {/* Final Thoughts */}
+        <section className="pt-8">
+          <h2 className="text-3xl font-bold text-white mb-6 font-roboto">
+            Final Thoughts
+          </h2>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            Your website is more than an online address — it's a reflection of
+            your brand's integrity and professionalism. Investing in custom web
+            development is not just a design choice; it's a long-term
+            credibility strategy.
+          </p>
+
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            A unique, fast, and secure website tells your audience that you care
+            about their experience — and that's what truly sets credible brands
+            apart in the digital era.
+          </p>
+
+          <div className="bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-800 rounded-2xl p-8 text-center">
+            <p className="text-lg text-gray-300 mb-6">
+              At <strong className="text-white">Digilynk</strong>, we help
+              businesses build custom websites that enhance credibility and
+              drive growth.
             </p>
+            <p className="text-lg text-gray-300 mb-8">
+              Ready to elevate your brand with a custom-built website? Let's
+              talk.
+            </p>
+            <button
+              onClick={() => navigate("/contact")}
+              className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
+            >
+              Get Started Today
+            </button>
           </div>
         </section>
       </div>
-    )
+    ),
   },
-  {
-    id: 3,
-    title: "Comprehensive Guide to Software Testing Methodologies",
-    content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">Comprehensive Guide to Software Testing Methodologies</h1>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">The Critical Role of Software Testing in Modern Development</h2>
-          <p className="text-zinc-300 mb-4">
-            In an era where software failures can cost companies millions and damage reputations irreparably,
-            comprehensive testing methodologies have become the backbone of successful software development.
-            According to recent industry reports, poor software quality costs the global economy over $2.41 trillion annually.
-          </p>
-          <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-800 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-medium text-red-400 mb-3">📊 Testing Impact Statistics</h3>
-            <ul className="text-zinc-300 space-y-2">
-              <li>• <strong>68%</strong> of businesses regret their web development agency choice within 12 months</li>
-              <li>• <strong>45%</strong> of website failures are due to poor technical implementation</li>
-              <li>• <strong>32%</strong> of agencies lack basic security certifications</li>
-              <li>• <strong>78%</strong> of successful projects involve agencies with proven technical frameworks</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Testing Pyramid: A Strategic Approach to Quality Assurance</h2>
-          <p className="text-zinc-300 mb-6">
-            The testing pyramid represents a strategic distribution of testing efforts across different levels,
-            ensuring comprehensive coverage while maintaining efficiency and cost-effectiveness:
-          </p>
-
-          <div className="space-y-8">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-600 text-white p-4 rounded-lg text-2xl font-bold min-w-[60px] text-center">70%</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-medium text-blue-400 mb-3">Unit Testing - The Foundation</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Unit tests validate individual components and functions in isolation, forming the base of your testing pyramid:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 className="text-cyan-400 font-medium mb-2">Testing Frameworks</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• Jest for JavaScript/React</li>
-                        <li>• Vitest for modern JavaScript</li>
-                        <li>• PyTest for Python</li>
-                        <li>• JUnit/Mocha for enterprise</li>
-                        <li>• Testing Library for user-centric testing</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-green-400 font-medium mb-2">Best Practices</h4>
-                      <ul className="text-zinc-300 space-y-1 text-sm">
-                        <li>• Test one concept per test case</li>
-                        <li>• Use descriptive test names</li>
-                        <li>• Mock external dependencies</li>
-                        <li>• Achieve 70-80% code coverage</li>
-                        <li>• Run tests in CI/CD pipeline</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="mt-4 p-4 bg-zinc-800 rounded-lg">
-                    <h4 className="text-white font-medium mb-2">Example: React Component Testing</h4>
-                    <pre className="text-cyan-300 text-sm bg-zinc-900 p-3 rounded overflow-x-auto">
-                      {`import { render, screen, fireEvent } from '@testing-library/react';
-import Button from './Button';
-
-test('button renders with correct text', () => {
-  render(<Button>Click me</Button>);
-  const buttonElement = screen.getByText('Click me');
-  expect(buttonElement).toBeInTheDocument();
-});
-
-test('button calls onClick handler', () => {
-  const mockOnClick = jest.fn();
-  render(<Button onClick={mockOnClick}>Click me</Button>);
-  const buttonElement = screen.getByText('Click me');
-  fireEvent.click(buttonElement);
-  expect(mockOnClick).toHaveBeenCalledTimes(1);
-});`}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-green-600 text-white p-4 rounded-lg text-2xl font-bold min-w-[60px] text-center">20%</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-medium text-green-400 mb-3">Integration Testing - Component Interaction</h3>
-                  <p className="text-zinc-300 mb-4">
-                    Integration tests verify that different components work together correctly, catching issues that unit tests miss:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-orange-400 font-medium mb-3">Testing Types</h4>
-                      <ul className="text-zinc-300 space-y-2">
-                        <li><strong>API Integration:</strong> Test API endpoints and responses</li>
-                        <li><strong>Database Integration:</strong> Verify data persistence and retrieval</li>
-                        <li><strong>Third-party Services:</strong> Test external API integrations</li>
-                        <li><strong>Microservices:</strong> Test inter-service communication</li>
-                        <li><strong>Component Integration:</strong> Test component interactions</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-purple-400 font-medium mb-3">Tools & Frameworks</h4>
-                      <ul className="text-zinc-300 space-y-2">
-                        <li><strong>Supertest:</strong> HTTP endpoint testing for Node.js</li>
-                        <li><strong>WireMock:</strong> API mocking and service virtualization</li>
-                        <li><strong>TestContainers:</strong> Integration testing with real dependencies</li>
-                        <li><strong>Postman/Newman:</strong> API testing and automation</li>
-                        <li><strong>Cypress:</strong> End-to-end testing with component integration</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="mt-4 p-4 bg-zinc-800 rounded-lg">
-                    <h4 className="text-white font-medium mb-2">Example: API Integration Testing</h4>
-                    <pre className="text-green-300 text-sm bg-zinc-900 p-3 rounded overflow-x-auto">
-                      {`const request = require('supertest');
-const app = require('../app');
-
-describe('POST /api/users', () => {
-  it('should create a new user', async () => {
-    const userData = {
-      name: 'John Doe',
-      email: 'john@example.com'
-    };
-
-    const response = await request(app)
-      .post('/api/users')
-      .send(userData)
-      .expect(201);
-
-    expect(response.body).toHaveProperty('id');
-    expect(response.body.name).toBe(userData.name);
-    expect(response.body.email).toBe(userData.email);
-  });
-});`}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <div className="flex items-start gap-4">
-                <div className="bg-purple-600 text-white p-4 rounded-lg text-2xl font-bold min-w-[60px] text-center">10%</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-medium text-purple-400 mb-3">End-to-End Testing - User Journey Validation</h3>
-                  <p className="text-zinc-300 mb-4">
-                    E2E tests simulate real user scenarios, ensuring the entire application works as expected from the user's perspective:
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-pink-400 font-medium mb-3">Critical User Flows</h4>
-                      <ul className="text-zinc-300 space-y-2">
-                        <li><strong>User Registration/Login:</strong> Complete authentication flow</li>
-                        <li><strong>E-commerce Checkout:</strong> Purchase process validation</li>
-                        <li><strong>Data Submission:</strong> Form completion and validation</li>
-                        <li><strong>Search & Navigation:</strong> Core functionality testing</li>
-                        <li><strong>Error Handling:</strong> Graceful failure scenarios</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-teal-400 font-medium mb-3">E2E Testing Tools</h4>
-                      <ul className="text-zinc-300 space-y-2">
-                        <li><strong>Cypress:</strong> Developer-friendly E2E testing</li>
-                        <li><strong>Playwright:</strong> Cross-browser automation</li>
-                        <li><strong>Selenium WebDriver:</strong> Industry-standard automation</li>
-                        <li><strong>Puppeteer:</strong> Headless Chrome automation</li>
-                        <li><strong>TestCafe:</strong> Cross-platform testing without dependencies</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="mt-4 p-4 bg-zinc-800 rounded-lg">
-                    <h4 className="text-white font-medium mb-2">Example: E-commerce Checkout Flow</h4>
-                    <pre className="text-purple-300 text-sm bg-zinc-900 p-3 rounded overflow-x-auto">
-                      {`describe('E-commerce Checkout Flow', () => {
-  it('should complete purchase successfully', () => {
-    // Visit product page
-    cy.visit('/products/123');
-    
-    // Add to cart
-    cy.get('[data-cy=add-to-cart]').click();
-    
-    // Go to checkout
-    cy.get('[data-cy=checkout]').click();
-    
-    // Fill shipping information
-    cy.get('[data-cy=shipping-form]').within(() => {
-      cy.get('[data-cy=name]').type('John Doe');
-      cy.get('[data-cy=email]').type('john@example.com');
-      cy.get('[data-cy=address]').type('123 Main St');
-    });
-    
-    // Complete payment
-    cy.get('[data-cy=payment-form]').within(() => {
-      cy.get('[data-cy=card-number]').type('4242424242424242');
-      cy.get('[data-cy=expiry]').type('1225');
-      cy.get('[data-cy=cvc]').type('123');
-    });
-    
-    // Submit order
-    cy.get('[data-cy=complete-order]').click();
-    
-    // Verify success
-    cy.get('[data-cy=order-confirmation]').should('be.visible');
-    cy.contains('Order placed successfully').should('be.visible');
-  });
-});`}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Advanced Testing Methodologies</h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-cyan-400 mb-4">Behavior-Driven Development (BDD)</h3>
-              <p className="text-zinc-300 mb-4">
-                BDD bridges the gap between business requirements and technical implementation through natural language specifications:
-              </p>
-              <div className="space-y-3">
-                <div>
-                  <h4 className="text-green-400 font-medium mb-2">Gherkin Syntax Example:</h4>
-                  <pre className="text-green-300 text-sm bg-zinc-800 p-3 rounded">
-                    {`Feature: User Authentication
-  Scenario: Successful login
-    Given the user is on the login page
-    When they enter valid credentials
-    And click the login button
-    Then they should be redirected to dashboard
-    And see a welcome message`}
-                  </pre>
-                </div>
-                <ul className="text-zinc-300 space-y-2">
-                  <li><strong>Cucumber:</strong> BDD framework for Ruby/JavaScript</li>
-                  <li><strong>SpecFlow:</strong> BDD for .NET applications</li>
-                  <li><strong>Behave:</strong> BDD for Python projects</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-orange-400 mb-4">Test-Driven Development (TDD)</h3>
-              <p className="text-zinc-300 mb-4">
-                TDD ensures code quality by writing tests before implementing features:
-              </p>
-              <div className="space-y-3">
-                <div className="bg-zinc-800 p-3 rounded-lg">
-                  <h4 className="text-yellow-400 font-medium mb-2">TDD Cycle:</h4>
-                  <ol className="text-zinc-300 space-y-1 text-sm">
-                    <li>1. <strong>RED:</strong> Write failing test</li>
-                    <li>2. <strong>GREEN:</strong> Write minimal code to pass test</li>
-                    <li>3. <strong>REFACTOR:</strong> Improve code while keeping tests green</li>
-                  </ol>
-                </div>
-                <ul className="text-zinc-300 space-y-2">
-                  <li><strong>Benefits:</strong> Better code design and fewer bugs</li>
-                  <li><strong>Confidence:</strong> Refactoring without breaking functionality</li>
-                  <li><strong>Documentation:</strong> Tests serve as living documentation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-purple-400 mb-4">Property-Based Testing</h3>
-              <p className="text-zinc-300 mb-4">
-                Generate hundreds of test cases automatically based on property specifications:
-              </p>
-              <pre className="text-purple-300 text-sm bg-zinc-800 p-3 rounded">
-                {`// Property: reversing a list twice returns original
-property('reverse reverse = identity', (arr) => {
-  return deepEqual(reverse(reverse(arr)), arr);
-});
-
-// Property: sort should be idempotent
-property('sort is idempotent', (arr) => {
-  return deepEqual(sort(sort(arr)), sort(arr));
-});`}
-              </pre>
-              <ul className="text-zinc-300 space-y-2 mt-3">
-                <li><strong>fast-check:</strong> Property-based testing for JavaScript</li>
-                <li><strong>QuickCheck:</strong> Original Haskell implementation</li>
-                <li><strong>ScalaCheck:</strong> Scala property testing library</li>
-              </ul>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-pink-400 mb-4">Contract Testing</h3>
-              <p className="text-zinc-300 mb-4">
-                Ensure API compatibility between services in microservices architecture:
-              </p>
-              <div className="space-y-3">
-                <div className="bg-zinc-800 p-3 rounded-lg">
-                  <h4 className="text-pink-400 font-medium mb-2">Consumer-Driven Contracts:</h4>
-                  <ul className="text-zinc-300 space-y-1 text-sm">
-                    <li>• Consumer defines expected API behavior</li>
-                    <li>• Provider implements to satisfy contracts</li>
-                    <li>• Automated verification of compatibility</li>
-                  </ul>
-                </div>
-                <ul className="text-zinc-300 space-y-2">
-                  <li><strong>Pact:</strong> Popular contract testing framework</li>
-                  <li><strong>Spring Cloud Contract:</strong> For Spring Boot applications</li>
-                  <li><strong>WireMock:</strong> Service virtualization and API mocking</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Performance Testing & Load Testing</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800 text-center">
-              <div className="text-2xl font-bold text-green-400 mb-2">&lt; 2.5s</div>
-              <div className="text-zinc-300 text-sm">Page Load Time</div>
-            </div>
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800 text-center">
-              <div className="text-2xl font-bold text-blue-400 mb-2">95+</div>
-              <div className="text-zinc-300 text-sm">Lighthouse Score</div>
-            </div>
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800 text-center">
-              <div className="text-2xl font-bold text-purple-400 mb-2">99.9%</div>
-              <div className="text-zinc-300 text-sm">Uptime SLA</div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-cyan-400 mb-4">Load Testing Tools</h3>
-              <ul className="text-zinc-300 space-y-3">
-                <li><strong>JMeter:</strong> Open-source load testing tool with extensive reporting</li>
-                <li><strong>k6:</strong> Modern load testing tool with JavaScript scripting</li>
-                <li><strong>Locust:</strong> Python-based distributed load testing</li>
-                <li><strong>Gatling:</strong> Scala-based load testing with real-time metrics</li>
-                <li><strong>Artillery:</strong> Cloud-native performance testing</li>
-              </ul>
-            </div>
-
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-green-400 mb-4">Performance Testing Types</h3>
-              <ul className="text-zinc-300 space-y-3">
-                <li><strong>Load Testing:</strong> Test application under expected load</li>
-                <li><strong>Stress Testing:</strong> Test beyond normal capacity limits</li>
-                <li><strong>Spike Testing:</strong> Test sudden traffic spikes</li>
-                <li><strong>Volume Testing:</strong> Test with large data sets</li>
-                <li><strong>Endurance Testing:</strong> Test prolonged load over time</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Security Testing Framework</h2>
-
-          <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-800 rounded-lg p-6 mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-medium text-red-400 mb-4">OWASP Top 10 Vulnerabilities</h3>
-                <ul className="text-zinc-300 space-y-2">
-                  <li><strong>A01:2021 - Broken Access Control</strong></li>
-                  <li><strong>A02:2021 - Cryptographic Failures</strong></li>
-                  <li><strong>A03:2021 - Injection</strong></li>
-                  <li><strong>A04:2021 - Insecure Design</strong></li>
-                  <li><strong>A05:2021 - Security Misconfiguration</strong></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-medium text-orange-400 mb-4">Security Testing Tools</h3>
-                <ul className="text-zinc-300 space-y-2">
-                  <li><strong>OWASP ZAP:</strong> Automated security scanner</li>
-                  <li><strong>Burp Suite:</strong> Web vulnerability scanner</li>
-                  <li><strong>Nessus:</strong> Vulnerability assessment</li>
-                  <li><strong>SQLMap:</strong> SQL injection testing</li>
-                  <li><strong>Metasploit:</strong> Penetration testing framework</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Testing Automation Strategy</h2>
-
-          <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">CI/CD Integration</h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-green-400 font-medium mb-2">GitHub Actions Workflow:</h4>
-                    <pre className="text-green-300 text-sm bg-zinc-800 p-3 rounded overflow-x-auto">
-                      {`name: CI/CD Pipeline
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
-      - name: Build
-        run: npm run build`}
-                    </pre>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-medium text-purple-400 mb-4">Test Automation Pyramid</h3>
-                <div className="space-y-4">
-                  <div className="bg-zinc-800 p-4 rounded-lg">
-                    <h4 className="text-purple-400 font-medium mb-2">Unit Tests (Fastest)</h4>
-                    <ul className="text-zinc-300 space-y-1 text-sm">
-                      <li>• Run on every commit</li>
-                      <li>• Cover business logic</li>
-                      <li>• Mock external dependencies</li>
-                      <li>• Sub-second execution</li>
-                    </ul>
-                  </div>
-                  <div className="bg-zinc-800 p-4 rounded-lg">
-                    <h4 className="text-purple-400 font-medium mb-2">Integration Tests</h4>
-                    <ul className="text-zinc-300 space-y-1 text-sm">
-                      <li>• Test component interactions</li>
-                      <li>• Use test databases</li>
-                      <li>• Run in CI pipeline</li>
-                      <li>• Minutes execution time</li>
-                    </ul>
-                  </div>
-                  <div className="bg-zinc-800 p-4 rounded-lg">
-                    <h4 className="text-purple-400 font-medium mb-2">E2E Tests (Slowest)</h4>
-                    <ul className="text-zinc-300 space-y-1 text-sm">
-                      <li>• Test complete user flows</li>
-                      <li>• Run on staging environment</li>
-                      <li>• Critical path coverage only</li>
-                      <li>• Hours execution time</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Why Digilynk's Testing Approach Stands Out</h2>
-
-          <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-800 rounded-lg p-8 mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Comprehensive Coverage</h3>
-                <ul className="text-zinc-300 space-y-2">
-                  <li>• Multi-layered testing strategy implementation</li>
-                  <li>• Automated testing frameworks setup</li>
-                  <li>• Performance and security testing expertise</li>
-                  <li>• CI/CD pipeline integration</li>
-                  <li>• Test-driven development practices</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-medium text-cyan-400 mb-4">Proven Results</h3>
-                <ul className="text-zinc-300 space-y-2">
-                  <li>• 95% reduction in production bugs</li>
-                  <li>• 60% faster release cycles</li>
-                  <li>• 40% improvement in application performance</li>
-                  <li>• 99.9% test coverage achievement</li>
-                  <li>• Zero critical security vulnerabilities</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <div className="bg-zinc-900 p-8 rounded-lg border border-zinc-800">
-              <h3 className="text-2xl font-medium text-white mb-4">Elevate Your Software Quality</h3>
-              <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-                Don't let software bugs compromise your success. Implement comprehensive testing methodologies
-                that ensure quality, reliability, and user satisfaction.
-              </p>
-              <button className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Start Testing Excellence Journey
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
-  },
-  {
-    id: 4,
-    title: "E-commerce Development: Building Scalable Online Stores in Ahmedabad",
-    content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">E-commerce Development: Building Scalable Online Stores in Ahmedabad</h1>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Ahmedabad E-commerce Market Analysis</h2>
-          <p className="text-zinc-300 mb-4">
-            Ahmedabad's e-commerce landscape is rapidly growing:
-          </p>
-          <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-800 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-medium text-blue-400 mb-3">📈 Market Insights</h3>
-            <ul className="text-zinc-300 space-y-2">
-              <li>• 65% of Ahmedabad consumers shop online weekly</li>
-              <li>• Mobile commerce accounts for 78% of transactions</li>
-              <li>• Local delivery within 24 hours is preferred by 92% of users</li>
-              <li>• Cash on delivery remains popular (45% of orders)</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Technology Stack for Scalable E-commerce</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-white mb-4">Frontend Architecture</h3>
-              <ul className="text-zinc-300 space-y-2">
-                <li><strong>React/Next.js:</strong> Server-side rendering for SEO</li>
-                <li><strong>Tailwind CSS:</strong> Responsive design system</li>
-                <li><strong>Redux Toolkit:</strong> State management</li>
-                <li><strong>Stripe/PayPal:</strong> Payment integration</li>
-              </ul>
-            </div>
-            <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-medium text-white mb-4">Backend Infrastructure</h3>
-              <ul className="text-zinc-300 space-y-2">
-                <li><strong>Node.js/Express:</strong> RESTful API development</li>
-                <li><strong>MongoDB/PostgreSQL:</strong> Product catalog management</li>
-                <li><strong>Redis:</strong> Session and cart caching</li>
-                <li><strong>AWS/DigitalOcean:</strong> Cloud hosting and scaling</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Essential E-commerce Features</h2>
-          <div className="space-y-4 mb-6">
-            <div className="bg-zinc-900 p-4 rounded-lg border-l-4 border-green-500">
-              <h3 className="text-lg font-medium text-green-400 mb-2">🔍 Advanced Search & Filtering</h3>
-              <p className="text-zinc-300 text-sm">Elasticsearch-powered search with faceted filtering by price, category, brand, and attributes</p>
-            </div>
-
-            <div className="bg-zinc-900 p-4 rounded-lg border-l-4 border-blue-500">
-              <h3 className="text-lg font-medium text-blue-400 mb-2">📱 Mobile-First Design</h3>
-              <p className="text-zinc-300 text-sm">Responsive design optimized for mobile shopping with touch-friendly navigation</p>
-            </div>
-
-            <div className="bg-zinc-900 p-4 rounded-lg border-l-4 border-purple-500">
-              <h3 className="text-lg font-medium text-purple-400 mb-2">🚚 Multi-Warehouse Management</h3>
-              <p className="text-zinc-300 text-sm">Automated inventory sync across multiple Ahmedabad locations with real-time stock updates</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local Payment Integration</h2>
-          <p className="text-zinc-300 mb-4">
-            Ahmedabad-specific payment solutions we implement:
-          </p>
-          <ul className="text-zinc-300 space-y-3 mb-6 pl-6 list-disc">
-            <li><strong>Cash on Delivery:</strong> Popular payment method with fraud protection</li>
-            <li><strong>UPI Integration:</strong> Google Pay, PhonePe, Paytm support</li>
-            <li><strong>Net Banking:</strong> All major Indian banks integration</li>
-            <li><strong>EMI Options:</strong> Credit card EMI with bank partnerships</li>
-          </ul>
-        </section>
-      </div>
-    )
-  },
-  {
-    id: 5,
-    title: "Progressive Web Apps vs Native: What Gujarat Businesses Should Choose",
-    content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">Progressive Web Apps vs Native: What Gujarat Businesses Should Choose</h1>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Understanding PWA Technology</h2>
-          <p className="text-zinc-300 mb-6">
-            Progressive Web Apps combine the best of web and mobile applications:
-          </p>
-
-          <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-800 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-medium text-cyan-400 mb-3">🚀 PWA Core Features</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <ul className="text-zinc-300 space-y-2">
-                <li>✅ Installable like native apps</li>
-                <li>✅ Offline functionality</li>
-                <li>✅ Push notifications</li>
-                <li>✅ App-like user experience</li>
-              </ul>
-              <ul className="text-zinc-300 space-y-2">
-                <li>✅ Cross-platform compatibility</li>
-                <li>✅ Automatic updates</li>
-                <li>✅ No app store approval needed</li>
-                <li>✅ SEO-friendly URLs</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">PWA vs Native App Comparison</h2>
-          <div className="overflow-x-auto mb-6">
-            <table className="w-full bg-zinc-900 border border-zinc-800 rounded-lg">
-              <thead>
-                <tr className="bg-zinc-800">
-                  <th className="p-4 text-left text-white font-medium">Feature</th>
-                  <th className="p-4 text-left text-cyan-400 font-medium">Progressive Web App</th>
-                  <th className="p-4 text-left text-purple-400 font-medium">Native App</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-zinc-800">
-                  <td className="p-4 text-zinc-300">Development Cost</td>
-                  <td className="p-4 text-green-400">💰 Lower (60-80% savings)</td>
-                  <td className="p-4 text-red-400">💰 Higher (iOS + Android)</td>
-                </tr>
-                <tr className="border-t border-zinc-800">
-                  <td className="p-4 text-zinc-300">Time to Market</td>
-                  <td className="p-4 text-green-400">⚡ Faster (weeks)</td>
-                  <td className="p-4 text-red-400">⚡ Slower (months)</td>
-                </tr>
-                <tr className="border-t border-zinc-800">
-                  <td className="p-4 text-zinc-300">App Store Approval</td>
-                  <td className="p-4 text-green-400">✅ Not required</td>
-                  <td className="p-4 text-red-400">❌ Required</td>
-                </tr>
-                <tr className="border-t border-zinc-800">
-                  <td className="p-4 text-zinc-300">Offline Capability</td>
-                  <td className="p-4 text-yellow-400">⚠️ Limited</td>
-                  <td className="p-4 text-green-400">✅ Full</td>
-                </tr>
-                <tr className="border-t border-zinc-800">
-                  <td className="p-4 text-zinc-300">Device Features Access</td>
-                  <td className="p-4 text-yellow-400">⚠️ Partial</td>
-                  <td className="p-4 text-green-400">✅ Full</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">When to Choose PWA for Gujarat Businesses</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-green-900/20 border border-green-800 rounded-lg p-6">
-              <h3 className="text-xl font-medium text-green-400 mb-3">✅ Perfect For</h3>
-              <ul className="text-zinc-300 space-y-2">
-                <li>• Content-focused websites</li>
-                <li>• E-commerce platforms</li>
-                <li>• Business directories</li>
-                <li>• SaaS applications</li>
-                <li>• Budget-conscious startups</li>
-              </ul>
-            </div>
-            <div className="bg-red-900/20 border border-red-800 rounded-lg p-6">
-              <h3 className="text-xl font-medium text-red-400 mb-3">❌ Better as Native</h3>
-              <ul className="text-zinc-300 space-y-2">
-                <li>• Gaming applications</li>
-                <li>• Heavy graphics processing</li>
-                <li>• Complex animations</li>
-                <li>• Advanced camera features</li>
-                <li>• Real-time communication apps</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Gujarat Success Stories</h2>
-          <div className="space-y-4 mb-6">
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-white mb-2">🏪 Local Retail Chain</h3>
-              <p className="text-zinc-300 text-sm mb-2">Ahmedabad-based grocery chain converted their website to PWA</p>
-              <ul className="text-green-400 text-sm space-y-1">
-                <li>• 40% increase in repeat visits</li>
-                <li>• 25% higher conversion rate</li>
-                <li>• 60% reduction in development costs</li>
-              </ul>
-            </div>
-
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-white mb-2">🏥 Healthcare Provider</h3>
-              <p className="text-zinc-300 text-sm mb-2">Gandhinagar clinic implemented PWA for appointment booking</p>
-              <ul className="text-green-400 text-sm space-y-1">
-                <li>• 50% reduction in missed appointments</li>
-                <li>• 35% increase in online bookings</li>
-                <li>• Improved patient satisfaction scores</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
-  },
-  {
-    id: 6,
-    title: "SEO Strategies That Actually Work for Local Gujarat Businesses",
-    content: (
-      <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-white mb-6">SEO Strategies That Actually Work for Local Gujarat Businesses</h1>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local SEO Fundamentals</h2>
-          <p className="text-zinc-300 mb-4">
-            Gujarat businesses need a different SEO approach than national brands:
-          </p>
-          <div className="bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-orange-800 rounded-lg p-6 mb-6">
-            <h3 className="text-xl font-medium text-orange-400 mb-3">📍 Local Search Behavior</h3>
-            <ul className="text-zinc-300 space-y-2">
-              <li>• 78% of local searches happen on mobile devices</li>
-              <li>• 50% of searches have local intent</li>
-              <li>• Users prefer businesses within 5km radius</li>
-              <li>• "Near me" searches increased by 900% since 2017</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Google My Business Optimization</h2>
-          <p className="text-zinc-300 mb-4">
-            Your GMB profile is your local SEO foundation:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-green-400 mb-3">✅ Complete Profile Setup</h3>
-              <ul className="text-zinc-300 space-y-1 text-sm">
-                <li>• Accurate business name and address</li>
-                <li>• Working phone number</li>
-                <li>• Business hours (including holidays)</li>
-                <li>• High-quality photos (minimum 10)</li>
-                <li>• Detailed business description</li>
-              </ul>
-            </div>
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-blue-400 mb-3">📊 Performance Tracking</h3>
-              <ul className="text-zinc-300 space-y-1 text-sm">
-                <li>• Monitor search queries</li>
-                <li>• Track direction requests</li>
-                <li>• Review customer feedback</li>
-                <li>• Analyze peak visit times</li>
-                <li>• Update based on insights</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local Keyword Strategy</h2>
-          <p className="text-zinc-300 mb-4">
-            Target these Gujarat-specific search terms:
-          </p>
-          <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800 mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div>
-                <h4 className="text-white font-medium mb-2">Gandhinagar Keywords</h4>
-                <ul className="text-zinc-400 space-y-1 text-sm">
-                  <li>• web development Gandhinagar</li>
-                  <li>• software company Gandhinagar</li>
-                  <li>• digital marketing Gandhinagar</li>
-                  <li>• best website designer Gandhinagar</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-medium mb-2">Ahmedabad Keywords</h4>
-                <ul className="text-zinc-400 space-y-1 text-sm">
-                  <li>• web development Ahmedabad</li>
-                  <li>• software testing Ahmedabad</li>
-                  <li>• mobile app development Ahmedabad</li>
-                  <li>• digital agency Ahmedabad</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-medium mb-2">Local Modifiers</h4>
-                <ul className="text-zinc-400 space-y-1 text-sm">
-                  <li>• near me</li>
-                  <li>• in [locality name]</li>
-                  <li>• best in Gujarat</li>
-                  <li>• affordable</li>
-                  <li>• professional</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Technical SEO for Local Business</h2>
-          <p className="text-zinc-300 mb-4">
-            Essential technical optimizations:
-          </p>
-          <ul className="text-zinc-300 space-y-3 mb-6 pl-6 list-disc">
-            <li><strong>Schema Markup:</strong> LocalBusiness and Organization schemas for rich snippets</li>
-            <li><strong>Mobile Optimization:</strong> AMP pages for local search results</li>
-            <li><strong>Page Speed:</strong> Core Web Vitals optimization for local pack ranking</li>
-            <li><strong>HTTPS Security:</strong> SSL certificate for trust and ranking signals</li>
-            <li><strong>XML Sitemap:</strong> Submit location-specific sitemaps to Google</li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Local Link Building Strategy</h2>
-          <p className="text-zinc-300 mb-4">
-            Build local authority with these tactics:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-cyan-400 mb-3">🏢 Business Directories</h3>
-              <ul className="text-zinc-300 space-y-1 text-sm">
-                <li>• Google My Business</li>
-                <li>• JustDial</li>
-                <li>• Sulekha</li>
-                <li>• Yellow Pages</li>
-                <li>• Local chamber of commerce</li>
-              </ul>
-            </div>
-            <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800">
-              <h3 className="text-lg font-medium text-green-400 mb-3">🤝 Local Partnerships</h3>
-              <ul className="text-zinc-300 space-y-1 text-sm">
-                <li>• Cross-promotions with local businesses</li>
-                <li>• Sponsorship of local events</li>
-                <li>• Guest blogging on local sites</li>
-                <li>• Local newspaper mentions</li>
-                <li>• Charity and community involvement</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-    )
-  }
 ];
 
 export default function BlogPage() {
   const { id } = useParams();
-  const blog = blogs.find(b => b.id === parseInt(id));
+  const navigate = useNavigate();
+  const { currentBlog, fetchBlog, loading } = useBlogStore();
+  const [error, setError] = useState(false);
 
-  if (!blog) return <div>Blog not found</div>;
+  useEffect(() => {
+    loadBlog();
+  }, [id]);
+
+  const loadBlog = async () => {
+    try {
+      setError(false);
+      await fetchBlog(id);
+    } catch (err) {
+      console.error("Failed to load blog:", err);
+      setError(true);
+    }
+  };
+
+  // Try to find legacy blog as fallback
+  const legacyBlog = legacyBlogs.find((b) => b.id === parseInt(id));
+  const blog = currentBlog || legacyBlog;
+
+  if (loading) {
+    return (
+      <div className="pt-16 min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-white text-lg">Loading blog...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!blog || error) {
+    return (
+      <div className="pt-16 min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Blog Not Found</h1>
+          <p className="text-gray-400 mb-8">
+            The blog you're looking for doesn't exist or has been removed.
+          </p>
+          <button
+            onClick={() => navigate("/blog")}
+            className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-lg font-semibold transition-all duration-300"
+          >
+            Back to Blog
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Format content for display
+  const displayContent = currentBlog ? (
+    <BlogContent content={currentBlog.content} />
+  ) : (
+    blog.content
+  );
 
   return (
-    <div className="pt-16">
+    <>
       <SEO
         title={`${blog.title} | Digilynk Blog`}
-        description={blog.excerpt || blog.title}
+        description="Stay updated with latest tech insights from Digilynk"
         path={`/blog/${id}`}
       />
-      {blog.content}
-    </div>
+      <div className="pt-16 min-h-screen bg-black">
+        {/* Hero Section with Image */}
+        <div className="relative h-screen overflow-hidden">
+          <img
+            src={currentBlog ? blog.coverImage : blog.image}
+            alt={blog.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+        </div>
+
+        {/* Blog Content */}
+        <div className="relative -mt-32 z-10">
+          <div className="max-w-4xl mx-auto px-4">
+            {/* Back Button */}
+            <motion.button
+              onClick={() => navigate("/blog")}
+              className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span>Back to Blog</span>
+            </motion.button>
+
+            {/* Blog Header */}
+            <motion.div
+              className="mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight font-roboto">
+                {blog.title}
+              </h1>
+
+              {/* Excerpt */}
+              {currentBlog?.excerpt && (
+                <p className="text-xl text-gray-300 mb-6 italic">
+                  {currentBlog.excerpt}
+                </p>
+              )}
+
+              {/* Meta Information */}
+              <div className="flex items-center gap-4 text-gray-400 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{blog.readTime}</span>
+                </div>
+                {currentBlog?.author && (
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    <span>{currentBlog.author}</span>
+                  </div>
+                )}
+                {currentBlog?.views !== undefined && (
+                  <div className="flex items-center gap-2">
+                    <span>{currentBlog.views} views</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Tags */}
+              {currentBlog?.tags && currentBlog.tags.length > 0 && (
+                <div className="flex items-center gap-2 mt-4 flex-wrap">
+                  <Tag className="w-4 h-4 text-gray-400" />
+                  {currentBlog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-zinc-800 text-gray-300 rounded-full text-sm"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+
+            {/* Blog Content */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {displayContent}
+            </motion.article>
+
+            {/* Share Section */}
+            <motion.div
+              className="mt-16 pt-8 border-t border-zinc-800"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <button
+                onClick={() => navigate("/blog")}
+                className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg font-semibold transition-all duration-300"
+              >
+                ← Back to All Articles
+              </button>
+            </motion.div>
+
+            {/* CTA Section */}
+            <motion.div
+              className="my-16 bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 rounded-2xl p-8 md:p-12 border border-zinc-800 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-roboto">
+                Ready to Build Your Website?
+              </h3>
+              <p className="text-gray-400 mb-8 max-w-2xl mx-auto font-roboto">
+                Let's discuss how we can help your business grow with a
+                professional, modern website.
+              </p>
+              <button
+                onClick={() => navigate("/contact")}
+                className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
+              >
+                Talk to us
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

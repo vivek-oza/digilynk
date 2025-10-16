@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Linkedin, Instagram, Mail, Star, ExternalLink } from "lucide-react";
 
 export default function Footer() {
+  const navigate = useNavigate();
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -125,16 +127,40 @@ export default function Footer() {
             >
               <h2 className="text-xl font-semibold text-white">Quick Links</h2>
               <ul className="flex flex-col items-center md:items-start space-y-3">
-                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/")}
+                >
                   Home
                 </li>
-                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
-                  Services
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/services/web-development")}
+                >
+                  Web Development
                 </li>
-                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
-                  About us
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/services/software-testing")}
+                >
+                  Software Testing
                 </li>
-                <li className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1">
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/blog")}
+                >
+                  Blog
+                </li>
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/about")}
+                >
+                  About Us
+                </li>
+                <li
+                  className="hover:text-white transition-all duration-300 cursor-pointer hover:translate-x-1"
+                  onClick={() => navigate("/contact")}
+                >
                   Contact
                 </li>
               </ul>
