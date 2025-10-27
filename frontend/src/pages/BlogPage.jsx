@@ -5,6 +5,7 @@ import { ArrowLeft, Clock, Calendar, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { blogStorage } from "../lib/blogLocalStorage";
 import BlogContent from "../components/BlogContent";
+import { loadMarkdownFile } from "../lib/blogMarkdownLoader";
 
 const defaultBlogs = [
   {
@@ -746,17 +747,33 @@ export default function BlogPage() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    // Try to find in localStorage first
-    const savedBlog = blogStorage.getBlog(id);
-    if (savedBlog) {
-      setBlog(savedBlog);
-    } else {
+    const loadBlog = async () => {
+      // Try to find in localStorage first
+      const savedBlog = blogStorage.getBlog(id);
+      if (savedBlog) {
+        setBlog(savedBlog);
+        return;
+      }
+
+      // Try to load from markdown file
+      try {
+        const markdownBlog = await loadMarkdownFile(`${id}.md`);
+        if (markdownBlog) {
+          setBlog(markdownBlog);
+          return;
+        }
+      } catch (error) {
+        console.error("Error loading markdown blog:", error);
+      }
+
       // Fallback to default blogs
       const defaultBlog = defaultBlogs.find(
         (b) => b.id === id || b.id === parseInt(id)
       );
       setBlog(defaultBlog);
-    }
+    };
+
+    loadBlog();
   }, [id]);
 
   if (!blog) {

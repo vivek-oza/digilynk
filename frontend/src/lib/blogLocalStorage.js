@@ -59,14 +59,24 @@ ${blog.content}
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    const filename = blog.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
+    // Use blog ID for filename to make it consistent
+    const filename =
+      blog.id ||
+      blog.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
     a.download = `${filename}.md`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    // Log instructions for the user
+    console.log(`\n✅ Blog downloaded as ${filename}.md`);
+    console.log(`📁 Next steps:`);
+    console.log(`1. Move ${filename}.md to frontend/public/blogs/`);
+    console.log(`2. Add "${filename}.md" to frontend/public/blogs/blogs.json`);
+    console.log(`3. Commit and push to Git\n`);
   },
 };
