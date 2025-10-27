@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import { Clock, ArrowRight, Plus, Edit, Trash2 } from "lucide-react";
 import { blogStorage } from "../lib/blogLocalStorage";
+import { loadAllMarkdownBlogs } from "../lib/blogMarkdownLoader";
 
 // Hardcoded default blogs
 const defaultBlogs = [
@@ -34,11 +35,17 @@ export default function BlogListPage() {
   const [showAdminButton, setShowAdminButton] = useState(false);
   const [blogs, setBlogs] = useState([]);
 
-  // Load blogs from localStorage + defaults
+  // Load blogs from markdown files, localStorage, and defaults
   useEffect(() => {
-    const savedBlogs = blogStorage.getBlogs();
-    const allBlogs = [...savedBlogs, ...defaultBlogs];
-    setBlogs(allBlogs);
+    const loadAllBlogs = async () => {
+      const savedBlogs = blogStorage.getBlogs();
+      const markdownBlogs = await loadAllMarkdownBlogs();
+      // Combine: saved blogs (highest priority), markdown blogs, then defaults
+      const allBlogs = [...savedBlogs, ...markdownBlogs, ...defaultBlogs];
+      setBlogs(allBlogs);
+    };
+
+    loadAllBlogs();
   }, []);
 
   // Secret key combination: Press Ctrl + Shift + A to show admin button
