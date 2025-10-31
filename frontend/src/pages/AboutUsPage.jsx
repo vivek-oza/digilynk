@@ -113,6 +113,35 @@ export default function AboutUs() {
     },
   ];
 
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/avi-oza-448720354/",
+      src: "/Icons8/linkedin.png",
+    },
+    { name: "X", href: "https://x.com/AviDigilynk", src: "/Icons8/x.png" },
+    {
+      name: "Facebook",
+      href: "https://www.digilynk.in/",
+      src: "/Icons8/facebook.png",
+    },
+    {
+      name: "Reddit",
+      href: "https://www.reddit.com/user/LongjumpingKnee4834/",
+      src: "/Icons8/reddit.png",
+    },
+    {
+      name: "WhatsApp",
+      href: "https://wa.me/7990903975",
+      src: "/Icons8/whatsapp.png",
+    },
+    {
+      name: "Mail",
+      href: "mailto:avi.digilynk@gmail.com",
+      src: "/Icons8/gmail.png",
+    },
+  ];
+
   return (
     <>
       <SEO
@@ -157,6 +186,115 @@ export default function AboutUs() {
                 We craft impactful, user-centric digital solutions that drive
                 real business results
               </motion.p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Company Intro Section */}
+        <motion.section
+          className="relative bg-black py-16 md:py-20 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          <div className="relative max-w-5xl mx-auto px-4">
+            <motion.div variants={popIn}>
+              <div className="max-w-none text-zinc-300">
+                <p className="text-lg leading-relaxed">
+                  At Digilynk, we help businesses turn ideas into reliable
+                  digital solutions. We’re a technology services company driven
+                  by a network of experienced professionals, delivering
+                  high-quality Web Development and Software Testing services
+                  with a focus on performance, usability, and trust.
+                </p>
+                <p className="text-lg leading-relaxed mt-6">
+                  Our Web Development team builds websites that combine design
+                  precision with technical strength. From corporate sites to
+                  e-commerce platforms, we create fast, secure, and responsive
+                  solutions that help brands connect with customers and grow
+                  online.
+                </p>
+                <p className="text-lg leading-relaxed mt-6">
+                  Our Quality Assurance team ensures that every product we test
+                  meets the highest standards of reliability. We specialize in
+                  both manual and automation testing—covering functional,
+                  regression, UI/UX, and cross-platform testing—to ensure your
+                  applications work seamlessly across devices and environments.
+                </p>
+                <p className="text-lg leading-relaxed mt-6">
+                  What makes Digilynk different is our commitment to delivering
+                  practical, result-driven solutions without unnecessary
+                  complexity. We believe in clear communication, on-time
+                  delivery, and long-term partnerships built on transparency and
+                  consistent quality.
+                </p>
+                <p className="text-lg leading-relaxed mt-6 text-white">
+                  At Digilynk, we don’t just develop and test software—we
+                  strengthen the digital foundation of your business.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Social Links Section */}
+        <motion.section
+          className="relative bg-black py-20 md:py-28 overflow-hidden border-y border-zinc-800"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          variants={container}
+        >
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 24px 24px, #ffffff1a 2px, transparent 0)`,
+                backgroundSize: "48px 48px",
+              }}
+            ></div>
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-4">
+            <motion.h2
+              className="text-center text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-12 md:mb-16"
+              variants={fadeInUp}
+            >
+              Find us
+            </motion.h2>
+
+            <motion.div
+              className="mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 md:gap-10 place-items-center"
+              variants={container}
+            >
+              {socialLinks.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.name}
+                  variants={popIn}
+                  whileHover={{ y: -6, scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-zinc-800/70 hover:bg-zinc-800 transition-colors border border-zinc-700/60 hover:border-zinc-600 flex items-center justify-center overflow-hidden shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]"
+                >
+                  {/* subtle shine on hover */}
+                  <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-white/5 to-transparent" />
+                  <img
+                    src={item.src}
+                    alt={`${item.name} icon`}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
+                    loading="lazy"
+                    onError={(e) => {
+                      // fall back to text if icon missing
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <span className="sr-only">{item.name}</span>
+                </motion.a>
+              ))}
             </motion.div>
           </div>
         </motion.section>
