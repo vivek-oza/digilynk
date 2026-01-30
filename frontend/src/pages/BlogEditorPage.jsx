@@ -84,7 +84,7 @@ export default function BlogEditorPage() {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-black">
+    <div className="pt-16 min-h-screen bg-background">
       <div className="max-w-5xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

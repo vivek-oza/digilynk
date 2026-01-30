@@ -100,7 +100,7 @@ export default function BlogListPage() {
         path="/blog"
       />
 
-      <div className="pt-16 min-h-screen bg-black relative">
+      <div className="pt-16 min-h-screen bg-background relative">
         {/* Hero Section */}
         <motion.div
           className="relative overflow-hidden h-screen flex items-center justify-center"
@@ -155,7 +155,7 @@ export default function BlogListPage() {
 
         {/* Blog Cards Section */}
         <motion.div
-          className="relative bg-black py-24 md:py-32"
+          className="relative bg-background py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}

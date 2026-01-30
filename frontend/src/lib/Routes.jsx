@@ -10,13 +10,11 @@ import {
   Route,
   ScrollRestoration,
 } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import NewHomePage from "../pages/NewHomePage";
 import ContactPage from "../pages/ContactPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import WebDevelopmentPage from "../pages/WebDevelopmentPage";
 import SoftwareTestingPage from "../pages/SoftwareTestingPage";
-// import GraphicDesignPage from "../pages/GraphicDesignPage"; // temporarily hidden
-import ServicesPage from "../pages/ServicesPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import BlogPage from "../pages/BlogPage";
 import BlogListPage from "../pages/BlogListPage";
@@ -36,14 +34,13 @@ export default function DigilynkRoutes() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<NewHomePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/blog" element={<BlogListPage />} />
           <Route path="/blog/new" element={<BlogEditorPage />} />
           <Route path="/blog/edit/:id" element={<BlogEditorPage />} />
           <Route path="/blog/:id" element={<BlogPage />} />
-          {/* <Route path="/services" element={<ServicesPage />} /> */}
           <Route
             path="/services/web-development"
             element={<WebDevelopmentPage />}
@@ -52,8 +49,6 @@ export default function DigilynkRoutes() {
             path="/services/software-testing"
             element={<SoftwareTestingPage />}
           />
-          {/* <Route path="/services/design" element={<GraphicDesignPage />} /> */}
-          {/* Other routes */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

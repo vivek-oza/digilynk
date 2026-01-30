@@ -71,7 +71,12 @@ export default function NotFoundPage() {
               Back to Home
             </ShimmerButton>
             <ShimmerButton
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  window.location.href = "/#contact";
+                }, 100);
+              }}
               className="text-white px-8 py-4 text-lg font-semibold"
               shimmerColor="#ffffff"
               shimmerSize="0.15em"

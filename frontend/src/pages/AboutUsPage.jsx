@@ -1,524 +1,229 @@
 import React from "react";
-import { motion } from "framer-motion";
-import FaqSection from "../components/digilynk/FaqSection";
-import { RainbowButton } from "../components/magicui/rainbow-button";
-import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
-import {
-  Heart,
-  Target,
-  Eye,
-  Users,
-  Sparkles,
-  Award,
-  Handshake,
-  TrendingUp,
-} from "lucide-react";
+import { AnimatedTooltip } from "../components/ui/animated-tooltip";
+import PageHero from "../components/shared/PageHero";
+
+// Exported so we can reuse these links in other sections if needed
+export const aboutSocialLinks = [
+  {
+    name: "LinkedIn",
+    description: "Connect with us professionally and stay updated.",
+    href: "https://www.linkedin.com/in/avi-oza-448720354/",
+    src: "/Icons8/linkedin.png",
+  },
+  {
+    name: "X",
+    description: "Follow us on X (Twitter) for updates and news.",
+    href: "https://x.com/AviDigilynk",
+    src: "/Icons8/x.png",
+  },
+  {
+    name: "Facebook",
+    description: "Like our page and join our community.",
+    href: "https://www.digilynk.in/",
+    src: "/Icons8/facebook.png",
+  },
+  {
+    name: "Instagram",
+    description: "Follow us for visual updates and behind-the-scenes.",
+    href: "https://www.instagram.com/digilynk/",
+    src: "https://cdn-icons-png.flaticon.com/512/15713/15713420.png",
+  },
+  {
+    name: "Reddit",
+    description: "Join the conversation and share your thoughts.",
+    href: "https://www.reddit.com/user/LongjumpingKnee4834/",
+    src: "/Icons8/reddit.png",
+  },
+  {
+    name: "WhatsApp",
+    description: "Chat with us directly for quick support.",
+    href: "https://wa.me/7990903975",
+    src: "/Icons8/whatsapp.png",
+  },
+  {
+    name: "Mail",
+    description: "Send us an email for inquiries and projects.",
+    href: "mailto:avi.digilynk@gmail.com",
+    src: "/Icons8/gmail.png",
+  },
+];
+
+const aboutContent = [
+  {
+    badge: "About Digilynk",
+    title: "We build websites that actually support your business, not just your brand colors.",
+    image: "/digilynk_about.png",
+    description: (
+      <>
+        <p>
+          Digilynk started with a simple observation: many businesses invest in websites, but few get solutions
+          that truly support their goals. We saw websites that looked impressive but were hard to manage, slow to
+          load, or disconnected from real user needs.
+        </p>
+        <p>
+          Digilynk was created to bridge that gap — to deliver web solutions that are not only visually clean, but
+          also practical, scalable, and easy to use for real teams and real businesses.
+        </p>
+      </>
+    ),
+  },
+  {
+    badge: "Our beginning",
+    title: "Born from real-world gaps between design, development, and day-to-day use.",
+    image:
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3",
+    description: (
+      <>
+        <p>
+          From the start, we met teams who had &quot;finished&quot; websites that were difficult to update, fragile
+          to change, or disconnected from how their business actually worked. That&apos;s where Digilynk began — by
+          asking how we could make the web feel more reliable and less intimidating for non-technical teams.
+        </p>
+        <p>
+          Today, that same mindset drives us. Every project is approached with a focus on day-to-day usability,
+          not just launch-day aesthetics.
+        </p>
+      </>
+    ),
+  },
+  {
+    badge: "Our approach",
+    title: "Listening first. Then designing, building, and testing with intention.",
+    image:
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3",
+    description: (
+      <>
+        <p>
+          We believe good web development starts with listening. Before writing a single line of code, we focus on
+          understanding the business, the users, and the purpose behind the website.
+        </p>
+        <p>
+          Our approach is calm, structured, and transparent. We design with clarity, develop with precision, and
+          build systems that remain stable and adaptable as requirements evolve. Every decision we make is guided
+          by usability, performance, and long-term value.
+        </p>
+      </>
+    ),
+  },
+  {
+    badge: "What we stand for",
+    title: "Simple language, honest work, and websites you’re not afraid to touch.",
+    image:
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3",
+    description: (
+      <>
+        <p>
+          At Digilynk, we value simplicity over complexity and clarity over noise. We avoid unnecessary technical
+          jargon and focus on solutions that clients can understand, maintain, and trust.
+        </p>
+        <p>
+          We see ourselves not just as developers, but as long-term partners who care about the success of the
+          platforms we build. Quality, reliability, and honest communication define how we work and how we
+          collaborate.
+        </p>
+      </>
+    ),
+  },
+  {
+    badge: "Growing with our clients",
+    title: "When you grow, your website and systems should quietly grow with you.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3",
+    description: (
+      <>
+        <p>
+          Digilynk works with startups, growing businesses, and professionals across multiple industries. As our
+          clients evolve, we evolve with them — refining systems, scaling platforms, and supporting new ideas.
+        </p>
+        <p>
+          Our goal is not just to deliver a project, but to help build a strong and dependable digital foundation
+          that continues to support growth over time.
+        </p>
+      </>
+    ),
+  },
+  {
+    badge: "Looking ahead",
+    title: "Staying curious about the web, so your website doesn’t fall behind it.",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3",
+    description: (
+      <>
+        <p>
+          We are committed to continuous improvement — in technology, process, and understanding user behavior. As
+          the digital landscape changes, Digilynk remains focused on creating web solutions that are
+          future‑ready, secure, and meaningful.
+        </p>
+        <p>
+          We look forward to building thoughtful digital experiences that make a real difference for the people who
+          use them and the teams who rely on them.
+        </p>
+      </>
+    ),
+  },
+];
 
 export default function AboutUs() {
-  const navigate = useNavigate();
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const popIn = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-      },
-    },
-  };
-
-  const coreValues = [
-    {
-      icon: <Sparkles className="w-8 h-8 text-blue-400" />,
-      title: "Creativity & Innovation",
-      description:
-        "We push boundaries and think outside the box to create unique digital experiences that stand out in today's competitive landscape.",
-    },
-    {
-      icon: <Award className="w-8 h-8 text-yellow-400" />,
-      title: "Professional Excellence",
-      description:
-        "Every project is delivered with the highest standards of quality, attention to detail, and professional craftsmanship.",
-    },
-    {
-      icon: <Handshake className="w-8 h-8 text-green-400" />,
-      title: "Client Partnership",
-      description:
-        "We build long-term relationships based on trust, transparency, and mutual success rather than just delivering services.",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8 text-purple-400" />,
-      title: "Results-Driven",
-      description:
-        "Our focus is always on measurable outcomes and tangible business value for our clients.",
-    },
-  ];
-
-  const whyChooseItems = [
-    {
-      id: 1,
-      icon: <Users className="w-8 h-8 text-blue-400" />,
-      title: "Partnership Approach",
-      text: "At Digilynk, we don't just deliver services, we build partnerships that drive your success.",
-    },
-    {
-      id: 2,
-      icon: <Target className="w-8 h-8 text-green-400" />,
-      title: "Goal-Oriented",
-      text: "Our approach is rooted in understanding your unique goals, challenges, and market positioning.",
-    },
-    {
-      id: 3,
-      icon: <Heart className="w-8 h-8 text-red-400" />,
-      title: "User-Centric",
-      text: "We combine technical expertise with a deep understanding of user behavior and experience design.",
-    },
-    {
-      id: 4,
-      icon: <Eye className="w-8 h-8 text-purple-400" />,
-      title: "Impactful Solutions",
-      text: "Every solution we deliver is not just functional but impactful, designed to move your business forward.",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/avi-oza-448720354/",
-      src: "/Icons8/linkedin.png",
-    },
-    { name: "X", href: "https://x.com/AviDigilynk", src: "/Icons8/x.png" },
-    {
-      name: "Facebook",
-      href: "https://www.digilynk.in/",
-      src: "/Icons8/facebook.png",
-    },
-    {
-      name: "Reddit",
-      href: "https://www.reddit.com/user/LongjumpingKnee4834/",
-      src: "/Icons8/reddit.png",
-    },
-    {
-      name: "WhatsApp",
-      href: "https://wa.me/7990903975",
-      src: "/Icons8/whatsapp.png",
-    },
-    {
-      name: "Mail",
-      href: "mailto:avi.digilynk@gmail.com",
-      src: "/Icons8/gmail.png",
-    },
-  ];
-
   return (
     <>
       <SEO
-        title="About Digilynk | Who We Are"
-        description="Learn about Digilynk's mission, vision, and values. We craft impactful, user-centric digital solutions that drive real business results."
+        title="About Digilynk | Web Development & QA Studio"
+        description="Learn who Digilynk is, how we build modern websites, and how our combined development and QA approach helps you launch with confidence."
         path="/about"
         image="/digilynk_about.png"
       />
-      <div className="relative md:mt-16 mt-32 font-roboto">
-        {/* Hero Section */}
-        <motion.section
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          className="relative min-h-screen py-20 bg-black overflow-hidden flex items-center justify-center"
-        >
-          {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('/digilynk_about.png')`,
-            }}
-          />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/70" />
+      <PageHero
+        words={[
+          {
+            text: "We are Digilynk. We design and develop\nbest websites for your business.",
+            className: "text-white",
+          },
+        ]}
+      />
 
-          <div className="relative max-w-4xl mx-auto px-4 text-center">
-            <motion.div className="space-y-8" variants={container}>
-              <motion.h1
-                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight font-roboto"
-                variants={fadeInUp}
-              >
-                About Us
-              </motion.h1>
+      {/* Company description section */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="mb-6 text-2xl font-semibold text-foreground md:text-3xl font-roboto">
+            About Digilynk
+          </h2>
+          <p className="mb-4 text-base leading-relaxed text-muted-foreground md:text-lg font-roboto">
+            Digilynk is a full-service digital solutions company founded in 2022 and based in Ahmedabad, Gujarat, delivering high-quality web development, software testing, and digital services to businesses worldwide. With over 4+ years of industry experience, we follow an AI-integrated development and testing process that ensures faster delivery, higher accuracy, and scalable results.
+          </p>
+          <p className="text-base leading-relaxed text-muted-foreground md:text-lg font-roboto">
+            Our team of 10 skilled professionals—including developers, QA engineers, UI/UX designers, content writers, digital marketers, and graphic designers—works collaboratively to build visually strong, technically robust, and user-focused solutions. We are known for delivering best-in-class UI designs that balance aesthetics with usability. Having successfully delivered 40+ projects across multiple domains, we focus on reliability, transparency, and measurable business outcomes, helping our clients build digital products they can confidently grow and scale.
+          </p>
+        </div>
+      </section>
 
-              <motion.p
-                className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-roboto"
-                variants={fadeInUp}
-              >
-                We craft impactful, user-centric digital solutions that drive
-                real business results
-              </motion.p>
-            </motion.div>
+      {/* Find Us section */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-semibold text-foreground md:text-3xl font-roboto mb-2">
+              Find Us
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-roboto mb-10">
+              Connect with Digilynk on your preferred platform. We’re here to help with your next project.
+            </p>
           </div>
-        </motion.section>
-
-        {/* Company Intro Section */}
-        <motion.section
-          className="relative bg-black py-16 md:py-20 overflow-hidden"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          <div className="relative max-w-5xl mx-auto px-4">
-            <motion.div variants={popIn}>
-              <div className="max-w-none text-zinc-300">
-                <p className="text-lg leading-relaxed">
-                  At Digilynk, we help businesses turn ideas into reliable
-                  digital solutions. We’re a technology services company driven
-                  by a network of experienced professionals, delivering
-                  high-quality Web Development and Software Testing services
-                  with a focus on performance, usability, and trust.
-                </p>
-                <p className="text-lg leading-relaxed mt-6">
-                  Our Web Development team builds websites that combine design
-                  precision with technical strength. From corporate sites to
-                  e-commerce platforms, we create fast, secure, and responsive
-                  solutions that help brands connect with customers and grow
-                  online.
-                </p>
-                <p className="text-lg leading-relaxed mt-6">
-                  Our Quality Assurance team ensures that every product we test
-                  meets the highest standards of reliability. We specialize in
-                  both manual and automation testing—covering functional,
-                  regression, UI/UX, and cross-platform testing—to ensure your
-                  applications work seamlessly across devices and environments.
-                </p>
-                <p className="text-lg leading-relaxed mt-6">
-                  What makes Digilynk different is our commitment to delivering
-                  practical, result-driven solutions without unnecessary
-                  complexity. We believe in clear communication, on-time
-                  delivery, and long-term partnerships built on transparency and
-                  consistent quality.
-                </p>
-                <p className="text-lg leading-relaxed mt-6 text-white">
-                  At Digilynk, we don’t just develop and test software—we
-                  strengthen the digital foundation of your business.
-                </p>
-              </div>
-            </motion.div>
+          <div className="flex flex-row items-center justify-center w-full">
+            <AnimatedTooltip
+              items={aboutSocialLinks.map((item, index) => ({
+                id: index + 1,
+                name: item.name,
+                designation: item.description,
+                image: item.src,
+                href: item.href,
+              }))}
+            />
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* Social Links Section */}
-        <motion.section
-          className="relative bg-black py-20 md:py-28 overflow-hidden border-y border-zinc-800"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 24px 24px, #ffffff1a 2px, transparent 0)`,
-                backgroundSize: "48px 48px",
-              }}
-            ></div>
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-4">
-            <motion.h2
-              className="text-center text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-12 md:mb-16"
-              variants={fadeInUp}
-            >
-              Find us
-            </motion.h2>
-
-            <motion.div
-              className="mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 md:gap-10 place-items-center"
-              variants={container}
-            >
-              {socialLinks.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.name}
-                  variants={popIn}
-                  whileHover={{ y: -6, scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-zinc-800/70 hover:bg-zinc-800 transition-colors border border-zinc-700/60 hover:border-zinc-600 flex items-center justify-center overflow-hidden shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]"
-                >
-                  {/* subtle shine on hover */}
-                  <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-white/5 to-transparent" />
-                  <img
-                    src={item.src}
-                    alt={`${item.name} icon`}
-                    className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
-                    loading="lazy"
-                    onError={(e) => {
-                      // fall back to text if icon missing
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <span className="sr-only">{item.name}</span>
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Core Values Section */}
-        <motion.section
-          className="relative bg-black py-24 md:py-32 overflow-hidden"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 25px 25px, #10b981 2px, transparent 0)`,
-                backgroundSize: "50px 50px",
-              }}
-            ></div>
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-4">
-            <motion.div className="text-center mb-20" variants={container}>
-              <motion.h2
-                className="text-2xl md:text-4xl font-bold text-white mb-4 font-roboto"
-                variants={fadeInUp}
-              >
-                Our Core Values
-              </motion.h2>
-              <motion.p
-                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-roboto"
-                variants={fadeInUp}
-              >
-                The principles that guide everything we do and every decision we
-                make
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              variants={container}
-            >
-              {coreValues.map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl p-6 shadow-xl border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 overflow-hidden"
-                  variants={popIn}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/0 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="relative z-10">
-                    {/* Icon with background */}
-                    <div className="mb-4 p-3 bg-zinc-800/50 rounded-xl w-fit">
-                      {value.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-lg font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
-                      {value.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-zinc-400 text-sm leading-relaxed font-roboto group-hover:text-zinc-300 transition-colors">
-                      {value.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl" />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Why Choose Us Section */}
-        <motion.section
-          className="relative bg-black py-24 md:py-32 overflow-hidden"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 25px 25px, #6366f1 2px, transparent 0)`,
-                backgroundSize: "50px 50px",
-              }}
-            ></div>
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-4">
-            <motion.div className="text-center mb-20" variants={container}>
-              <motion.h2
-                className="text-2xl md:text-4xl font-bold text-white mb-4 font-roboto"
-                variants={fadeInUp}
-              >
-                Why Choose Us?
-              </motion.h2>
-              <motion.p
-                className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-roboto"
-                variants={fadeInUp}
-              >
-                We don't just deliver services — we build partnerships that
-                drive your success
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              variants={container}
-            >
-              {whyChooseItems.map((item) => (
-                <motion.div
-                  key={item.id}
-                  className="group relative bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 rounded-2xl p-6 shadow-xl border border-zinc-800/50 hover:border-zinc-700 transition-all duration-300 overflow-hidden"
-                  variants={popIn}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/0 to-zinc-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="relative z-10">
-                    {/* Icon with background */}
-                    <div className="mb-4 p-3 bg-zinc-800/50 rounded-xl w-fit">
-                      {item.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-lg font-bold text-white mb-3 font-roboto group-hover:text-white transition-colors">
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-zinc-400 text-sm leading-relaxed font-roboto group-hover:text-zinc-300 transition-colors">
-                      {item.text}
-                    </p>
-                  </div>
-
-                  {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl" />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Mission & Vision Section */}
-        <motion.section
-          className="relative bg-black py-24 md:py-32 overflow-hidden"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
-          variants={container}
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 25px 25px, #8b5cf6 2px, transparent 0)`,
-                backgroundSize: "50px 50px",
-              }}
-            ></div>
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-4">
-            <motion.div className="text-center mb-20" variants={container}>
-              <motion.h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 font-roboto"
-                variants={fadeInUp}
-              >
-                Our Mission & Vision
-              </motion.h2>
-              <motion.p
-                className="text-xl text-zinc-300 max-w-3xl mx-auto font-light font-roboto"
-                variants={fadeInUp}
-              >
-                The driving force behind everything we do at{" "}
-                <span className="font-medium text-white">Digilynk</span>
-              </motion.p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-              <motion.div className="space-y-6" variants={fadeInUp}>
-                <h3 className="text-3xl font-semibold text-white mb-6 font-roboto">
-                  Our Mission
-                </h3>
-                <p className="text-lg text-zinc-300 leading-relaxed font-roboto">
-                  To design and develop innovative, high-quality websites and
-                  applications that help businesses grow, transform, and succeed
-                  in the digital world. We strive to deliver tailored digital
-                  experiences that truly reflect our clients' vision and drive
-                  measurable results.
-                </p>
-              </motion.div>
-
-              <motion.div className="space-y-6" variants={fadeInUp}>
-                <h3 className="text-3xl font-semibold text-white mb-6 font-roboto">
-                  Our Vision
-                </h3>
-                <p className="text-lg text-zinc-300 leading-relaxed font-roboto">
-                  To be a leading creative partner known for crafting impactful,
-                  user-centric digital solutions that set new standards in the
-                  industry. We envision a future where every business has access
-                  to exceptional digital experiences that drive growth and
-                  success.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        <FaqSection />
-      </div>
     </>
   );
 }
+

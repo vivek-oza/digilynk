@@ -304,7 +304,12 @@ const defaultBlogs = [
               success story together.
             </p>
             <button
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  window.location.href = "/#contact";
+                }, 100);
+              }}
               className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
             >
               Get Started Today
@@ -729,7 +734,12 @@ const defaultBlogs = [
               talk.
             </p>
             <button
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  window.location.href = "/#contact";
+                }, 100);
+              }}
               className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
             >
               Get Started Today
@@ -778,7 +788,7 @@ export default function BlogPage() {
 
   if (!blog) {
     return (
-      <div className="pt-16 min-h-screen bg-black flex items-center justify-center">
+      <div className="pt-16 min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Blog Not Found</h1>
           <button
@@ -799,7 +809,7 @@ export default function BlogPage() {
         description="Stay updated with latest tech insights from Digilynk"
         path={`/blog/${id}`}
       />
-      <div className="pt-16 min-h-screen bg-black">
+      <div className="pt-16 min-h-screen bg-background">
         {/* Hero Section with Image */}
         <div className="relative h-screen overflow-hidden">
           <img
@@ -926,7 +936,12 @@ export default function BlogPage() {
                 professional, modern website.
               </p>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => {
+                navigate("/");
+                setTimeout(() => {
+                  window.location.href = "/#contact";
+                }, 100);
+              }}
                 className="px-8 py-4 text-lg font-semibold bg-white text-black hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
               >
                 Talk to us

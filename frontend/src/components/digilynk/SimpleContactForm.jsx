@@ -18,6 +18,15 @@ export default function SimpleContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,22 +52,24 @@ export default function SimpleContactForm() {
         animate={{ opacity: 1, scale: 1 }}
       >
         <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-gray-300 mb-6">
+        <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
+        <p className="text-muted-foreground mb-6">
           We'll get back to you within 24 hours.
         </p>
-        <button
-          onClick={() => window.location.reload()}
-          className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-        >
-          Send Another Message
-        </button>
+        <span className="hero-cta-glow">
+          <button
+            onClick={() => window.location.reload()}
+            className="hero-cta-inner px-6 py-3 text-foreground rounded-xl font-semibold transition-colors font-roboto"
+          >
+            Send Another Message
+          </button>
+        </span>
       </motion.div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {/* Name Field */}
       <div>
         <input
@@ -67,33 +78,33 @@ export default function SimpleContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-5 py-4 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white text-base placeholder-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
-          placeholder="Name *"
+          className="w-full px-5 py-3.5 bg-muted/40 border border-border/60 rounded-xl text-foreground text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20 transition-all"
+          placeholder="Name"
         />
       </div>
 
-      {/* Email Field */}
-      <div>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full px-5 py-4 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white text-base placeholder-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
-          placeholder="Email (optional)"
-        />
-      </div>
-
-      {/* Phone Field */}
-      <div>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-5 py-4 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white text-base placeholder-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
-          placeholder="Phone (optional)"
-        />
+      {/* Email + Phone Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-5 py-3.5 bg-muted/40 border border-border/60 rounded-xl text-foreground text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20 transition-all"
+            placeholder="Email"
+          />
+        </div>
+        <div>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-5 py-3.5 bg-muted/40 border border-border/60 rounded-xl text-foreground text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20 transition-all"
+            placeholder="Phone"
+          />
+        </div>
       </div>
 
       {/* Message Field */}
@@ -103,9 +114,9 @@ export default function SimpleContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          rows={6}
-          className="w-full px-5 py-4 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white text-base placeholder-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all resize-none"
-          placeholder="Message *"
+          rows={4}
+          className="w-full px-5 py-3.5 bg-muted/40 border border-border/60 rounded-xl text-foreground text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20 transition-all resize-none"
+          placeholder="Message"
         />
       </div>
 
@@ -120,24 +131,39 @@ export default function SimpleContactForm() {
         </motion.div>
       )}
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full px-6 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg hover:scale-[1.02] active:scale-[0.98]"
-      >
-        {loading ? (
-          <>
-            <Loader2 className="w-5 h-5 animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="w-5 h-5" />
-            Send Message
-          </>
-        )}
-      </button>
+      {/* Actions */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+        <span className="hero-cta-glow w-full inline-flex">
+          <button
+            type="button"
+            onClick={handleReset}
+            disabled={loading}
+            className="hero-cta-inner w-full px-6 py-3.5 text-foreground font-roboto font-semibold text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Cancel
+          </button>
+        </span>
+
+        <span className="hero-cta-glow w-full inline-flex">
+          <button
+            type="submit"
+            disabled={loading}
+            className="hero-cta-inner w-full px-6 py-3.5 text-foreground font-roboto font-semibold text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="w-4 h-4" />
+                Send
+              </>
+            )}
+          </button>
+        </span>
+      </div>
     </form>
   );
 }
