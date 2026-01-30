@@ -42,23 +42,23 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #d4d4d8;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(255, 255, 255, 0.2);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -86,23 +86,23 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #d4d4d8;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(255, 255, 255, 0.2);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -131,6 +131,15 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #000000 !important;
+  }
+  html {
+    @apply bg-background;
+    background-color: #000000 !important;
+  }
+  
+  #root {
+    background-color: #000000 !important;
   }
 }
 
@@ -138,13 +147,24 @@
   display: none;
 }
 
+/* Light mode selection */
+::selection {
+  color: #27272a;
+  background: #e4e4e7;
+}
+
 ::-moz-selection {
-  /* Code for Firefox */
+  color: #27272a;
+  background: #e4e4e7;
+}
+
+/* Dark mode selection */
+.dark ::selection {
   color: #fafafa;
   background: #27272a;
 }
 
-::selection {
+.dark ::-moz-selection {
   color: #fafafa;
   background: #27272a;
 }
@@ -299,6 +319,140 @@ html {
 
 .animate-gradient-x {
   animation: gradient-x 3s ease infinite;
+}
+
+/* Hero CTA: black btn + light grey border default, rainbow glow on hover */
+.hero-cta-glow {
+  display: inline-flex;
+  border-radius: 0.75rem;
+  padding: 0.75px;
+  background: #3f3f3f;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-cta-glow:hover {
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6,
+    #a855f7,
+    #ec4899,
+    #f43f5e,
+    #f97316,
+    #eab308,
+    #22c55e,
+    #14b8a6,
+    #6366f1
+  );
+  background-size: 300% 100%;
+  animation: rainbow 4s linear infinite;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(39, 39, 42, 0.25),
+    0 0 24px rgba(63, 63, 235, 0.12);
+}
+.hero-cta-glow .hero-cta-inner {
+  background: var(--background);
+  border-radius: calc(0.75rem - 0.75px);
+  width: 100%;
+  height: 100%;
+}
+
+/* Services V2 cards — glow accent (Glow_Effect_Implementation_Guide) */
+.services-v2-card {
+  background-color: var(--card);
+  padding: 1.75rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dark .services-v2-card {
+  background-color: #000000;
+}
+.services-v2-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #ff0000 0%,
+    #ff6600 16.66%,
+    #ffcc00 33.33%,
+    #4a90e2 50%,
+    #5fb3b3 66.66%,
+    #9b59b6 83.33%,
+    #ff0000 100%
+  );
+  background-size: 300% 100%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: borderGlowProject 4s linear infinite;
+  z-index: 1;
+}
+.services-v2-card:hover::before,
+.services-v2-card[data-active="true"]::before {
+  opacity: 1;
+  height: 5px;
+  box-shadow:
+    0 0 12px rgba(255, 0, 0, 0.35),
+    0 0 18px rgba(255, 102, 0, 0.3),
+    0 0 24px rgba(255, 204, 0, 0.25),
+    0 0 28px rgba(74, 144, 226, 0.3),
+    0 0 32px rgba(95, 179, 179, 0.25),
+    0 0 36px rgba(155, 89, 182, 0.25);
+}
+.services-v2-card:hover,
+.services-v2-card[data-active="true"] {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+@keyframes borderGlowProject {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Stats rainbow strip — vertical accent matching services glow */
+.stat-rainbow-strip {
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.group:hover .stat-rainbow-strip {
+  background: linear-gradient(
+    180deg,
+    #ff0000 0%,
+    #ff6600 16.66%,
+    #ffcc00 33.33%,
+    #4a90e2 50%,
+    #5fb3b3 66.66%,
+    #9b59b6 83.33%,
+    #ff0000 100%
+  );
+  background-size: 300% 100%;
+  animation: borderGlowProject 4s linear infinite;
+  box-shadow:
+    0 0 12px rgba(255, 0, 0, 0.35),
+    0 0 18px rgba(255, 102, 0, 0.3),
+    0 0 24px rgba(255, 204, 0, 0.25),
+    0 0 28px rgba(74, 144, 226, 0.3),
+    0 0 32px rgba(95, 179, 179, 0.25),
+    0 0 36px rgba(155, 89, 182, 0.25);
 }
 
 @theme inline {

@@ -4,40 +4,40 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Aarav",
-    handle: "@aarav",
+    name: "Ankita",
+    handle: "Founder, local retail brand",
     text:
-      "Digilynk's QA team caught edge cases we missed. Our release was smooth and on time.",
-  },
-  {
-    name: "Isha",
-    handle: "@isha",
-    text:
-      "Superb attention to detail and clear reporting. Performance improved noticeably.",
+      "We needed a clean website that didn’t slow us down. Digilynk designed and built it faster than we expected, and they still handle updates without breaking anything.",
   },
   {
     name: "Rohan",
-    handle: "@rohan",
+    handle: "Marketing lead, SaaS startup",
     text:
-      "Their automation saved us hours every sprint. Great partner for scaling.",
+      "Their team understood our brand quickly and turned it into a sharp, modern landing page. The site loads fast, is easy to edit, and supports all our campaigns.",
   },
   {
-    name: "Meera",
-    handle: "@meera",
+    name: "Priya",
+    handle: "Independent consultant",
     text:
-      "Security and API testing were top-notch. We trust their recommendations.",
+      "I came in with only an idea of what I wanted. Digilynk helped shape the content, layout, and structure. The result feels professional without feeling overdone.",
   },
   {
     name: "Kabir",
-    handle: "@kabir",
+    handle: "Co‑founder, services agency",
     text:
-      "Excellent UX audits. Our flows are cleaner and conversions are up.",
+      "We were worried a new site would be expensive and hard to maintain. They gave us a very reasonable quote, set things up properly, and documented everything clearly.",
   },
   {
-    name: "Sara",
-    handle: "@sara",
+    name: "Meera",
+    handle: "Designer, small studio",
     text:
-      "Thorough mobile testing across devices. Zero critical bugs post launch.",
+      "They’re one of the few dev teams I’ve worked with who respect design details. Spacing, typography, and interactions were implemented almost exactly as planned.",
+  },
+  {
+    name: "Arjun",
+    handle: "Entrepreneur",
+    text:
+      "Anytime we need a small change or new section, the team responds quickly. Having a reliable, long‑term dev partner has made growing our online presence much easier.",
   },
 ];
 
@@ -59,16 +59,16 @@ function AvatarDot({ i }) {
 
 function TestimonialCard({ t, i }) {
   return (
-    <div className="min-w-[320px] max-w-[360px] rounded-2xl bg-zinc-900/80 border border-zinc-800 p-5 sm:p-6 shadow-lg">
+    <div className="min-w-[320px] max-w-[360px] rounded-xl bg-muted/50 border border-border p-5 md:p-6 shadow-lg">
       <div className="flex items-center gap-3 mb-3">
         <AvatarDot i={i} />
         <div className="leading-tight">
-          <p className="text-sm sm:text-base text-white font-medium">{t.name}</p>
-          <p className="text-xs sm:text-sm text-zinc-400">{t.handle}</p>
+          <p className="text-sm md:text-base text-foreground font-medium font-roboto">{t.name}</p>
+          <p className="text-xs md:text-sm text-muted-foreground font-roboto">{t.handle}</p>
         </div>
-        <Quote className="ml-auto h-4 w-4 text-zinc-500" />
+        <Quote className="ml-auto h-4 w-4 text-muted-foreground" />
       </div>
-      <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">{t.text}</p>
+      <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-roboto">{t.text}</p>
     </div>
   );
 }
@@ -80,9 +80,9 @@ export default function TestimonialMarquee() {
   const row2 = testimonials.slice(mid);
 
   return (
-    <section className="relative bg-black py-20 md:py-28 overflow-hidden">
+    <section className="relative bg-background py-32 md:py-40 lg:py-48 overflow-hidden">
       {/* Background dots to match theme */}
-      <div className="pointer-events-none absolute inset-0 opacity-5">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08] dark:opacity-5">
         <div
           className="absolute inset-0"
           style={{
@@ -93,12 +93,12 @@ export default function TestimonialMarquee() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
-        <div className="text-center mb-10 md:mb-16">
-          <h3 className="text-2xl md:text-4xl font-medium text-white font-roboto">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-16 md:mb-20 lg:mb-24">
+          <h3 className="text-2xl md:text-4xl font-medium text-foreground font-roboto">
             What our clients say
           </h3>
-          <p className="mt-3 text-zinc-400 max-w-2xl mx-auto font-roboto">
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto font-roboto text-base md:text-lg">
             Real feedback from teams that ship with confidence using Digilynk QA
           </p>
         </div>

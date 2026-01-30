@@ -312,7 +312,7 @@ export default function BlogSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative bg-black py-16 md:py-24 overflow-hidden border-y border-zinc-800">
+    <section className="relative bg-background py-16 md:py-24 overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4">
         <div className="text-center mb-10 md:mb-14">
           <h3 className="text-2xl md:text-4xl font-medium text-white font-roboto">

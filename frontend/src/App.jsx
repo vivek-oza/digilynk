@@ -1,16 +1,15 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React from "react";
+import { ThemeProvider } from "next-themes";
 import DigilynkRoutes from "./lib/Routes";
 import { Toaster } from "react-hot-toast";
 import ClickSpark from "./components/reactbits/Animations/ClickSpark/ClickSpark";
 
 function App() {
   return (
-    <>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <ClickSpark
-        // sparkColors={["#3B82F6", "#10B981", "#8B5CF6"]} // Blue, Green, Purple
-        // sparkColors={["#3B82F6"]} // Blue
-        sparkColors={["#fff"]} // Blue
+        sparkColors={["#fff"]}
         sparkSize={10}
         sparkRadius={20}
         sparkCount={8}
@@ -22,13 +21,13 @@ function App() {
           toastOptions={{
             duration: 4000,
             style: {
-              background: "#333",
-              color: "#fff",
+              background: "var(--toast-bg, #333)",
+              color: "var(--toast-color, #fff)",
             },
           }}
         />
       </ClickSpark>
-    </>
+    </ThemeProvider>
   );
 }
 
